@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <rect width="500" height="500" rx="16" fill="#FFFDF8"/>
+  <circle cx="250" cy="250" r="190" fill="#FBF5E9" stroke="#D9B86C" stroke-width="1.5" stroke-dasharray="6,6"/>
+  <ellipse cx="250" cy="280" rx="160" ry="85" fill="#8C631B"/>
+  <ellipse cx="250" cy="275" rx="150" ry="78" fill="#B88932"/>
+  <ellipse cx="250" cy="270" rx="140" ry="72" fill="#5A160F"/>
+  <path d="M120 265 Q 160 170, 250 160 Q 340 170, 380 265 Q 320 310, 250 315 Q 180 310, 120 265 Z" fill="#5A160F"/>
+  <ellipse cx="250" cy="225" rx="100" ry="40" fill="#B88932" opacity="0.6"/>
+  <text x="250" y="420" font-family="'Cormorant Garamond', serif" font-size="22" font-weight="700" fill="#5A160F" text-anchor="middle">Tirunelveli Wheat Halwa</text>
+  <text x="250" y="445" font-family="'Noto Sans Tamil', sans-serif" font-size="13" fill="#B88932" text-anchor="middle">திருநெல்வேலி அசல் சுவை</text>
+</svg>

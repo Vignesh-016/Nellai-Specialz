@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <rect width="500" height="500" rx="16" fill="#5A160F"/>
+  <circle cx="250" cy="250" r="230" fill="#32110D" opacity="0.6"/>
+  <ellipse cx="250" cy="250" rx="180" ry="120" fill="#8C2C1A"/>
+  <ellipse cx="220" cy="230" rx="90" ry="45" fill="#D9B86C" opacity="0.5"/>
+  <text x="250" y="440" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#D9B86C" text-anchor="middle">Slow Cooked Texture</text>
+</svg>

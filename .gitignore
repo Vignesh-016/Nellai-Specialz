@@ -1,0 +1,5 @@
+# Root Git Ignore
+node_modules/
+.env
+storage/logs/*
+!.gitignore

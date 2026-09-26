@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <rect width="500" height="500" rx="16" fill="#FBF5E9"/>
+  <rect x="100" y="150" width="300" height="200" rx="8" fill="#5A160F" stroke="#B88932" stroke-width="4"/>
+  <path d="M100 150 L250 80 L400 150 Z" fill="#8C2C1A"/>
+  <text x="250" y="250" font-family="'Cormorant Garamond', serif" font-size="22" font-weight="700" fill="#D9B86C" text-anchor="middle">NELLAI SPECIAL</text>
+  <text x="250" y="280" font-family="'Inter', sans-serif" font-size="12" fill="#FFFDF8" text-anchor="middle">Heritage Gift Box</text>
+</svg>

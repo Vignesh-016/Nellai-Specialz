@@ -1,0 +1,16 @@
+{
+  "name": "nellai-special",
+  "version": "1.0.0",
+  "description": "Nellai Special - Authentic Tirunelveli Halwa E-Commerce Frontend",
+  "main": "frontend/index.html",
+  "scripts": {
+    "build": "npx tailwindcss -i ./frontend/src/css/input.css -o ./frontend/assets/css/app.css --minify",
+    "build:css": "npx tailwindcss -i ./frontend/src/css/input.css -o ./frontend/assets/css/app.css --minify",
+    "dev": "npx tailwindcss -i ./frontend/src/css/input.css -o ./frontend/assets/css/app.css --watch"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3"
+  }
+}

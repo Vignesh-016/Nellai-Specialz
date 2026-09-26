@@ -1,0 +1,13 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#F5EAD4"/>
+  <circle cx="398" cy="198" r="150" fill="#B88932" opacity="0.08"/>
+  <g>
+    <ellipse cx="398" cy="352" rx="180" ry="38" fill="#D9B86C" opacity="0.25"/>
+    <path d="M230 335C230 285.5 269.5 246 319 246H477C526.5 246 566 285.5 566 335V356C566 395.8 534.8 427 495 427H301C261.2 427 230 395.8 230 356V335Z" fill="#C98038"/>
+    <path d="M268 318C268 282.7 296.7 254 332 254H464C499.3 254 528 282.7 528 318V336C528 361.6 507.6 383 482 383H314C288.4 383 268 361.6 268 336V318Z" fill="#F0C770"/>
+    <path d="M300 292C330 282 356 278 400 278C444 278 472 282 500 292" stroke="#A86822" stroke-width="8" stroke-linecap="round"/>
+    <path d="M330 340C360 364 382 376 402 376C422 376 444 364 474 340" stroke="#9E6121" stroke-width="6" stroke-linecap="round"/>
+    <path d="M318 418C350 395 378 382 400 382C420 382 448 394 480 418" stroke="#8E581E" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <text x="400" y="520" text-anchor="middle" fill="#5A160F" font-family="Georgia, serif" font-size="38" letter-spacing="3">GHEE HALWA</text>
+</svg>

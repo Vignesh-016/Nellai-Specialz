@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600&family=Noto+Serif+Tamil:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-brand-cream text-brand-text font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-brand-dark tracking-tight;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-brand-gold;
+  }
+}
+
+@layer components {
+  .site-wrap {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex min-h-[48px] items-center justify-center border border-brand-primary bg-brand-primary px-7 py-3 text-sm font-medium tracking-wide text-brand-warm-white transition hover:bg-brand-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold;
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-[48px] items-center justify-center border border-brand-primary/30 bg-transparent px-7 py-3 text-sm font-medium tracking-wide text-brand-primary transition hover:border-brand-primary hover:bg-brand-primary/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold;
+  }
+
+  .btn-ghost {
+    @apply inline-flex min-h-[44px] items-center justify-center text-sm font-medium text-brand-primary underline-offset-4 transition hover:underline;
+  }
+
+  .gold-rule {
+    @apply mx-auto h-px w-16 bg-brand-gold/60;
+  }
+
+  .paper-panel {
+    background-color: #f7f0e2;
+    background-image:
+      radial-gradient(rgba(90, 22, 15, 0.035) 0.6px, transparent 0.6px),
+      linear-gradient(180deg, rgba(251, 245, 233, 0.65), rgba(243, 231, 211, 0.9));
+    background-size: 3px 3px, 100% 100%;
+  }
+}
+
+@layer utilities {
+  .font-tamil-display {
+    font-family: "Noto Serif Tamil", "Cormorant Garamond", serif;
+  }
+
+  .font-tamil-ui {
+    font-family: "Noto Sans Tamil", "Inter", sans-serif;
+  }
+}
+
+/* Homepage visual corrections */
+:root { --ns-cream:#fbf5e9; --ns-paper:#fffdf8; --ns-deep:#32110d; --ns-body:#51443d; }
+body { color:var(--ns-body); background:var(--ns-cream); }
+.site-wrap { max-width:1280px; }
+h1,h2,h3,h4 { color:var(--ns-deep); }
+p,li { color:var(--ns-body); }
+header { box-shadow:0 2px 12px rgba(50,17,13,.06); }
+header nav,header button { color:var(--ns-deep); }
+main>section { background-color:var(--ns-cream); }
+main>section:first-child { background:linear-gradient(90deg,#fbf5e9 0%,#f8eedc 48%,#f4e5cb 100%); }
+main>section:first-child .site-wrap { min-height:470px; }
+main>section:first-child h1 { max-width:620px; font-size:clamp(2.7rem,5vw,4.2rem); line-height:1.04; }
+main>section:first-child p { color:#51443d; max-width:540px; }
+main>section:first-child .relative:last-child { align-self:stretch; }
+main>section:first-child .relative:last-child>div { height:100%; border:0; border-radius:0; box-shadow:none; }
+main>section:first-child .relative:last-child img { min-height:100%; object-position:center; }
+.product-card { background:var(--ns-paper); border-color:rgba(99,27,21,.16); box-shadow:0 4px 14px rgba(50,17,13,.06); }
+.product-card>div:last-child { text-align:left; }
+.product-card h3 { color:var(--ns-deep); }
+.product-card p,.product-card li { color:var(--ns-body); }
+.product-card button,.product-card a.inline-flex { min-height:42px; border-radius:8px; }
+button,a.inline-flex { white-space:nowrap; }
+.btn-primary,.btn-secondary { min-height:44px; border-radius:8px; }
+@media (max-width:767px) {
+  main>section:first-child .site-wrap { min-height:0; }
+  main>section:first-child .relative:last-child>div { height:auto; border-radius:14px; }
+  main>section:first-child h1 { font-size:2.7rem; }
+}
+
+/* Premium glass treatment for the two editorial panels */
+header {
+  background-color: rgba(251,245,233,.88) !important;
+  border-color: rgba(90,22,15,.12) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+#combo > .site-wrap > .relative {
+  background: rgba(255,253,248,.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+}
+#combo > .site-wrap > .relative > .grid > div:last-child {
+  background: rgba(255,253,248,.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+#combo img { object-fit: cover; }
+#celebrations img { object-fit: cover; }
+
+/* Footer contrast: preserve the dark brand surface while making all copy readable. */
+footer { background:#250c08 !important; color:#fff8ec; }
+footer h3 { color:#e6bd6b !important; }
+footer p, footer li, footer a, footer span { color:#f6e9d5; }
+footer a:hover { color:#ffffff; }
+footer .text-\[\#D9B86C\] { color:#e6bd6b !important; }
+footer .text-\[\#FBF5E9\]\/60, footer .text-\[\#FBF5E9\]\/80 { color:#f6e9d5 !important; }
+footer .border-white\/10 { border-color:rgba(246,233,213,.24); }
+
+/* Hero banner image treatment */
+main > section:first-child {
+  background-image:linear-gradient(90deg,rgba(251,245,233,.98) 0%,rgba(251,245,233,.88) 32%,rgba(251,245,233,.25) 66%,rgba(251,245,233,.08) 100%),url('../images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png');
+  background-size:cover;
+  background-position:center right;
+}
+main > section:first-child .site-wrap { display:block; min-height:560px; padding-top:5rem; padding-bottom:5rem; }
+main > section:first-child .site-wrap > .lg\:col-span-6:first-child { max-width:650px; }
+main > section:first-child .site-wrap > .lg\:col-span-6:last-child { display:none; }
+main > section:first-child h1 { max-width:650px; }
+@media (max-width:767px) {
+  main > section:first-child { background-position:62% center; }
+  main > section:first-child .site-wrap { min-height:0; padding-top:3.5rem; padding-bottom:3.5rem; background:rgba(251,245,233,.74); }
+  main > section:first-child .site-wrap > .lg\:col-span-6:first-child { max-width:none; }
+}
+
+/* Reference-match spacing and composition */
+main > section,
+main > .border-b { margin-top: 0; }
+main > section + section { padding-top: 6rem; }
+main > section:first-child { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+main > section:first-child .site-wrap { min-height: 440px; }
+main > section:first-child .relative:last-child > div { min-height: 360px; }
+#halwas { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+#halwas .mt-12 { margin-top: 2.75rem; }
+#heritage { min-height: 420px; padding-top: 6rem; padding-bottom: 6rem; }
+#heritage .site-wrap { min-height: 300px; align-items:center; }
+#combo { padding-top: 6rem; padding-bottom: 6rem; }
+#reviews { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+.product-card { min-height: 100%; }
+.product-card > div:first-child { aspect-ratio: 4 / 2.7; }
+.product-card > div:last-child { min-height: 240px; }
+@media (min-width:1024px) {
+  main > section:first-child .site-wrap { gap: 3rem; }
+  main > section:first-child .relative:last-child > div { min-height: 390px; }
+}
+@media (max-width:767px) {
+  main > section + section { padding-top: 4rem; }
+  main > section:first-child { padding-top: 3rem; padding-bottom: 3rem; }
+  #halwas,#combo,#reviews,#heritage { padding-top: 4rem; padding-bottom: 4rem; }
+  #heritage { min-height: 0; }
+}

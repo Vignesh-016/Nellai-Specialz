@@ -1,0 +1,13 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#F7F0E5"/>
+  <circle cx="404" cy="190" r="142" fill="#B88932" opacity="0.1"/>
+  <g>
+    <ellipse cx="398" cy="353" rx="174" ry="38" fill="#DDB47A" opacity="0.18"/>
+    <path d="M237 337C237 290.1 275.1 252 322 252H474C520.9 252 559 290.1 559 337V356C559 397.3 525.3 431 484 431H312C270.7 431 237 397.3 237 356V337Z" fill="#5A160F" opacity="0.92"/>
+    <path d="M275 316C275 285.1 300.1 260 331 260H465C495.9 260 521 285.1 521 316V332C521 363.7 495.7 389 464 389H332C300.3 389 275 363.7 275 332V316Z" fill="#D9B86C"/>
+    <path d="M318 329C350 355 372 366 400 366C428 366 450 354 482 329" stroke="#8F5A21" stroke-width="6" stroke-linecap="round"/>
+    <path d="M324 290C352 276 374 270 400 270C426 270 448 276 476 290" stroke="#8F5A21" stroke-width="6" stroke-linecap="round"/>
+    <path d="M312 410C348 392 370 385 400 385C430 385 452 392 488 410" stroke="#8F5A21" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="400" y="520" text-anchor="middle" fill="#5A160F" font-family="Georgia, serif" font-size="38" letter-spacing="2">FOURTH HALWA</text>
+</svg>

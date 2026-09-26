@@ -1,0 +1,13 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#F3E5D1"/>
+  <circle cx="392" cy="186" r="150" fill="#5A160F" opacity="0.06"/>
+  <g>
+    <ellipse cx="398" cy="358" rx="178" ry="40" fill="#A56B2B" opacity="0.18"/>
+    <path d="M236 336C236 289.5 273.5 252 320 252H480C526.5 252 564 289.5 564 336V356C564 396.9 531.9 429 491 429H309C268.1 429 236 396.9 236 356V336Z" fill="#8A3E1B"/>
+    <path d="M286 314C286 286.4 308.4 264 336 264H464C491.6 264 514 286.4 514 314V336C514 358.1 496.1 376 474 376H326C303.9 376 286 358.1 286 336V314Z" fill="#C67B44"/>
+    <path d="M318 332C350 354 374 366 398 366C422 366 446 354 478 332" stroke="#7F321D" stroke-width="6" stroke-linecap="round"/>
+    <path d="M321 285C344 272 368 266 398 266C428 266 452 272 475 285" stroke="#7F321D" stroke-width="7" stroke-linecap="round"/>
+    <path d="M330 409C350 395 375 388 398 388C421 388 447 395 466 408" stroke="#6B2A1C" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="400" y="520" text-anchor="middle" fill="#5A160F" font-family="Georgia, serif" font-size="36" letter-spacing="3">KARUPATTI HALWA</text>
+</svg>

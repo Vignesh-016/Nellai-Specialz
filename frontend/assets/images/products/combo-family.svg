@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <rect width="500" height="500" rx="16" fill="#FFFDF8"/>
+  <rect x="90" y="150" width="150" height="150" rx="10" fill="#5A160F"/>
+  <rect x="260" y="170" width="140" height="130" rx="10" fill="#B88932"/>
+  <text x="250" y="380" font-family="'Cormorant Garamond', serif" font-size="20" font-weight="700" fill="#5A160F" text-anchor="middle">Family Pack (500g + Karasev)</text>
+</svg>
