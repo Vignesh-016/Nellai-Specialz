@@ -33,97 +33,13 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="../assets/css/app.css">
+  <script src="../assets/js/header.js"></script>
+  <script src="../assets/js/footer.js"></script>
 </head>
 <body class="bg-[#FDFBF7] text-[#2D211B] antialiased selection:bg-[#B88932] selection:text-white">
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-[#1C0906] text-[#D9B86C] text-xs font-semibold uppercase tracking-[0.18em] py-2 px-4 border-b border-[#B88932]/20">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
-      <div class="flex items-center space-x-3 text-xs">
-        <a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-white transition-colors" aria-label="Instagram">
-          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://facebook.com" target="_blank" rel="noopener" class="hover:text-white transition-colors" aria-label="Facebook">
-          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z"/></svg>
-        </a>
-        <a href="https://youtube.com" target="_blank" rel="noopener" class="hover:text-white transition-colors" aria-label="YouTube">
-          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-        </a>
-      </div>
-      
-      <div class="flex items-center space-x-2 text-[11px] sm:text-xs text-center tracking-[0.15em]">
-        <span>❖</span>
-        <span>Freshly Prepared Traditional Halwa</span>
-        <span>❖</span>
-        <span class="text-[#F5E6C8]">Festival Offers Live Now</span>
-        <span>❖</span>
-      </div>
-
-      <div class="hidden sm:flex items-center space-x-4 text-[11px] uppercase">
-        <a href="our-story.html" class="hover:text-white transition-colors">About Us</a>
-        <span>|</span>
-        <a href="#contact" class="hover:text-white transition-colors">Contact Us</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Header Navigation -->
-  <header class="sticky top-0 z-40 bg-[#FDFBF7]/95 backdrop-blur-md border-b border-[#B88932]/20 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
-      
-      <button id="mobileMenuBtn" class="lg:hidden p-2 text-[#32110D] hover:text-[#B88932] focus:outline-none" aria-label="Toggle navigation">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-
-      <nav class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-wider text-[#32110D]">
-        <a href="../index.html" class="hover:text-[#B88932] transition-colors py-1 border-b-2 border-transparent hover:border-[#B88932]">Home</a>
-        <a href="our-story.html" class="text-[#B88932] py-1 border-b-2 border-[#B88932]">Our Story</a>
-        <a href="../index.html#product" class="hover:text-[#B88932] transition-colors py-1 border-b-2 border-transparent hover:border-[#B88932]">Shop</a>
-        <a href="../index.html#combos" class="hover:text-[#B88932] transition-colors py-1 border-b-2 border-transparent hover:border-[#B88932]">Halwa Combos</a>
-      </nav>
-
-      <a href="../index.html" class="flex flex-col items-center group text-center mx-auto lg:mx-0">
-        <div class="w-8 h-8 mb-1 flex items-center justify-center text-[#B88932]">
-          <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
-            <path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z" />
-          </svg>
-        </div>
-        <span class="font-serif text-xl sm:text-2xl font-bold tracking-widest text-[#32110D] group-hover:text-[#B88932] transition-colors">
-          NELLAI <span class="text-[#B88932]">SPECIALZ</span>
-        </span>
-        <span class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D3F] font-semibold">Traditional Sweets & Snacks</span>
-      </a>
-
-      <div class="flex items-center space-x-4 sm:space-x-6 text-[#32110D]">
-        <div class="hidden md:flex items-center relative">
-          <input type="text" placeholder="Search for Halwa..." class="w-48 lg:w-60 bg-[#F7F1E5] border border-[#B88932]/30 rounded-full py-1.5 pl-4 pr-9 text-xs focus:outline-none focus:border-[#B88932] text-[#32110D] placeholder-[#A38A68]">
-          <button class="absolute right-2.5 text-[#B88932] hover:text-[#32110D] search-trigger" aria-label="Search">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
-            </svg>
-          </button>
-        </div>
-
-        <a href="../index.html#wishlist" class="relative text-[#32110D] hover:text-[#B88932] transition-colors" aria-label="Wishlist">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-            <path d="M20.8 8.8c0 5.4-8.8 10.2-8.8 10.2S3.2 14.2 3.2 8.8A4.7 4.7 0 0 1 12 6.2a4.7 4.7 0 0 1 8.8 2.6Z"/>
-          </svg>
-          <span class="absolute -top-1.5 -right-2 bg-[#B88932] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
-        </a>
-
-        <a href="../index.html#cart" class="relative text-[#32110D] hover:text-[#B88932] transition-colors flex items-center" aria-label="Cart">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-            <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.5L20.5 8H6"/>
-            <circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/>
-          </svg>
-          <span class="cart-badge absolute -top-1.5 -right-2 bg-[#5A160F] text-[#F5E6C8] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
-        </a>
-      </div>
-    </div>
-  </header>
+  <!-- Dynamic Common Header Template -->
+  <div id="site-header"></div>
 
   <main>
     <!-- PAGE HERO BANNER -->
@@ -398,75 +314,8 @@
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer id="contact" class="bg-[#1C0906] text-[#E8DCC4] border-t border-[#B88932]/30 pt-16 pb-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#B88932]/20">
-        
-        <div class="space-y-4">
-          <a href="../index.html" class="flex flex-col items-start group">
-            <div class="w-8 h-8 mb-1 flex items-center justify-center text-[#B88932]">
-              <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
-                <path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z" />
-              </svg>
-            </div>
-            <span class="font-serif text-2xl font-bold tracking-widest text-[#F5E6C8]">
-              NELLAI <span class="text-[#B88932]">SPECIALZ</span>
-            </span>
-            <span class="text-[9px] uppercase tracking-[0.25em] text-[#B88932] font-semibold">Traditional Sweets & Snacks</span>
-          </a>
-          <p class="text-xs text-[#C8B89E] leading-relaxed pt-2">
-            Bringing authentic Tirunelveli Halwa and native South Indian delicacies straight from royal kitchens to your doorstep.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="font-serif text-base font-semibold text-[#F5E6C8] uppercase tracking-wider mb-4 border-b border-[#B88932]/30 pb-1 inline-block">Quick Links</h4>
-          <ul class="space-y-2 text-xs text-[#C8B89E]">
-            <li><a href="../index.html" class="hover:text-[#B88932] transition-colors">Home</a></li>
-            <li><a href="our-story.html" class="hover:text-[#B88932] transition-colors">Our Story</a></li>
-            <li><a href="../index.html#product" class="hover:text-[#B88932] transition-colors">Shop</a></li>
-            <li><a href="../index.html#combos" class="hover:text-[#B88932] transition-colors">Collections</a></li>
-            <li><a href="#contact" class="hover:text-[#B88932] transition-colors">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-serif text-base font-semibold text-[#F5E6C8] uppercase tracking-wider mb-4 border-b border-[#B88932]/30 pb-1 inline-block">Customer Care</h4>
-          <ul class="space-y-2 text-xs text-[#C8B89E]">
-            <li><a href="shipping-delivery.html" class="hover:text-[#B88932] transition-colors">Shipping & Delivery</a></li>
-            <li><a href="return-refunds.html" class="hover:text-[#B88932] transition-colors">Return & Refunds</a></li>
-            <li><a href="terms-conditions.html" class="hover:text-[#B88932] transition-colors">Terms & Conditions</a></li>
-            <li><a href="privacy-policy.html" class="hover:text-[#B88932] transition-colors">Privacy Policy</a></li>
-            <li><a href="faq.html" class="hover:text-[#B88932] transition-colors">FAQ</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-serif text-base font-semibold text-[#F5E6C8] uppercase tracking-wider mb-4 border-b border-[#B88932]/30 pb-1 inline-block">Get In Touch</h4>
-          <ul class="space-y-3 text-xs text-[#C8B89E]">
-            <li class="flex items-center space-x-2.5">
-              <svg class="w-4 h-4 text-[#B88932] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-              <span>+91 93841 12345</span>
-            </li>
-            <li class="flex items-center space-x-2.5">
-              <svg class="w-4 h-4 text-[#B88932] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              <span>hello@nellaispecialz.com</span>
-            </li>
-            <li class="flex items-start space-x-2.5">
-              <svg class="w-4 h-4 text-[#B88932] shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              <span>Tirunelveli, Tamil Nadu, India</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="pt-8 text-center text-xs text-[#A8987E]">
-        © 2024 Nellai Specialz. All Rights Reserved.
-      </div>
-    </div>
-  </footer>
+  <!-- Dynamic Common Footer Template -->
+  <div id="site-footer"></div>
 
   <script src="../assets/js/home.js"></script>
 </body>

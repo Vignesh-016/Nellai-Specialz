@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "frontend"
+
+# Cache static assets for fast performance
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# SPA / Fallback Routing rules for clean URLs
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
