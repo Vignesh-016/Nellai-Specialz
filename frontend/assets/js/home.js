@@ -110,9 +110,54 @@
     });
   }
 
+  const REVIEWS = [
+    {
+      quote: '"The best Halwa I have ever had!<br>So soft, rich and full of flavor.<br>Truly authentic Tirunelveli taste."',
+      author: '– Priya K., Chennai'
+    },
+    {
+      quote: '"The Karupatti Halwa balances the perfect blend of sweetness and texture. Authentic taste delivered on time!"',
+      author: '– Mahesh, Mumbai'
+    },
+    {
+      quote: '"Prompt and punctual delivery of fresh Tirunelveli Halwa. The packaging preserved the rich native flavor perfectly!"',
+      author: '– Raghunathan, Sweet Enthusiast'
+    }
+  ];
+
+  function bindReviewCarousel() {
+    const prevBtn = document.getElementById("prevReviewBtn");
+    const nextBtn = document.getElementById("nextReviewBtn");
+    const quoteEl = document.getElementById("reviewQuoteText");
+    const authorEl = document.getElementById("reviewAuthorText");
+    const dots = document.querySelectorAll("[data-review-dot]");
+    if (!quoteEl || !authorEl) return;
+
+    let currentIndex = 0;
+
+    function renderReview(index) {
+      currentIndex = (index + REVIEWS.length) % REVIEWS.length;
+      quoteEl.innerHTML = REVIEWS[currentIndex].quote;
+      authorEl.textContent = REVIEWS[currentIndex].author;
+
+      dots.forEach((dot, i) => {
+        if (i === currentIndex) {
+          dot.className = "review-dot h-2.5 w-2.5 rounded-full bg-[#32110D] cursor-pointer transition-all";
+        } else {
+          dot.className = "review-dot h-2.5 w-2.5 rounded-full border border-[#B88932] bg-transparent cursor-pointer transition-all";
+        }
+      });
+    }
+
+    if (prevBtn) prevBtn.addEventListener("click", () => renderReview(currentIndex - 1));
+    if (nextBtn) nextBtn.addEventListener("click", () => renderReview(currentIndex + 1));
+    dots.forEach((dot, i) => dot.addEventListener("click", () => renderReview(i)));
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     bindProductActions();
     bindSearchFilter();
+    bindReviewCarousel();
   });
 
   window.NELLAI_PRODUCTS = PRODUCTS;

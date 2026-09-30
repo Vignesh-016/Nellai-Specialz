@@ -1,73 +1,170 @@
 /**
  * Nellai Specialz — Dynamic Header Injector (header.js)
- * Pure Tailwind CSS styled with Glass Blur aesthetic.
+ * Exact reference design matching user specification.
  */
 (function () {
   const currentPath = window.location.pathname;
   const isSubpage = currentPath.includes('/pages/');
   const basePath = isSubpage ? '../' : './';
 
-  const isHome = currentPath.endsWith('index.html') || currentPath.endsWith('/') || currentPath === '';
-  const isShop = currentPath.includes('shop.html') || currentPath.includes('product-detail.html');
+  const isHome = currentPath.endsWith('index.html') || currentPath.endsWith('/') || currentPath === '' || currentPath.endsWith('index.html#') || (!currentPath.includes('.html') && !isSubpage);
   const isStory = currentPath.includes('our-story.html');
-  const isContact = currentPath.includes('contact-us.html');
+  const isShop = currentPath.includes('shop.html') || currentPath.includes('product-detail.html');
 
   const headerHTML = `
-  <!-- 1. TOP ANNOUNCEMENT BAR -->
-  <div class="bg-[#32110D] border-b border-[#B88932]/30 py-2.5 px-4 text-[#FBF5E9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-[11px] sm:text-xs">
+  <!-- 1. TOP ANNOUNCEMENT BAR (Dark Burgundy Background with Warm Gold Text) -->
+  <div class="ns-topbar bg-[#3D0C07] text-[#E8C88A] py-2 px-4 text-xs font-medium border-b border-[#5A1910]">
+    <div class="max-w-[1460px] mx-auto flex items-center justify-between gap-4">
       
-      <!-- Tamil Tagline Left -->
-      <div class="flex items-center gap-2 font-medium text-[#F5E6C8]">
-        <span class="text-[12px] sm:text-[13px] tracking-wide text-[#F5E6C8] font-serif">ஸ்ரீ திருநெல்வேலியின் சுவை — உங்கள் வீட்டிற்கே</span>
+      <!-- Left: Social Media Icons -->
+      <div class="flex items-center gap-3.5">
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="text-[#E8C88A] hover:text-white transition-colors">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="text-[#E8C88A] hover:text-white transition-colors">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z"/></svg>
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" class="text-[#E8C88A] hover:text-white transition-colors">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+        </a>
       </div>
 
-      <!-- WhatsApp Action Right -->
-      <a href="https://wa.me/917010100590" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 font-semibold text-[#D9B86C] hover:text-white transition">
-        <svg class="w-4 h-4 text-green-400 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.157 4.228 4.242-1.111z"/></svg>
-        WhatsApp Us
-      </a>
+      <!-- Center Announcement text -->
+      <div class="ns-topbar-message flex items-center justify-center gap-4 text-[11px] sm:text-xs font-medium tracking-wider text-[#E8C88A]">
+        <span class="flex items-center gap-1.5"><span class="text-[#E8C88A]">❖</span> Freshly Prepared Traditional Halwa <span class="text-[#E8C88A]">❖</span></span>
+        <span class="flex items-center gap-1.5"><span>🎁</span> Festival Offers Live Now <span class="text-[#E8C88A]">❖</span></span>
+      </div>
+
+      <!-- Right Links -->
+      <div class="flex items-center gap-4 text-[11px] sm:text-xs font-medium text-[#E8C88A]">
+        <a href="${basePath}pages/our-story.html" class="hover:text-white transition-colors">About Us</a>
+        <span class="text-[#E8C88A]/40">|</span>
+        <a href="${basePath}pages/contact-us.html" class="hover:text-white transition-colors">Contact Us</a>
+      </div>
+
     </div>
   </div>
 
-  <!-- 2. HEADER NAVIGATION WITH GLASS BLUR -->
-  <header class="sticky top-0 z-40 border-b border-[#5A160F]/15 bg-[#FBF5E9]/90 backdrop-blur-md shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 py-3 sm:py-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
+  <!-- 2. MAIN HEADER NAVIGATION (Soft Ivory Cream background, Centered Logo) -->
+  <header class="ns-main-header sticky top-0 z-40 bg-[#FAF5EB] border-b border-[#E8DFC8] shadow-xs">
+    <div class="ns-nav-inner max-w-[1460px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between gap-4 lg:grid lg:grid-cols-12">
       
-      <!-- Brand Logo - Improvised Large Size & Quality -->
-      <a href="${basePath}index.html" class="flex items-center gap-3 group lg:justify-self-center py-1">
-        <img src="${basePath}assets/images/nellai-specialz-logo.png" alt="Nellai Specialz Logo" class="h-16 sm:h-20 lg:h-24 max-h-24 w-auto object-contain drop-shadow-md transition-transform duration-300 group-hover:scale-105">
-      </a>
-
-      <!-- Primary Navigation Links (Home, Shop, Combo, Our Story, Contact Us) -->
-      <nav class="hidden items-center gap-7 text-sm font-semibold text-[#32110D] lg:flex lg:order-first lg:justify-self-start" aria-label="Primary">
-        <a class="${isHome ? 'text-[#5A160F] font-bold border-b-2 border-[#5A160F] pb-0.5' : 'hover:text-[#5A160F] transition-colors'}" href="${basePath}index.html">Home</a>
-        <a class="${isShop ? 'text-[#5A160F] font-bold border-b-2 border-[#5A160F] pb-0.5' : 'hover:text-[#5A160F] transition-colors'}" href="${basePath}pages/shop.html">Shop</a>
-        <a class="hover:text-[#5A160F] transition-colors" href="${basePath}index.html#combo">Combo</a>
-        <a class="${isStory ? 'text-[#5A160F] font-bold border-b-2 border-[#5A160F] pb-0.5' : 'hover:text-[#5A160F] transition-colors'}" href="${basePath}pages/our-story.html">Our Story</a>
-        <a class="${isContact ? 'text-[#5A160F] font-bold border-b-2 border-[#5A160F] pb-0.5' : 'hover:text-[#5A160F] transition-colors'}" href="${basePath}pages/contact-us.html">Contact Us</a>
+      <!-- Left Desktop Links (Cols 1-4) -->
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-8 lg:col-span-4 text-xs xl:text-[13px] font-bold tracking-widest text-[#32110D]">
+        <a href="${basePath}index.html" class="relative py-1 group ${isHome ? 'text-[#801412]' : 'hover:text-[#801412]'}">
+          HOME
+          <span class="absolute -bottom-1 left-0 w-full h-[2.5px] bg-[#801412] ${isHome ? 'block' : 'hidden group-hover:block'}"></span>
+        </a>
+        <a href="${basePath}pages/our-story.html" class="relative py-1 group ${isStory ? 'text-[#801412]' : 'hover:text-[#801412]'}">
+          OUR STORY
+        </a>
+        <a href="${basePath}pages/shop.html" class="relative py-1 group inline-flex items-center gap-1 ${isShop ? 'text-[#801412]' : 'hover:text-[#801412]'}">
+          SHOP
+          <svg class="w-3 h-3 text-[#32110D]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <a href="${basePath}index.html#combo" class="relative py-1 group hover:text-[#801412]">
+          HALWA COMBOS
+        </a>
       </nav>
 
-      <!-- Action Utilities -->
-      <div class="flex items-center gap-2 lg:justify-self-end">
-        <button type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full text-[#32110D] hover:bg-[#5A160F]/10 hover:text-[#5A160F] transition" data-open-search aria-label="Search">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        </button>
-        <button type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full text-[#32110D] hover:bg-[#5A160F]/10 hover:text-[#5A160F] transition" data-open-account aria-label="Account">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-        </button>
-        <button type="button" class="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-[#32110D] hover:bg-[#5A160F]/10 hover:text-[#5A160F] transition" data-open-cart aria-label="Open cart">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-          <span data-cart-count class="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#5A160F] text-[10px] font-bold leading-none text-[#FBF5E9] shadow-sm ring-2 ring-[#FBF5E9]">0</span>
-        </button>
-        <button type="button" id="mobileMenuBtn" class="inline-flex h-10 w-10 items-center justify-center rounded-full text-[#32110D] lg:hidden" aria-label="Open menu">
-          <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
+      <!-- Mobile Menu Button (Left on mobile) -->
+      <button type="button" id="mobileMenuBtn" class="lg:hidden p-1.5 text-[#32110D]" aria-label="Open Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <!-- Center Logo (Cols 5-8) -->
+      <div class="ns-logo lg:col-span-4 flex flex-col items-center justify-center text-center">
+        <a href="${basePath}index.html" class="inline-flex flex-col items-center group">
+          <img src="${basePath}assets/images/nellai-specialz-logo.png" alt="Nellai Specialz" class="h-12 sm:h-14 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="hidden flex-col items-center">
+            <span class="font-serif text-2xl sm:text-3xl font-bold tracking-wide text-[#5A120C]">NELLAI</span>
+            <div class="flex items-center gap-1.5 -mt-0.5">
+              <span class="h-[1px] w-3 bg-[#B88932]"></span>
+              <span class="text-[10px] font-bold tracking-[0.25em] text-[#32110D]">SPECIALZ</span>
+              <span class="h-[1px] w-3 bg-[#B88932]"></span>
+            </div>
+            <span class="text-[8px] font-semibold tracking-[0.18em] text-[#655546] uppercase mt-0.5">TRADITIONAL SWEETS & SNACKS</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Right Utilities: Search + Wishlist + Account + Cart (Cols 9-12) -->
+      <div class="ns-tools lg:col-span-4 flex items-center justify-end gap-3 sm:gap-4">
+        
+        <!-- Search Pill -->
+        <div class="ns-search relative">
+          <input type="text" placeholder="Search for Halwa..." class="w-44 md:w-52 lg:w-60 rounded-full border border-[#D8C9B4] bg-[#FFFDF8] py-1.5 pl-4 pr-9 text-xs text-[#32110D] placeholder-[#8C7D6F] focus:outline-none focus:ring-1 focus:ring-[#801412]">
+          <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-[#32110D] hover:text-[#801412]" aria-label="Search">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </button>
+        </div>
+
+        <!-- Utility Icons Group -->
+        <div class="flex items-center gap-2.5 sm:gap-3.5 text-[#32110D]">
+          
+          <!-- Wishlist Heart -->
+          <a href="#" class="relative p-1 hover:text-[#801412] transition-colors" aria-label="Wishlist">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            <span class="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#801412] text-[9px] font-bold text-white">0</span>
+          </a>
+
+          <!-- User Account -->
+          <a href="#" class="p-1 hover:text-[#801412] transition-colors" aria-label="Account">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          </a>
+
+          <span class="h-4 w-[1px] bg-[#D8C9B4] hidden sm:block"></span>
+
+          <!-- Shopping Cart Bag -->
+          <button type="button" data-open-cart class="relative p-1 hover:text-[#801412] transition-colors" aria-label="Cart">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span data-cart-count class="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#801412] text-[9px] font-bold text-white">0</span>
+          </button>
+
+        </div>
+
       </div>
 
     </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenuDrawer" class="hidden lg:hidden border-t border-[#E8DFC8] bg-[#FAF5EB] px-4 py-4 space-y-2">
+      <a href="${basePath}index.html" class="block px-3 py-2 rounded-md font-bold text-sm text-[#32110D] hover:bg-[#801412]/10">HOME</a>
+      <a href="${basePath}pages/our-story.html" class="block px-3 py-2 rounded-md font-bold text-sm text-[#32110D] hover:bg-[#801412]/10">OUR STORY</a>
+      <a href="${basePath}pages/shop.html" class="block px-3 py-2 rounded-md font-bold text-sm text-[#32110D] hover:bg-[#801412]/10">SHOP ALL PRODUCTS</a>
+      <a href="${basePath}index.html#combo" class="block px-3 py-2 rounded-md font-bold text-sm text-[#32110D] hover:bg-[#801412]/10">HALWA COMBOS</a>
+      <a href="${basePath}pages/contact-us.html" class="block px-3 py-2 rounded-md font-bold text-sm text-[#32110D] hover:bg-[#801412]/10">CONTACT US</a>
+    </div>
   </header>
   `;
+
+  const headerStyles = document.createElement('style');
+  headerStyles.textContent = `
+    .ns-topbar { background:#3D0C07 !important; color:#E8C88A !important; min-height:38px; border-color:#5A1910 !important; }
+    .ns-topbar > div,.ns-nav-inner { width:100%; max-width:1460px; margin-left:auto; margin-right:auto; }
+    .ns-topbar a { color:#E8C88A !important; }
+    .ns-topbar a:hover { color:#FFFFFF !important; }
+    .ns-main-header { background:#FAF5EB !important; border-color:#E8DFC8 !important; box-shadow:0 1px 3px rgba(0,0,0,0.05) !important; backdrop-filter:none !important; }
+    .ns-nav-inner { min-height:80px; max-width:1460px; padding-top:10px !important; padding-bottom:10px !important; }
+    .ns-main-header nav { align-self:center; gap:28px; font-size:13px; letter-spacing:.08em; }
+    .ns-main-header nav a { color:#32110D; }
+    .ns-main-header nav a:hover { color:#801412; }
+    .ns-main-header input { background:#FFFDF8; border-color:#D8C9B4; }
+    @media (min-width:1024px) {
+      .ns-nav-inner { display:grid !important; grid-template-columns:1fr auto 1fr !important; align-items:center; min-height:80px; }
+      .ns-nav-inner > nav { grid-column:1; grid-row:1; justify-self:start; }
+      .ns-nav-inner > .ns-logo { grid-column:2; grid-row:1; justify-self:center; }
+      .ns-nav-inner > .ns-tools { grid-column:3; grid-row:1; justify-self:end; }
+      .ns-nav-inner > .ns-logo img { height:56px; }
+    }
+    .ns-topbar-message { display:flex !important; }
+    .ns-search { display:block !important; width:240px; flex:0 0 240px; }
+    .ns-search input { display:block; width:100%; height:36px; }
+    .ns-main-header .ns-tools { gap:16px !important; }
+    @media (max-width:1200px) { .ns-search { width:200px; flex-basis:200px; } }
+    @media (max-width:767px) { .ns-topbar-message { display:none !important; } .ns-search { display:none !important; } }
+  `;
+  document.head.appendChild(headerStyles);
 
   function mountHeader() {
     let target = document.getElementById('site-header') || document.querySelector('header');
@@ -77,6 +174,12 @@
       document.body.prepend(target);
     }
     target.outerHTML = `<div id="site-header">${headerHTML}</div>`;
+
+    const btn = document.getElementById('mobileMenuBtn');
+    const drawer = document.getElementById('mobileMenuDrawer');
+    if (btn && drawer) {
+      btn.addEventListener('click', () => drawer.classList.toggle('hidden'));
+    }
   }
 
   if (document.readyState === 'loading') {
