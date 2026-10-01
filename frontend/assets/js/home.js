@@ -154,11 +154,107 @@
     dots.forEach((dot, i) => dot.addEventListener("click", () => renderReview(i)));
   }
 
+  function bindFeaturedProductGallery() {
+    const mainImg = document.getElementById("featuredMainImg");
+    const thumbBtns = Array.from(document.querySelectorAll(".thumb-btn"));
+    const prevBtn = document.getElementById("prevThumbBtn");
+    const nextBtn = document.getElementById("nextThumbBtn");
+
+    if (!mainImg || !thumbBtns.length) return;
+
+    let currentIndex = 0;
+
+    function setActiveImage(index) {
+      currentIndex = (index + thumbBtns.length) % thumbBtns.length;
+      const targetBtn = thumbBtns[currentIndex];
+      const newSrc = targetBtn.getAttribute("data-src");
+
+      if (newSrc) {
+        mainImg.style.opacity = "0.4";
+        setTimeout(() => {
+          mainImg.src = newSrc;
+          mainImg.style.opacity = "1";
+        }, 120);
+      }
+
+      thumbBtns.forEach((btn, i) => {
+        if (i === currentIndex) {
+          btn.className = "thumb-btn rounded-xl overflow-hidden border-2 border-[#5A120C] ring-2 ring-[#5A120C]/20 transition-all opacity-100 focus:outline-none cursor-pointer scale-[1.03]";
+        } else {
+          btn.className = "thumb-btn rounded-xl overflow-hidden border-2 border-transparent hover:border-[#B88932]/60 transition-all opacity-70 hover:opacity-100 focus:outline-none cursor-pointer scale-100";
+        }
+      });
+    }
+
+    thumbBtns.forEach((btn, index) => {
+      btn.addEventListener("click", () => setActiveImage(index));
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => setActiveImage(currentIndex - 1));
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => setActiveImage(currentIndex + 1));
+    }
+  }
+
+  function bindFeaturedProductVariations() {
+    const packBtns = document.querySelectorAll(".pack-size-btn");
+    const priceEl = document.getElementById("featuredProductPrice");
+
+    if (packBtns.length) {
+      packBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          packBtns.forEach((b) => {
+            b.className = "pack-size-btn border border-[#dfd5c8] py-2.5 px-1.5 bg-[#fffdfa] rounded-xl text-[#24140d] transition-all hover:border-[#5a160f] text-center cursor-pointer";
+            const badge = b.querySelector(".check-badge");
+            if (badge) badge.remove();
+          });
+
+          btn.className = "pack-size-btn active-pack-btn relative border-2 border-[#5a160f] bg-[#FFF9F3] py-2.5 px-1.5 rounded-xl text-[#24140d] font-bold transition-all shadow-xs text-center cursor-pointer";
+          
+          if (!btn.querySelector(".check-badge")) {
+            const badge = document.createElement("span");
+            badge.className = "check-badge absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#5a160f] text-[10px] text-white";
+            badge.textContent = "✓";
+            btn.appendChild(badge);
+          }
+
+          const price = btn.getAttribute("data-price");
+          if (price && priceEl) {
+            priceEl.textContent = price;
+          }
+        });
+      });
+    }
+
+    const qtyMinus = document.getElementById("qtyMinusBtn");
+    const qtyPlus = document.getElementById("qtyPlusBtn");
+    const qtyValue = document.getElementById("qtyValue");
+
+    if (qtyMinus && qtyPlus && qtyValue) {
+      let count = 1;
+      qtyMinus.addEventListener("click", () => {
+        if (count > 1) {
+          count--;
+          qtyValue.textContent = count;
+        }
+      });
+      qtyPlus.addEventListener("click", () => {
+        count++;
+        qtyValue.textContent = count;
+      });
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     bindProductActions();
     bindSearchFilter();
     bindReviewCarousel();
+    bindFeaturedProductGallery();
+    bindFeaturedProductVariations();
   });
 
   window.NELLAI_PRODUCTS = PRODUCTS;
 })();
+

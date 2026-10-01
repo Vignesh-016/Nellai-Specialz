@@ -385,876 +385,6 @@
         min-height: 78px;
       }
     }
-
-    /* USP strip matching the supplied maroon-and-gold reference */
-    .usp-strip {
-      background: #210900 !important;
-      border-top: 1px solid #B88932;
-      border-bottom: 1px solid #B88932;
-      padding: 0 !important;
-      height: 80px;
-      position: relative;
-    }
-
-    .usp-strip::before,
-    .usp-strip::after {
-      position: absolute;
-      top: 50%;
-      z-index: 3;
-      width: 46px;
-      height: 46px;
-      transform: translateY(-50%);
-      background: url('https://w7.pngwing.com/pngs/321/145/png-transparent-gold-floral-floral-design.png') center/contain no-repeat;
-      opacity: .95;
-      content: '';
-    }
-
-    .usp-strip::before {
-      left: 0;
-    }
-
-    .usp-strip::after {
-      right: 0;
-      transform: translateY(-50%) scaleX(-1);
-    }
-
-    .usp-strip .animate-marquee {
-      width: 100%;
-      max-width: 1660px;
-      margin: 0 auto;
-      height: 100%;
-      animation: none;
-      display: block;
-      border-left: 1px solid rgba(184, 137, 50, .75);
-      border-right: 1px solid rgba(184, 137, 50, .75);
-    }
-
-    .usp-strip .animate-marquee>div:first-child {
-      height: 100%;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      align-items: center;
-    }
-
-    .usp-strip .animate-marquee>div:nth-child(2) {
-      display: none;
-    }
-
-    .usp-strip .animate-marquee>div:first-child>div {
-      min-width: 0;
-      height: 100%;
-      padding: 0 28px;
-      border-right: 0;
-      border-radius: 0;
-      background: transparent;
-      box-shadow: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 13px;
-      color: #F7E3AE;
-      position: relative;
-    }
-
-    .usp-strip .animate-marquee>div:first-child>div:not(:last-of-type)::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 23%;
-      height: 54%;
-      width: 1px;
-      background: rgba(216, 166, 75, .65);
-    }
-
-    .usp-strip .animate-marquee>div:first-child>div:nth-of-type(4) {
-      border-right: 0;
-    }
-
-    .usp-strip .animate-marquee>div:first-child>span {
-      display: none;
-    }
-
-    .usp-strip .animate-marquee>div:first-child>div>div {
-      flex: 0 0 38px;
-      width: 38px;
-      height: 38px;
-      background: transparent;
-      color: #F3CF7B;
-    }
-
-    .usp-strip .animate-marquee svg {
-      width: 35px;
-      height: 35px;
-      stroke-width: 1.35;
-    }
-
-    .usp-strip .animate-marquee>div:first-child span:last-child {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
-      line-height: 1.05;
-      white-space: normal;
-      text-align: left;
-    }
-
-    @media (max-width:767px) {
-      .usp-strip {
-        height: auto;
-      }
-
-      .usp-strip::before,
-      .usp-strip::after {
-        font-size: 28px;
-      }
-
-      .usp-strip .animate-marquee>div:first-child {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .usp-strip .animate-marquee>div:first-child>div {
-        min-height: 72px;
-        padding: 8px 12px;
-      }
-
-      .usp-strip .animate-marquee>div:first-child>div:nth-of-type(2)::after {
-        display: none;
-      }
-
-      .usp-strip .animate-marquee>div:first-child span:last-child {
-        font-size: 16px;
-      }
-    }
-
-    .evolution-section {
-      background: #fbf6ee;
-      border-bottom: 1px solid #eadcc8;
-      padding: 42px 24px 38px;
-      color: #241710;
-    }
-
-    .evolution-inner {
-      max-width: 1180px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .evolution-ornament {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      color: #a87818;
-      margin-bottom: 8px;
-    }
-
-    .evolution-ornament span,
-    .evolution-rule span {
-      display: block;
-      width: 82px;
-      height: 1px;
-      background: #b88932;
-    }
-
-    .evolution-ornament b {
-      font-size: 21px;
-      font-weight: 400;
-      line-height: 1;
-    }
-
-    .evolution-section h2 {
-      margin: 0;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 48px;
-      line-height: 1;
-      font-weight: 600;
-      letter-spacing: -.02em;
-      color: #1e120d;
-    }
-
-    .evolution-section h2 em {
-      font-style: normal;
-      font-size: 1.25em;
-    }
-
-    .evolution-rule {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 17px auto 14px;
-    }
-
-    .evolution-rule span {
-      width: 280px;
-      position: relative;
-    }
-
-    .evolution-rule span::after {
-      content: '◆';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -54%);
-      color: #b88932;
-      background: #fbf6ee;
-      padding: 0 8px;
-      font-size: 10px;
-    }
-
-    .evolution-intro {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
-      line-height: 1.3;
-      margin: 0 auto 22px;
-      color: #2c211a;
-    }
-
-    .evolution-timeline {
-      display: grid;
-      grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr 32px 1fr;
-      align-items: center;
-      gap: 0;
-    }
-
-    .evolution-step {
-      min-width: 0;
-      text-align: center;
-    }
-
-    .evolution-art {
-      height: 119px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 3px;
-      overflow: hidden;
-    }
-
-    .evolution-art img {
-      width: 145px;
-      height: 112px;
-      object-fit: cover;
-      filter: sepia(.7) saturate(.45) contrast(.9);
-      mix-blend-mode: multiply;
-      opacity: .78;
-    }
-
-    .evolution-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 45px;
-      height: 21px;
-      border-radius: 12px;
-      background: #b88932;
-      color: #fff8e7;
-      font: 600 12px Inter, sans-serif;
-      margin-bottom: 8px;
-    }
-
-    .evolution-step h3 {
-      margin: 0;
-      color: #281910;
-      font: 600 18px/1.05 'Cormorant Garamond', serif;
-    }
-
-    .evolution-arrow {
-      color: #a97819;
-      font-size: 19px;
-      text-align: center;
-    }
-
-    @media (max-width:900px) {
-      .evolution-section {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
-      .evolution-timeline {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 26px 10px;
-      }
-
-      .evolution-arrow {
-        display: none;
-      }
-    }
-
-    @media (max-width:600px) {
-      .evolution-section h2 {
-        font-size: 38px;
-      }
-
-      .evolution-intro {
-        font-size: 17px;
-      }
-
-      .desktop-only {
-        display: none;
-      }
-
-      .evolution-timeline {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .evolution-art {
-        height: 100px;
-      }
-
-      .evolution-art img {
-        width: 125px;
-        height: 96px;
-      }
-
-      .evolution-step h3 {
-        font-size: 16px;
-      }
-    }
-
-    .featured-product-section {
-      background: #fffdfa;
-      padding: 72px 24px;
-      border-bottom: 1px solid #eadfce;
-    }
-
-    .featured-product-inner {
-      max-width: 1280px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 42px;
-      align-items: center;
-    }
-
-    .featured-product-gallery {
-      min-width: 0;
-    }
-
-    .featured-product-image {
-      position: relative;
-      aspect-ratio: 1/1;
-      overflow: hidden;
-      background: #20100b;
-    }
-
-    .featured-product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .featured-zoom {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #fff;
-      color: #32110d;
-      font-size: 25px;
-      line-height: 1;
-    }
-
-    .featured-thumbnails-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 6px;
-    }
-
-    .featured-thumbnails {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 5px;
-    }
-
-    .featured-gallery-nav {
-      flex: 0 0 22px;
-      color: #2b1b12;
-      font: 28px/1 'Cormorant Garamond', serif;
-    }
-
-    .featured-thumbnails img {
-      width: 100%;
-      aspect-ratio: 1.2;
-      object-fit: cover;
-      border: 2px solid transparent;
-    }
-
-    .featured-thumbnails img:first-child {
-      border-color: #b88932;
-    }
-
-    .featured-product-copy {
-      color: #24140d;
-    }
-
-    .featured-kicker,
-    .featured-label {
-      font: 600 12px Inter, sans-serif;
-      letter-spacing: .12em;
-      color: #8b5d16;
-    }
-
-    .featured-product-copy h2 {
-      margin: 10px 0 4px;
-      font: 600 42px/1 'Cormorant Garamond', serif;
-      text-transform: uppercase;
-      color: #24140d;
-    }
-
-    .featured-subtitle {
-      color: #9a6917;
-      font: 18px 'Cormorant Garamond', serif;
-      margin-bottom: 10px;
-    }
-
-    .featured-rating {
-      color: #b8790b;
-      font-size: 15px;
-      margin-bottom: 12px;
-    }
-
-    .featured-rating b {
-      color: #2c211a;
-      font: 13px Inter, sans-serif;
-    }
-
-    .featured-price {
-      font: 600 28px 'Cormorant Garamond', serif;
-      color: #24140d;
-      margin: 4px 0 16px;
-    }
-
-    .featured-price span {
-      color: #9a8068;
-    }
-
-    .featured-packs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 9px;
-      margin: 8px 0 14px;
-    }
-
-    .featured-packs button {
-      border: 1px solid #dfd5c8;
-      padding: 12px 6px;
-      background: #fffdfa;
-      border-radius: 4px;
-      color: #24140d;
-    }
-
-    .featured-packs button span,
-    .featured-packs button b {
-      display: block;
-    }
-
-    .featured-packs button span {
-      margin-top: 7px;
-      font-size: 13px;
-    }
-
-    .featured-packs .selected {
-      border: 2px solid #5a160f;
-      position: relative;
-    }
-
-    .featured-packs .selected::after {
-      content: '✓';
-      position: absolute;
-      right: -1px;
-      top: -1px;
-      background: #5a160f;
-      color: #fff;
-      border-radius: 0 4px 0 8px;
-      padding: 2px 6px;
-    }
-
-    .featured-stock {
-      color: #4d8032;
-      font-size: 13px;
-      margin: 0 0 12px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .stock-check {
-      width: 15px;
-      height: 15px;
-      border: 1px solid #4d8032;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      line-height: 1;
-    }
-
-    .featured-description {
-      max-width: 560px;
-      font: 16px/1.45 'Cormorant Garamond', serif;
-    }
-
-    .featured-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .featured-actions a {
-      flex: 1;
-      text-align: center;
-      padding: 13px 12px;
-      background: #54200d;
-      color: #fff;
-      font: 600 14px Inter, sans-serif;
-    }
-
-    .featured-actions a.outline {
-      background: transparent;
-      color: #8b5d16;
-      border: 1px solid #b88932;
-    }
-
-    .featured-quantity {
-      display: flex;
-      border: 1px solid #ddd1c4;
-    }
-
-    .featured-quantity button,
-    .featured-quantity span {
-      width: 35px;
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .featured-trust {
-      margin-top: 20px;
-      padding-top: 13px;
-      border-top: 1px solid #e4d9cc;
-      color: #4f463e;
-      font: 13px 'Cormorant Garamond', serif;
-    }
-
-    @media (max-width:800px) {
-      .featured-product-section {
-        padding: 48px 16px;
-      }
-
-      .featured-product-inner {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-
-      .featured-product-copy h2 {
-        font-size: 36px;
-      }
-
-      .featured-actions {
-        flex-wrap: wrap;
-      }
-
-      .featured-actions a {
-        min-width: 130px;
-      }
-    }
-
-    /* ── Journey of Every Box — Exact Reference Design ── */
-    .journey-section {
-      position: relative;
-      background: linear-gradient(135deg, #F5E8D0 0%, #FAF3E6 35%, #FBF6EE 60%, #F8EDD9 100%);
-      padding: 56px 24px 52px;
-      overflow: hidden;
-    }
-
-    /* Subtle temple pillar decoration on left */
-    .journey-section::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 120px;
-      background: linear-gradient(90deg, rgba(180, 140, 80, 0.08) 0%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .journey-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
-
-    /* Title block */
-    .journey-ornament {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .journey-ornament .j-line {
-      width: 60px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #B88932, transparent);
-    }
-
-    .journey-ornament .j-star {
-      color: #B88932;
-      font-size: 16px;
-    }
-
-    .journey-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 52px;
-      font-weight: 600;
-      line-height: 1.05;
-      color: #2A130C;
-      margin: 0;
-    }
-
-    .journey-title em {
-      font-style: italic;
-      color: #A86A10;
-    }
-
-    .journey-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-style: italic;
-      color: #4A3A2E;
-      margin: 8px 0 0;
-      font-weight: 400;
-    }
-
-    .journey-rule {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 16px auto 0;
-    }
-
-    .journey-rule .jr-line {
-      width: 200px;
-      height: 1px;
-      background: #B88932;
-      position: relative;
-    }
-
-    .journey-rule .jr-line::after {
-      content: '◆';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -54%);
-      color: #B88932;
-      background: #FAF3E6;
-      padding: 0 8px;
-      font-size: 9px;
-    }
-
-    /* Timeline row */
-    .journey-timeline {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 0;
-      margin-top: 44px;
-    }
-
-    .journey-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 0 1 160px;
-      min-width: 0;
-    }
-
-    /* Circle image container with gold rings */
-    .journey-circle {
-      position: relative;
-      width: 148px;
-      height: 148px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #C9982F 0%, #E8C06A 40%, #B88932 100%);
-      padding: 3px;
-      box-shadow:
-        0 0 0 3px #FAF3E6,
-        0 0 0 5px rgba(184, 137, 50, 0.35),
-        0 6px 20px rgba(42, 19, 12, 0.12);
-    }
-
-    .journey-circle-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid #FAF3E6;
-    }
-
-    .journey-circle-inner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Number badge */
-    .journey-badge {
-      position: absolute;
-      top: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: #2A130C;
-      border: 2.5px solid #D4A84B;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font: 700 13px/1 'Inter', sans-serif;
-      color: #F7E3C0;
-      z-index: 3;
-      box-shadow: 0 2px 8px rgba(42, 19, 12, 0.25);
-    }
-
-    /* Delivery icon overlay for step 06 */
-    .journey-delivery-icon {
-      position: absolute;
-      bottom: 8px;
-      right: 8px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #A86A10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    }
-
-    .journey-delivery-icon svg {
-      width: 16px;
-      height: 16px;
-      fill: none;
-      stroke: #FFF8E7;
-      stroke-width: 1.8;
-    }
-
-    /* Step label */
-    .journey-label {
-      margin-top: 14px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 17px;
-      font-weight: 600;
-      line-height: 1.15;
-      color: #2A130C;
-      text-align: center;
-      font-style: italic;
-    }
-
-    /* Arrow connector */
-    .journey-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: 0 0 28px;
-      padding-top: 56px;
-      /* vertically center with circles */
-      color: #A86A10;
-      font-size: 22px;
-      font-weight: 300;
-      opacity: 0.7;
-    }
-
-    /* Responsive */
-    @media (max-width: 1023px) {
-      .journey-timeline {
-        flex-wrap: wrap;
-        gap: 28px 12px;
-        justify-content: center;
-      }
-
-      .journey-step {
-        flex: 0 0 130px;
-      }
-
-      .journey-circle {
-        width: 120px;
-        height: 120px;
-      }
-
-      .journey-badge {
-        width: 30px;
-        height: 30px;
-        font-size: 11px;
-        top: -6px;
-      }
-
-      .journey-arrow {
-        flex: 0 0 20px;
-        padding-top: 40px;
-        font-size: 18px;
-      }
-
-      .journey-title {
-        font-size: 42px;
-      }
-    }
-
-    @media (max-width: 639px) {
-      .journey-section {
-        padding: 40px 16px 36px;
-      }
-
-      .journey-timeline {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 28px 12px;
-      }
-
-      .journey-arrow {
-        display: none;
-      }
-
-      .journey-step {
-        flex: none;
-      }
-
-      .journey-circle {
-        width: 100px;
-        height: 100px;
-      }
-
-      .journey-badge {
-        width: 28px;
-        height: 28px;
-        font-size: 10px;
-        top: -5px;
-      }
-
-      .journey-label {
-        font-size: 14px;
-        margin-top: 10px;
-      }
-
-      .journey-title {
-        font-size: 34px;
-      }
-
-      .journey-subtitle {
-        font-size: 18px;
-      }
-    }
   </style>
   <script src="assets/js/header.js"></script>
   <script src="assets/js/footer.js"></script>
@@ -1277,7 +407,8 @@
       <div
         class="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center px-5 py-8 sm:px-8 sm:py-10 lg:min-h-[540px] lg:grid-cols-2 lg:px-12 lg:py-8 xl:px-16">
         <div class="flex h-full items-center justify-center">
-          <div class="mx-auto w-full max-w-[540px] text-center">
+          <div
+            class="mx-auto w-full max-w-[540px] text-center p-6 sm:p-8 rounded-2xl bg-[#FFF7E8]/70 backdrop-blur-[10px] shadow-[0_20px_40px_rgba(42,17,12,0.18)] border border-[#B88932]/30">
             <h1 class="font-serif-title tracking-[-0.03em]">
               <span
                 class="block text-[42px] leading-none text-[#2A110C] sm:text-[48px] md:text-[52px] lg:text-[54px]">The
@@ -1318,8 +449,9 @@
                       d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993z" />
                   </svg>
                 </span>
-                <span class="mx-auto font-serif-title text-[18px] font-semibold">Order Fresh Halwa</span>
-                <span class="text-[20px] leading-none transition-transform group-hover:translate-x-1">→</span>
+                <span class="mx-auto font-serif-title text-[#ffffff] text-[18px] font-semibold">Order Fresh Halwa</span>
+                <span
+                  class="text-[20px] leading-none text-[#D9B86C] transition-transform group-hover:translate-x-1">→</span>
               </a>
             </div>
           </div>
@@ -1329,319 +461,589 @@
     </section>
 
 
-    <!-- 4. FEATURE TRUST BAR BELOW HERO (Exact Code Design Matching Image) -->
-    <div class="usp-strip border-b border-[#5A160F]/10 bg-[#F7F1E5] py-4 shadow-inner overflow-hidden relative">
-      <div class="animate-marquee flex items-center gap-10 whitespace-nowrap text-xs font-semibold text-[#32110D]">
+    <!-- 4. FEATURE TRUST BAR BELOW HERO (Exact Reference Design Matching Image) -->
+    <div
+      class="w-full bg-[#1F0802] border-t border-b border-[#B88932] py-4 sm:py-5 px-8 sm:px-14 md:px-20 text-[#FFF7EA] relative z-10 shadow-lg overflow-hidden">
 
-        <!-- Track Set 1 -->
-        <div class="flex items-center gap-10 shrink-0">
+      <!-- Left Corner Flower Ornament (Always anchored at far left edge) -->
+      <!-- <div
+        class="absolute left-3 sm:left-6 md:left-8 top-14 -translate-y-1/2 flex items-center text-[#D9B86C] text-xl sm:text-xl md:text-2xl"
+        aria-hidden="true">
+        <i class="bi bi-flower1"></i>
+      </div> -->
+
+      <!-- 4 USP Items Grid (Single Horizontal Line Across All Screens) -->
+      <div class="w-full max-w-[1600px] mx-auto grid grid-cols-4 items-center divide-x divide-[#B88932]/40">
+
+        <!-- Item 1: Freshly Packed -->
+        <div class="flex items-center justify-center gap-2 sm:gap-2.5 px-2">
           <div
-            class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
-            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <img src="assets/images/leaf.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
-                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-              </svg>
-            </div>
-            <span>Freshly Packed</span>
+            class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center shrink-0 text-[#D9B86C] overflow-visible">
+            <img src="assets/images/leaf.png" alt=""
+              class="h-full w-full object-contain scale-[2.2] filter brightness-0 invert sepia saturate-[6] hue-rotate-[15deg]"
+              aria-hidden="true">
           </div>
-          <span class="text-[#B88932]/50 font-light">✦</span>
-          <div
-            class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
-            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <img src="assets/images/preparation.png" alt="" class="h-8 w-8 shrink-0 object-contain"
-                aria-hidden="true"><svg class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-            </div>
-            <span>Traditional Craftsmanship</span>
-          </div>
-          <span class="text-[#B88932]/50 font-light">✦</span>
-          <div
-            class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
-            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <img src="assets/images/2leaf.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
-                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </div>
-            <span>Premium Ingredients</span>
-          </div>
-          <span class="text-[#B88932]/50 font-light">✦</span>
-          <div
-            class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
-            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <img src="assets/images/truck.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
-                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <rect x="1" y="3" width="15" height="13" rx="2" stroke-width="2" />
-                <path d="M16 8h4l3 3v5h-7V8z" stroke-width="2" />
-                <circle cx="5.5" cy="18.5" r="2.5" stroke-width="2" />
-                <circle cx="18.5" cy="18.5" r="2.5" stroke-width="2" />
-              </svg>
-            </div>
-            <span>Delivered with Care</span>
-          </div>
-          <span class="text-[#B88932]/50 font-light">✦</span>
+          <span
+            class="font-serif-title text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-medium tracking-wide text-[#F5E6CC] whitespace-nowrap">Freshly
+            Packed</span>
         </div>
 
-        <!-- Track Set 2 (Duplicate for Seamless Loop) -->
-        <div class="flex items-center gap-10 shrink-0">
+        <!-- Item 2: Traditional Craftsmanship -->
+        <div class="flex items-center justify-center gap-2 sm:gap-2.5 px-2">
           <div
-            class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
-            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <img src="assets/images/leaf.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
-                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-              </svg>
-            </div>
-            <span>Freshly Packed</span>
+            class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center shrink-0 text-[#D9B86C] overflow-visible">
+            <img src="assets/images/preparation.png" alt=""
+              class="h-full w-full object-contain scale-[2.2] filter brightness-0 invert sepia saturate-[6] hue-rotate-[15deg]"
+              aria-hidden="true">
           </div>
-          <span class="text-[#B88932]/50 font-light">✦</span>
+          <span
+            class="font-serif-title text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-medium tracking-wide text-[#F5E6CC] whitespace-nowrap">Traditional
+            Craftsmanship</span>
+        </div>
+
+        <!-- Item 3: Premium Ingredients -->
+        <div class="flex items-center justify-center gap-2 sm:gap-2.5 px-2">
           <div
-            class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
-            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <img src="assets/images/preparation.png" alt="" class="h-8 w-8 shrink-0 object-contain"
-                aria-hidden="true"><svg class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-            </div>
-            <span>Traditional Craftsmanship</span>
+            class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center shrink-0 text-[#D9B86C] overflow-visible">
+            <img src="assets/images/2leaf.png" alt=""
+              class="h-full w-full object-contain scale-[2.2] filter brightness-0 invert sepia saturate-[6] hue-rotate-[15deg]"
+              aria-hidden="true">
           </div>
-          <span class="text-[#B88932]/50 font-light">✦</span>
+          <span
+            class="font-serif-title text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-medium tracking-wide text-[#F5E6CC] whitespace-nowrap">Premium
+            Ingredients</span>
+        </div>
+
+        <!-- Item 4: Delivered with Care -->
+        <div class="flex items-center justify-center gap-2 sm:gap-2.5 px-2">
           <div
-            class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
-            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <img src="assets/images/2leaf.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
-                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </div>
-            <span>Premium Ingredients</span>
+            class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center shrink-0 text-[#D9B86C] overflow-visible">
+            <img src="assets/images/truck.png" alt=""
+              class="h-full w-full object-contain scale-[2.2] filter brightness-0 invert sepia saturate-[6] hue-rotate-[15deg]"
+              aria-hidden="true">
           </div>
-          <span class="text-[#B88932]/50 font-light">✦</span>
-          <div
-            class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
-            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <img src="assets/images/truck.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
-                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <rect x="1" y="3" width="15" height="13" rx="2" stroke-width="2" />
-                <path d="M16 8h4l3 3v5h-7V8z" stroke-width="2" />
-                <circle cx="5.5" cy="18.5" r="2.5" stroke-width="2" />
-                <circle cx="18.5" cy="18.5" r="2.5" stroke-width="2" />
-              </svg>
-            </div>
-            <span>Delivered with Care</span>
-          </div>
-          <span class="text-[#B88932]/50 font-light">✦</span>
+          <span
+            class="font-serif-title text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-medium tracking-wide text-[#F5E6CC] whitespace-nowrap">Delivered
+            with Care</span>
         </div>
 
       </div>
+
+      <!-- Right Corner Flower Ornament (Always anchored at far right edge) -->
+      <!-- <div
+        class="absolute right-3 sm:right-6 md:right-8 top-14 -translate-y-1/2 flex items-center text-[#D9B86C] text-xl sm:text-xl md:text-2xl"
+        aria-hidden="true">
+        <i class="bi bi-flower1"></i>
+      </div> -->
+
     </div>
 
     <!-- 5. HOW HALWA EVOLVED -->
-    <section class="evolution-section" aria-labelledby="evolution-title">
-      <div class="evolution-inner">
-        <div class="evolution-ornament" aria-hidden="true"><span></span><b>✦</b><span></span></div>
-        <h2 id="evolution-title">How Halwa <em>Evolved</em></h2>
-        <div class="evolution-rule" aria-hidden="true"><span></span></div>
-        <p class="evolution-intro">From royal kitchens to street corners, from simple ingredients to signature style
-          —<br class="desktop-only"> Halwa has journeyed through time, captivating hearts for generations.</p>
+    <section class="bg-[#fbf6ee] border-b border-[#eadcc8] py-16 sm:py-20 px-6 text-[#241710]"
+      aria-labelledby="evolution-title">
+      <div class="max-w-[1180px] mx-auto text-center">
+        <!-- Top Flower Ornament -->
+        <div class="flex items-center justify-center gap-3 text-[#b88932] mb-3" aria-hidden="true">
+          <span class="block w-[100px] h-px bg-[#b88932]"></span>
+          <i class="bi bi-flower1 text-[#b88932] text-xl leading-none"></i>
+          <span class="block w-[100px] h-px bg-[#b88932]"></span>
+        </div>
+        <!-- Title -->
+        <h2 id=""
+          class="m-0 font-serif-title text-[60px] max-sm:text-[48px] leading-none font-semibold tracking-[-0.02em] text-[#1e120d]">
+          How Halwa <em class="not-italic text-[1.45em]">Evolved</em></h2>
+        <!-- Flower Divider Rule -->
+        <div class="flex items-center justify-center gap-3 mt-4 mb-5" aria-hidden="true">
+          <span class="w-[140px] sm:w-[180px] h-px bg-[#b88932]/70"></span>
+          <i class="bi bi-flower1 text-[#b88932] text-lg leading-none"></i>
+          <span class="w-[140px] sm:w-[180px] h-px bg-[#b88932]/70"></span>
+        </div>
+        <!-- Expanded Description -->
+        <p
+          class="font-serif-title text-[18px] sm:text-[20px] max-w-[850px] leading-[1.4] mx-auto mb-12 sm:mb-16 text-[#2c211a]">
+          From royal kitchens to street corners, from simple wholesome ingredients to a world-renowned signature style
+          Tirunelveli Halwa has journeyed through generations and timeless sweetness in every bite.
+        </p>
 
-        <div class="evolution-timeline">
-          <article class="evolution-step">
-            <div class="evolution-art"><img src="assets/images/fog.png" alt="Traditional halwa preparation">
+        <!-- Timeline -->
+        <div
+          class="grid grid-cols-[1fr_32px_1fr_32px_1fr_32px_1fr_32px_1fr] max-[900px]:grid-cols-2 max-[600px]:grid-cols-2 items-center gap-0 max-[900px]:gap-[26px_10px]">
+          <!-- Step 01 -->
+          <article class="min-w-0 text-center">
+            <div class="h-[119px] max-[600px]:h-[100px] flex items-center justify-center mb-[3px] overflow-hidden">
+              <img src="assets/images/fog.png" alt="Traditional halwa preparation"
+                class="w-[145px] h-[112px] max-[600px]:w-[125px] max-[600px]:h-[96px] object-cover sepia-[.7] saturate-[.45] contrast-[.9] mix-blend-multiply opacity-[.78]">
             </div>
-            <span class="evolution-number">01</span>
-            <h3>Traditional<br>Beginnings</h3>
+            <span
+              class="inline-flex items-center justify-center w-[45px] h-[21px] rounded-xl bg-[#b88932] text-[#fff8e7] text-[12px] font-semibold font-sans mb-2">01</span>
+            <h3
+              class="m-0 text-[#281910] font-serif-title text-[18px] max-[600px]:text-[16px] font-semibold leading-[1.05]">
+              Traditional<br>Beginnings</h3>
           </article>
-          <span class="evolution-arrow" aria-hidden="true">➜</span>
-          <article class="evolution-step">
-            <div class="evolution-art"><img src="assets/images/preparations.png"
-                alt="Halwa ingredients passed through generations"></div>
-            <span class="evolution-number">02</span>
-            <h3>Passed Down<br>Through Generations</h3>
+          <span class="text-[#a97819] text-[19px] text-center max-[900px]:hidden" aria-hidden="true">➜</span>
+          <!-- Step 02 -->
+          <article class="min-w-0 text-center">
+            <div class="h-[119px] max-[600px]:h-[100px] flex items-center justify-center mb-[3px] overflow-hidden">
+              <img src="assets/images/preparations.png" alt="Halwa ingredients passed through generations"
+                class="w-[145px] h-[112px] max-[600px]:w-[125px] max-[600px]:h-[96px] object-cover sepia-[.7] saturate-[.45] contrast-[.9] mix-blend-multiply opacity-[.78]">
+            </div>
+            <span
+              class="inline-flex items-center justify-center w-[45px] h-[21px] rounded-xl bg-[#b88932] text-[#fff8e7] text-[12px] font-semibold font-sans mb-2">02</span>
+            <h3
+              class="m-0 text-[#281910] font-serif-title text-[18px] max-[600px]:text-[16px] font-semibold leading-[1.05]">
+              Passed Down<br>Through Generations</h3>
           </article>
-          <span class="evolution-arrow" aria-hidden="true">➜</span>
-          <article class="evolution-step">
-            <div class="evolution-art"><img src="assets/images/Temple.png" alt="Tirunelveli halwa heritage"></div>
-            <span class="evolution-number">03</span>
-            <h3>Tirunelveli’s<br>Signature Touch</h3>
+          <span class="text-[#a97819] text-[19px] text-center max-[900px]:hidden" aria-hidden="true">➜</span>
+          <!-- Step 03 -->
+          <article class="min-w-0 text-center">
+            <div class="h-[119px] max-[600px]:h-[100px] flex items-center justify-center mb-[3px] overflow-hidden">
+              <img src="assets/images/Temple.png" alt="Tirunelveli halwa heritage"
+                class="w-[145px] h-[112px] max-[600px]:w-[125px] max-[600px]:h-[96px] object-cover sepia-[.7] saturate-[.45] contrast-[.9] mix-blend-multiply opacity-[.78]">
+            </div>
+            <span
+              class="inline-flex items-center justify-center w-[45px] h-[21px] rounded-xl bg-[#b88932] text-[#fff8e7] text-[12px] font-semibold font-sans mb-2">03</span>
+            <h3
+              class="m-0 text-[#281910] font-serif-title text-[18px] max-[600px]:text-[16px] font-semibold leading-[1.05]">
+              Tirunelveli's<br>Signature Touch</h3>
           </article>
-          <span class="evolution-arrow" aria-hidden="true">➜</span>
-          <article class="evolution-step">
-            <div class="evolution-art"><img src="assets/images/halwashop.png" alt="Local halwa shop tradition"></div>
-            <span class="evolution-number">04</span>
-            <h3>From Local Delight<br>to Loved By All</h3>
+          <span class="text-[#a97819] text-[19px] text-center max-[900px]:hidden" aria-hidden="true">➜</span>
+          <!-- Step 04 -->
+          <article class="min-w-0 text-center">
+            <div class="h-[119px] max-[600px]:h-[100px] flex items-center justify-center mb-[3px] overflow-hidden">
+              <img src="assets/images/halwashop.png" alt="Local halwa shop tradition"
+                class="w-[145px] h-[112px] max-[600px]:w-[125px] max-[600px]:h-[96px] object-cover sepia-[.7] saturate-[.45] contrast-[.9] mix-blend-multiply opacity-[.78]">
+            </div>
+            <span
+              class="inline-flex items-center justify-center w-[45px] h-[21px] rounded-xl bg-[#b88932] text-[#fff8e7] text-[12px] font-semibold font-sans mb-2">04</span>
+            <h3
+              class="m-0 text-[#281910] font-serif-title text-[18px] max-[600px]:text-[16px] font-semibold leading-[1.05]">
+              From Local Delight<br>to Loved By All</h3>
           </article>
-          <span class="evolution-arrow" aria-hidden="true">➜</span>
-          <article class="evolution-step">
-            <div class="evolution-art"><img src="assets/images/halwa.png" alt="Nellai Specialz halwa legacy"></div>
-            <span class="evolution-number">05</span>
-            <h3>A Legacy That<br>Continues</h3>
+          <span class="text-[#a97819] text-[19px] text-center max-[900px]:hidden" aria-hidden="true">➜</span>
+          <!-- Step 05 -->
+          <article class="min-w-0 text-center">
+            <div class="h-[119px] max-[600px]:h-[100px] flex items-center justify-center mb-[3px] overflow-hidden">
+              <img src="assets/images/halwa.png" alt="Nellai Specialz halwa legacy"
+                class="w-[145px] h-[112px] max-[600px]:w-[125px] max-[600px]:h-[96px] object-cover sepia-[.7] saturate-[.45] contrast-[.9] mix-blend-multiply opacity-[.78]">
+            </div>
+            <span
+              class="inline-flex items-center justify-center w-[45px] h-[21px] rounded-xl bg-[#b88932] text-[#fff8e7] text-[12px] font-semibold font-sans mb-2">05</span>
+            <h3
+              class="m-0 text-[#281910] font-serif-title text-[18px] max-[600px]:text-[16px] font-semibold leading-[1.05]">
+              A Legacy That<br>Continues</h3>
           </article>
         </div>
       </div>
     </section>
 
     <!-- 6. FEATURED PRODUCT -->
-    <section class="featured-product-section" aria-labelledby="featured-product-title">
-      <div class="featured-product-inner">
-        <div class="featured-product-gallery">
-          <div class="featured-product-image">
-            <img src="assets/images/products/classic-halwa.jpg" alt="Tirunelveli Halwa served in a traditional bowl">
-            <button class="featured-zoom" type="button" aria-label="View product image">⌕</button>
+    <section class="bg-[#fffdfa] py-14 sm:py-16 px-6 max-sm:px-4 border-b border-[#eadfce]"
+      aria-labelledby="featured-product-title">
+      <div class="max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+        <!-- Gallery (Cols 1-6) -->
+        <div class="lg:col-span-6 w-full max-w-[420px] mx-auto">
+          <!-- Main Image Container (Reduced Size as requested) -->
+          <div
+            class="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#20100b] shadow-md border border-[#E8DFC8]">
+            <img id="featuredMainImg" src="assets/images/products/classic-halwa.jpg"
+              alt="Tirunelveli Halwa served in a traditional bowl"
+              class="w-full h-full object-cover transition-all duration-300">
+            <button
+              class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-xs text-[#32110d] text-lg font-bold flex items-center justify-center shadow-xs hover:bg-white transition-all cursor-pointer"
+              type="button" aria-label="View product image">⌕</button>
           </div>
-          <div class="featured-thumbnails-row"><button class="featured-gallery-nav" type="button"
+
+          <!-- Thumbnails Row + Enlarged Navigation Buttons -->
+          <div class="flex items-center gap-3 mt-4">
+            <button id="prevThumbBtn" type="button"
+              class="shrink-0 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#FAF3E6] border-2 border-[#B88932]/60 text-[#5A120C] text-2xl font-bold flex items-center justify-center hover:bg-[#5A120C] hover:text-white transition-all shadow-md cursor-pointer hover:scale-105 active:scale-95"
               aria-label="Previous image">‹</button>
-            <div class="featured-thumbnails">
-              <img src="assets/images/products/classic-halwa.jpg" alt="Tirunelveli Halwa">
-              <img src="assets/images/products/karupatti-halwa.jpg" alt="Karupatti Halwa">
-              <img src="assets/images/products/halwa-bowl.jpg" alt="Halwa bowl">
-              <img src="assets/images/products/halwa-box.jpg" alt="Halwa gift box">
-            </div><button class="featured-gallery-nav" type="button" aria-label="Next image">›</button>
+
+            <div class="grid grid-cols-4 gap-2.5 flex-1">
+              <button type="button"
+                class="thumb-btn rounded-xl overflow-hidden border-2 border-[#5A120C] ring-2 ring-[#5A120C]/20 transition-all focus:outline-none cursor-pointer scale-[1.03]"
+                data-src="assets/images/products/classic-halwa.jpg">
+                <img src="assets/images/products/classic-halwa.jpg" alt="Tirunelveli Halwa"
+                  class="w-full aspect-square object-cover">
+              </button>
+              <button type="button"
+                class="thumb-btn rounded-xl overflow-hidden border-2 border-transparent hover:border-[#B88932]/60 transition-all opacity-70 hover:opacity-100 focus:outline-none cursor-pointer"
+                data-src="assets/images/products/karupatti-halwa.jpg">
+                <img src="assets/images/products/karupatti-halwa.jpg" alt="Karupatti Halwa"
+                  class="w-full aspect-square object-cover">
+              </button>
+              <button type="button"
+                class="thumb-btn rounded-xl overflow-hidden border-2 border-transparent hover:border-[#B88932]/60 transition-all opacity-70 hover:opacity-100 focus:outline-none cursor-pointer"
+                data-src="assets/images/products/halwa-bowl.jpg">
+                <img src="assets/images/products/halwa-bowl.jpg" alt="Halwa bowl"
+                  class="w-full aspect-square object-cover">
+              </button>
+              <button type="button"
+                class="thumb-btn rounded-xl overflow-hidden border-2 border-transparent hover:border-[#B88932]/60 transition-all opacity-70 hover:opacity-100 focus:outline-none cursor-pointer"
+                data-src="assets/images/products/halwa-box.jpg">
+                <img src="assets/images/products/halwa-box.jpg" alt="Halwa gift box"
+                  class="w-full aspect-square object-cover">
+              </button>
+            </div>
+
+            <button id="nextThumbBtn" type="button"
+              class="shrink-0 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#FAF3E6] border-2 border-[#B88932]/60 text-[#5A120C] text-2xl font-bold flex items-center justify-center hover:bg-[#5A120C] hover:text-white transition-all shadow-md cursor-pointer hover:scale-105 active:scale-95"
+              aria-label="Next image">›</button>
           </div>
         </div>
-        <div class="featured-product-copy">
-          <h2 id="featured-product-title">Tirunelveli Halwa</h2>
-          <p class="featured-subtitle">The authentic taste of tradition.</p>
-          <div class="featured-rating"><span>★★★★★</span> <b>(125 Reviews)</b></div>
-          <p class="featured-price">₹600.00 <span>–</span> ₹1,150.00</p>
-          <p class="featured-label">CHOOSE PACK SIZE</p>
-          <div class="featured-packs">
-            <button type="button"><b>250g</b><span>₹180</span></button>
-            <button type="button"><b>500g</b><span>₹320</span></button>
-            <button type="button" class="selected"><b>1 Kg</b><span>₹600</span></button>
-            <button type="button"><b>2 Kg</b><span>₹1,150</span></button>
+
+        <!-- Product Copy & Variations (Cols 7-12) -->
+        <div class="lg:col-span-6 text-[#24140d]">
+          <h2 id="featured-product-title"
+            class="mt-2 mb-1 font-serif-title text-[38px] sm:text-[44px] leading-none font-bold uppercase tracking-tight text-[#24140d]">
+            Tirunelveli Halwa</h2>
+          <p class="text-[#9a6917] font-serif-title text-[18px] mb-2 font-medium">The authentic taste of tradition.</p>
+          <div class="text-[#b8790b] text-[15px] mb-3 flex items-center gap-2">
+            <span>★★★★★</span>
+            <span class="text-[#2c211a] font-sans text-[13px] font-semibold">(125 Reviews)</span>
           </div>
-          <p class="featured-stock"><span class="stock-check">✓</span> In stock</p>
-          <p class="featured-description">Indulge in the rich, soft and melt-in-mouth delicious Tirunelveli Halwa. Made
-            with pure ingredients and traditional slow-cooking for that authentic taste you’ll love.</p>
-          <div class="featured-actions">
-            <div class="featured-quantity"><button>−</button><span>1</span><button>+</button></div><a
-              href="pages/shop.html">ADD TO CART</a><a class="outline" href="pages/shop.html">BUY NOW</a>
+
+          <!-- Dynamic Price Display -->
+          <div class="mt-1 mb-4 flex items-baseline gap-2">
+            <span id="featuredProductPrice"
+              class="font-serif-title text-[32px] sm:text-[36px] font-bold text-[#5A120C]">₹600.00</span>
+            <span class="text-xs text-[#8C7D6F] font-semibold uppercase tracking-wider">(Inclusive of all taxes)</span>
           </div>
-          <div class="featured-trust">♢ &nbsp; Secure Packaging &nbsp; | &nbsp; No Preservatives &nbsp; | &nbsp; 100%
-            Pure Ingredients</div>
+
+          <!-- Selectable Variations -->
+          <p class="font-sans text-[12px] font-bold tracking-[0.14em] text-[#8b5d16] uppercase">CHOOSE PACK SIZE</p>
+          <div class="grid grid-cols-4 gap-2.5 mt-2 mb-4">
+            <button type="button"
+              class="pack-size-btn border border-[#dfd5c8] py-2.5 px-1.5 bg-[#fffdfa] rounded-xl text-[#24140d] transition-all hover:border-[#5a160f] text-center"
+              data-price="₹180.00" data-size="250g">
+              <b class="block text-sm">250g</b>
+              <span class="block mt-1 text-xs text-[#6b7280]">₹180</span>
+            </button>
+            <button type="button"
+              class="pack-size-btn border border-[#dfd5c8] py-2.5 px-1.5 bg-[#fffdfa] rounded-xl text-[#24140d] transition-all hover:border-[#5a160f] text-center"
+              data-price="₹320.00" data-size="500g">
+              <b class="block text-sm">500g</b>
+              <span class="block mt-1 text-xs text-[#6b7280]">₹320</span>
+            </button>
+            <button type="button"
+              class="pack-size-btn active-pack-btn relative border-2 border-[#5a160f] bg-[#FFF9F3] py-2.5 px-1.5 rounded-xl text-[#24140d] font-bold transition-all shadow-xs text-center"
+              data-price="₹600.00" data-size="1 Kg">
+              <b class="block text-sm">1 Kg</b>
+              <span class="block mt-1 text-xs text-[#5a160f] font-semibold">₹600</span>
+              <span
+                class="check-badge absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#5a160f] text-[10px] text-white">✓</span>
+            </button>
+            <button type="button"
+              class="pack-size-btn border border-[#dfd5c8] py-2.5 px-1.5 bg-[#fffdfa] rounded-xl text-[#24140d] transition-all hover:border-[#5a160f] text-center"
+              data-price="₹1,150.00" data-size="2 Kg">
+              <b class="block text-sm">2 Kg</b>
+              <span class="block mt-1 text-xs text-[#6b7280]">₹1,150</span>
+            </button>
+          </div>
+
+          <p class="text-[#4d8032] text-[13px] font-semibold mb-4 flex items-center gap-2">
+            <span
+              class="w-4 h-4 border border-[#4d8032] rounded-full inline-flex items-center justify-center text-[10px] leading-none bg-[#f2f8ee]">✓</span>
+            In stock — Fresh Batch Ready to Ship
+          </p>
+
+          <p class="max-w-[560px] font-serif-title text-[17px] leading-[1.45] text-[#3D2E25] mb-5">
+            Indulge in the rich, soft and melt-in-mouth delicious Tirunelveli Halwa. Made with pure ingredients and
+            traditional slow-cooking for that authentic taste you'll love.
+          </p>
+
+          <!-- Interactive Quantity & CTA Buttons -->
+          <div class="flex items-center gap-3.5 max-sm:flex-wrap">
+            <div class="flex items-center border border-[#ddd1c4] rounded-xl overflow-hidden bg-white shadow-2xs">
+              <button type="button" id="qtyMinusBtn"
+                class="w-10 h-11 flex items-center justify-center text-lg font-bold text-[#32110D] hover:bg-[#FAF5EB] transition-colors"
+                aria-label="Decrease quantity">−</button>
+              <span id="qtyValue"
+                class="w-10 h-11 flex items-center justify-center font-bold text-base text-[#32110D]">1</span>
+              <button type="button" id="qtyPlusBtn"
+                class="w-10 h-11 flex items-center justify-center text-lg font-bold text-[#32110D] hover:bg-[#FAF5EB] transition-colors"
+                aria-label="Increase quantity">+</button>
+            </div>
+
+            <a href="pages/shop.html"
+              class="flex-1 text-center py-3 px-4 bg-[#54200d] text-white rounded-xl font-sans text-[14px] font-bold hover:bg-[#3D1407] transition-all shadow-md hover:-translate-y-0.5 max-sm:min-w-[140px]">
+              ADD TO CART
+            </a>
+            <a href="pages/shop.html"
+              class="flex-1 text-center py-3 px-4 bg-[#B88932] text-white rounded-xl font-sans text-[14px] font-bold hover:bg-[#9E7324] transition-all shadow-md hover:-translate-y-0.5 max-sm:min-w-[140px]">
+              BUY NOW
+            </a>
+          </div>
+
+          <div
+            class="mt-6 pt-4 border-t border-[#e4d9cc] text-[#4f463e] font-serif-title text-[14px] flex items-center gap-4 flex-wrap">
+            <span>✦ Secure Packaging</span>
+            <span>|</span>
+            <span>✦ No Preservatives</span>
+            <span>|</span>
+            <span>✦ 100% Pure Ghee & Wheat</span>
+          </div>
         </div>
+
       </div>
     </section>
 
-    <!-- 7. THE JOURNEY OF EVERY BOX (Exact Reference Design) -->
-    <section class="journey-section" aria-labelledby="journey-title">
-      <div class="journey-inner">
+    <!-- Interactivity Script for Featured Product Gallery & Variations -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Thumbnail Image Switcher
+        const mainImg = document.getElementById('featuredMainImg');
+        const thumbBtns = document.querySelectorAll('.thumb-btn');
+        let currentThumbIdx = 0;
 
-        <!-- Decorative ornament -->
-        <div class="journey-ornament" aria-hidden="true">
-          <span class="j-line"></span>
-          <span class="j-star">✦</span>
-          <span class="j-line"></span>
+        function updateMainImage(idx) {
+          if (!thumbBtns[idx]) return;
+          currentThumbIdx = idx;
+          thumbBtns.forEach((b, i) => {
+            if (i === idx) {
+              b.classList.add('border-[#5A120C]', 'opacity-100');
+              b.classList.remove('border-transparent', 'opacity-75');
+            } else {
+              b.classList.remove('border-[#5A120C]', 'opacity-100');
+              b.classList.add('border-transparent', 'opacity-75');
+            }
+          });
+          const newSrc = thumbBtns[idx].getAttribute('data-src');
+          if (mainImg && newSrc) {
+            mainImg.src = newSrc;
+          }
+        }
+
+        thumbBtns.forEach((btn, idx) => {
+          btn.addEventListener('click', () => updateMainImage(idx));
+        });
+
+        const prevBtn = document.getElementById('prevThumbBtn');
+        const nextBtn = document.getElementById('nextThumbBtn');
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            const newIdx = (currentThumbIdx - 1 + thumbBtns.length) % thumbBtns.length;
+            updateMainImage(newIdx);
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            const newIdx = (currentThumbIdx + 1) % thumbBtns.length;
+            updateMainImage(newIdx);
+          });
+        }
+
+        // Pack Size Variation Selector & Price Updater
+        const packBtns = document.querySelectorAll('.pack-size-btn');
+        const priceDisplay = document.getElementById('featuredProductPrice');
+
+        packBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            packBtns.forEach(b => {
+              b.classList.remove('border-2', 'border-[#5a160f]', 'bg-[#FFF9F3]', 'font-bold', 'shadow-xs');
+              b.classList.add('border', 'border-[#dfd5c8]', 'bg-[#fffdfa]');
+              const badge = b.querySelector('.check-badge');
+              if (badge) badge.remove();
+            });
+
+            btn.classList.remove('border', 'border-[#dfd5c8]', 'bg-[#fffdfa]');
+            btn.classList.add('border-2', 'border-[#5a160f]', 'bg-[#FFF9F3]', 'font-bold', 'shadow-xs');
+
+            const check = document.createElement('span');
+            check.className = 'check-badge absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#5a160f] text-[10px] text-white';
+            check.textContent = '✓';
+            btn.appendChild(check);
+
+            const newPrice = btn.getAttribute('data-price');
+            if (priceDisplay && newPrice) {
+              priceDisplay.textContent = newPrice;
+            }
+          });
+        });
+
+        // Quantity Counter
+        const qtyMinus = document.getElementById('qtyMinusBtn');
+        const qtyPlus = document.getElementById('qtyPlusBtn');
+        const qtyVal = document.getElementById('qtyValue');
+        let currentQty = 1;
+
+        if (qtyMinus && qtyPlus && qtyVal) {
+          qtyMinus.addEventListener('click', () => {
+            if (currentQty > 1) {
+              currentQty--;
+              qtyVal.textContent = currentQty;
+            }
+          });
+          qtyPlus.addEventListener('click', () => {
+            currentQty++;
+            qtyVal.textContent = currentQty;
+          });
+        }
+      });
+    </script>
+
+    <!-- 7. THE JOURNEY OF EVERY BOX -->
+    <section class="relative overflow-hidden py-16 sm:py-20 max-sm:px-4 px-6"
+      style="background:linear-gradient(135deg,#F5E8D0 0%,#FAF3E6 35%,#FBF6EE 60%,#F8EDD9 100%);"
+      aria-labelledby="journey-title">
+      <!-- Left pillar decoration -->
+      <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-[120px]"
+        style="background:linear-gradient(90deg,rgba(180,140,80,0.08) 0%,transparent 100%);"></div>
+      <div class="max-w-[1180px] mx-auto relative z-[2] text-center">
+
+        <!-- Ornament -->
+        <div class="flex items-center justify-center gap-[10px] mb-3" aria-hidden="true">
+          <span class="w-[70px] h-px" style="background:linear-gradient(90deg,transparent,#B88932,transparent);"></span>
+          <span class="text-[#B88932] text-[18px]">✦</span>
+          <span class="w-[70px] h-px" style="background:linear-gradient(90deg,transparent,#B88932,transparent);"></span>
         </div>
 
-        <!-- Title -->
-        <h2 id="journey-title" class="journey-title">The Journey of <em>Every Box</em></h2>
-        <p class="journey-subtitle">From tradition to your home.</p>
+        <!-- Title (Improved Size & Styling) -->
+        <h2 id="journey-title"
+          class="font-serif-title text-[60px] max-lg:text-[48px] max-sm:text-[38px] font-bold leading-none text-[#2A130C] m-0 tracking-tight">
+          The Journey of <em class="italic text-[#A86A10] font-normal">Every Box</em></h2>
+        <p class="font-serif-title text-[24px] max-sm:text-[20px] italic text-[#4A3A2E] mt-3 font-normal">From tradition
+          to your home.</p>
 
         <!-- Rule -->
-        <div class="journey-rule" aria-hidden="true"><span class="jr-line"></span></div>
+        <div class="flex justify-center items-center mt-5 mb-2" aria-hidden="true">
+          <span
+            class="relative w-[220px] h-px bg-[#B88932] after:content-['◆'] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-[54%] after:text-[#B88932] after:bg-[#FAF3E6] after:px-2 after:text-[10px]"></span>
+        </div>
 
         <!-- Timeline -->
-        <div class="journey-timeline">
+        <div
+          class="flex items-start justify-center gap-0 mt-12 max-lg:flex-wrap max-lg:gap-[32px_14px] max-lg:justify-center max-sm:grid max-sm:grid-cols-3 max-sm:gap-[28px_12px]">
 
           <!-- Step 01 -->
-          <div class="journey-step">
-            <div class="journey-circle">
-              <div class="journey-circle-inner">
+          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
+            <div
+              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
+              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
+              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
                 <img src="assets/images/process/ingredients.jpg"
-                  alt="Cashews, cardamom, wheat and premium ghee — hand-selected ingredients">
+                  alt="Cashews, cardamom, wheat and premium ghee — hand-selected ingredients"
+                  class="w-full h-full object-cover block">
               </div>
-              <span class="journey-badge">01</span>
+              <span
+                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
+                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">01</span>
             </div>
-            <p class="journey-label">Carefully<br>Selected Ingredients</p>
+            <p
+              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
+              Carefully<br>Selected Ingredients</p>
           </div>
 
-          <span class="journey-arrow" aria-hidden="true">›</span>
+          <span
+            class="flex items-center justify-center flex-[0_0_28px] max-lg:flex-[0_0_20px] pt-14 max-lg:pt-10 text-[#A86A10] text-[22px] max-lg:text-[18px] font-light opacity-70 max-sm:hidden"
+            aria-hidden="true">›</span>
 
           <!-- Step 02 -->
-          <div class="journey-step">
-            <div class="journey-circle">
-              <div class="journey-circle-inner">
+          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
+            <div
+              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
+              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
+              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
                 <img src="assets/images/process/craftsmanship.jpg"
-                  alt="Traditional halwa cooking in brass vessel over wood fire">
+                  alt="Traditional halwa cooking in brass vessel over wood fire"
+                  class="w-full h-full object-cover block">
               </div>
-              <span class="journey-badge">02</span>
+              <span
+                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
+                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">02</span>
             </div>
-            <p class="journey-label">Traditional<br>Craftsmanship</p>
+            <p
+              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
+              Traditional<br>Craftsmanship</p>
           </div>
 
-          <span class="journey-arrow" aria-hidden="true">›</span>
+          <span
+            class="flex items-center justify-center flex-[0_0_28px] max-lg:flex-[0_0_20px] pt-14 max-lg:pt-10 text-[#A86A10] text-[22px] max-lg:text-[18px] font-light opacity-70 max-sm:hidden"
+            aria-hidden="true">›</span>
 
           <!-- Step 03 -->
-          <div class="journey-step">
-            <div class="journey-circle">
-              <div class="journey-circle-inner">
+          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
+            <div
+              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
+              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
+              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
                 <img src="assets/images/process/preparation.jpg"
-                  alt="Patient slow-cooking of halwa batter with wooden ladle">
+                  alt="Patient slow-cooking of halwa batter with wooden ladle" class="w-full h-full object-cover block">
               </div>
-              <span class="journey-badge">03</span>
+              <span
+                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
+                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">03</span>
             </div>
-            <p class="journey-label">Patient<br>Preparation</p>
+            <p
+              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
+              Patient<br>Preparation</p>
           </div>
 
-          <span class="journey-arrow" aria-hidden="true">›</span>
+          <span
+            class="flex items-center justify-center flex-[0_0_28px] max-lg:flex-[0_0_20px] pt-14 max-lg:pt-10 text-[#A86A10] text-[22px] max-lg:text-[18px] font-light opacity-70 max-sm:hidden"
+            aria-hidden="true">›</span>
 
           <!-- Step 04 -->
-          <div class="journey-step">
-            <div class="journey-circle">
-              <div class="journey-circle-inner">
+          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
+            <div
+              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
+              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
+              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
                 <img src="assets/images/products/halwa-bowl.jpg"
-                  alt="Finished halwa garnished with cashews on a brass plate">
+                  alt="Finished halwa garnished with cashews on a brass plate" class="w-full h-full object-cover block">
               </div>
-              <span class="journey-badge">04</span>
+              <span
+                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
+                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">04</span>
             </div>
-            <p class="journey-label">Quality<br>Assured</p>
+            <p
+              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
+              Quality<br>Assured</p>
           </div>
 
-          <span class="journey-arrow" aria-hidden="true">›</span>
+          <span
+            class="flex items-center justify-center flex-[0_0_28px] max-lg:flex-[0_0_20px] pt-14 max-lg:pt-10 text-[#A86A10] text-[22px] max-lg:text-[18px] font-light opacity-70 max-sm:hidden"
+            aria-hidden="true">›</span>
 
           <!-- Step 05 -->
-          <div class="journey-step">
-            <div class="journey-circle">
-              <div class="journey-circle-inner">
-                <img src="assets/images/products/halwa-box.jpg" alt="Halwa neatly packed in a food-safe tray">
+          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
+            <div
+              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
+              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
+              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
+                <img src="assets/images/products/halwa-box.jpg" alt="Halwa neatly packed in a food-safe tray"
+                  class="w-full h-full object-cover block">
               </div>
-              <span class="journey-badge">05</span>
+              <span
+                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
+                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">05</span>
             </div>
-            <p class="journey-label">Freshly<br>Packed</p>
+            <p
+              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
+              Freshly<br>Packed</p>
           </div>
 
-          <span class="journey-arrow" aria-hidden="true">›</span>
+          <span
+            class="flex items-center justify-center flex-[0_0_28px] max-lg:flex-[0_0_20px] pt-14 max-lg:pt-10 text-[#A86A10] text-[22px] max-lg:text-[18px] font-light opacity-70 max-sm:hidden"
+            aria-hidden="true">›</span>
 
           <!-- Step 06 -->
-          <div class="journey-step">
-            <div class="journey-circle">
-              <div class="journey-circle-inner">
-                <img src="assets/images/products/halwa-box.jpg" alt="Gift box dispatched with care">
+          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
+            <div
+              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
+              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
+              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
+                <img src="assets/images/products/halwa-box.jpg" alt="Gift box dispatched with care"
+                  class="w-full h-full object-cover block">
               </div>
-              <span class="journey-badge">06</span>
-              <!-- Delivery truck icon -->
-              <span class="journey-delivery-icon">
-                <svg viewBox="0 0 24 24">
-                  <rect x="1" y="3" width="15" height="13" rx="2" />
-                  <path d="M16 8h4l3 3v5h-7V8z" />
-                  <circle cx="5.5" cy="18.5" r="2.5" />
-                  <circle cx="18.5" cy="18.5" r="2.5" />
-                </svg>
-              </span>
+              <span
+                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
+                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">06</span>
             </div>
-            <p class="journey-label">Delivered<br>with Care</p>
+            <p
+              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
+              Delivered<br>with Care</p>
           </div>
 
         </div>
@@ -1716,9 +1118,9 @@
           <!-- Card 2: THANK YOU! (Right - approx 7 cols) -->
           <div
             class="lg:col-span-7 reveal rounded-2xl border border-[#B88932]/30 overflow-hidden relative shadow-sm min-h-[260px] sm:min-h-[280px] flex bg-[#2B0505]">
-            <!-- Background Image from Unsplash online free photo platform -->
-            <img src="https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=1200&auto=format&fit=crop"
-              alt="To all our lovely customers" class="absolute inset-0 h-full w-full object-cover object-right"
+            <!-- Background Image -->
+            <img src="assets/images/Rustic Halwa Feast in Brass Vessels.png"
+              alt="Rustic Halwa Feast in Brass Vessels" class="absolute inset-0 h-full w-full object-cover object-right"
               loading="lazy">
 
             <!-- Left Solid Dark Brown Shadow Box Overlay for crisp text contrast & exact design match -->
@@ -1881,178 +1283,197 @@
       </div>
     </section>
 
+    <!-- 8. BANNER CTA SECTION -->
     <section id="functions-events"
-      class="relative isolate overflow-hidden border border-[#B88932] bg-[#2B0804] px-4 py-8 text-center sm:px-8 sm:py-10 lg:min-h-[230px] lg:py-8">
-      <img src="assets/images/cta/left-decoration.png" alt=""
-        class="pointer-events-none absolute left-0 top-1/2 hidden h-40 w-40 -translate-y-1/2 object-contain opacity-90 sm:block lg:h-52 lg:w-52"
-        aria-hidden="true">
-      <img src="assets/images/cta/right-halwa.png" alt=""
-        class="pointer-events-none absolute right-0 top-1/2 hidden h-40 w-40 -translate-y-1/2 object-contain opacity-95 sm:block lg:h-52 lg:w-52"
-        aria-hidden="true">
-      <div class="pointer-events-none absolute inset-1 border border-[#B88932]/50"></div>
-      <div class="relative z-10 mx-auto flex max-w-2xl flex-col items-center justify-center">
-        <h2 class="font-serif-title text-3xl font-semibold leading-tight text-[#F6D98B] sm:text-4xl lg:text-5xl">
+      class="relative isolate w-full min-h-[380px] sm:min-h-[440px] flex items-center justify-center overflow-hidden border-y-2 border-[#D4A243] px-6 py-16 sm:py-24 text-center">
+      <!-- Full Cover Background Image -->
+      <img src="assets/images/Glistening Halwa in Brass Bowl.webp" alt="Lustrous Cashew Halwa in Brass Bowl"
+        class="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.55] contrast-[1.1]">
+
+      <!-- Rich Warm Dark Overlay for Maximum Text Contrast -->
+      <div class="absolute inset-0 bg-gradient-to-r from-[#1E0805]/95 via-[#2E0B07]/85 to-[#1E0805]/90"></div>
+
+      <!-- Polished Decorative Inner Gold Border -->
+      <div class="pointer-events-none absolute inset-3 sm:inset-5 border-2 border-[#D4A243]/70 z-10"></div>
+
+      <!-- Content -->
+      <div class="relative z-20 mx-auto flex max-w-3xl flex-col items-center justify-center py-4">
+        <!-- Golden Star Ornament -->
+        <div class="flex items-center justify-center gap-3 mb-3 text-[#D4A243]" aria-hidden="true">
+          <span class="w-12 sm:w-16 h-px bg-[#D4A243]"></span>
+          <span class="text-base text-[#D4A243]">✦</span>
+          <span class="w-12 sm:w-16 h-px bg-[#D4A243]"></span>
+        </div>
+
+        <h2 style="color: #FFF8EB !important;"
+          class="font-serif-title text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] tracking-tight">
           Bringing Tradition to Your Table</h2>
-        <p class="mt-2 font-serif-title text-base leading-[1.35] text-[#FFF5E6] sm:text-lg">Experience the authentic
-          taste of Tirunelveli.<br>Made with love. Served with pride.</p>
-        <a href="pages/shop.html"
-          class="mt-4 inline-flex items-center justify-center border border-[#B88932] bg-[#C4770A] px-8 py-2 font-serif-title text-lg font-bold uppercase text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#A85F08]">Shop
-          Now</a>
+
+        <p style="color: #FCE8C5 !important;"
+          class="mt-4 font-serif-title text-lg sm:text-2xl leading-relaxed font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] max-w-2xl">
+          Experience the authentic taste of Tirunelveli.<br class="hidden sm:inline"> Made with love. Served with pride.
+        </p>
+
+        <a href="pages/shop.html" style="color: #1E0805 !important; background-color: #FCE8C5 !important;"
+          class="mt-8 inline-flex items-center justify-center border-2 border-[#D4A243] hover:!bg-[#D4A243] hover:!text-white px-10 py-3.5 rounded-xl font-serif-title text-base sm:text-lg font-extrabold uppercase tracking-wider shadow-2xl hover:-translate-y-1 transition-all duration-300">
+          Shop Now
+        </a>
       </div>
+    </section>
 
-      <div class="hidden">
+    <div class="hidden">
 
-        <!-- MAIN TWO COLUMN AREA -->
-        <div class="mx-auto grid max-w-[1440px] grid-cols-1 items-stretch gap-4 lg:grid-cols-2">
+      <!-- MAIN TWO COLUMN AREA -->
+      <div class="mx-auto grid max-w-[1440px] grid-cols-1 items-stretch gap-4 lg:grid-cols-2">
 
-          <!-- LEFT CONTENT -->
-          <div
-            class="flex flex-col items-center justify-between border border-[#B88932]/30 bg-[#FFFDF8] px-5 py-6 text-center sm:px-8">
+        <!-- LEFT CONTENT -->
+        <div
+          class="flex flex-col items-center justify-between border border-[#B88932]/30 bg-[#FFFDF8] px-5 py-6 text-center sm:px-8">
 
-            <h2 class="font-serif text-xl font-bold uppercase leading-tight text-[#241714] sm:text-2xl">
-              Halwa Delivery for Functions &amp; Events
-            </h2>
+          <h2 class="font-serif text-xl font-bold uppercase leading-tight text-[#241714] sm:text-2xl">
+            Halwa Delivery for Functions &amp; Events
+          </h2>
 
-            <p class="mt-2 font-serif text-sm font-medium text-[#332421]">
-              Bulk Orders for Weddings, Parties, Corporate Events &amp; More
-            </p>
+          <p class="mt-2 font-serif text-sm font-medium text-[#332421]">
+            Bulk Orders for Weddings, Parties, Corporate Events &amp; More
+          </p>
 
-            <!-- EVENT TYPES -->
-            <div class="my-6 flex w-full items-start divide-x divide-[#B88932]/25">
+          <!-- EVENT TYPES -->
+          <div class="my-6 flex w-full items-start divide-x divide-[#B88932]/25">
 
-              <!-- Weddings -->
-              <div class="flex flex-1 flex-col items-center px-2">
-                <div class="flex h-8 items-center justify-center">
-                  <svg viewBox="0 0 64 64" class="h-7 w-7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="21" cy="15" r="5" stroke="#4b241c" stroke-width="2.5" />
-                    <circle cx="43" cy="15" r="5" stroke="#4b241c" stroke-width="2.5" />
-                    <circle cx="32" cy="12" r="5" fill="#b51e22" />
-                    <path d="M14 52V31C14 24 18 20 23 20" stroke="#4b241c" stroke-width="2.5" />
-                    <path d="M50 52V31C50 24 46 20 41 20" stroke="#4b241c" stroke-width="2.5" />
-                    <path d="M26 53V32C26 25 29 21 32 21C35 21 38 25 38 32V53" stroke="#b51e22" stroke-width="2.5" />
-                    <path d="M10 54H54" stroke="#d88a12" stroke-width="2.5" />
-                  </svg>
-                </div>
-
-                <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                  Weddings
-                </p>
+            <!-- Weddings -->
+            <div class="flex flex-1 flex-col items-center px-2">
+              <div class="flex h-8 items-center justify-center">
+                <svg viewBox="0 0 64 64" class="h-7 w-7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="21" cy="15" r="5" stroke="#4b241c" stroke-width="2.5" />
+                  <circle cx="43" cy="15" r="5" stroke="#4b241c" stroke-width="2.5" />
+                  <circle cx="32" cy="12" r="5" fill="#b51e22" />
+                  <path d="M14 52V31C14 24 18 20 23 20" stroke="#4b241c" stroke-width="2.5" />
+                  <path d="M50 52V31C50 24 46 20 41 20" stroke="#4b241c" stroke-width="2.5" />
+                  <path d="M26 53V32C26 25 29 21 32 21C35 21 38 25 38 32V53" stroke="#b51e22" stroke-width="2.5" />
+                  <path d="M10 54H54" stroke="#d88a12" stroke-width="2.5" />
+                </svg>
               </div>
 
-              <!-- Corporate -->
-              <div class="flex flex-1 flex-col items-center px-2">
-                <div class="flex h-12 items-center justify-center">
-                  <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 54V22H46V54" stroke="#4b241c" stroke-width="2.5" />
-                    <path d="M23 22V16H41V22" stroke="#b51e22" stroke-width="2.5" />
-                    <path d="M28 16V11H36V16" stroke="#d88a12" stroke-width="2.5" />
-                    <path d="M23 29H28V35H23V29Z" stroke="#d88a12" stroke-width="2" />
-                    <path d="M36 29H41V35H36V29Z" stroke="#d88a12" stroke-width="2" />
-                    <path d="M30 54V44H34V54" stroke="#b51e22" stroke-width="2.5" />
-                    <path d="M13 54H51" stroke="#4b241c" stroke-width="2.5" />
-                  </svg>
-                </div>
-
-                <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                  Corporate Events
-                </p>
-              </div>
-
-              <!-- Birthday -->
-              <div class="flex flex-1 flex-col items-center px-2">
-                <div class="flex h-12 items-center justify-center">
-                  <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 35H48V53H16V35Z" stroke="#4b241c" stroke-width="2.5" />
-                    <path d="M21 27H43V35H21V27Z" stroke="#d88a12" stroke-width="2.5" />
-                    <path d="M25 20H39V27H25V20Z" stroke="#b51e22" stroke-width="2.5" />
-                    <path d="M27 20V14M32 20V12M37 20V14" stroke="#4b241c" stroke-width="2" />
-                  </svg>
-                </div>
-
-                <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                  Birthday Parties
-                </p>
-              </div>
-
-              <!-- Family -->
-              <div class="flex flex-1 flex-col items-center px-2">
-                <div class="flex h-12 items-center justify-center">
-                  <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M32 17C25 8 15 13 15 22C15 32 32 42 32 42C32 42 49 32 49 22C49 13 39 8 32 17Z"
-                      stroke="#b51e22" stroke-width="2.5" />
-                    <circle cx="16" cy="39" r="5" stroke="#4b241c" stroke-width="2" />
-                    <circle cx="48" cy="39" r="5" stroke="#4b241c" stroke-width="2" />
-                    <circle cx="32" cy="38" r="5" stroke="#d88a12" stroke-width="2" />
-                  </svg>
-                </div>
-
-                <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                  Family Functions
-                </p>
-              </div>
-
-              <!-- Festivals -->
-              <div class="flex flex-1 flex-col items-center px-2">
-                <div class="flex h-12 items-center justify-center">
-                  <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M32 11C28 18 24 22 24 29C24 34 27 38 32 38C37 38 40 34 40 29C40 22 36 18 32 11Z"
-                      stroke="#b51e22" stroke-width="2.5" />
-                    <path d="M13 42C21 38 26 39 32 45C38 39 43 38 51 42C47 51 41 55 32 55C23 55 17 51 13 42Z"
-                      stroke="#4b241c" stroke-width="2.5" />
-                  </svg>
-                </div>
-
-                <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                  Festivals &amp; Poojas
-                </p>
-              </div>
-
+              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
+                Weddings
+              </p>
             </div>
 
-            <a href="#contact"
-              class="mt-6 inline-flex items-center justify-center rounded-md bg-[#4c0809] px-8 py-3 font-serif text-sm font-semibold uppercase text-white hover:bg-[#681012]">
-              Enquire Now
-            </a>
+            <!-- Corporate -->
+            <div class="flex flex-1 flex-col items-center px-2">
+              <div class="flex h-12 items-center justify-center">
+                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 54V22H46V54" stroke="#4b241c" stroke-width="2.5" />
+                  <path d="M23 22V16H41V22" stroke="#b51e22" stroke-width="2.5" />
+                  <path d="M28 16V11H36V16" stroke="#d88a12" stroke-width="2.5" />
+                  <path d="M23 29H28V35H23V29Z" stroke="#d88a12" stroke-width="2" />
+                  <path d="M36 29H41V35H36V29Z" stroke="#d88a12" stroke-width="2" />
+                  <path d="M30 54V44H34V54" stroke="#b51e22" stroke-width="2.5" />
+                  <path d="M13 54H51" stroke="#4b241c" stroke-width="2.5" />
+                </svg>
+              </div>
+
+              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
+                Corporate Events
+              </p>
+            </div>
+
+            <!-- Birthday -->
+            <div class="flex flex-1 flex-col items-center px-2">
+              <div class="flex h-12 items-center justify-center">
+                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 35H48V53H16V35Z" stroke="#4b241c" stroke-width="2.5" />
+                  <path d="M21 27H43V35H21V27Z" stroke="#d88a12" stroke-width="2.5" />
+                  <path d="M25 20H39V27H25V20Z" stroke="#b51e22" stroke-width="2.5" />
+                  <path d="M27 20V14M32 20V12M37 20V14" stroke="#4b241c" stroke-width="2" />
+                </svg>
+              </div>
+
+              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
+                Birthday Parties
+              </p>
+            </div>
+
+            <!-- Family -->
+            <div class="flex flex-1 flex-col items-center px-2">
+              <div class="flex h-12 items-center justify-center">
+                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M32 17C25 8 15 13 15 22C15 32 32 42 32 42C32 42 49 32 49 22C49 13 39 8 32 17Z"
+                    stroke="#b51e22" stroke-width="2.5" />
+                  <circle cx="16" cy="39" r="5" stroke="#4b241c" stroke-width="2" />
+                  <circle cx="48" cy="39" r="5" stroke="#4b241c" stroke-width="2" />
+                  <circle cx="32" cy="38" r="5" stroke="#d88a12" stroke-width="2" />
+                </svg>
+              </div>
+
+              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
+                Family Functions
+              </p>
+            </div>
+
+            <!-- Festivals -->
+            <div class="flex flex-1 flex-col items-center px-2">
+              <div class="flex h-12 items-center justify-center">
+                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M32 11C28 18 24 22 24 29C24 34 27 38 32 38C37 38 40 34 40 29C40 22 36 18 32 11Z"
+                    stroke="#b51e22" stroke-width="2.5" />
+                  <path d="M13 42C21 38 26 39 32 45C38 39 43 38 51 42C47 51 41 55 32 55C23 55 17 51 13 42Z"
+                    stroke="#4b241c" stroke-width="2.5" />
+                </svg>
+              </div>
+
+              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
+                Festivals &amp; Poojas
+              </p>
+            </div>
 
           </div>
 
+          <a href="#contact"
+            class="mt-6 inline-flex items-center justify-center rounded-md bg-[#4c0809] px-8 py-3 font-serif text-sm font-semibold uppercase text-white hover:bg-[#681012]">
+            Enquire Now
+          </a>
 
-          <!-- RIGHT IMAGE COLLAGE -->
-          <div class="grid h-[280px] min-h-0 grid-cols-12 gap-2 overflow-hidden sm:h-[300px] lg:h-[300px]">
+        </div>
 
-            <!-- BIG LEFT IMAGE -->
-            <div class="col-span-7 min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-              <img src="assets/images/heritage/story-hero.jpg" alt="Indian sweets prepared for an event"
+
+        <!-- RIGHT IMAGE COLLAGE -->
+        <div class="grid h-[280px] min-h-0 grid-cols-12 gap-2 overflow-hidden sm:h-[300px] lg:h-[300px]">
+
+          <!-- BIG LEFT IMAGE -->
+          <div class="col-span-7 min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
+            <img src="assets/images/heritage/story-hero.jpg" alt="Indian sweets prepared for an event"
+              class="h-full w-full object-cover" loading="lazy" />
+          </div>
+
+          <!-- RIGHT IMAGES -->
+          <div class="col-span-5 grid min-h-0 grid-cols-2 grid-rows-2 gap-2">
+
+            <!-- TOP IMAGE -->
+            <div class="col-span-2 min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
+              <img src="assets/images/process/craftsmanship.jpg" alt="Indian celebration food"
                 class="h-full w-full object-cover" loading="lazy" />
             </div>
 
-            <!-- RIGHT IMAGES -->
-            <div class="col-span-5 grid min-h-0 grid-cols-2 grid-rows-2 gap-2">
+            <!-- BOTTOM LEFT -->
+            <div class="min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
+              <img src="assets/images/products/combo-halwa.jpg" alt="Traditional Indian food"
+                class="h-full w-full object-cover" loading="lazy" />
+            </div>
 
-              <!-- TOP IMAGE -->
-              <div class="col-span-2 min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-                <img src="assets/images/process/craftsmanship.jpg" alt="Indian celebration food"
-                  class="h-full w-full object-cover" loading="lazy" />
-              </div>
-
-              <!-- BOTTOM LEFT -->
-              <div class="min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-                <img src="assets/images/products/combo-halwa.jpg" alt="Traditional Indian food"
-                  class="h-full w-full object-cover" loading="lazy" />
-              </div>
-
-              <!-- BOTTOM RIGHT -->
-              <div class="min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-                <img src="assets/images/products/halwa-box.jpg" alt="Indian function catering"
-                  class="h-full w-full object-cover" loading="lazy" />
-              </div>
-
+            <!-- BOTTOM RIGHT -->
+            <div class="min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
+              <img src="assets/images/products/halwa-box.jpg" alt="Indian function catering"
+                class="h-full w-full object-cover" loading="lazy" />
             </div>
 
           </div>
 
         </div>
+
       </div>
+    </div>
     </section>
 
   </main>

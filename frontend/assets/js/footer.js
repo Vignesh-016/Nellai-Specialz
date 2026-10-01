@@ -12,26 +12,26 @@
   <footer class="bg-[#1C0906] py-16 text-[#FBF5E9] border-t border-[#B88932]/20 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-5 relative z-10">
       
-      <!-- Col 1: Logo & Info -->
+      <!-- Col 1: Logo & Info (Enlarged Logo & Bio text size) -->
       <div class="lg:col-span-2">
         <a href="${basePath}index.html" class="inline-block py-1">
-          <img src="${basePath}assets/images/nellai-specialz-logo.png" alt="Nellai Specialz Logo" class="h-16 sm:h-20 max-h-24 w-auto object-contain brightness-110">
+          <img src="${basePath}assets/images/nellai-specialz-logo.png" alt="Nellai Specialz Logo" class="h-24 sm:h-28 lg:h-32 max-h-36 w-auto object-contain brightness-110">
         </a>
-        <p class="mt-4 text-xs font-serif italic text-[#D9B86C]">
+        <p class="mt-5 text-base sm:text-lg font-serif italic text-[#D9B86C] font-semibold leading-relaxed">
           The Original Taste of Tirunelveli.
         </p>
-        <p class="mt-1 font-serif text-xs text-[#FBF5E9]/80">
+        <p class="mt-1.5 font-serif text-sm sm:text-base text-[#FBF5E9]/90 leading-relaxed">
           நம்ம ஊர். நம்ம அல்வா.
         </p>
-        <p class="mt-1 font-serif text-xs text-[#D9B86C]">
+        <p class="mt-1.5 font-serif text-sm sm:text-base text-[#D9B86C] font-semibold">
           அன்புடன்.
         </p>
       </div>
 
       <!-- Col 2: Quick Links -->
       <div>
-        <h3 class="text-xs font-bold uppercase tracking-[0.18em] text-[#D9B86C]">Quick Links</h3>
-        <ul class="mt-4 space-y-2.5 text-xs text-[#FBF5E9]/80">
+        <h3 class="text-sm font-bold uppercase tracking-[0.18em] text-[#D9B86C]">Quick Links</h3>
+        <ul class="mt-4 space-y-2.5 text-xs sm:text-sm text-[#FBF5E9]/80">
           <li><a class="hover:text-white transition" href="${basePath}index.html">Home</a></li>
           <li><a class="hover:text-white transition" href="${basePath}pages/shop.html">Shop All Products</a></li>
           <li><a class="hover:text-white transition" href="${basePath}index.html#combo">Combo</a></li>
@@ -42,8 +42,8 @@
 
       <!-- Col 3: Customer Care -->
       <div>
-        <h3 class="text-xs font-bold uppercase tracking-[0.18em] text-[#D9B86C]">Customer Care</h3>
-        <ul class="mt-4 space-y-2.5 text-xs text-[#FBF5E9]/80">
+        <h3 class="text-sm font-bold uppercase tracking-[0.18em] text-[#D9B86C]">Customer Care</h3>
+        <ul class="mt-4 space-y-2.5 text-xs sm:text-sm text-[#FBF5E9]/80">
           <li><a class="hover:text-white transition" href="${basePath}pages/shop.html">Shopping</a></li>
           <li><a class="hover:text-white transition" href="${basePath}pages/faq.html">FAQ</a></li>
           <li><a class="hover:text-white transition" href="${basePath}pages/shipping-delivery.html">Shopping Policy</a></li>
@@ -55,8 +55,8 @@
 
       <!-- Col 4: Contact Info -->
       <div>
-        <h3 class="text-xs font-bold uppercase tracking-[0.18em] text-[#D9B86C]">Contact Us</h3>
-        <ul class="mt-4 space-y-2.5 text-xs text-[#FBF5E9]/80">
+        <h3 class="text-sm font-bold uppercase tracking-[0.18em] text-[#D9B86C]">Contact Us</h3>
+        <ul class="mt-4 space-y-2.5 text-xs sm:text-sm text-[#FBF5E9]/80">
           <li class="flex items-start gap-2">
             <span class="text-[#D9B86C] shrink-0 mt-0.5">📍</span> 
             <span>514/260H Indira Nagar , 2nd Street Sankar Nagar, Tirunelveli – 627357</span>
@@ -74,9 +74,9 @@
 
     </div>
 
-    <!-- Bottom Copyright -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 border-t border-[#FBF5E9]/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#FBF5E9]/60 relative z-10">
-      <p>© 2026 Nellai Specialz. All rights reserved.</p>
+    <!-- Bottom Copyright (Centered Alignment) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 border-t border-[#FBF5E9]/10 pt-6 text-center relative z-10">
+      <p class="text-xs sm:text-sm text-[#FBF5E9]/70 font-sans tracking-wide text-center">© 2026 Nellai Specialz. All rights reserved.</p>
     </div>
   </footer>
   `;

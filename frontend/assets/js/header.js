@@ -75,7 +75,7 @@
       <!-- Center Logo (Cols 5-8) -->
       <div class="ns-logo lg:col-span-4 flex flex-col items-center justify-center text-center">
         <a href="${basePath}index.html" class="inline-flex flex-col items-center group">
-          <img src="${basePath}assets/images/nellai-specialz-logo.png" alt="Nellai Specialz" class="h-12 sm:h-14 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <img src="${basePath}assets/images/nellai-specialz-logo.png" alt="Nellai Specialz" class="h-24 sm:h-20 w-24 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
           <div class="hidden flex-col items-center">
             <span class="font-serif text-2xl sm:text-3xl font-bold tracking-wide text-[#5A120C]">NELLAI</span>
             <div class="flex items-center gap-1.5 -mt-0.5">
@@ -92,11 +92,9 @@
       <div class="ns-tools lg:col-span-4 flex items-center justify-end gap-3 sm:gap-4">
         
         <!-- Search Pill -->
-        <div class="ns-search relative">
-          <input type="text" placeholder="Search for Halwa..." class="h-11 w-44 rounded-full border border-[#D8C9B4] bg-[#FFFDF8] py-0 pl-4 pr-12 text-xs text-[#32110D] placeholder-[#8C7D6F] focus:outline-none focus:ring-1 focus:ring-[#801412] md:w-52 lg:w-60">
-          <button type="button" class="absolute right-4 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center text-[#32110D] hover:text-[#801412]" aria-label="Search">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-          </button>
+        <div class="ns-search relative flex items-center">
+          <input type="text" placeholder="Search for Halwa..." class="h-10 w-44 rounded-full border border-[#D8C9B4] bg-[#FFFDF8] py-0 pl-4 pr-10 text-xs text-[#32110D] placeholder-[#8C7D6F] focus:outline-none focus:ring-1 focus:ring-[#801412] md:w-52 lg:w-60">
+   
         </div>
 
         <!-- Utility Icons Group -->
