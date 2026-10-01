@@ -20,6 +20,7 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&family=Mukta+Malar:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/app.css">
 
   <style>
@@ -1257,7 +1258,7 @@
   </style>
   <script src="assets/js/header.js"></script>
   <script src="assets/js/footer.js"></script>
-  <script src="assets/js/hero-override.js"></script>
+
 </head>
 
 <body class="bg-[#FBF5E9] text-[#2D211B] antialiased">
@@ -1267,83 +1268,66 @@
 
   <main>
     <!-- 3. HERO SECTION -->
-    <section
-      class="relative isolate min-h-[620px] overflow-hidden border-b border-[#5A160F]/10 bg-[#FBF5E9] py-14 lg:py-20">
-      <img src="assets/images/hero/hero-banner.jpg" width="1536" height="1024"
-        alt="Nellai Specialz Tirunelveli Karupatti Halwa package with halwa on a brass plate"
-        class="absolute inset-0 -z-20 h-full w-full object-cover object-center" fetchpriority="high">
-      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#FBF5E9] via-[#FBF5E9]/90 to-[#FBF5E9]/10"></div>
-      <!-- Background Ambient Glowing Orbs -->
+    <section id="home-hero" class="relative isolate w-full overflow-hidden bg-[#F8E9D2] min-h-[480px] lg:min-h-[540px]">
+      <img src="assets/images/Tirunelveli Halwa at Sunset.webp" alt="Tirunelveli Halwa background" aria-hidden="true"
+        fetchpriority="high" class="absolute inset-0 -z-20 h-full w-full object-cover object-center lg:object-right">
       <div
-        class="pointer-events-none absolute -left-20 -top-20 h-96 w-96 rounded-full bg-[#B88932]/10 blur-3xl glow-orb">
+        class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[#FFF7E8]/90 via-[#FFF7E8]/45 to-transparent">
       </div>
       <div
-        class="pointer-events-none absolute right-0 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-[#5A160F]/10 blur-3xl glow-orb">
-      </div>
-
-      <div class="site-wrap relative z-10 flex min-h-[520px] items-center">
-
-        <!-- Left Hero Copy -->
-        <div class="relative z-10 lg:col-span-6">
-          <span
-            class="hero-tag inline-block rounded-full border border-[#B88932]/30 bg-[#FFFDF8] px-3.5 py-1 text-xs font-bold uppercase tracking-[0.28em] text-[#786153] shadow-2xs">AUTHENTIC
-            TIRUNELVELI HALWA</span>
-          <h1
-            class="hero-h1 mt-3 font-serif-title text-4xl font-bold leading-[1.06] text-[#32110D] sm:text-5xl lg:text-[3.6rem]">
-            The Original Taste of <span
-              class="block font-bold text-4xl sm:text-6xl lg:text-7xl text-[#4A0E08] mt-1">Tirunelveli.</span>
-          </h1>
-          <p class="hero-para mt-4 max-w-lg text-sm sm:text-base leading-relaxed text-[#75675D]">
-            For generations, Tirunelveli Halwa has been celebrated for its unmistakable taste, rich texture and timeless
-            craftsmanship.
-          </p>
-          <p class="hero-para mt-2.5 max-w-lg text-sm sm:text-base leading-relaxed text-[#75675D]">
-            At Nellai Specialz, we preserve that experience and bring it to your doorstep with the care it deserves.
-          </p>
-
-          <p class="hero-para mt-5 font-tamil-serif text-base font-semibold italic text-[#5A160F]">
-            நம்ம ஊர். நம்ம அல்வா.
-          </p>
-
-          <div class="hero-cta mt-7 flex flex-wrap items-center gap-4">
-            <a class="inline-flex items-center gap-2 rounded-full bg-[#5A160F] px-8 py-3.5 text-xs sm:text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-[#32110D] hover:shadow-xl hover:-translate-y-0.5"
-              href="pages/shop.html">
-              Shop Halwa <span class="text-sm transition-transform duration-300">→</span>
-            </a>
-            <a class="inline-flex items-center rounded-full border border-[#5A160F]/30 bg-[#EFE4D2]/80 backdrop-blur-sm px-8 py-3.5 text-xs sm:text-sm font-semibold text-[#5A160F] transition-all duration-300 hover:bg-[#5A160F] hover:text-white hover:border-transparent hover:shadow-md hover:-translate-y-0.5"
-              href="#combo">
-              Explore Varieties
-            </a>
-          </div>
-        </div>
-
-        <!-- Right Hero Image (High Quality Photo of Tirunelveli Halwa) -->
-        <div class="hero-img hidden">
-          <div
-            class="relative aspect-[16/11] overflow-hidden rounded-2xl border border-[#B88932]/40 bg-[#EFE4D2] shadow-2xl sm:aspect-[4/3] group">
-            <img src="assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png" width="1536" height="1024"
-              alt="Nellai Specialz Tirunelveli Karupatti Halwa package with halwa on a brass plate"
-              class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              fetchpriority="high">
-            <!-- Floating Badge overlay on image -->
-            <div
-              class="float-badge absolute bottom-4 left-4 z-20 flex items-center gap-3 rounded-xl border border-white/40 bg-white/90 p-3 shadow-lg backdrop-blur-md">
-              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
-              </div>
-              <div>
-                <p class="text-xs font-bold text-[#32110D]">100% Authentic</p>
-                <p class="text-[10px] text-[#75675D]">Pure Ghee &amp; Traditional Recipe</p>
-              </div>
+        class="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center px-5 py-8 sm:px-8 sm:py-10 lg:min-h-[540px] lg:grid-cols-2 lg:px-12 lg:py-8 xl:px-16">
+        <div class="flex h-full items-center justify-center">
+          <div class="mx-auto w-full max-w-[540px] text-center">
+            <h1 class="font-serif-title tracking-[-0.03em]">
+              <span
+                class="block text-[42px] leading-none text-[#2A110C] sm:text-[48px] md:text-[52px] lg:text-[54px]">The
+                Original Taste of</span>
+              <span
+                class="mt-1 block text-[64px] font-bold leading-[0.92] text-[#7A120A] sm:text-[72px] md:text-[78px] lg:text-[82px]">Tirunelveli.</span>
+            </h1>
+            <!-- Upper Main Divider -->
+            <div class="mx-auto mt-5 flex w-[min(360px,100%)] items-center gap-3 text-[#B88932]" aria-hidden="true">
+              <span class="h-px flex-1 bg-[#B88932]"></span>
+              <i class="bi bi-flower1 text-[20px] leading-none"></i>
+              <span class="h-px flex-1 bg-[#B88932]"></span>
+            </div>
+            <!-- Paragraph -->
+            <p
+              class="mx-auto mt-6 max-w-[470px] font-serif-title text-[17px] font-medium leading-[1.35] text-[#2A1A14] sm:text-[18px] lg:text-[19px]">
+              At Nellai Specialz, we preserve that experience and bring it to your doorstep with the care it deserves.
+            </p>
+            <!-- Tamil Text -->
+            <p
+              class="mx-auto mt-5 font-tamil-serif text-[24px] font-semibold leading-[1.3] text-[#7A120A] sm:text-[27px] lg:text-[30px]">
+              நம்ம ஊர். நம்ம அல்வா.
+            </p>
+            <!-- Lower Divider -->
+            <div class="mx-auto mt-3 flex w-[min(270px,100%)] items-center gap-3 text-[#B88932]" aria-hidden="true">
+              <span class="h-px flex-1 bg-[#B88932]"></span>
+              <i class="bi bi-flower1 text-[17px] leading-none"></i>
+              <span class="h-px flex-1 bg-[#B88932]"></span>
+            </div>
+            <!-- CTA Button -->
+            <div class="mt-6 flex justify-center">
+              <a href="pages/shop.html"
+                class="group inline-flex h-[54px] w-full max-w-[290px] items-center justify-between rounded-[6px] border border-[#B88932] bg-[#7A120A] px-6 text-[#FFF8EA] shadow-md transition hover:-translate-y-0.5 hover:bg-[#5E0C07]">
+                <span class="flex h-7 w-7 items-center justify-center text-[#D9B86C]">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993z" />
+                  </svg>
+                </span>
+                <span class="mx-auto font-serif-title text-[18px] font-semibold">Order Fresh Halwa</span>
+                <span class="text-[20px] leading-none transition-transform group-hover:translate-x-1">→</span>
+              </a>
             </div>
           </div>
         </div>
-
+        <div class="hidden h-full lg:block" aria-hidden="true"></div>
       </div>
     </section>
+
 
     <!-- 4. FEATURE TRUST BAR BELOW HERO (Exact Code Design Matching Image) -->
     <div class="usp-strip border-b border-[#5A160F]/10 bg-[#F7F1E5] py-4 shadow-inner overflow-hidden relative">
@@ -1354,7 +1338,8 @@
           <div
             class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
             <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <img src="assets/images/leaf.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
+                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
               </svg>
@@ -1365,7 +1350,9 @@
           <div
             class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
             <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <img src="assets/images/preparation.png" alt="" class="h-8 w-8 shrink-0 object-contain"
+                aria-hidden="true"><svg class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
@@ -1376,7 +1363,8 @@
           <div
             class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
             <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <img src="assets/images/2leaf.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
+                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
@@ -1387,7 +1375,8 @@
           <div
             class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
             <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <img src="assets/images/truck.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
+                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <rect x="1" y="3" width="15" height="13" rx="2" stroke-width="2" />
                 <path d="M16 8h4l3 3v5h-7V8z" stroke-width="2" />
                 <circle cx="5.5" cy="18.5" r="2.5" stroke-width="2" />
@@ -1404,7 +1393,8 @@
           <div
             class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
             <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <img src="assets/images/leaf.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
+                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
               </svg>
@@ -1415,7 +1405,9 @@
           <div
             class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
             <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <img src="assets/images/preparation.png" alt="" class="h-8 w-8 shrink-0 object-contain"
+                aria-hidden="true"><svg class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
@@ -1426,7 +1418,8 @@
           <div
             class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
             <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <img src="assets/images/2leaf.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
+                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
@@ -1437,7 +1430,8 @@
           <div
             class="flex items-center gap-2.5 bg-[#FFFDF8]/80 px-4 py-1.5 rounded-full border border-[#5A160F]/10 shadow-2xs">
             <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#5A160F] text-[#D9B86C]">
-              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <img src="assets/images/truck.png" alt="" class="h-8 w-8 shrink-0 object-contain" aria-hidden="true"><svg
+                class="hidden w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <rect x="1" y="3" width="15" height="13" rx="2" stroke-width="2" />
                 <path d="M16 8h4l3 3v5h-7V8z" stroke-width="2" />
                 <circle cx="5.5" cy="18.5" r="2.5" stroke-width="2" />
@@ -1463,36 +1457,33 @@
 
         <div class="evolution-timeline">
           <article class="evolution-step">
-            <div class="evolution-art"><img src="assets/images/process/preparation.jpg"
-                alt="Traditional halwa preparation"></div>
+            <div class="evolution-art"><img src="assets/images/fog.png" alt="Traditional halwa preparation">
+            </div>
             <span class="evolution-number">01</span>
             <h3>Traditional<br>Beginnings</h3>
           </article>
           <span class="evolution-arrow" aria-hidden="true">➜</span>
           <article class="evolution-step">
-            <div class="evolution-art"><img src="assets/images/process/ingredients.jpg"
+            <div class="evolution-art"><img src="assets/images/preparations.png"
                 alt="Halwa ingredients passed through generations"></div>
             <span class="evolution-number">02</span>
             <h3>Passed Down<br>Through Generations</h3>
           </article>
           <span class="evolution-arrow" aria-hidden="true">➜</span>
           <article class="evolution-step">
-            <div class="evolution-art"><img src="assets/images/heritage/street-shop.jpg"
-                alt="Tirunelveli halwa heritage"></div>
+            <div class="evolution-art"><img src="assets/images/Temple.png" alt="Tirunelveli halwa heritage"></div>
             <span class="evolution-number">03</span>
             <h3>Tirunelveli’s<br>Signature Touch</h3>
           </article>
           <span class="evolution-arrow" aria-hidden="true">➜</span>
           <article class="evolution-step">
-            <div class="evolution-art"><img src="assets/images/heritage/story-hero.jpg"
-                alt="Local halwa shop tradition"></div>
+            <div class="evolution-art"><img src="assets/images/halwashop.png" alt="Local halwa shop tradition"></div>
             <span class="evolution-number">04</span>
             <h3>From Local Delight<br>to Loved By All</h3>
           </article>
           <span class="evolution-arrow" aria-hidden="true">➜</span>
           <article class="evolution-step">
-            <div class="evolution-art"><img src="assets/images/products/halwa-box.jpg"
-                alt="Nellai Specialz halwa legacy"></div>
+            <div class="evolution-art"><img src="assets/images/halwa.png" alt="Nellai Specialz halwa legacy"></div>
             <span class="evolution-number">05</span>
             <h3>A Legacy That<br>Continues</h3>
           </article>
@@ -1890,157 +1881,177 @@
       </div>
     </section>
 
-    <section id="functions-events" class="w-full border-b border-[#5A160F]/10 bg-[#FDFBF7] px-4 py-8 sm:px-6 lg:px-8">
+    <section id="functions-events"
+      class="relative isolate overflow-hidden border border-[#B88932] bg-[#2B0804] px-4 py-8 text-center sm:px-8 sm:py-10 lg:min-h-[230px] lg:py-8">
+      <img src="assets/images/cta/left-decoration.png" alt=""
+        class="pointer-events-none absolute left-0 top-1/2 hidden h-40 w-40 -translate-y-1/2 object-contain opacity-90 sm:block lg:h-52 lg:w-52"
+        aria-hidden="true">
+      <img src="assets/images/cta/right-halwa.png" alt=""
+        class="pointer-events-none absolute right-0 top-1/2 hidden h-40 w-40 -translate-y-1/2 object-contain opacity-95 sm:block lg:h-52 lg:w-52"
+        aria-hidden="true">
+      <div class="pointer-events-none absolute inset-1 border border-[#B88932]/50"></div>
+      <div class="relative z-10 mx-auto flex max-w-2xl flex-col items-center justify-center">
+        <h2 class="font-serif-title text-3xl font-semibold leading-tight text-[#F6D98B] sm:text-4xl lg:text-5xl">
+          Bringing Tradition to Your Table</h2>
+        <p class="mt-2 font-serif-title text-base leading-[1.35] text-[#FFF5E6] sm:text-lg">Experience the authentic
+          taste of Tirunelveli.<br>Made with love. Served with pride.</p>
+        <a href="pages/shop.html"
+          class="mt-4 inline-flex items-center justify-center border border-[#B88932] bg-[#C4770A] px-8 py-2 font-serif-title text-lg font-bold uppercase text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#A85F08]">Shop
+          Now</a>
+      </div>
 
-      <!-- MAIN TWO COLUMN AREA -->
-      <div class="mx-auto grid max-w-[1440px] grid-cols-1 items-stretch gap-4 lg:grid-cols-2">
+      <div class="hidden">
 
-        <!-- LEFT CONTENT -->
-        <div
-          class="flex flex-col items-center justify-between border border-[#B88932]/30 bg-[#FFFDF8] px-5 py-6 text-center sm:px-8">
+        <!-- MAIN TWO COLUMN AREA -->
+        <div class="mx-auto grid max-w-[1440px] grid-cols-1 items-stretch gap-4 lg:grid-cols-2">
 
-          <h2 class="font-serif text-xl font-bold uppercase leading-tight text-[#241714] sm:text-2xl">
-            Halwa Delivery for Functions &amp; Events
-          </h2>
+          <!-- LEFT CONTENT -->
+          <div
+            class="flex flex-col items-center justify-between border border-[#B88932]/30 bg-[#FFFDF8] px-5 py-6 text-center sm:px-8">
 
-          <p class="mt-2 font-serif text-sm font-medium text-[#332421]">
-            Bulk Orders for Weddings, Parties, Corporate Events &amp; More
-          </p>
+            <h2 class="font-serif text-xl font-bold uppercase leading-tight text-[#241714] sm:text-2xl">
+              Halwa Delivery for Functions &amp; Events
+            </h2>
 
-          <!-- EVENT TYPES -->
-          <div class="my-6 flex w-full items-start divide-x divide-[#B88932]/25">
+            <p class="mt-2 font-serif text-sm font-medium text-[#332421]">
+              Bulk Orders for Weddings, Parties, Corporate Events &amp; More
+            </p>
 
-            <!-- Weddings -->
-            <div class="flex flex-1 flex-col items-center px-2">
-              <div class="flex h-8 items-center justify-center">
+            <!-- EVENT TYPES -->
+            <div class="my-6 flex w-full items-start divide-x divide-[#B88932]/25">
+
+              <!-- Weddings -->
+              <div class="flex flex-1 flex-col items-center px-2">
+                <div class="flex h-8 items-center justify-center">
                   <svg viewBox="0 0 64 64" class="h-7 w-7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="21" cy="15" r="5" stroke="#4b241c" stroke-width="2.5" />
-                  <circle cx="43" cy="15" r="5" stroke="#4b241c" stroke-width="2.5" />
-                  <circle cx="32" cy="12" r="5" fill="#b51e22" />
-                  <path d="M14 52V31C14 24 18 20 23 20" stroke="#4b241c" stroke-width="2.5" />
-                  <path d="M50 52V31C50 24 46 20 41 20" stroke="#4b241c" stroke-width="2.5" />
-                  <path d="M26 53V32C26 25 29 21 32 21C35 21 38 25 38 32V53" stroke="#b51e22" stroke-width="2.5" />
-                  <path d="M10 54H54" stroke="#d88a12" stroke-width="2.5" />
-                </svg>
+                    <circle cx="21" cy="15" r="5" stroke="#4b241c" stroke-width="2.5" />
+                    <circle cx="43" cy="15" r="5" stroke="#4b241c" stroke-width="2.5" />
+                    <circle cx="32" cy="12" r="5" fill="#b51e22" />
+                    <path d="M14 52V31C14 24 18 20 23 20" stroke="#4b241c" stroke-width="2.5" />
+                    <path d="M50 52V31C50 24 46 20 41 20" stroke="#4b241c" stroke-width="2.5" />
+                    <path d="M26 53V32C26 25 29 21 32 21C35 21 38 25 38 32V53" stroke="#b51e22" stroke-width="2.5" />
+                    <path d="M10 54H54" stroke="#d88a12" stroke-width="2.5" />
+                  </svg>
+                </div>
+
+                <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
+                  Weddings
+                </p>
               </div>
 
-              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                Weddings
-              </p>
-            </div>
+              <!-- Corporate -->
+              <div class="flex flex-1 flex-col items-center px-2">
+                <div class="flex h-12 items-center justify-center">
+                  <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 54V22H46V54" stroke="#4b241c" stroke-width="2.5" />
+                    <path d="M23 22V16H41V22" stroke="#b51e22" stroke-width="2.5" />
+                    <path d="M28 16V11H36V16" stroke="#d88a12" stroke-width="2.5" />
+                    <path d="M23 29H28V35H23V29Z" stroke="#d88a12" stroke-width="2" />
+                    <path d="M36 29H41V35H36V29Z" stroke="#d88a12" stroke-width="2" />
+                    <path d="M30 54V44H34V54" stroke="#b51e22" stroke-width="2.5" />
+                    <path d="M13 54H51" stroke="#4b241c" stroke-width="2.5" />
+                  </svg>
+                </div>
 
-            <!-- Corporate -->
-            <div class="flex flex-1 flex-col items-center px-2">
-              <div class="flex h-12 items-center justify-center">
-                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18 54V22H46V54" stroke="#4b241c" stroke-width="2.5" />
-                  <path d="M23 22V16H41V22" stroke="#b51e22" stroke-width="2.5" />
-                  <path d="M28 16V11H36V16" stroke="#d88a12" stroke-width="2.5" />
-                  <path d="M23 29H28V35H23V29Z" stroke="#d88a12" stroke-width="2" />
-                  <path d="M36 29H41V35H36V29Z" stroke="#d88a12" stroke-width="2" />
-                  <path d="M30 54V44H34V54" stroke="#b51e22" stroke-width="2.5" />
-                  <path d="M13 54H51" stroke="#4b241c" stroke-width="2.5" />
-                </svg>
+                <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
+                  Corporate Events
+                </p>
               </div>
 
-              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                Corporate Events
-              </p>
-            </div>
+              <!-- Birthday -->
+              <div class="flex flex-1 flex-col items-center px-2">
+                <div class="flex h-12 items-center justify-center">
+                  <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 35H48V53H16V35Z" stroke="#4b241c" stroke-width="2.5" />
+                    <path d="M21 27H43V35H21V27Z" stroke="#d88a12" stroke-width="2.5" />
+                    <path d="M25 20H39V27H25V20Z" stroke="#b51e22" stroke-width="2.5" />
+                    <path d="M27 20V14M32 20V12M37 20V14" stroke="#4b241c" stroke-width="2" />
+                  </svg>
+                </div>
 
-            <!-- Birthday -->
-            <div class="flex flex-1 flex-col items-center px-2">
-              <div class="flex h-12 items-center justify-center">
-                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M16 35H48V53H16V35Z" stroke="#4b241c" stroke-width="2.5" />
-                  <path d="M21 27H43V35H21V27Z" stroke="#d88a12" stroke-width="2.5" />
-                  <path d="M25 20H39V27H25V20Z" stroke="#b51e22" stroke-width="2.5" />
-                  <path d="M27 20V14M32 20V12M37 20V14" stroke="#4b241c" stroke-width="2" />
-                </svg>
+                <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
+                  Birthday Parties
+                </p>
               </div>
 
-              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                Birthday Parties
-              </p>
-            </div>
+              <!-- Family -->
+              <div class="flex flex-1 flex-col items-center px-2">
+                <div class="flex h-12 items-center justify-center">
+                  <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M32 17C25 8 15 13 15 22C15 32 32 42 32 42C32 42 49 32 49 22C49 13 39 8 32 17Z"
+                      stroke="#b51e22" stroke-width="2.5" />
+                    <circle cx="16" cy="39" r="5" stroke="#4b241c" stroke-width="2" />
+                    <circle cx="48" cy="39" r="5" stroke="#4b241c" stroke-width="2" />
+                    <circle cx="32" cy="38" r="5" stroke="#d88a12" stroke-width="2" />
+                  </svg>
+                </div>
 
-            <!-- Family -->
-            <div class="flex flex-1 flex-col items-center px-2">
-              <div class="flex h-12 items-center justify-center">
-                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M32 17C25 8 15 13 15 22C15 32 32 42 32 42C32 42 49 32 49 22C49 13 39 8 32 17Z"
-                    stroke="#b51e22" stroke-width="2.5" />
-                  <circle cx="16" cy="39" r="5" stroke="#4b241c" stroke-width="2" />
-                  <circle cx="48" cy="39" r="5" stroke="#4b241c" stroke-width="2" />
-                  <circle cx="32" cy="38" r="5" stroke="#d88a12" stroke-width="2" />
-                </svg>
+                <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
+                  Family Functions
+                </p>
               </div>
 
-              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                Family Functions
-              </p>
-            </div>
+              <!-- Festivals -->
+              <div class="flex flex-1 flex-col items-center px-2">
+                <div class="flex h-12 items-center justify-center">
+                  <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M32 11C28 18 24 22 24 29C24 34 27 38 32 38C37 38 40 34 40 29C40 22 36 18 32 11Z"
+                      stroke="#b51e22" stroke-width="2.5" />
+                    <path d="M13 42C21 38 26 39 32 45C38 39 43 38 51 42C47 51 41 55 32 55C23 55 17 51 13 42Z"
+                      stroke="#4b241c" stroke-width="2.5" />
+                  </svg>
+                </div>
 
-            <!-- Festivals -->
-            <div class="flex flex-1 flex-col items-center px-2">
-              <div class="flex h-12 items-center justify-center">
-                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M32 11C28 18 24 22 24 29C24 34 27 38 32 38C37 38 40 34 40 29C40 22 36 18 32 11Z"
-                    stroke="#b51e22" stroke-width="2.5" />
-                  <path d="M13 42C21 38 26 39 32 45C38 39 43 38 51 42C47 51 41 55 32 55C23 55 17 51 13 42Z"
-                    stroke="#4b241c" stroke-width="2.5" />
-                </svg>
+                <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
+                  Festivals &amp; Poojas
+                </p>
               </div>
 
-              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                Festivals &amp; Poojas
-              </p>
             </div>
+
+            <a href="#contact"
+              class="mt-6 inline-flex items-center justify-center rounded-md bg-[#4c0809] px-8 py-3 font-serif text-sm font-semibold uppercase text-white hover:bg-[#681012]">
+              Enquire Now
+            </a>
 
           </div>
 
-          <a href="#contact"
-            class="mt-6 inline-flex items-center justify-center rounded-md bg-[#4c0809] px-8 py-3 font-serif text-sm font-semibold uppercase text-white hover:bg-[#681012]">
-            Enquire Now
-          </a>
+
+          <!-- RIGHT IMAGE COLLAGE -->
+          <div class="grid h-[280px] min-h-0 grid-cols-12 gap-2 overflow-hidden sm:h-[300px] lg:h-[300px]">
+
+            <!-- BIG LEFT IMAGE -->
+            <div class="col-span-7 min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
+              <img src="assets/images/heritage/story-hero.jpg" alt="Indian sweets prepared for an event"
+                class="h-full w-full object-cover" loading="lazy" />
+            </div>
+
+            <!-- RIGHT IMAGES -->
+            <div class="col-span-5 grid min-h-0 grid-cols-2 grid-rows-2 gap-2">
+
+              <!-- TOP IMAGE -->
+              <div class="col-span-2 min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
+                <img src="assets/images/process/craftsmanship.jpg" alt="Indian celebration food"
+                  class="h-full w-full object-cover" loading="lazy" />
+              </div>
+
+              <!-- BOTTOM LEFT -->
+              <div class="min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
+                <img src="assets/images/products/combo-halwa.jpg" alt="Traditional Indian food"
+                  class="h-full w-full object-cover" loading="lazy" />
+              </div>
+
+              <!-- BOTTOM RIGHT -->
+              <div class="min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
+                <img src="assets/images/products/halwa-box.jpg" alt="Indian function catering"
+                  class="h-full w-full object-cover" loading="lazy" />
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
-
-
-        <!-- RIGHT IMAGE COLLAGE -->
-        <div class="grid h-[280px] min-h-0 grid-cols-12 gap-2 overflow-hidden sm:h-[300px] lg:h-[300px]">
-
-          <!-- BIG LEFT IMAGE -->
-          <div class="col-span-7 min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-            <img src="assets/images/heritage/story-hero.jpg"
-              alt="Indian sweets prepared for an event" class="h-full w-full object-cover" loading="lazy" />
-          </div>
-
-          <!-- RIGHT IMAGES -->
-          <div class="col-span-5 grid min-h-0 grid-cols-2 grid-rows-2 gap-2">
-
-            <!-- TOP IMAGE -->
-            <div class="col-span-2 min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-              <img src="assets/images/process/craftsmanship.jpg"
-                alt="Indian celebration food" class="h-full w-full object-cover" loading="lazy" />
-            </div>
-
-            <!-- BOTTOM LEFT -->
-            <div class="min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-              <img src="assets/images/products/combo-halwa.jpg"
-                alt="Traditional Indian food" class="h-full w-full object-cover" loading="lazy" />
-            </div>
-
-            <!-- BOTTOM RIGHT -->
-            <div class="min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-              <img src="assets/images/products/halwa-box.jpg"
-                alt="Indian function catering" class="h-full w-full object-cover" loading="lazy" />
-            </div>
-
-          </div>
-
-        </div>
-
       </div>
     </section>
 
