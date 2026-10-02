@@ -1,1646 +1,1195 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nellai Specialz | The Original Taste of Tirunelveli</title>
-  <meta name="description"
-    content="Shop authentic Tirunelveli Halwa from Nellai Specialz, with traditional favourites and curated varieties delivered with care.">
-  <link rel="canonical" href="https://www.nellaispecialz.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Nellai Specialz | The Original Taste of Tirunelveli">
-  <meta property="og:description"
-    content="Shop authentic Tirunelveli Halwa from Nellai Specialz, with traditional favourites and curated varieties delivered with care.">
-  <meta property="og:image" content="assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&family=Mukta+Malar:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/app.css">
-
-  <style>
-    :root {
-      --bg-cream: #FBF5E9;
-      --bg-paper: #FFFDF8;
-      --brand-maroon: #5A160F;
-      --brand-dark: #32110D;
-      --brand-darker: #1C0906;
-      --brand-gold: #B88932;
-      --brand-light-gold: #D9B86C;
-      --text-dark: #2D211B;
-      --text-muted: #75675D;
-    }
-
-    body {
-      background-color: var(--bg-cream);
-      color: var(--text-dark);
-      font-family: 'Inter', 'Noto Sans Tamil', sans-serif;
-      overflow-x: hidden;
-    }
-
-    .font-serif-title {
-      font-family: 'Cormorant Garamond', 'Noto Serif Tamil', serif;
-    }
-
-    .font-tamil-serif {
-      font-family: 'Noto Serif Tamil', 'Cormorant Garamond', serif;
-    }
-
-    .active-nav-link {
-      position: relative;
-      color: #5A160F;
-      font-weight: 600;
-    }
-
-    .active-nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: #5A160F;
-      border-radius: 2px;
-    }
-
-    /* Keyframe Animations */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(28px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes slideInRight {
-      from {
-        opacity: 0;
-        transform: translateX(35px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes scaleIn {
-      from {
-        opacity: 0;
-        transform: scale(0.92);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-    }
-
-    @keyframes gradientMove {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    @keyframes pulseGlow {
-
-      0%,
-      100% {
-        opacity: 0.4;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: 0.7;
-        transform: scale(1.08);
-      }
-    }
-
-    @keyframes marqueeScroll {
-      0% {
-        transform: translateX(0%);
-      }
-
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .animate-marquee {
-      display: flex;
-      width: max-content;
-      animation: marqueeScroll 22s linear infinite;
-    }
-
-    .animate-marquee:hover {
-      animation-play-state: paused;
-    }
-
-    /* Scroll Reveal & Stagger Animation Classes */
-    .reveal {
-      opacity: 0;
-      transform: translateY(25px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .stagger-1 {
-      transition-delay: 0.1s;
-    }
-
-    .stagger-2 {
-      transition-delay: 0.2s;
-    }
-
-    .stagger-3 {
-      transition-delay: 0.3s;
-    }
-
-    .stagger-4 {
-      transition-delay: 0.4s;
-    }
-
-    .stagger-5 {
-      transition-delay: 0.5s;
-    }
-
-    /* Hero Elements Animations */
-    .hero-h1 {
-      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
-      opacity: 0;
-    }
-
-    .hero-tag {
-      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
-      opacity: 0;
-    }
-
-    .hero-para {
-      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-      opacity: 0;
-    }
-
-    .hero-cta {
-      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-      opacity: 0;
-    }
-
-    .hero-img {
-      animation: slideInRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
-      opacity: 0;
-    }
-
-    .float-badge {
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .glow-orb {
-      animation: pulseGlow 6s ease-in-out infinite;
-    }
-
-    /* UI Component Styles */
-    .product-card {
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 20px 40px -10px rgba(90, 22, 15, 0.16);
-      border-color: rgba(184, 137, 50, 0.4);
-    }
-
-    .combo-glow {
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .combo-glow:hover {
-      box-shadow: 0 25px 50px -12px rgba(90, 22, 15, 0.22);
-    }
-
-    .review-card {
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .review-card:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 22px 42px -10px rgba(90, 22, 15, 0.15);
-      border-color: rgba(184, 137, 50, 0.5);
-    }
-
-    .step-item {
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .step-item:hover {
-      transform: translateY(-6px);
-    }
-
-    .cta-gradient {
-      background: linear-gradient(-45deg, #5A160F, #32110D, #4A120C, #250B08);
-      background-size: 300% 300%;
-      animation: gradientMove 12s ease infinite;
-    }
-
-    .heritage-banner-bg {
-      background-image: linear-gradient(to right, rgba(251, 245, 233, 0.15), rgba(251, 245, 233, 0.88)), url('assets/images/ChatGPT Image Sep 26, 2026, 12_20_12 PM.png');
-      background-size: cover;
-      background-position: center;
-    }
-
-    /* Header treatment matched to the supplied reference */
-    .ns-topbar {
-      background: #3D0C07 !important;
-      color: #E8C88A !important;
-      min-height: 38px;
-      border-color: #5A1910 !important;
-    }
-
-    .ns-topbar>div {
-      max-width: 1460px;
-    }
-
-    .ns-topbar a {
-      color: #E8C88A !important;
-    }
-
-    .ns-topbar a:hover {
-      color: #FFFFFF !important;
-    }
-
-    .ns-main-header {
-      background: #FAF5EB !important;
-      border-color: #E8DFC8 !important;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
-      backdrop-filter: none !important;
-    }
-
-    .ns-nav-inner {
-      min-height: 150px;
-      max-width: 1460px;
-      padding-top: 16px !important;
-      padding-bottom: 16px !important;
-    }
-
-    .ns-main-header nav {
-      align-self: center;
-      gap: 27px;
-      font-size: 14px;
-      letter-spacing: .08em;
-    }
-
-    .ns-main-header nav a {
-      color: #32110D;
-    }
-
-    .ns-main-header nav a:hover {
-      color: #5A160F;
-    }
-
-    .ns-main-header input {
-      background: transparent;
-      border-color: rgba(184, 137, 50, .42);
-    }
-
-    @media (min-width:1024px) {
-      .ns-nav-inner {
-        display: grid !important;
-        grid-template-columns: 1fr auto 1fr !important;
-        align-items: center;
-        min-height: 144px;
-      }
-
-      .ns-nav-inner>nav {
-        grid-column: 1;
-        grid-row: 1;
-        justify-self: start;
-      }
-
-      .ns-nav-inner>.ns-logo {
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: center;
-      }
-
-      .ns-nav-inner>.ns-tools {
-        grid-column: 3;
-        grid-row: 1;
-        justify-self: end;
-      }
-
-      .ns-nav-inner>.ns-logo img {
-        height: 68px;
-      }
-
-      .ns-nav-inner>.ns-logo>a {
-        transform: translateY(2px);
-      }
-    }
-
-    @media (max-width:1023px) {
-      .ns-nav-inner {
-        min-height: 78px;
-      }
-    }
-  </style>
-  <script src="assets/js/header.js"></script>
-  <script src="assets/js/footer.js"></script>
-
-</head>
-
-<body class="bg-[#FBF5E9] text-[#2D211B] antialiased">
-
-  <!-- Dynamic Common Header Template -->
-  <div id="site-header"></div>
-
-  <main>
-    <!-- 3. HERO SECTION -->
-    <section id="home-hero" class="relative isolate w-full overflow-hidden bg-[#F8E9D2] min-h-[480px] lg:min-h-[540px]">
-      <img src="assets/images/Tirunelveli Halwa at Sunset.webp" alt="Tirunelveli Halwa background" aria-hidden="true"
-        fetchpriority="high" class="absolute inset-0 -z-20 h-full w-full object-cover object-center lg:object-right">
-      <div
-        class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[#FFF7E8]/90 via-[#FFF7E8]/45 to-transparent">
-      </div>
-      <div
-        class="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center px-5 py-8 sm:px-8 sm:py-10 lg:min-h-[540px] lg:grid-cols-2 lg:px-12 lg:py-8 xl:px-16">
-        <div class="flex h-full items-center justify-center">
-          <div
-            class="mx-auto w-full max-w-[540px] text-center p-6 sm:p-8 rounded-2xl bg-[#FFF7E8]/70 backdrop-blur-[10px] shadow-[0_20px_40px_rgba(42,17,12,0.18)] border border-[#B88932]/30">
-            <h1 class="font-serif-title tracking-[-0.03em]">
-              <span
-                class="block text-[42px] leading-none text-[#2A110C] sm:text-[48px] md:text-[52px] lg:text-[54px]">The
-                Original Taste of</span>
-              <span
-                class="mt-1 block text-[64px] font-bold leading-[0.92] text-[#7A120A] sm:text-[72px] md:text-[78px] lg:text-[82px]">Tirunelveli.</span>
-            </h1>
-            <!-- Upper Main Divider -->
-            <div class="mx-auto mt-5 flex w-[min(360px,100%)] items-center gap-3 text-[#B88932]" aria-hidden="true">
-              <span class="h-px flex-1 bg-[#B88932]"></span>
-              <i class="bi bi-flower1 text-[20px] leading-none"></i>
-              <span class="h-px flex-1 bg-[#B88932]"></span>
-            </div>
-            <!-- Paragraph -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nellai Specialz | The Original Taste of Tirunelveli</title>
+    <meta
+      name="description"
+      content="Shop authentic Tirunelveli Halwa from Nellai Specialz, with traditional favourites and curated varieties delivered with care."
+    />
+    <link rel="canonical" href="https://www.nellaispecialz.com/" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Nellai Specialz | The Original Taste of Tirunelveli"
+    />
+    <meta
+      property="og:description"
+      content="Shop authentic Tirunelveli Halwa from Nellai Specialz, with traditional favourites and curated varieties delivered with care."
+    />
+    <meta
+      property="og:image"
+      content="assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/footer.js"></script>
+  </head>
+  <body
+    class="overflow-x-hidden bg-[#fff8eb] text-[#2c160f] antialiased selection:bg-[#b88932] selection:text-white"
+  >
+    <div id="site-header"></div>
+    <main>
+      <!-- HERO -->
+      <section
+        class="relative isolate min-h-[430px] overflow-hidden bg-[#f0d6a9] sm:min-h-[500px] lg:min-h-[530px]"
+      >
+        <img
+          src="assets/images/Tirunelveli Halwa at Sunset.webp"
+          alt="Tirunelveli halwa served in a brass bowl"
+          fetchpriority="high"
+          class="absolute inset-0 -z-20 h-full w-full object-cover object-[62%_center] lg:object-center"
+        />
+        <div
+          class="absolute inset-0 -z-10 bg-gradient-to-r from-[#fff6df] via-[#fff6df]/85 to-transparent lg:via-[#fff6df]/55"
+        ></div>
+        <div
+          class="mx-auto flex min-h-[430px] max-w-7xl items-center px-5 py-12 sm:min-h-[500px] sm:px-8 lg:min-h-[530px] lg:px-12"
+        >
+          <div class="max-w-xl motion-safe:animate-[fadeUp_.8s_ease-out]">
             <p
-              class="mx-auto mt-6 max-w-[470px] font-serif-title text-[17px] font-medium leading-[1.35] text-[#2A1A14] sm:text-[18px] lg:text-[19px]">
-              At Nellai Specialz, we preserve that experience and bring it to your doorstep with the care it deserves.
+              class="mb-3 text-[10px] font-bold uppercase tracking-[.34em] text-[#8b5f28]"
+            >
+              Authentic Tirunelveli Halwa
             </p>
-            <!-- Tamil Text -->
+            <h1
+              class="font-serif text-4xl font-semibold leading-[.99] text-[#3a1710] sm:text-5xl lg:text-5xl"
+            >
+              The Original Taste<br />of Tirunelveli.
+            </h1>
             <p
-              class="mx-auto mt-5 font-tamil-serif text-[24px] font-semibold leading-[1.3] text-[#7A120A] sm:text-[27px] lg:text-[30px]">
+              class="mt-5 max-w-md font-serif text-lg leading-snug text-[#5c3825] sm:text-xl"
+            >
+              For generations, Tirunelveli Halwa has been more than a sweet - it
+              is a taste of tradition, family, and timeless craftsmanship.
+            </p>
+            <p class="mt-3 font-serif text-lg font-semibold text-[#7e2417]">
               நம்ம ஊர். நம்ம அல்வா.
             </p>
-            <!-- Lower Divider -->
-            <div class="mx-auto mt-3 flex w-[min(270px,100%)] items-center gap-3 text-[#B88932]" aria-hidden="true">
-              <span class="h-px flex-1 bg-[#B88932]"></span>
-              <i class="bi bi-flower1 text-[17px] leading-none"></i>
-              <span class="h-px flex-1 bg-[#B88932]"></span>
-            </div>
-            <!-- CTA Button -->
-            <div class="mt-6 flex justify-center">
-              <a href="pages/shop.html"
-                class="group inline-flex h-[54px] w-full max-w-[290px] items-center justify-between rounded-[6px] border border-[#B88932] bg-[#7A120A] px-6 text-[#FFF8EA] shadow-md transition hover:-translate-y-0.5 hover:bg-[#5E0C07]">
-                <span class="flex h-7 w-7 items-center justify-center text-[#D9B86C]">
-                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                    aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993z" />
-                  </svg>
-                </span>
-                <span class="mx-auto font-serif-title text-[#ffffff] text-[18px] font-semibold">Order Fresh Halwa</span>
-                <span
-                  class="text-[20px] leading-none text-[#D9B86C] transition-transform group-hover:translate-x-1">→</span>
-              </a>
-            </div>
+            <a
+              href="pages/shop.html"
+              class="mt-5 inline-flex min-h-11 items-center gap-3 rounded-full bg-[#4d190e] px-6 py-3 text-sm font-semibold text-[#fff6df] shadow-lg transition hover:-translate-y-1 hover:bg-[#702217]"
+              >Order Fresh Halwa <span aria-hidden="true">→</span></a
+            >
           </div>
         </div>
-        <div class="hidden h-full lg:block" aria-hidden="true"></div>
-      </div>
-    </section>
+      </section>
 
-
-    <!-- 4. FEATURE TRUST BAR BELOW HERO (Exact Reference Design Matching Image) -->
-    <div
-      class="w-full bg-[#1F0802] border-t border-b border-[#B88932] py-4 sm:py-5 px-8 sm:px-14 md:px-20 text-[#FFF7EA] relative z-10 shadow-lg overflow-hidden">
-
-      <!-- Left Corner Flower Ornament (Always anchored at far left edge) -->
-      <!-- <div
-        class="absolute left-3 sm:left-6 md:left-8 top-14 -translate-y-1/2 flex items-center text-[#D9B86C] text-xl sm:text-xl md:text-2xl"
-        aria-hidden="true">
-        <i class="bi bi-flower1"></i>
-      </div> -->
-
-      <!-- 4 USP Items Grid (Single Horizontal Line Across All Screens) -->
-      <div class="w-full max-w-[1600px] mx-auto grid grid-cols-4 items-center divide-x divide-[#B88932]/40">
-
-        <!-- Item 1: Freshly Packed -->
-        <div class="flex items-center justify-center gap-2 sm:gap-2.5 px-2">
-          <div
-            class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center shrink-0 text-[#D9B86C] overflow-visible">
-            <img src="assets/images/leaf.png" alt=""
-              class="h-full w-full object-contain scale-[2.2] filter brightness-0 invert sepia saturate-[6] hue-rotate-[15deg]"
-              aria-hidden="true">
-          </div>
-          <span
-            class="font-serif-title text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-medium tracking-wide text-[#F5E6CC] whitespace-nowrap">Freshly
-            Packed</span>
-        </div>
-
-        <!-- Item 2: Traditional Craftsmanship -->
-        <div class="flex items-center justify-center gap-2 sm:gap-2.5 px-2">
-          <div
-            class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center shrink-0 text-[#D9B86C] overflow-visible">
-            <img src="assets/images/preparation.png" alt=""
-              class="h-full w-full object-contain scale-[2.2] filter brightness-0 invert sepia saturate-[6] hue-rotate-[15deg]"
-              aria-hidden="true">
-          </div>
-          <span
-            class="font-serif-title text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-medium tracking-wide text-[#F5E6CC] whitespace-nowrap">Traditional
-            Craftsmanship</span>
-        </div>
-
-        <!-- Item 3: Premium Ingredients -->
-        <div class="flex items-center justify-center gap-2 sm:gap-2.5 px-2">
-          <div
-            class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center shrink-0 text-[#D9B86C] overflow-visible">
-            <img src="assets/images/2leaf.png" alt=""
-              class="h-full w-full object-contain scale-[2.2] filter brightness-0 invert sepia saturate-[6] hue-rotate-[15deg]"
-              aria-hidden="true">
-          </div>
-          <span
-            class="font-serif-title text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-medium tracking-wide text-[#F5E6CC] whitespace-nowrap">Premium
-            Ingredients</span>
-        </div>
-
-        <!-- Item 4: Delivered with Care -->
-        <div class="flex items-center justify-center gap-2 sm:gap-2.5 px-2">
-          <div
-            class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center shrink-0 text-[#D9B86C] overflow-visible">
-            <img src="assets/images/truck.png" alt=""
-              class="h-full w-full object-contain scale-[2.2] filter brightness-0 invert sepia saturate-[6] hue-rotate-[15deg]"
-              aria-hidden="true">
-          </div>
-          <span
-            class="font-serif-title text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-medium tracking-wide text-[#F5E6CC] whitespace-nowrap">Delivered
-            with Care</span>
-        </div>
-
-      </div>
-
-      <!-- Right Corner Flower Ornament (Always anchored at far right edge) -->
-      <!-- <div
-        class="absolute right-3 sm:right-6 md:right-8 top-14 -translate-y-1/2 flex items-center text-[#D9B86C] text-xl sm:text-xl md:text-2xl"
-        aria-hidden="true">
-        <i class="bi bi-flower1"></i>
-      </div> -->
-
-    </div>
-
-    <!-- 5. HOW HALWA EVOLVED -->
-    <section class="bg-[#fbf6ee] border-b border-[#eadcc8] py-16 sm:py-20 px-6 text-[#241710]"
-      aria-labelledby="evolution-title">
-      <div class="max-w-[1180px] mx-auto text-center">
-        <!-- Top Flower Ornament -->
-        <div class="flex items-center justify-center gap-3 text-[#b88932] mb-3" aria-hidden="true">
-          <span class="block w-[100px] h-px bg-[#b88932]"></span>
-          <i class="bi bi-flower1 text-[#b88932] text-xl leading-none"></i>
-          <span class="block w-[100px] h-px bg-[#b88932]"></span>
-        </div>
-        <!-- Title -->
-        <h2 id=""
-          class="m-0 font-serif-title text-[60px] max-sm:text-[48px] leading-none font-semibold tracking-[-0.02em] text-[#1e120d]">
-          How Halwa <em class="not-italic text-[1.45em]">Evolved</em></h2>
-        <!-- Flower Divider Rule -->
-        <div class="flex items-center justify-center gap-3 mt-4 mb-5" aria-hidden="true">
-          <span class="w-[140px] sm:w-[180px] h-px bg-[#b88932]/70"></span>
-          <i class="bi bi-flower1 text-[#b88932] text-lg leading-none"></i>
-          <span class="w-[140px] sm:w-[180px] h-px bg-[#b88932]/70"></span>
-        </div>
-        <!-- Expanded Description -->
-        <p
-          class="font-serif-title text-[18px] sm:text-[20px] max-w-[850px] leading-[1.4] mx-auto mb-12 sm:mb-16 text-[#2c211a]">
-          From royal kitchens to street corners, from simple wholesome ingredients to a world-renowned signature style
-          Tirunelveli Halwa has journeyed through generations and timeless sweetness in every bite.
-        </p>
-
-        <!-- Timeline -->
-        <div
-          class="grid grid-cols-[1fr_32px_1fr_32px_1fr_32px_1fr_32px_1fr] max-[900px]:grid-cols-2 max-[600px]:grid-cols-2 items-center gap-0 max-[900px]:gap-[26px_10px]">
-          <!-- Step 01 -->
-          <article class="min-w-0 text-center">
-            <div class="h-[119px] max-[600px]:h-[100px] flex items-center justify-center mb-[3px] overflow-hidden">
-              <img src="assets/images/fog.png" alt="Traditional halwa preparation"
-                class="w-[145px] h-[112px] max-[600px]:w-[125px] max-[600px]:h-[96px] object-cover sepia-[.7] saturate-[.45] contrast-[.9] mix-blend-multiply opacity-[.78]">
-            </div>
-            <span
-              class="inline-flex items-center justify-center w-[45px] h-[21px] rounded-xl bg-[#b88932] text-[#fff8e7] text-[12px] font-semibold font-sans mb-2">01</span>
-            <h3
-              class="m-0 text-[#281910] font-serif-title text-[18px] max-[600px]:text-[16px] font-semibold leading-[1.05]">
-              Traditional<br>Beginnings</h3>
-          </article>
-          <span class="text-[#a97819] text-[19px] text-center max-[900px]:hidden" aria-hidden="true">➜</span>
-          <!-- Step 02 -->
-          <article class="min-w-0 text-center">
-            <div class="h-[119px] max-[600px]:h-[100px] flex items-center justify-center mb-[3px] overflow-hidden">
-              <img src="assets/images/preparations.png" alt="Halwa ingredients passed through generations"
-                class="w-[145px] h-[112px] max-[600px]:w-[125px] max-[600px]:h-[96px] object-cover sepia-[.7] saturate-[.45] contrast-[.9] mix-blend-multiply opacity-[.78]">
-            </div>
-            <span
-              class="inline-flex items-center justify-center w-[45px] h-[21px] rounded-xl bg-[#b88932] text-[#fff8e7] text-[12px] font-semibold font-sans mb-2">02</span>
-            <h3
-              class="m-0 text-[#281910] font-serif-title text-[18px] max-[600px]:text-[16px] font-semibold leading-[1.05]">
-              Passed Down<br>Through Generations</h3>
-          </article>
-          <span class="text-[#a97819] text-[19px] text-center max-[900px]:hidden" aria-hidden="true">➜</span>
-          <!-- Step 03 -->
-          <article class="min-w-0 text-center">
-            <div class="h-[119px] max-[600px]:h-[100px] flex items-center justify-center mb-[3px] overflow-hidden">
-              <img src="assets/images/Temple.png" alt="Tirunelveli halwa heritage"
-                class="w-[145px] h-[112px] max-[600px]:w-[125px] max-[600px]:h-[96px] object-cover sepia-[.7] saturate-[.45] contrast-[.9] mix-blend-multiply opacity-[.78]">
-            </div>
-            <span
-              class="inline-flex items-center justify-center w-[45px] h-[21px] rounded-xl bg-[#b88932] text-[#fff8e7] text-[12px] font-semibold font-sans mb-2">03</span>
-            <h3
-              class="m-0 text-[#281910] font-serif-title text-[18px] max-[600px]:text-[16px] font-semibold leading-[1.05]">
-              Tirunelveli's<br>Signature Touch</h3>
-          </article>
-          <span class="text-[#a97819] text-[19px] text-center max-[900px]:hidden" aria-hidden="true">➜</span>
-          <!-- Step 04 -->
-          <article class="min-w-0 text-center">
-            <div class="h-[119px] max-[600px]:h-[100px] flex items-center justify-center mb-[3px] overflow-hidden">
-              <img src="assets/images/halwashop.png" alt="Local halwa shop tradition"
-                class="w-[145px] h-[112px] max-[600px]:w-[125px] max-[600px]:h-[96px] object-cover sepia-[.7] saturate-[.45] contrast-[.9] mix-blend-multiply opacity-[.78]">
-            </div>
-            <span
-              class="inline-flex items-center justify-center w-[45px] h-[21px] rounded-xl bg-[#b88932] text-[#fff8e7] text-[12px] font-semibold font-sans mb-2">04</span>
-            <h3
-              class="m-0 text-[#281910] font-serif-title text-[18px] max-[600px]:text-[16px] font-semibold leading-[1.05]">
-              From Local Delight<br>to Loved By All</h3>
-          </article>
-          <span class="text-[#a97819] text-[19px] text-center max-[900px]:hidden" aria-hidden="true">➜</span>
-          <!-- Step 05 -->
-          <article class="min-w-0 text-center">
-            <div class="h-[119px] max-[600px]:h-[100px] flex items-center justify-center mb-[3px] overflow-hidden">
-              <img src="assets/images/halwa.png" alt="Nellai Specialz halwa legacy"
-                class="w-[145px] h-[112px] max-[600px]:w-[125px] max-[600px]:h-[96px] object-cover sepia-[.7] saturate-[.45] contrast-[.9] mix-blend-multiply opacity-[.78]">
-            </div>
-            <span
-              class="inline-flex items-center justify-center w-[45px] h-[21px] rounded-xl bg-[#b88932] text-[#fff8e7] text-[12px] font-semibold font-sans mb-2">05</span>
-            <h3
-              class="m-0 text-[#281910] font-serif-title text-[18px] max-[600px]:text-[16px] font-semibold leading-[1.05]">
-              A Legacy That<br>Continues</h3>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. FEATURED PRODUCT -->
-    <section class="bg-[#fffdfa] py-14 sm:py-16 px-6 max-sm:px-4 border-b border-[#eadfce]"
-      aria-labelledby="featured-product-title">
-      <div class="max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-
-        <!-- Gallery (Cols 1-6) -->
-        <div class="lg:col-span-6 w-full max-w-[420px] mx-auto">
-          <!-- Main Image Container (Reduced Size as requested) -->
-          <div
-            class="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#20100b] shadow-md border border-[#E8DFC8]">
-            <img id="featuredMainImg" src="assets/images/products/classic-halwa.jpg"
-              alt="Tirunelveli Halwa served in a traditional bowl"
-              class="w-full h-full object-cover transition-all duration-300">
-            <button
-              class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-xs text-[#32110d] text-lg font-bold flex items-center justify-center shadow-xs hover:bg-white transition-all cursor-pointer"
-              type="button" aria-label="View product image">⌕</button>
-          </div>
-
-          <!-- Thumbnails Row + Enlarged Navigation Buttons -->
-          <div class="flex items-center gap-3 mt-4">
-            <button id="prevThumbBtn" type="button"
-              class="shrink-0 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#FAF3E6] border-2 border-[#B88932]/60 text-[#5A120C] text-2xl font-bold flex items-center justify-center hover:bg-[#5A120C] hover:text-white transition-all shadow-md cursor-pointer hover:scale-105 active:scale-95"
-              aria-label="Previous image">‹</button>
-
-            <div class="grid grid-cols-4 gap-2.5 flex-1">
-              <button type="button"
-                class="thumb-btn rounded-xl overflow-hidden border-2 border-[#5A120C] ring-2 ring-[#5A120C]/20 transition-all focus:outline-none cursor-pointer scale-[1.03]"
-                data-src="assets/images/products/classic-halwa.jpg">
-                <img src="assets/images/products/classic-halwa.jpg" alt="Tirunelveli Halwa"
-                  class="w-full aspect-square object-cover">
-              </button>
-              <button type="button"
-                class="thumb-btn rounded-xl overflow-hidden border-2 border-transparent hover:border-[#B88932]/60 transition-all opacity-70 hover:opacity-100 focus:outline-none cursor-pointer"
-                data-src="assets/images/products/karupatti-halwa.jpg">
-                <img src="assets/images/products/karupatti-halwa.jpg" alt="Karupatti Halwa"
-                  class="w-full aspect-square object-cover">
-              </button>
-              <button type="button"
-                class="thumb-btn rounded-xl overflow-hidden border-2 border-transparent hover:border-[#B88932]/60 transition-all opacity-70 hover:opacity-100 focus:outline-none cursor-pointer"
-                data-src="assets/images/products/halwa-bowl.jpg">
-                <img src="assets/images/products/halwa-bowl.jpg" alt="Halwa bowl"
-                  class="w-full aspect-square object-cover">
-              </button>
-              <button type="button"
-                class="thumb-btn rounded-xl overflow-hidden border-2 border-transparent hover:border-[#B88932]/60 transition-all opacity-70 hover:opacity-100 focus:outline-none cursor-pointer"
-                data-src="assets/images/products/halwa-box.jpg">
-                <img src="assets/images/products/halwa-box.jpg" alt="Halwa gift box"
-                  class="w-full aspect-square object-cover">
-              </button>
-            </div>
-
-            <button id="nextThumbBtn" type="button"
-              class="shrink-0 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#FAF3E6] border-2 border-[#B88932]/60 text-[#5A120C] text-2xl font-bold flex items-center justify-center hover:bg-[#5A120C] hover:text-white transition-all shadow-md cursor-pointer hover:scale-105 active:scale-95"
-              aria-label="Next image">›</button>
-          </div>
-        </div>
-
-        <!-- Product Copy & Variations (Cols 7-12) -->
-        <div class="lg:col-span-6 text-[#24140d]">
-          <h2 id="featured-product-title"
-            class="mt-2 mb-1 font-serif-title text-[38px] sm:text-[44px] leading-none font-bold uppercase tracking-tight text-[#24140d]">
-            Tirunelveli Halwa</h2>
-          <p class="text-[#9a6917] font-serif-title text-[18px] mb-2 font-medium">The authentic taste of tradition.</p>
-          <div class="text-[#b8790b] text-[15px] mb-3 flex items-center gap-2">
-            <span>★★★★★</span>
-            <span class="text-[#2c211a] font-sans text-[13px] font-semibold">(125 Reviews)</span>
-          </div>
-
-          <!-- Dynamic Price Display -->
-          <div class="mt-1 mb-4 flex items-baseline gap-2">
-            <span id="featuredProductPrice"
-              class="font-serif-title text-[32px] sm:text-[36px] font-bold text-[#5A120C]">₹600.00</span>
-            <span class="text-xs text-[#8C7D6F] font-semibold uppercase tracking-wider">(Inclusive of all taxes)</span>
-          </div>
-
-          <!-- Selectable Variations -->
-          <p class="font-sans text-[12px] font-bold tracking-[0.14em] text-[#8b5d16] uppercase">CHOOSE PACK SIZE</p>
-          <div class="grid grid-cols-4 gap-2.5 mt-2 mb-4">
-            <button type="button"
-              class="pack-size-btn border border-[#dfd5c8] py-2.5 px-1.5 bg-[#fffdfa] rounded-xl text-[#24140d] transition-all hover:border-[#5a160f] text-center"
-              data-price="₹180.00" data-size="250g">
-              <b class="block text-sm">250g</b>
-              <span class="block mt-1 text-xs text-[#6b7280]">₹180</span>
-            </button>
-            <button type="button"
-              class="pack-size-btn border border-[#dfd5c8] py-2.5 px-1.5 bg-[#fffdfa] rounded-xl text-[#24140d] transition-all hover:border-[#5a160f] text-center"
-              data-price="₹320.00" data-size="500g">
-              <b class="block text-sm">500g</b>
-              <span class="block mt-1 text-xs text-[#6b7280]">₹320</span>
-            </button>
-            <button type="button"
-              class="pack-size-btn active-pack-btn relative border-2 border-[#5a160f] bg-[#FFF9F3] py-2.5 px-1.5 rounded-xl text-[#24140d] font-bold transition-all shadow-xs text-center"
-              data-price="₹600.00" data-size="1 Kg">
-              <b class="block text-sm">1 Kg</b>
-              <span class="block mt-1 text-xs text-[#5a160f] font-semibold">₹600</span>
-              <span
-                class="check-badge absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#5a160f] text-[10px] text-white">✓</span>
-            </button>
-            <button type="button"
-              class="pack-size-btn border border-[#dfd5c8] py-2.5 px-1.5 bg-[#fffdfa] rounded-xl text-[#24140d] transition-all hover:border-[#5a160f] text-center"
-              data-price="₹1,150.00" data-size="2 Kg">
-              <b class="block text-sm">2 Kg</b>
-              <span class="block mt-1 text-xs text-[#6b7280]">₹1,150</span>
-            </button>
-          </div>
-
-          <p class="text-[#4d8032] text-[13px] font-semibold mb-4 flex items-center gap-2">
-            <span
-              class="w-4 h-4 border border-[#4d8032] rounded-full inline-flex items-center justify-center text-[10px] leading-none bg-[#f2f8ee]">✓</span>
-            In stock — Fresh Batch Ready to Ship
-          </p>
-
-          <p class="max-w-[560px] font-serif-title text-[17px] leading-[1.45] text-[#3D2E25] mb-5">
-            Indulge in the rich, soft and melt-in-mouth delicious Tirunelveli Halwa. Made with pure ingredients and
-            traditional slow-cooking for that authentic taste you'll love.
-          </p>
-
-          <!-- Interactive Quantity & CTA Buttons -->
-          <div class="flex items-center gap-3.5 max-sm:flex-wrap">
-            <div class="flex items-center border border-[#ddd1c4] rounded-xl overflow-hidden bg-white shadow-2xs">
-              <button type="button" id="qtyMinusBtn"
-                class="w-10 h-11 flex items-center justify-center text-lg font-bold text-[#32110D] hover:bg-[#FAF5EB] transition-colors"
-                aria-label="Decrease quantity">−</button>
-              <span id="qtyValue"
-                class="w-10 h-11 flex items-center justify-center font-bold text-base text-[#32110D]">1</span>
-              <button type="button" id="qtyPlusBtn"
-                class="w-10 h-11 flex items-center justify-center text-lg font-bold text-[#32110D] hover:bg-[#FAF5EB] transition-colors"
-                aria-label="Increase quantity">+</button>
-            </div>
-
-            <a href="pages/shop.html"
-              class="flex-1 text-center py-3 px-4 bg-[#54200d] text-white rounded-xl font-sans text-[14px] font-bold hover:bg-[#3D1407] transition-all shadow-md hover:-translate-y-0.5 max-sm:min-w-[140px]">
-              ADD TO CART
-            </a>
-            <a href="pages/shop.html"
-              class="flex-1 text-center py-3 px-4 bg-[#B88932] text-white rounded-xl font-sans text-[14px] font-bold hover:bg-[#9E7324] transition-all shadow-md hover:-translate-y-0.5 max-sm:min-w-[140px]">
-              BUY NOW
-            </a>
-          </div>
-
-          <div
-            class="mt-6 pt-4 border-t border-[#e4d9cc] text-[#4f463e] font-serif-title text-[14px] flex items-center gap-4 flex-wrap">
-            <span>✦ Secure Packaging</span>
-            <span>|</span>
-            <span>✦ No Preservatives</span>
-            <span>|</span>
-            <span>✦ 100% Pure Ghee & Wheat</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Interactivity Script for Featured Product Gallery & Variations -->
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // Thumbnail Image Switcher
-        const mainImg = document.getElementById('featuredMainImg');
-        const thumbBtns = document.querySelectorAll('.thumb-btn');
-        let currentThumbIdx = 0;
-
-        function updateMainImage(idx) {
-          if (!thumbBtns[idx]) return;
-          currentThumbIdx = idx;
-          thumbBtns.forEach((b, i) => {
-            if (i === idx) {
-              b.classList.add('border-[#5A120C]', 'opacity-100');
-              b.classList.remove('border-transparent', 'opacity-75');
-            } else {
-              b.classList.remove('border-[#5A120C]', 'opacity-100');
-              b.classList.add('border-transparent', 'opacity-75');
-            }
-          });
-          const newSrc = thumbBtns[idx].getAttribute('data-src');
-          if (mainImg && newSrc) {
-            mainImg.src = newSrc;
-          }
-        }
-
-        thumbBtns.forEach((btn, idx) => {
-          btn.addEventListener('click', () => updateMainImage(idx));
-        });
-
-        const prevBtn = document.getElementById('prevThumbBtn');
-        const nextBtn = document.getElementById('nextThumbBtn');
-        if (prevBtn) {
-          prevBtn.addEventListener('click', () => {
-            const newIdx = (currentThumbIdx - 1 + thumbBtns.length) % thumbBtns.length;
-            updateMainImage(newIdx);
-          });
-        }
-        if (nextBtn) {
-          nextBtn.addEventListener('click', () => {
-            const newIdx = (currentThumbIdx + 1) % thumbBtns.length;
-            updateMainImage(newIdx);
-          });
-        }
-
-        // Pack Size Variation Selector & Price Updater
-        const packBtns = document.querySelectorAll('.pack-size-btn');
-        const priceDisplay = document.getElementById('featuredProductPrice');
-
-        packBtns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            packBtns.forEach(b => {
-              b.classList.remove('border-2', 'border-[#5a160f]', 'bg-[#FFF9F3]', 'font-bold', 'shadow-xs');
-              b.classList.add('border', 'border-[#dfd5c8]', 'bg-[#fffdfa]');
-              const badge = b.querySelector('.check-badge');
-              if (badge) badge.remove();
-            });
-
-            btn.classList.remove('border', 'border-[#dfd5c8]', 'bg-[#fffdfa]');
-            btn.classList.add('border-2', 'border-[#5a160f]', 'bg-[#FFF9F3]', 'font-bold', 'shadow-xs');
-
-            const check = document.createElement('span');
-            check.className = 'check-badge absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#5a160f] text-[10px] text-white';
-            check.textContent = '✓';
-            btn.appendChild(check);
-
-            const newPrice = btn.getAttribute('data-price');
-            if (priceDisplay && newPrice) {
-              priceDisplay.textContent = newPrice;
-            }
-          });
-        });
-
-        // Quantity Counter
-        const qtyMinus = document.getElementById('qtyMinusBtn');
-        const qtyPlus = document.getElementById('qtyPlusBtn');
-        const qtyVal = document.getElementById('qtyValue');
-        let currentQty = 1;
-
-        if (qtyMinus && qtyPlus && qtyVal) {
-          qtyMinus.addEventListener('click', () => {
-            if (currentQty > 1) {
-              currentQty--;
-              qtyVal.textContent = currentQty;
-            }
-          });
-          qtyPlus.addEventListener('click', () => {
-            currentQty++;
-            qtyVal.textContent = currentQty;
-          });
-        }
-      });
-    </script>
-
-    <!-- FROM THE STREETS OF TOWN — Heritage Story Section -->
-    <section class="relative overflow-hidden py-5 sm:py-8 lg:py-6 px-4 sm:px-6" style="background: #F5EEE0;"
-      aria-labelledby="streets-title">
-
-      <div class="max-w-[1200px] mx-auto relative z-[2]">
-
-        <!-- Main Card with Image as Background -->
-        <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden reveal"
-          style="border: 1px solid rgba(184,137,50,0.18);
-                 box-shadow: 0 8px 40px rgba(50,17,13,0.07);">
-
-          <!-- Background Illustration Image -->
-          <img src="assets/images/ChatGPT Image Sep 26, 2026, 12_20_12 PM.png"
-            alt="Vintage sepia illustration of Tirunelveli temple streets with traditional chariot procession"
-            class="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[460px] object-cover object-center" loading="lazy">
-
-          <!-- Top Gradient Overlay for Text Readability -->
-          <div class="absolute inset-0 pointer-events-none"
-            style="background: linear-gradient(to bottom, rgba(243,235,219,0.95) 0%, rgba(243,235,219,0.85) 25%, rgba(243,235,219,0.4) 50%, transparent 70%);"></div>
-
-          <!-- Overlaid Content -->
-          <div class="absolute inset-x-0 top-0 z-10 px-6 sm:px-10 pt-5 sm:pt-7">
-
-            <!-- Title Row: Icon + Heading + Line -->
-            <div class="flex items-center gap-3 mb-3 sm:mb-4">
-              <div class="w-11 h-11 sm:w-13 sm:h-13 rounded-full flex items-center justify-center shrink-0"
-                style="background: linear-gradient(135deg, #F5E8D0, #EBD9B8); border: 1.5px solid rgba(184,137,50,0.3);">
-                <img src="assets/images/truck.png" alt="" class="w-6 h-6 sm:w-7 sm:h-7 object-contain"
-                  aria-hidden="true">
-              </div>
-              <h2 id="streets-title"
-                class="font-serif-title text-[26px] sm:text-[34px] lg:text-[40px] font-bold leading-tight text-[#2A130C] tracking-tight">
-                From the Streets of Town</h2>
-              <span class="hidden sm:block flex-1 h-px ml-2"
-                style="background: linear-gradient(90deg, #B88932 0%, rgba(184,137,50,0.15) 60%, transparent 100%);"></span>
-            </div>
-
-            <!-- Centered Description -->
+      <!-- CATEGORIES -->
+      <section
+        class="bg-[#fff8eb] px-5 py-14 sm:px-8 lg:px-12 lg:py-16"
+        data-reveal
+      >
+        <div class="mx-auto w-full max-w-[1280px] px-4 text-center sm:px-6 lg:px-8">
+          <div class="flex items-center justify-center gap-5 text-[#b88932]">
+            <span class="h-px w-14 bg-[#b88932] sm:w-16"></span>
             <p
-              class="font-serif-title text-[16px] sm:text-[18px] leading-[1.7] text-[#3D2E25] text-center max-w-[480px] mx-auto italic">
-              Born in the bustling streets of Tirunelveli,<br class="hidden sm:inline">
-              our Halwa carries the legacy of a town that<br class="hidden sm:inline">
-              lives and loves its traditions.
+              class="text-[12px] font-bold uppercase tracking-[.28em] text-[#4a2919] sm:text-[15px]"
+            >
+              Shop by category
+            </p>
+            <span class="h-px w-14 bg-[#b88932] sm:w-16"></span>
+          </div>
+          <h2
+            class="mt-2 font-serif text-[32px] font-semibold leading-none text-[#3a1710] sm:text-[30px] md:text-[36px] lg:text-[40px]"
+          >
+            What are you craving today?
+          </h2>
+          <p class="mt-4 text-sm text-[#806b58] sm:text-base lg:text-lg">
+            Discover our authentic sweets, snacks, and traditional favourites.
+          </p>
+          <div
+            class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6"
+          >
+            <a
+              href="pages/shop.html"
+              class="group relative h-[348px] overflow-hidden rounded-2xl bg-[#fdf6e9] shadow-[0_8px_24px_rgba(70,38,18,0.12)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(70,38,18,0.18)]"
+              ><img
+                src="assets/images/products/classic-halwa.jpg"
+                alt="Halwa"
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-x-0 bottom-0 flex h-[174px] flex-col items-center bg-[#fffaf0] pt-10 [border-radius:50%_50%_0_0/28%_28%_0_0]"
+              >
+                <span
+                  class="absolute -top-7 flex h-14 w-14 items-center justify-center rounded-full bg-[#f8dfae] text-[#3f2315] ring-4 ring-[#fffaf0]"
+                  ><svg
+                    aria-hidden="true"
+                    class="h-7 w-7"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path d="M4 10h16l-1.2 7H5.2L4 10Z" />
+                    <path
+                      d="M7 19h10M8 7c.8-1.8 2.8-2.4 4-1 1.2-1.4 3.2-.8 4 1M9 10V8m3 2V7m3 3V8"
+                    /></svg></span
+                ><span class="font-serif text-[28px] font-bold text-[#3a1710]"
+                  >Halwa</span
+                ><span
+                  class="mt-1 inline-flex items-center gap-2 text-[17px] text-[#3a2417]"
+                  ><span class="border-b-2 border-[#b88932] pb-1">Explore</span
+                  ><span aria-hidden="true">→</span></span
+                >
+              </div></a
+            >
+            <a
+              href="pages/shop.html"
+              class="group relative h-[348px] overflow-hidden rounded-2xl bg-[#fdf6e9] shadow-[0_8px_24px_rgba(70,38,18,0.12)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(70,38,18,0.18)]"
+              ><img
+                src="assets/images/products/halwa-ghee.jpg"
+                alt="Sweets"
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-x-0 bottom-0 flex h-[174px] flex-col items-center bg-[#fffaf0] pt-10 [border-radius:50%_50%_0_0/28%_28%_0_0]"
+              >
+                <span
+                  class="absolute -top-7 flex h-14 w-14 items-center justify-center rounded-full bg-[#f8dfae] text-[#3f2315] ring-4 ring-[#fffaf0]"
+                  ><svg
+                    aria-hidden="true"
+                    class="h-7 w-7"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path d="m12 3 7 4v8l-7 4-7-4V7l7-4Z" />
+                    <path d="m5 7 7 4 7-4M12 11v8" /></svg></span
+                ><span class="font-serif text-[28px] font-bold text-[#3a1710]"
+                  >Sweets</span
+                ><span
+                  class="mt-1 inline-flex items-center gap-2 text-[17px] text-[#3a2417]"
+                  ><span class="border-b-2 border-[#b88932] pb-1">Explore</span
+                  ><span aria-hidden="true">→</span></span
+                >
+              </div></a
+            >
+            <a
+              href="pages/shop.html"
+              class="group relative h-[348px] overflow-hidden rounded-2xl bg-[#fdf6e9] shadow-[0_8px_24px_rgba(70,38,18,0.12)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(70,38,18,0.18)]"
+              ><img
+                src="assets/images/products/karupatti-halwa.jpg"
+                alt="Snacks"
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-x-0 bottom-0 flex h-[174px] flex-col items-center bg-[#fffaf0] pt-10 [border-radius:50%_50%_0_0/28%_28%_0_0]"
+              >
+                <span
+                  class="absolute -top-7 flex h-14 w-14 items-center justify-center rounded-full bg-[#f8dfae] text-[#3f2315] ring-4 ring-[#fffaf0]"
+                  ><svg
+                    aria-hidden="true"
+                    class="h-7 w-7"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path d="M5 14c0-4 3-7 7-7s7 3 7 7H5Z" />
+                    <path
+                      d="M7 14c1 3 3 4 5 4s4-1 5-4M9 7l-1-2m4 2V3m3 4 1-2"
+                    /></svg></span
+                ><span class="font-serif text-[28px] font-bold text-[#3a1710]"
+                  >Snacks</span
+                ><span
+                  class="mt-1 inline-flex items-center gap-2 text-[17px] text-[#3a2417]"
+                  ><span class="border-b-2 border-[#b88932] pb-1">Explore</span
+                  ><span aria-hidden="true">→</span></span
+                >
+              </div></a
+            >
+            <a
+              href="pages/shop.html"
+              class="group relative h-[348px] overflow-hidden rounded-2xl bg-[#fdf6e9] shadow-[0_8px_24px_rgba(70,38,18,0.12)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(70,38,18,0.18)]"
+              ><img
+                src="assets/images/products/combo-halwa.jpg"
+                alt="Combos"
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-x-0 bottom-0 flex h-[174px] flex-col items-center bg-[#fffaf0] pt-10 [border-radius:50%_50%_0_0/28%_28%_0_0]"
+              >
+                <span
+                  class="absolute -top-7 flex h-14 w-14 items-center justify-center rounded-full bg-[#f8dfae] text-[#3f2315] ring-4 ring-[#fffaf0]"
+                  ><svg
+                    aria-hidden="true"
+                    class="h-7 w-7"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path d="m4 8 8-4 8 4-8 4-8-4Z" />
+                    <path d="M4 8v8l8 4 8-4V8M12 12v8" /></svg></span
+                ><span class="font-serif text-[28px] font-bold text-[#3a1710]"
+                  >Combos</span
+                ><span
+                  class="mt-1 inline-flex items-center gap-2 text-[17px] text-[#3a2417]"
+                  ><span class="border-b-2 border-[#b88932] pb-1">Explore</span
+                  ><span aria-hidden="true">→</span></span
+                >
+              </div></a
+            >
+            <a
+              href="pages/shop.html"
+              class="group relative h-[348px] overflow-hidden rounded-2xl bg-[#fdf6e9] shadow-[0_8px_24px_rgba(70,38,18,0.12)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(70,38,18,0.18)]"
+              ><img
+                src="assets/images/products/combo-festive.svg"
+                alt="Gift Boxes"
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-x-0 bottom-0 flex h-[174px] flex-col items-center bg-[#fffaf0] pt-10 [border-radius:50%_50%_0_0/28%_28%_0_0]"
+              >
+                <span
+                  class="absolute -top-7 flex h-14 w-14 items-center justify-center rounded-full bg-[#f8dfae] text-[#3f2315] ring-4 ring-[#fffaf0]"
+                  ><svg
+                    aria-hidden="true"
+                    class="h-7 w-7"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <rect x="4" y="7" width="16" height="13" rx="1" />
+                    <path
+                      d="M12 7v13M4 11h16M8 7c-2-1-2-4 0-4 2 0 4 4 4 4m4 0c2-1 2-4 0-4-2 0-4 4-4 4"
+                    /></svg></span
+                ><span
+                  class="whitespace-nowrap font-serif text-[28px] font-bold text-[#3a1710]"
+                  >Gift Boxes</span
+                ><span
+                  class="mt-1 inline-flex items-center gap-2 text-[17px] text-[#3a2417]"
+                  ><span class="border-b-2 border-[#b88932] pb-1">Explore</span
+                  ><span aria-hidden="true">→</span></span
+                >
+              </div></a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED PRODUCTS -->
+      <section
+        id="halwas"
+        class="border-y border-[#ead8bb] bg-[#fbf1dc] px-5 py-14 sm:px-8 lg:px-12"
+        data-reveal
+      >
+        <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div class="relative text-center">
+            <div class="flex flex-col items-center">
+              <div
+                class="flex items-center justify-center gap-4 text-[#b88932]"
+              >
+                <span class="h-px w-14 bg-[#b88932]"></span>
+                <p
+                  class="text-[12px] font-bold uppercase tracking-[.28em] text-[#4a2919]"
+                >
+                  Customer's Choice
+                </p>
+                <span class="h-px w-14 bg-[#b88932]"></span>
+              </div>
+              <h2
+                class="mt-2 font-serif text-[32px] font-semibold leading-none text-[#3a1710] sm:text-[30px] md:text-[36px] lg:text-[40px]"
+              >
+                Nellai Favourites
+              </h2>
+              <p class="mt-3 text-sm text-[#806b58] sm:text-base lg:text-lg">
+                The flavours our customers keep coming back for.
+              </p>
+            </div>
+            <a
+              href="pages/shop.html"
+              class="mt-5 inline-flex rounded-full bg-[#4d190e] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#702217] sm:absolute sm:right-0 sm:top-1/2 sm:mt-0 sm:-translate-y-1/2"
+              >View All Products&nbsp; →</a
+            >
+          </div>
+          <div
+            class="mt-8 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6"
+          >
+            <article
+              class="group flex min-h-[410px] flex-col overflow-hidden rounded-2xl border border-[#eadcc3] bg-[#fffaf0] p-2 shadow-[0_8px_22px_rgba(70,38,18,0.1)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(70,38,18,0.16)]"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <img
+                  src="assets/images/products/classic-halwa.jpg"
+                  alt="Tirunelveli Halwa"
+                  class="h-[205px] w-full object-cover transition duration-700 group-hover:scale-105"
+                /><span
+                  class="absolute left-2 top-2 rounded-full bg-[#f4c542] px-4 py-2 text-sm font-bold text-[#2d1a0c]"
+                  >Bestseller</span
+                ><button
+                  type="button"
+                  aria-label="Add Tirunelveli Halwa to wishlist"
+                  class="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-2xl text-[#3a2012] shadow-sm transition hover:text-[#a11c12]"
+                >
+                  ♡
+                </button>
+              </div>
+              <div class="flex flex-1 flex-col p-3">
+                <h3 class="font-serif text-[23px] font-bold text-[#3a1710]">
+                  Tirunelveli Halwa
+                </h3>
+                <p class="text-base text-[#634a36]">250g</p>
+                <p class="mt-1 text-[#efa900]" aria-label="5 out of 5 stars">
+                  ★★★★★ <span class="ml-1 text-sm text-[#3a2417]">(120)</span>
+                </p>
+                <strong class="mt-1 text-2xl text-[#24140d]">₹ 199</strong>
+                <div class="mt-auto flex items-center gap-3 pt-3">
+                  <div
+                    class="flex h-12 items-center rounded-xl border border-[#e4d8bf] bg-[#fffaf0]"
+                  >
+                    <button
+                      type="button"
+                      data-qty-minus
+                      class="h-full w-10 text-xl"
+                    >
+                      −</button
+                    ><span data-qty-value class="w-7 text-center font-semibold"
+                      >1</span
+                    ><button
+                      type="button"
+                      data-qty-plus
+                      class="h-full w-10 text-xl"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    data-add-to-cart="tirunelveli-halwa"
+                    class="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#4d190e] px-3 text-sm font-semibold text-white transition hover:bg-[#702217]"
+                  >
+                    <span aria-hidden="true" class="text-lg">🛒</span>Add to
+                    Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article
+              class="group flex min-h-[410px] flex-col overflow-hidden rounded-2xl border border-[#eadcc3] bg-[#fffaf0] p-2 shadow-[0_8px_22px_rgba(70,38,18,0.1)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(70,38,18,0.16)]"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <img
+                  src="assets/images/products/halwa-ghee.jpg"
+                  alt="Ghee Mysore Pak"
+                  class="h-[205px] w-full object-cover transition duration-700 group-hover:scale-105"
+                /><span
+                  class="absolute left-2 top-2 rounded-full bg-[#f4c542] px-4 py-2 text-sm font-bold text-[#2d1a0c]"
+                  >Customer Favourite</span
+                ><button
+                  type="button"
+                  aria-label="Add Ghee Mysore Pak to wishlist"
+                  class="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-2xl text-[#3a2012] shadow-sm transition hover:text-[#a11c12]"
+                >
+                  ♡
+                </button>
+              </div>
+              <div class="flex flex-1 flex-col p-3">
+                <h3 class="font-serif text-[23px] font-bold text-[#3a1710]">
+                  Ghee Mysore Pak
+                </h3>
+                <p class="text-base text-[#634a36]">250g</p>
+                <p class="mt-1 text-[#efa900]" aria-label="5 out of 5 stars">
+                  ★★★★★ <span class="ml-1 text-sm text-[#3a2417]">(86)</span>
+                </p>
+                <strong class="mt-1 text-2xl text-[#24140d]">₹ 189</strong>
+                <div class="mt-auto flex items-center gap-3 pt-3">
+                  <div
+                    class="flex h-12 items-center rounded-xl border border-[#e4d8bf] bg-[#fffaf0]"
+                  >
+                    <button
+                      type="button"
+                      data-qty-minus
+                      class="h-full w-10 text-xl"
+                    >
+                      −</button
+                    ><span data-qty-value class="w-7 text-center font-semibold"
+                      >1</span
+                    ><button
+                      type="button"
+                      data-qty-plus
+                      class="h-full w-10 text-xl"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    data-add-to-cart="ghee-halwa"
+                    class="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#4d190e] px-3 text-sm font-semibold text-white transition hover:bg-[#702217]"
+                  >
+                    <span aria-hidden="true" class="text-lg">🛒</span>Add to
+                    Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article
+              class="group flex min-h-[410px] flex-col overflow-hidden rounded-2xl border border-[#eadcc3] bg-[#fffaf0] p-2 shadow-[0_8px_22px_rgba(70,38,18,0.1)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(70,38,18,0.16)]"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <img
+                  src="assets/images/products/karupatti-halwa.jpg"
+                  alt="Nellai Mixture"
+                  class="h-[205px] w-full object-cover transition duration-700 group-hover:scale-105"
+                /><span
+                  class="absolute left-2 top-2 rounded-full bg-[#f4c542] px-4 py-2 text-sm font-bold text-[#2d1a0c]"
+                  >Trending</span
+                ><button
+                  type="button"
+                  aria-label="Add Nellai Mixture to wishlist"
+                  class="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-2xl text-[#3a2012] shadow-sm transition hover:text-[#a11c12]"
+                >
+                  ♡
+                </button>
+              </div>
+              <div class="flex flex-1 flex-col p-3">
+                <h3 class="font-serif text-[23px] font-bold text-[#3a1710]">
+                  Nellai Mixture
+                </h3>
+                <p class="text-base text-[#634a36]">200g</p>
+                <p class="mt-1 text-[#efa900]" aria-label="5 out of 5 stars">
+                  ★★★★★ <span class="ml-1 text-sm text-[#3a2417]">(64)</span>
+                </p>
+                <strong class="mt-1 text-2xl text-[#24140d]">₹ 149</strong>
+                <div class="mt-auto flex items-center gap-3 pt-3">
+                  <div
+                    class="flex h-12 items-center rounded-xl border border-[#e4d8bf] bg-[#fffaf0]"
+                  >
+                    <button
+                      type="button"
+                      data-qty-minus
+                      class="h-full w-10 text-xl"
+                    >
+                      −</button
+                    ><span data-qty-value class="w-7 text-center font-semibold"
+                      >1</span
+                    ><button
+                      type="button"
+                      data-qty-plus
+                      class="h-full w-10 text-xl"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    data-add-to-cart="karupatti-halwa"
+                    class="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#4d190e] px-3 text-sm font-semibold text-white transition hover:bg-[#702217]"
+                  >
+                    <span aria-hidden="true" class="text-lg">🛒</span>Add to
+                    Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article
+              class="group flex min-h-[410px] flex-col overflow-hidden rounded-2xl border border-[#eadcc3] bg-[#fffaf0] p-2 shadow-[0_8px_22px_rgba(70,38,18,0.1)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(70,38,18,0.16)]"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <img
+                  src="assets/images/products/fourth-halwa.jpg"
+                  alt="Laddu"
+                  class="h-[205px] w-full object-cover transition duration-700 group-hover:scale-105"
+                /><span
+                  class="absolute left-2 top-2 rounded-full bg-[#f4c542] px-4 py-2 text-sm font-bold text-[#2d1a0c]"
+                  >Festive Special</span
+                ><button
+                  type="button"
+                  aria-label="Add Laddu to wishlist"
+                  class="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-2xl text-[#3a2012] shadow-sm transition hover:text-[#a11c12]"
+                >
+                  ♡
+                </button>
+              </div>
+              <div class="flex flex-1 flex-col p-3">
+                <h3 class="font-serif text-[23px] font-bold text-[#3a1710]">
+                  Laddu
+                </h3>
+                <p class="text-base text-[#634a36]">250g</p>
+                <p class="mt-1 text-[#efa900]" aria-label="5 out of 5 stars">
+                  ★★★★★ <span class="ml-1 text-sm text-[#3a2417]">(44)</span>
+                </p>
+                <strong class="mt-1 text-2xl text-[#24140d]">₹ 179</strong>
+                <div class="mt-auto flex items-center gap-3 pt-3">
+                  <div
+                    class="flex h-12 items-center rounded-xl border border-[#e4d8bf] bg-[#fffaf0]"
+                  >
+                    <button
+                      type="button"
+                      data-qty-minus
+                      class="h-full w-10 text-xl"
+                    >
+                      −</button
+                    ><span data-qty-value class="w-7 text-center font-semibold"
+                      >1</span
+                    ><button
+                      type="button"
+                      data-qty-plus
+                      class="h-full w-10 text-xl"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    data-add-to-cart="fourth-halwa"
+                    class="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#4d190e] px-3 text-sm font-semibold text-white transition hover:bg-[#702217]"
+                  >
+                    <span aria-hidden="true" class="text-lg">🛒</span>Add to
+                    Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- DIWALI SPECIAL -->
+      <section class="relative isolate overflow-hidden bg-[#2f0b06] px-4 py-12 text-[#fff5df] sm:px-6 lg:px-8 lg:py-14" data-reveal>
+        <img src="assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png" alt="" aria-hidden="true" class="absolute inset-0 -z-20 h-full w-full object-cover object-center">
+        <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#2f0b06]/95 via-[#4a120c]/75 to-transparent"></div>
+        <div class="mx-auto grid min-h-[420px] w-full max-w-[1280px] items-center gap-8 lg:grid-cols-2">
+          <div class="max-w-xl">
+            <p class="text-[11px] font-semibold uppercase tracking-[.28em] text-[#f1cd82]">Diwali Special</p>
+            <h2 class="mt-4 font-serif text-[32px] font-semibold leading-[.95] text-[#fff6e4] sm:text-[38px] md:text-[42px] lg:text-[46px]">Celebrate Diwali<br>with Nellai Specialz</h2>
+            <h3 class="mt-5 font-serif text-2xl font-semibold text-[#f3cd7c]">Diwali Celebration Hamper</h3>
+            <p class="mt-3 max-w-[500px] text-sm leading-relaxed text-[#fff0d0] sm:text-[15px] md:text-base">A festive assortment of authentic sweets, snacks and Tirunelveli favourites, beautifully packed for sharing and gifting.</p>
+            <div class="mt-5 flex flex-wrap items-center gap-4"><span class="text-3xl font-semibold text-white">₹X,XXX</span><del class="text-lg text-[#fff0d0]/65">₹X,XXX</del><span class="rounded-full bg-[#f1c86f] px-3 py-1.5 text-xs font-bold text-[#3a170f]">SAVE XX%</span></div>
+            <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#fff0d0]"><span>✓ Festive Assortment</span><span>✓ Gift-Ready Packaging</span><span>✓ Family &amp; Corporate Gifting</span></div>
+            <a href="pages/shop.html" class="group mt-7 inline-flex min-h-12 items-center gap-4 rounded-lg bg-[#f3cd7c] px-6 text-sm font-semibold text-[#3b120b] shadow-lg transition hover:-translate-y-1 hover:bg-[#ffe6aa]">Shop Diwali Combo <span class="text-xl transition-transform group-hover:translate-x-1">→</span></a>
+          </div>
+          <div class="relative flex min-h-[300px] items-center justify-center lg:min-h-[420px]"><span class="absolute right-4 top-8 rounded-full bg-[#4d190e] px-4 py-2 text-xs font-semibold text-[#fff2d2]">Festive Limited Edition</span><img src="assets/images/products/combo-halwa.jpg" alt="Diwali Celebration Hamper" class="relative z-10 max-h-[360px] w-full max-w-[520px] rounded-2xl object-contain drop-shadow-[0_20px_18px_rgba(20,5,2,0.45)] transition duration-700 hover:scale-[1.03]"></div>
+        </div>
+      </section>
+
+      <!-- HERITAGE -->
+      <!-- <section
+        class="relative min-h-[430px] overflow-hidden bg-[#e8c789]"
+        data-reveal
+      >
+        <img
+          src="assets/images/ChatGPT Image Sep 26, 2026, 12_20_12 PM.png"
+          alt="Tirunelveli city and temple landscape"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-[#fff3d7] via-[#fff3d7]/80 to-transparent"
+        ></div>
+        <div
+          class="relative mx-auto flex min-h-[430px] max-w-[1280px] items-center px-4 py-10 sm:px-6 lg:px-8"
+        >
+          <div>
+            <p
+              class="text-[10px] font-bold uppercase tracking-[.3em] text-[#967044]"
+            >
+              Tirunelveli
+            </p>
+            <h2
+              class="mt-2 max-w-sm font-serif text-[32px] font-semibold leading-[.9] text-[#3a1710] sm:text-[38px] md:text-[44px] lg:text-[46px]"
+            >
+              A City.<br />A Tradition.<br />A Taste.
+            </h2>
+            <p class="mt-4 max-w-sm text-sm leading-relaxed text-[#63452f]">
+              Step into a sweet experience for what you taste. Tirunelveli is an
+              emotion for what you taste.
+            </p>
+            <a
+              href="pages/our-story.html"
+              class="mt-5 inline-flex rounded-full bg-[#4d190e] px-5 py-3 text-xs font-semibold text-white transition hover:-translate-y-1"
+              >Discover Our Story →</a
+            >
+          </div>
+        </div>
+      </section> -->
+
+      <!-- COMBOS -->
+      <section
+        id="combo"
+        class="relative overflow-hidden bg-[#f9edda] px-5 py-14 sm:px-8 lg:px-12"
+        data-reveal
+      >
+        <img
+          src="assets/images/Temple.png"
+          alt=""
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-x-0 bottom-0 h-48 w-full object-cover opacity-[0.08]"
+        />
+        <div class="mx-auto w-full max-w-[1280px] px-4 text-center sm:px-6 lg:px-8">
+          <div class="flex items-center justify-center gap-4 text-[#b88932]">
+            <span class="h-px w-14 bg-[#b88932]"></span>
+            <p
+              class="text-[12px] font-bold uppercase tracking-[.28em] text-[#4a2919]"
+            >
+              Special Combo Offers
+            </p>
+            <span class="h-px w-14 bg-[#b88932]"></span>
+          </div>
+          <h2
+            class="mt-2 font-serif text-[30px] font-semibold leading-none text-[#3a1710] sm:text-[30px] md:text-[38px] lg:text-[40px]"
+          >
+            More to Share. More to Enjoy.
+          </h2>
+          <p class="mt-4 text-sm leading-relaxed text-[#806b58] sm:text-[15px] md:text-base">
+            Carefully curated combos for every occasion.
+          </p>
+          <div
+            class="mt-8 grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+          >
+            <article
+              class="group flex min-h-[510px] flex-col overflow-hidden rounded-2xl border border-[#dcb878] bg-[#fff8e9] p-2 shadow-[0_8px_24px_rgba(70,38,18,0.12)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_15px_32px_rgba(70,38,18,0.18)]"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <img
+                  src="assets/images/products/combo-halwa.jpg"
+                  alt="Family favourites combo"
+                  class="h-[205px] w-full object-cover transition duration-700 group-hover:scale-105"
+                /><span
+                  class="absolute left-3 top-3 rounded-full bg-[#4d190e] px-4 py-2 text-sm font-bold text-[#fff7e5]"
+                  >Save 10%</span
+                >
+              </div>
+              <div class="flex flex-1 flex-col p-4">
+                <h3 class="font-serif text-2xl font-semibold text-[#3a1710]">
+                  Family Favourites
+                </h3>
+                <div class="mt-3 space-y-2 text-left text-base text-[#4f3927]">
+                  <p>✿&nbsp; Halwa + Sweets + Snacks</p>
+                  <p>✿&nbsp; Perfect for family sharing</p>
+                </div>
+                <div class="mt-auto pt-5">
+                  <strong class="text-2xl text-[#24140d]">₹1,249</strong
+                  ><del class="ml-3 text-lg text-[#806b58]">₹1,390</del
+                  ><a
+                    href="pages/shop.html"
+                    class="mt-4 flex w-full items-center justify-center rounded-full bg-[#4d190e] px-5 py-3 text-base font-semibold text-white transition hover:bg-[#702217]"
+                    >Shop Combo&nbsp; →</a
+                  >
+                </div>
+              </div>
+            </article>
+            <article
+              class="group flex min-h-[510px] flex-col overflow-hidden rounded-2xl border border-[#dcb878] bg-[#fff8e9] p-2 shadow-[0_8px_24px_rgba(70,38,18,0.12)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_15px_32px_rgba(70,38,18,0.18)]"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <img
+                  src="assets/images/products/combo-festive.svg"
+                  alt="Celebration box"
+                  class="h-[205px] w-full object-cover transition duration-700 group-hover:scale-105"
+                /><span
+                  class="absolute left-3 top-3 rounded-full bg-[#4d190e] px-4 py-2 text-sm font-bold text-[#fff7e5]"
+                  >Save 15%</span
+                >
+              </div>
+              <div class="flex flex-1 flex-col p-4">
+                <h3 class="font-serif text-2xl font-semibold text-[#3a1710]">
+                  Celebration Box
+                </h3>
+                <div class="mt-3 space-y-2 text-left text-base text-[#4f3927]">
+                  <p>✿&nbsp; Assorted Sweets &amp; Snacks</p>
+                  <p>✿&nbsp; Ideal for festivals</p>
+                </div>
+                <div class="mt-auto pt-5">
+                  <strong class="text-2xl text-[#24140d]">₹1,699</strong
+                  ><del class="ml-3 text-lg text-[#806b58]">₹1,999</del
+                  ><a
+                    href="pages/shop.html"
+                    class="mt-4 flex w-full items-center justify-center rounded-full bg-[#4d190e] px-5 py-3 text-base font-semibold text-white transition hover:bg-[#702217]"
+                    >Shop Combo&nbsp; →</a
+                  >
+                </div>
+              </div>
+            </article>
+            <article
+              class="group flex min-h-[510px] flex-col overflow-hidden rounded-2xl border border-[#dcb878] bg-[#fff8e9] p-2 shadow-[0_8px_24px_rgba(70,38,18,0.12)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_15px_32px_rgba(70,38,18,0.18)]"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <img
+                  src="assets/images/products/combo-mini.svg"
+                  alt="Nellai special combo"
+                  class="h-[205px] w-full object-cover transition duration-700 group-hover:scale-105"
+                /><span
+                  class="absolute left-3 top-3 rounded-full bg-[#4d190e] px-4 py-2 text-sm font-bold text-[#fff7e5]"
+                  >Save 15%</span
+                >
+              </div>
+              <div class="flex flex-1 flex-col p-4">
+                <h3 class="font-serif text-2xl font-semibold text-[#3a1710]">
+                  Nellai Special Combo
+                </h3>
+                <div class="mt-3 space-y-2 text-left text-base text-[#4f3927]">
+                  <p>✿&nbsp; Our bestsellers in one box</p>
+                  <p>✿&nbsp; A complete Tirunelveli experience</p>
+                </div>
+                <div class="mt-auto pt-5">
+                  <strong class="text-2xl text-[#24140d]">₹1,899</strong
+                  ><del class="ml-3 text-lg text-[#806b58]">₹2,249</del
+                  ><a
+                    href="pages/shop.html"
+                    class="mt-4 flex w-full items-center justify-center rounded-full bg-[#4d190e] px-5 py-3 text-base font-semibold text-white transition hover:bg-[#702217]"
+                    >Shop Combo&nbsp; →</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARE / JOURNEY -->
+      <!-- <section
+        class="relative overflow-hidden bg-[#f5dfb8] px-5 py-14 sm:px-8 lg:px-12"
+        data-reveal
+      >
+        <img
+          src="assets/images/preparations.png"
+          alt="Packed sweets ready for delivery"
+          class="absolute inset-0 h-full w-full object-cover opacity-25"
+        />
+          <div class="mx-auto w-full max-w-[1280px] px-4 text-center sm:px-6 lg:px-8">
+            <h2 class="font-serif text-[32px] font-semibold text-[#3a1710] sm:text-[30px] md:text-[36px] lg:text-[40px]">
+            Packed with Care.<br />Delivered with Pride.
+          </h2>
+          <p class="mt-2 text-sm text-[#806b58]">
+            Thoughtfully packed by the authentic taste of Tirunelveli to your
+            home.
+          </p>
+          <div
+            class="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5"
+          >
+            <div>
+              <img
+                src="assets/images/process/preparation.jpg"
+                alt="Food grade packaging"
+                class="mx-auto h-24 w-24 rounded-full object-cover"
+              />
+              <p class="mt-2 font-serif font-semibold">Food Grade Packaging</p>
+            </div>
+            <div>
+              <img
+                src="assets/images/process/ingredients.jpg"
+                alt="Freshness protected"
+                class="mx-auto h-24 w-24 rounded-full object-cover"
+              />
+              <p class="mt-2 font-serif font-semibold">Freshness Protected</p>
+            </div>
+            <div>
+              <img
+                src="assets/images/process/craftsmanship.jpg"
+                alt="Tamper evident seal"
+                class="mx-auto h-24 w-24 rounded-full object-cover"
+              />
+              <p class="mt-2 font-serif font-semibold">Tamper-Evident Seal</p>
+            </div>
+            <div>
+              <img
+                src="assets/images/truck.png"
+                alt="Secure delivery"
+                class="mx-auto h-24 w-24 rounded-full object-contain p-4"
+              />
+              <p class="mt-2 font-serif font-semibold">Secure Delivery</p>
+            </div>
+            <div>
+              <img
+                src="assets/images/halwashop.png"
+                alt="Live tracking"
+                class="mx-auto h-24 w-24 rounded-full object-cover"
+              />
+              <p class="mt-2 font-serif font-semibold">Live Tracking</p>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- CTA -->
+      <section
+        class="relative min-h-[360px] overflow-hidden bg-[#3b120b] px-4 py-10 text-[#fff5df] sm:px-6 lg:px-8 lg:py-12"
+        data-reveal
+      >
+        <img
+          src="assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png"
+          alt="Nellai Specialz gift box and halwa"
+          class="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-[#3a100a]/95 via-[#4a160f]/82 to-transparent"
+        ></div>
+        <div class="relative z-10 mx-auto grid min-h-[300px] w-full max-w-[1280px] items-center px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div class="max-w-[560px]">
+          <p
+            class="text-[11px] font-semibold uppercase tracking-[.28em] text-[#c99a4a]"
+          >
+            Authentic taste. Delivered.
+          </p>
+          <h2
+            class="mt-3 max-w-lg font-serif text-[32px] font-semibold leading-[.92] text-[#fff4e3] sm:text-[36px] md:text-[40px] lg:text-[46px]"
+          >
+            From Tirunelveli<br />to Your Door.
+          </h2>
+          <p class="mt-4 max-w-md text-sm leading-relaxed text-[#fff4e3]/90 sm:text-[15px] md:text-base">
+            Same authentic taste. Now even closer.
+          </p>
+          <a
+            href="pages/shop.html"
+            class="group mt-6 inline-flex min-h-12 items-center gap-3 rounded-lg border border-[#e8bd69] bg-[#f5c66d] px-6 text-sm font-semibold text-[#4d190e] transition hover:-translate-y-1 hover:bg-[#fff0c7]"
+            >Explore Our Halwa & Sweets →</a
+          >
+          </div>
+        </div>
+      </section>
+      <!-- TESTIMONIALS -->
+      <section
+        id="testimonials"
+        class="relative overflow-hidden bg-[#fbefd9] px-5 py-10 sm:px-8 lg:px-12 lg:py-12"
+        data-reveal
+        aria-labelledby="testimonials-title"
+      >
+        <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <img
+              src="assets/images/2leaf.png"
+              alt=""
+              aria-hidden="true"
+              class="mx-auto mb-2 h-9 w-9 object-contain opacity-80"
+            />
+            <div class="flex items-center justify-center gap-4 text-[#b88932]">
+              <span class="h-px w-14 bg-[#b88932]"></span>
+              <p
+                class="text-[12px] font-bold uppercase tracking-[.3em] text-[#4a2919]"
+              >
+                Testimonials
+              </p>
+              <span class="h-px w-14 bg-[#b88932]"></span>
+            </div>
+            <h2
+              id="testimonials-title"
+              class="mt-2 font-serif text-[32px] font-semibold leading-none text-[#3a1710] sm:text-[30px] md:text-[36px] lg:text-[40px]"
+            >
+              What Our Customers Say
+            </h2>
+            <p class="mt-4 text-sm leading-relaxed text-[#806b58] sm:text-[15px] md:text-base">
+              Real stories from people who love our authentic Tirunelveli
+              flavours.
             </p>
           </div>
-
-          <!-- Bottom Quote Card -->
-          <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 z-10 reveal">
+          <div class="relative mx-auto mt-6 max-w-[1280px]">
+            <button
+              type="button"
+              data-testimonial-prev
+              aria-label="Previous testimonials"
+              class="absolute -left-8 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#d9bd84] bg-[#fff9ed] text-3xl text-[#4d190e] shadow-sm transition hover:bg-[#f4d99e] lg:flex"
+            >
+              ‹
+            </button>
             <div
-              class="flex items-start gap-2.5 sm:gap-3 rounded-xl sm:rounded-2xl px-4 sm:px-5 py-3 sm:py-4 max-w-[340px] sm:max-w-[380px] backdrop-blur-sm"
-              style="background: rgba(248,242,230,0.88);
-                     border: 1px solid rgba(184,137,50,0.22);
-                     box-shadow: 0 4px 24px rgba(42,19,12,0.12);">
-              <!-- Location Pin Icon -->
-              <div class="shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none"
-                  stroke="#B88932" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </div>
-              <p class="font-serif-title text-[13px] sm:text-[15px] leading-[1.55] text-[#3D2E25] italic">
-                From small stalls to every home,<br>
-                Tirunelveli Halwa is more than a sweet –<br>
-                it's a emotion that connects us all.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. THE JOURNEY OF EVERY BOX -->
-    <section class="relative overflow-hidden py-16 sm:py-20 max-sm:px-4 px-6"
-      style="background:linear-gradient(135deg,#F5E8D0 0%,#FAF3E6 35%,#FBF6EE 60%,#F8EDD9 100%);"
-      aria-labelledby="journey-title">
-      <!-- Left pillar decoration -->
-      <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-[120px]"
-        style="background:linear-gradient(90deg,rgba(180,140,80,0.08) 0%,transparent 100%);"></div>
-      <div class="max-w-[1180px] mx-auto relative z-[2] text-center">
-
-        <!-- Ornament -->
-        <div class="flex items-center justify-center gap-[10px] mb-3" aria-hidden="true">
-          <span class="w-[70px] h-px" style="background:linear-gradient(90deg,transparent,#B88932,transparent);"></span>
-          <span class="text-[#B88932] text-[18px]">✦</span>
-          <span class="w-[70px] h-px" style="background:linear-gradient(90deg,transparent,#B88932,transparent);"></span>
-        </div>
-
-        <!-- Title (Improved Size & Styling) -->
-        <h2 id="journey-title"
-          class="font-serif-title text-[60px] max-lg:text-[48px] max-sm:text-[38px] font-bold leading-none text-[#2A130C] m-0 tracking-tight">
-          The Journey of <em class="italic text-[#A86A10] font-normal">Every Box</em></h2>
-        <p class="font-serif-title text-[24px] max-sm:text-[20px] italic text-[#4A3A2E] mt-3 font-normal">From tradition
-          to your home.</p>
-
-        <!-- Rule -->
-        <div class="flex justify-center items-center mt-5 mb-2" aria-hidden="true">
-          <span
-            class="relative w-[220px] h-px bg-[#B88932] after:content-['◆'] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-[54%] after:text-[#B88932] after:bg-[#FAF3E6] after:px-2 after:text-[10px]"></span>
-        </div>
-
-        <!-- Timeline -->
-        <div
-          class="flex items-start justify-center gap-0 mt-12 max-lg:flex-wrap max-lg:gap-[32px_14px] max-lg:justify-center max-sm:grid max-sm:grid-cols-3 max-sm:gap-[28px_12px]">
-
-          <!-- Step 01 -->
-          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
-            <div
-              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
-              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
-              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
-                <img src="assets/images/process/ingredients.jpg"
-                  alt="Cashews, cardamom, wheat and premium ghee — hand-selected ingredients"
-                  class="w-full h-full object-cover block">
-              </div>
-              <span
-                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
-                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">01</span>
-            </div>
-            <p
-              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
-              Carefully<br>Selected Ingredients</p>
-          </div>
-
-          <span
-            class="flex items-center justify-center flex-[0_0_28px] max-lg:flex-[0_0_20px] pt-14 max-lg:pt-10 text-[#A86A10] text-[22px] max-lg:text-[18px] font-light opacity-70 max-sm:hidden"
-            aria-hidden="true">›</span>
-
-          <!-- Step 02 -->
-          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
-            <div
-              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
-              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
-              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
-                <img src="assets/images/process/craftsmanship.jpg"
-                  alt="Traditional halwa cooking in brass vessel over wood fire"
-                  class="w-full h-full object-cover block">
-              </div>
-              <span
-                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
-                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">02</span>
-            </div>
-            <p
-              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
-              Traditional<br>Craftsmanship</p>
-          </div>
-
-          <span
-            class="flex items-center justify-center flex-[0_0_28px] max-lg:flex-[0_0_20px] pt-14 max-lg:pt-10 text-[#A86A10] text-[22px] max-lg:text-[18px] font-light opacity-70 max-sm:hidden"
-            aria-hidden="true">›</span>
-
-          <!-- Step 03 -->
-          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
-            <div
-              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
-              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
-              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
-                <img src="assets/images/process/preparation.jpg"
-                  alt="Patient slow-cooking of halwa batter with wooden ladle" class="w-full h-full object-cover block">
-              </div>
-              <span
-                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
-                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">03</span>
-            </div>
-            <p
-              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
-              Patient<br>Preparation</p>
-          </div>
-
-          <span
-            class="flex items-center justify-center flex-[0_0_28px] max-lg:flex-[0_0_20px] pt-14 max-lg:pt-10 text-[#A86A10] text-[22px] max-lg:text-[18px] font-light opacity-70 max-sm:hidden"
-            aria-hidden="true">›</span>
-
-          <!-- Step 04 -->
-          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
-            <div
-              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
-              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
-              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
-                <img src="assets/images/products/halwa-bowl.jpg"
-                  alt="Finished halwa garnished with cashews on a brass plate" class="w-full h-full object-cover block">
-              </div>
-              <span
-                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
-                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">04</span>
-            </div>
-            <p
-              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
-              Quality<br>Assured</p>
-          </div>
-
-          <span
-            class="flex items-center justify-center flex-[0_0_28px] max-lg:flex-[0_0_20px] pt-14 max-lg:pt-10 text-[#A86A10] text-[22px] max-lg:text-[18px] font-light opacity-70 max-sm:hidden"
-            aria-hidden="true">›</span>
-
-          <!-- Step 05 -->
-          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
-            <div
-              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
-              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
-              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
-                <img src="assets/images/products/halwa-box.jpg" alt="Halwa neatly packed in a food-safe tray"
-                  class="w-full h-full object-cover block">
-              </div>
-              <span
-                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
-                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">05</span>
-            </div>
-            <p
-              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
-              Freshly<br>Packed</p>
-          </div>
-
-          <span
-            class="flex items-center justify-center flex-[0_0_28px] max-lg:flex-[0_0_20px] pt-14 max-lg:pt-10 text-[#A86A10] text-[22px] max-lg:text-[18px] font-light opacity-70 max-sm:hidden"
-            aria-hidden="true">›</span>
-
-          <!-- Step 06 -->
-          <div class="flex flex-col items-center flex-[0_1_160px] min-w-0 max-lg:flex-[0_0_130px] max-sm:flex-none">
-            <div
-              class="relative w-[148px] h-[148px] max-lg:w-[120px] max-lg:h-[120px] max-sm:w-[100px] max-sm:h-[100px] rounded-full p-[3px]"
-              style="background:linear-gradient(145deg,#C9982F 0%,#E8C06A 40%,#B88932 100%); box-shadow:0 0 0 3px #FAF3E6,0 0 0 5px rgba(184,137,50,0.35),0 6px 20px rgba(42,19,12,0.12);">
-              <div class="w-full h-full rounded-full overflow-hidden border-[3px] border-[#FAF3E6]">
-                <img src="assets/images/products/halwa-box.jpg" alt="Gift box dispatched with care"
-                  class="w-full h-full object-cover block">
-              </div>
-              <span
-                class="absolute top-[-10px] max-lg:top-[-7px] max-sm:top-[-5px] left-1/2 -translate-x-1/2 w-9 h-9 max-lg:w-[30px] max-lg:h-[30px] max-sm:w-7 max-sm:h-7 rounded-full bg-[#2A130C] border-[2.5px] border-[#D4A84B] flex items-center justify-center font-sans text-[13px] max-lg:text-[11px] max-sm:text-[10px] font-bold text-[#F7E3C0] z-[3]"
-                style="box-shadow:0 2px 8px rgba(42,19,12,0.25);">06</span>
-            </div>
-            <p
-              class="mt-6 max-sm:mt-4 font-serif-title text-[18px] max-sm:text-[15px] font-semibold leading-[1.2] text-[#2A130C] text-center italic">
-              Delivered<br>with Care</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-    <section id="reviews" class="border-b border-[#5A160F]/10 py-12 sm:py-16 bg-[#FDFBF7]">
-      <div class="site-wrap space-y-6">
-
-        <!-- ROW 1: Customer Reviews (Left) + Thank You! Banner (Right) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-
-          <!-- Card 1: CUSTOMER REVIEWS (Left - approx 5 cols) -->
-          <div
-            class="lg:col-span-5 reveal rounded-2xl border border-[#B88932]/30 bg-[#FFFDF8] p-6 sm:p-7 flex flex-col justify-between shadow-sm relative overflow-hidden">
-            <!-- Card Header -->
-            <div class="text-center">
-              <h3 class="font-serif-title text-base sm:text-lg font-bold tracking-widest text-[#32110D] uppercase">
-                CUSTOMER REVIEWS</h3>
-
-              <!-- 4 Golden Stars -->
-              <div class="mt-3 flex justify-center text-[#D4AF37] text-xl sm:text-2xl tracking-widest font-bold"
-                style="color: #D4AF37 !important;">
-                ★ ★ ★ ★
-              </div>
-            </div>
-
-            <!-- Interactive Review Carousel Text Block -->
-            <div class="my-6 relative flex items-center px-12 text-center">
-              <!-- Prev Button (High Visibility Solid Dark Circle) -->
-              <button type="button" id="prevReviewBtn"
-                class="absolute left-1 top-1/2 -translate-y-1/2 h-11 w-11 sm:h-12 sm:w-12 rounded-full bg-[#380808] text-white flex items-center justify-center shadow-lg hover:bg-[#5A160F] hover:scale-105 transition-all shrink-0 z-30 cursor-pointer border border-[#B88932]/30"
-                style="background-color: #380808 !important; color: #ffffff !important;" aria-label="Previous review">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              <!-- Review Content -->
-              <div id="reviewTextContainer" class="w-full transition-opacity duration-300">
-                <p id="reviewQuoteText"
-                  class="font-serif italic text-sm sm:text-base text-[#32110D] leading-relaxed font-medium">
-                  "The best Halwa I have ever had!<br>
-                  So soft, rich and full of flavor.<br>
-                  Truly authentic Tirunelveli taste."
+              data-testimonial-track
+              class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-1 [scrollbar-width:none] lg:overflow-hidden"
+            >
+              <article
+                class="flex min-h-[310px] min-w-full snap-start flex-col rounded-2xl bg-[#fffaf0] p-5 shadow-[0_6px_18px_rgba(70,38,18,0.07)] transition hover:-translate-y-1 hover:shadow-[0_10px_24px_rgba(70,38,18,0.12)] sm:min-w-[calc(50%-8px)] lg:min-w-[calc(25%-12px)]"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-[#d9b26a] font-serif text-2xl font-bold text-[#fffaf0]"
+                  >
+                    PM
+                  </div>
+                  <div>
+                    <h3 class="font-serif text-[22px] font-bold text-[#3a1710]">
+                      Priya M.
+                    </h3>
+                    <p class="text-lg tracking-wide text-[#efa900]">★★★★★</p>
+                  </div>
+                </div>
+                <blockquote
+                  class="mt-4 flex gap-2 text-[16px] leading-[1.45] text-[#4f3927]"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="font-serif text-4xl leading-none text-[#e2b965]"
+                    >“</span
+                  ><span
+                    >The halwa tastes exactly like the authentic Tirunelveli
+                    halwa. Fresh and so delicious! Will definitely order
+                    again.</span
+                  >
+                </blockquote>
+                <p class="mt-auto pt-4 text-[15px] text-[#634a36]">
+                  ⌖&nbsp; Chennai
                 </p>
-                <p id="reviewAuthorText" class="mt-3 text-xs sm:text-sm font-medium text-[#32110D]">
-                  – Priya K., Chennai
+              </article>
+              <article
+                class="flex min-h-[310px] min-w-full snap-start flex-col rounded-2xl bg-[#fffaf0] p-5 shadow-[0_6px_18px_rgba(70,38,18,0.07)] transition hover:-translate-y-1 hover:shadow-[0_10px_24px_rgba(70,38,18,0.12)] sm:min-w-[calc(50%-8px)] lg:min-w-[calc(25%-12px)]"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-[#8f9272] font-serif text-2xl font-bold text-[#fffaf0]"
+                  >
+                    RK
+                  </div>
+                  <div>
+                    <h3 class="font-serif text-[22px] font-bold text-[#3a1710]">
+                      Ramesh K.
+                    </h3>
+                    <p class="text-lg tracking-wide text-[#efa900]">★★★★★</p>
+                  </div>
+                </div>
+                <blockquote
+                  class="mt-4 flex gap-2 text-[16px] leading-[1.45] text-[#4f3927]"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="font-serif text-4xl leading-none text-[#e2b965]"
+                    >“</span
+                  ><span
+                    >Excellent quality and packaging. The taste takes me back to
+                    my childhood in Tirunelveli. Truly authentic!</span
+                  >
+                </blockquote>
+                <p class="mt-auto pt-4 text-[15px] text-[#634a36]">
+                  ⌖&nbsp; Bangalore
                 </p>
-              </div>
-
-              <!-- Next Button (High Visibility Solid Dark Circle) -->
-              <button type="button" id="nextReviewBtn"
-                class="absolute right-1 top-1/2 -translate-y-1/2 h-11 w-11 sm:h-12 sm:w-12 rounded-full bg-[#380808] text-white flex items-center justify-center shadow-lg hover:bg-[#5A160F] hover:scale-105 transition-all shrink-0 z-30 cursor-pointer border border-[#B88932]/30"
-                style="background-color: #380808 !important; color: #ffffff !important;" aria-label="Next review">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
+              </article>
+              <article
+                class="flex min-h-[310px] min-w-full snap-start flex-col rounded-2xl bg-[#fffaf0] p-5 shadow-[0_6px_18px_rgba(70,38,18,0.07)] transition hover:-translate-y-1 hover:shadow-[0_10px_24px_rgba(70,38,18,0.12)] sm:min-w-[calc(50%-8px)] lg:min-w-[calc(25%-12px)]"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-[#d9ae83] font-serif text-2xl font-bold text-[#fffaf0]"
+                  >
+                    SR
+                  </div>
+                  <div>
+                    <h3 class="font-serif text-[22px] font-bold text-[#3a1710]">
+                      Sneha R.
+                    </h3>
+                    <p class="text-lg tracking-wide text-[#efa900]">★★★★★</p>
+                  </div>
+                </div>
+                <blockquote
+                  class="mt-4 flex gap-2 text-[16px] leading-[1.45] text-[#4f3927]"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="font-serif text-4xl leading-none text-[#e2b965]"
+                    >“</span
+                  ><span
+                    >Loved the variety of sweets and snacks. Everything was
+                    fresh and well packed. Great service and fast
+                    delivery.</span
+                  >
+                </blockquote>
+                <p class="mt-auto pt-4 text-[15px] text-[#634a36]">
+                  ⌖&nbsp; Coimbatore
+                </p>
+              </article>
+              <article
+                class="flex min-h-[310px] min-w-full snap-start flex-col rounded-2xl bg-[#fffaf0] p-5 shadow-[0_6px_18px_rgba(70,38,18,0.07)] transition hover:-translate-y-1 hover:shadow-[0_10px_24px_rgba(70,38,18,0.12)] sm:min-w-[calc(50%-8px)] lg:min-w-[calc(25%-12px)]"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-[#6d8f77] font-serif text-2xl font-bold text-[#fffaf0]"
+                  >
+                    AV
+                  </div>
+                  <div>
+                    <h3 class="font-serif text-[22px] font-bold text-[#3a1710]">
+                      Arun V.
+                    </h3>
+                    <p class="text-lg tracking-wide text-[#efa900]">★★★★★</p>
+                  </div>
+                </div>
+                <blockquote
+                  class="mt-4 flex gap-2 text-[16px] leading-[1.45] text-[#4f3927]"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="font-serif text-4xl leading-none text-[#e2b965]"
+                    >“</span
+                  ><span
+                    >Superb taste and authentic quality. The packaging was neat
+                    and delivery was on time. Highly recommended!</span
+                  >
+                </blockquote>
+                <p class="mt-auto pt-4 text-[15px] text-[#634a36]">
+                  ⌖&nbsp; Madurai
+                </p>
+              </article>
             </div>
-
-            <!-- Carousel Dots Indicator -->
-            <div class="flex justify-center items-center gap-2 mt-1">
-              <span data-review-dot="0"
-                class="review-dot h-2.5 w-2.5 rounded-full bg-[#380808] cursor-pointer transition-all"></span>
-              <span data-review-dot="1"
-                class="review-dot h-2.5 w-2.5 rounded-full border border-[#B88932] bg-transparent cursor-pointer transition-all"></span>
-              <span data-review-dot="2"
-                class="review-dot h-2.5 w-2.5 rounded-full border border-[#B88932] bg-transparent cursor-pointer transition-all"></span>
-            </div>
+            <button
+              type="button"
+              data-testimonial-next
+              aria-label="Next testimonials"
+              class="absolute -right-8 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#d9bd84] bg-[#fff9ed] text-3xl text-[#4d190e] shadow-sm transition hover:bg-[#f4d99e] lg:flex"
+            >
+              ›
+            </button>
           </div>
-
-          <!-- Card 2: THANK YOU! (Right - approx 7 cols) -->
           <div
-            class="lg:col-span-7 reveal rounded-2xl border border-[#B88932]/30 overflow-hidden relative shadow-sm min-h-[260px] sm:min-h-[280px] flex bg-[#2B0505]">
-            <!-- Background Image -->
-            <img src="assets/images/Rustic Halwa Feast in Brass Vessels.png" alt="Rustic Halwa Feast in Brass Vessels"
-              class="absolute inset-0 h-full w-full object-cover object-right" loading="lazy">
-
-            <!-- Left Solid Dark Brown Shadow Box Overlay for crisp text contrast & exact design match -->
-            <div
-              class="relative z-10 w-full sm:w-7/12 pl-8 sm:pl-10 pr-6 py-8 sm:py-10 flex flex-col justify-center text-white"
-              style="background: linear-gradient(to right, #380808 0%, #380808 55%, rgba(56,8,8,0.9) 75%, rgba(56,8,8,0) 100%);">
-              <h3 class="font-serif-title text-xl sm:text-2xl font-bold tracking-wider uppercase text-white mb-3"
-                style="color: #ffffff !important;">THANK YOU!</h3>
-              <p class="text-xs sm:text-sm leading-relaxed text-amber-100/90 font-serif">
-                To all our lovely customers for making us a part of your sweet moments.
-              </p>
-              <p class="mt-3 text-xs sm:text-sm leading-relaxed text-amber-100/90 font-serif">
-                We truly appreciate your love and support.
-              </p>
-            </div>
+            class="mt-5 flex justify-center gap-2"
+            aria-label="Testimonial pages"
+          >
+            <button
+              type="button"
+              data-testimonial-dot="0"
+              aria-label="Show first testimonials"
+              class="h-3 w-3 rounded-full bg-[#b88932]"
+            ></button
+            ><button
+              type="button"
+              data-testimonial-dot="1"
+              aria-label="Show second testimonials"
+              class="h-3 w-3 rounded-full bg-[#e5cfa9]"
+            ></button
+            ><button
+              type="button"
+              data-testimonial-dot="2"
+              aria-label="Show third testimonials"
+              class="h-3 w-3 rounded-full bg-[#e5cfa9]"
+            ></button>
           </div>
-
         </div>
-
-        <!-- ROW 2: Halwas - Combos & Flavours (Left) + We Deliver Halwa To (Right) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-
-          <!-- Card 3: HALWAS – COMBOS & FLAVOURS (Left - approx 5 cols) -->
-          <div
-            class="lg:col-span-5 reveal rounded-2xl border border-[#B88932]/30 bg-[#FFFDF8] p-5 sm:p-6 shadow-sm flex flex-col justify-between">
-            <h3
-              class="font-serif-title text-center text-base sm:text-lg font-bold tracking-widest text-[#32110D] uppercase mb-5">
-              HALWAS – COMBOS & FLAVOURS
-            </h3>
-
-            <div class="grid grid-cols-3 gap-2.5 sm:gap-3 text-center">
-
-              <!-- Item 1: Mini Combo -->
-              <div class="flex flex-col items-center">
-                <div
-                  class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#EFE4D2] mb-2.5 border border-[#5A160F]/10">
-                  <img src="assets/images/products/halwa-box.jpg" alt="Mini Combo" class="h-full w-full object-cover"
-                    loading="lazy">
-                </div>
-                <h4 class="font-serif-title text-[11px] sm:text-xs font-bold text-[#32110D] uppercase tracking-wide">
-                  MINI COMBO</h4>
-                <p class="text-[10px] text-[#75675D] mt-0.5">250g Halwa</p>
-                <p class="font-serif-title text-xs sm:text-sm font-bold text-[#32110D] mt-0.5">₹190</p>
-                <button type="button"
-                  class="mt-2.5 w-full rounded-full py-2 px-2 text-[10px] sm:text-xs font-bold text-white shadow-md transition-all hover:scale-105 tracking-wider cursor-pointer border border-[#B88932]/40"
-                  style="background-color: #380808 !important; color: #ffffff !important;"
-                  data-add-to-cart="mini-combo">
-                  ORDER NOW
-                </button>
-              </div>
-
-              <!-- Item 2: Family Combo -->
-              <div class="flex flex-col items-center">
-                <div
-                  class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#EFE4D2] mb-2.5 border border-[#5A160F]/10">
-                  <img src="assets/images/products/combo-halwa.jpg" alt="Family Combo"
-                    class="h-full w-full object-cover" loading="lazy">
-                </div>
-                <h4 class="font-serif-title text-[11px] sm:text-xs font-bold text-[#32110D] uppercase tracking-wide">
-                  FAMILY COMBO</h4>
-                <p class="text-[10px] text-[#75675D] mt-0.5">500g Halwa</p>
-                <p class="font-serif-title text-xs sm:text-sm font-bold text-[#32110D] mt-0.5">₹540</p>
-                <button type="button"
-                  class="mt-2.5 w-full rounded-full py-2 px-2 text-[10px] sm:text-xs font-bold text-white shadow-md transition-all hover:scale-105 tracking-wider cursor-pointer border border-[#B88932]/40"
-                  style="background-color: #380808 !important; color: #ffffff !important;"
-                  data-add-to-cart="family-combo">
-                  ORDER NOW
-                </button>
-              </div>
-
-              <!-- Item 3: Festival Combo -->
-              <div class="flex flex-col items-center">
-                <div
-                  class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#EFE4D2] mb-2.5 border border-[#5A160F]/10">
-                  <img src="assets/images/products/classic-halwa.jpg" alt="Festival Combo"
-                    class="h-full w-full object-cover" loading="lazy">
-                </div>
-                <h4 class="font-serif-title text-[11px] sm:text-xs font-bold text-[#32110D] uppercase tracking-wide">
-                  FESTIVAL COMBO</h4>
-                <p class="text-[10px] text-[#75675D] mt-0.5">1kg Halwa</p>
-                <p class="font-serif-title text-xs sm:text-sm font-bold text-[#32110D] mt-0.5">₹640</p>
-                <button type="button"
-                  class="mt-2.5 w-full rounded-full py-2 px-2 text-[10px] sm:text-xs font-bold text-white shadow-md transition-all hover:scale-105 tracking-wider cursor-pointer border border-[#B88932]/40"
-                  style="background-color: #380808 !important; color: #ffffff !important;"
-                  data-add-to-cart="festival-combo">
-                  ORDER NOW
-                </button>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Card 4: WE DELIVER HALWA TO (Right - approx 7 cols) -->
-          <div
-            class="lg:col-span-7 reveal rounded-2xl border border-[#B88932]/30 bg-[#FFFDF8] p-5 sm:p-6 shadow-sm flex flex-col justify-between">
-            <h3
-              class="font-serif-title text-center text-base sm:text-lg font-bold tracking-widest text-[#32110D] uppercase mb-5">
-              WE DELIVER HALWA TO
-            </h3>
-
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5">
-
-              <!-- Tamil Nadu -->
-              <div class="relative group aspect-[3/4] rounded-xl overflow-hidden border border-[#5A160F]/15 shadow-2xs">
-                <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=600&auto=format&fit=crop"
-                  alt="Tamil Nadu"
-                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy">
-                <div
-                  class="absolute inset-x-0 bottom-0 bg-[#0A1D37]/90 py-2 text-center backdrop-blur-xs border-t border-white/10">
-                  <span
-                    class="font-serif-title text-[11px] sm:text-xs font-bold text-white tracking-wider uppercase">TAMIL
-                    NADU</span>
-                </div>
-              </div>
-
-              <!-- Kerala -->
-              <div class="relative group aspect-[3/4] rounded-xl overflow-hidden border border-[#5A160F]/15 shadow-2xs">
-                <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=600&auto=format&fit=crop"
-                  alt="Kerala"
-                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy">
-                <div
-                  class="absolute inset-x-0 bottom-0 bg-[#0A1D37]/90 py-2 text-center backdrop-blur-xs border-t border-white/10">
-                  <span
-                    class="font-serif-title text-[11px] sm:text-xs font-bold text-white tracking-wider uppercase">KERALA</span>
-                </div>
-              </div>
-
-              <!-- Bangalore -->
-              <div class="relative group aspect-[3/4] rounded-xl overflow-hidden border border-[#5A160F]/15 shadow-2xs">
-                <img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=600&auto=format&fit=crop"
-                  alt="Bangalore"
-                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy">
-                <div
-                  class="absolute inset-x-0 bottom-0 bg-[#0A1D37]/90 py-2 text-center backdrop-blur-xs border-t border-white/10">
-                  <span
-                    class="font-serif-title text-[11px] sm:text-xs font-bold text-white tracking-wider uppercase">BANGALORE</span>
-                </div>
-              </div>
-
-              <!-- Mumbai -->
-              <div class="relative group aspect-[3/4] rounded-xl overflow-hidden border border-[#5A160F]/15 shadow-2xs">
-                <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?q=80&w=600&auto=format&fit=crop"
-                  alt="Mumbai"
-                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy">
-                <div
-                  class="absolute inset-x-0 bottom-0 bg-[#0A1D37]/90 py-2 text-center backdrop-blur-xs border-t border-white/10">
-                  <span
-                    class="font-serif-title text-[11px] sm:text-xs font-bold text-white tracking-wider uppercase">MUMBAI</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. BANNER CTA SECTION -->
-    <section id="functions-events"
-      class="relative isolate w-full min-h-[380px] sm:min-h-[440px] flex items-center justify-center overflow-hidden border-y-2 border-[#D4A243] px-6 py-16 sm:py-24 text-center">
-      <!-- Full Cover Background Image -->
-      <img src="assets/images/Glistening Halwa in Brass Bowl.webp" alt="Lustrous Cashew Halwa in Brass Bowl"
-        class="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.55] contrast-[1.1]">
-
-      <!-- Rich Warm Dark Overlay for Maximum Text Contrast -->
-      <div class="absolute inset-0 bg-gradient-to-r from-[#1E0805]/95 via-[#2E0B07]/85 to-[#1E0805]/90"></div>
-
-      <!-- Polished Decorative Inner Gold Border -->
-      <div class="pointer-events-none absolute inset-3 sm:inset-5 border-2 border-[#D4A243]/70 z-10"></div>
-
-      <!-- Content -->
-      <div class="relative z-20 mx-auto flex max-w-3xl flex-col items-center justify-center py-4">
-        <!-- Golden Star Ornament -->
-        <div class="flex items-center justify-center gap-3 mb-3 text-[#D4A243]" aria-hidden="true">
-          <span class="w-12 sm:w-16 h-px bg-[#D4A243]"></span>
-          <span class="text-base text-[#D4A243]">✦</span>
-          <span class="w-12 sm:w-16 h-px bg-[#D4A243]"></span>
-        </div>
-
-        <h2 style="color: #FFF8EB !important;"
-          class="font-serif-title text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] tracking-tight">
-          Bringing Tradition to Your Table</h2>
-
-        <p style="color: #FCE8C5 !important;"
-          class="mt-4 font-serif-title text-lg sm:text-2xl leading-relaxed font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] max-w-2xl">
-          Experience the authentic taste of Tirunelveli.<br class="hidden sm:inline"> Made with love. Served with pride.
-        </p>
-
-        <a href="pages/shop.html" style="color: #1E0805 !important; background-color: #FCE8C5 !important;"
-          class="mt-8 inline-flex items-center justify-center border-2 border-[#D4A243] hover:!bg-[#D4A243] hover:!text-white px-10 py-3.5 rounded-xl font-serif-title text-base sm:text-lg font-extrabold uppercase tracking-wider shadow-2xl hover:-translate-y-1 transition-all duration-300">
-          Shop Now
-        </a>
-      </div>
-    </section>
-
-    <div class="hidden">
-
-      <!-- MAIN TWO COLUMN AREA -->
-      <div class="mx-auto grid max-w-[1440px] grid-cols-1 items-stretch gap-4 lg:grid-cols-2">
-
-        <!-- LEFT CONTENT -->
+      </section>
+      <!-- BRING HOME THE TASTE -->
+      <section
+        class="relative isolate min-h-[540px] overflow-hidden bg-[#2a0d06] px-5 py-14 text-[#fff7e8] sm:px-8 lg:px-12"
+        data-reveal
+        aria-labelledby="taste-title"
+      >
+        <img
+          src="assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png"
+          alt="Nellai Specialz halwa and gift box"
+          class="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+        />
         <div
-          class="flex flex-col items-center justify-between border border-[#B88932]/30 bg-[#FFFDF8] px-5 py-6 text-center sm:px-8">
-
-          <h2 class="font-serif text-xl font-bold uppercase leading-tight text-[#241714] sm:text-2xl">
-            Halwa Delivery for Functions &amp; Events
-          </h2>
-
-          <p class="mt-2 font-serif text-sm font-medium text-[#332421]">
-            Bulk Orders for Weddings, Parties, Corporate Events &amp; More
-          </p>
-
-          <!-- EVENT TYPES -->
-          <div class="my-6 flex w-full items-start divide-x divide-[#B88932]/25">
-
-            <!-- Weddings -->
-            <div class="flex flex-1 flex-col items-center px-2">
-              <div class="flex h-8 items-center justify-center">
-                <svg viewBox="0 0 64 64" class="h-7 w-7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="21" cy="15" r="5" stroke="#4b241c" stroke-width="2.5" />
-                  <circle cx="43" cy="15" r="5" stroke="#4b241c" stroke-width="2.5" />
-                  <circle cx="32" cy="12" r="5" fill="#b51e22" />
-                  <path d="M14 52V31C14 24 18 20 23 20" stroke="#4b241c" stroke-width="2.5" />
-                  <path d="M50 52V31C50 24 46 20 41 20" stroke="#4b241c" stroke-width="2.5" />
-                  <path d="M26 53V32C26 25 29 21 32 21C35 21 38 25 38 32V53" stroke="#b51e22" stroke-width="2.5" />
-                  <path d="M10 54H54" stroke="#d88a12" stroke-width="2.5" />
-                </svg>
+          class="absolute inset-0 -z-10 bg-gradient-to-r from-[#2a0d06] via-[#2a0d06]/90 to-[#2a0d06]/15"
+        ></div>
+        <div
+          class="relative mx-auto flex min-h-[480px] max-w-[1280px] items-center px-4 sm:px-6 lg:px-8"
+        >
+          <div class="w-full max-w-[720px]">
+            <p
+              class="flex items-center gap-4 text-[12px] font-semibold uppercase tracking-[.32em] text-[#f1d08a]"
+            >
+              <span class="h-px w-16 bg-[#f1d08a]"></span>Tirunelveli
+            </p>
+            <h2
+              id="taste-title"
+              class="mt-5 max-w-[700px] font-serif text-[30px] font-semibold leading-[.92] text-[#fff8ea] sm:text-[36px] md:text-[40px] lg:text-[44px]"
+            >
+              Bring Home the<br />Taste of Tirunelveli.
+            </h2>
+            <p
+              class="mt-6 max-w-[580px] text-sm leading-relaxed text-[#fff1d3] sm:text-[15px] md:text-base"
+            >
+              Authentic halwa and traditional sweets,<br
+                class="hidden sm:block"
+              />
+              made with pure ingredients and time-honoured methods.
+            </p>
+            <div
+              class="mt-8 grid max-w-[650px] grid-cols-2 gap-x-5 gap-y-5 sm:grid-cols-4 sm:gap-4"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-[#fff3d8] sm:flex-col sm:items-start"
+              >
+                <span
+                  class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#f1d08a] text-[#f1d08a]"
+                  ><svg
+                    aria-hidden="true"
+                    class="h-6 w-6"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path d="M19 4C10 4 5 8 5 15c0 3 2 5 5 5 7 0 10-7 9-16Z" />
+                    <path d="M5 20c2-5 6-8 11-10" /></svg></span
+                ><span class="leading-tight"
+                  >Pure &amp; Quality<br />Ingredients</span
+                >
               </div>
-
-              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                Weddings
-              </p>
-            </div>
-
-            <!-- Corporate -->
-            <div class="flex flex-1 flex-col items-center px-2">
-              <div class="flex h-12 items-center justify-center">
-                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18 54V22H46V54" stroke="#4b241c" stroke-width="2.5" />
-                  <path d="M23 22V16H41V22" stroke="#b51e22" stroke-width="2.5" />
-                  <path d="M28 16V11H36V16" stroke="#d88a12" stroke-width="2.5" />
-                  <path d="M23 29H28V35H23V29Z" stroke="#d88a12" stroke-width="2" />
-                  <path d="M36 29H41V35H36V29Z" stroke="#d88a12" stroke-width="2" />
-                  <path d="M30 54V44H34V54" stroke="#b51e22" stroke-width="2.5" />
-                  <path d="M13 54H51" stroke="#4b241c" stroke-width="2.5" />
-                </svg>
+              <div
+                class="flex items-center gap-2 text-sm text-[#fff3d8] sm:flex-col sm:items-start"
+              >
+                <span
+                  class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#f1d08a] text-[#f1d08a]"
+                  ><svg
+                    aria-hidden="true"
+                    class="h-6 w-6"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      d="M6 8h12M7 8v8a5 5 0 0 0 10 0V8M5 8a7 7 0 0 1 14 0M12 3v3"
+                    /></svg></span
+                ><span class="leading-tight">Traditional<br />Preparation</span>
               </div>
-
-              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                Corporate Events
-              </p>
-            </div>
-
-            <!-- Birthday -->
-            <div class="flex flex-1 flex-col items-center px-2">
-              <div class="flex h-12 items-center justify-center">
-                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M16 35H48V53H16V35Z" stroke="#4b241c" stroke-width="2.5" />
-                  <path d="M21 27H43V35H21V27Z" stroke="#d88a12" stroke-width="2.5" />
-                  <path d="M25 20H39V27H25V20Z" stroke="#b51e22" stroke-width="2.5" />
-                  <path d="M27 20V14M32 20V12M37 20V14" stroke="#4b241c" stroke-width="2" />
-                </svg>
+              <div
+                class="flex items-center gap-2 text-sm text-[#fff3d8] sm:flex-col sm:items-start"
+              >
+                <span
+                  class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#f1d08a] text-[#f1d08a]"
+                  ><svg
+                    aria-hidden="true"
+                    class="h-6 w-6"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      d="M12 20C5 20 4 13 6 8c5 0 8 2 8 7 0 1.8-.7 3.5-2 5Z"
+                    />
+                    <path d="M12 20c0-5 2-9 7-12 1 5-1 10-7 12Z" /></svg></span
+                ><span class="leading-tight">No Artificial<br />Colours</span>
+              </div>  
+              <div
+                class="flex items-center gap-2 text-sm text-[#fff3d8] sm:flex-col sm:items-start"
+              >
+                <span
+                  class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#f1d08a] text-[#f1d08a]"
+                  ><svg
+                    aria-hidden="true"
+                    class="h-6 w-6"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      d="M20 8.5c0 5-8 10-8 10s-8-5-8-10A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 2.5Z"
+                    /></svg></span
+                ><span class="leading-tight"
+                  >Authentic<br />Tirunelveli Taste</span
+                >
               </div>
-
-              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                Birthday Parties
-              </p>
             </div>
-
-            <!-- Family -->
-            <div class="flex flex-1 flex-col items-center px-2">
-              <div class="flex h-12 items-center justify-center">
-                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M32 17C25 8 15 13 15 22C15 32 32 42 32 42C32 42 49 32 49 22C49 13 39 8 32 17Z"
-                    stroke="#b51e22" stroke-width="2.5" />
-                  <circle cx="16" cy="39" r="5" stroke="#4b241c" stroke-width="2" />
-                  <circle cx="48" cy="39" r="5" stroke="#4b241c" stroke-width="2" />
-                  <circle cx="32" cy="38" r="5" stroke="#d88a12" stroke-width="2" />
-                </svg>
-              </div>
-
-              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                Family Functions
-              </p>
-            </div>
-
-            <!-- Festivals -->
-            <div class="flex flex-1 flex-col items-center px-2">
-              <div class="flex h-12 items-center justify-center">
-                <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M32 11C28 18 24 22 24 29C24 34 27 38 32 38C37 38 40 34 40 29C40 22 36 18 32 11Z"
-                    stroke="#b51e22" stroke-width="2.5" />
-                  <path d="M13 42C21 38 26 39 32 45C38 39 43 38 51 42C47 51 41 55 32 55C23 55 17 51 13 42Z"
-                    stroke="#4b241c" stroke-width="2.5" />
-                </svg>
-              </div>
-
-              <p class="mt-2 font-serif text-sm font-medium text-[#2c1e1a]">
-                Festivals &amp; Poojas
-              </p>
-            </div>
-
+            <a
+              href="pages/shop.html"
+              class="mt-9 inline-flex min-h-14 w-full max-w-[420px] items-center justify-between rounded-full bg-[#ffe29a] px-7 text-base font-bold text-[#3b160b] shadow-lg transition hover:-translate-y-1 hover:bg-[#fff3c6] sm:text-lg"
+              >Explore Our Halwa &amp; Sweets
+              <span aria-hidden="true" class="text-2xl">→</span></a
+            >
           </div>
-
-          <a href="#contact"
-            class="mt-6 inline-flex items-center justify-center rounded-md bg-[#4c0809] px-8 py-3 font-serif text-sm font-semibold uppercase text-white hover:bg-[#681012]">
-            Enquire Now
-          </a>
-
         </div>
-
-
-        <!-- RIGHT IMAGE COLLAGE -->
-        <div class="grid h-[280px] min-h-0 grid-cols-12 gap-2 overflow-hidden sm:h-[300px] lg:h-[300px]">
-
-          <!-- BIG LEFT IMAGE -->
-          <div class="col-span-7 min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-            <img src="assets/images/heritage/story-hero.jpg" alt="Indian sweets prepared for an event"
-              class="h-full w-full object-cover" loading="lazy" />
-          </div>
-
-          <!-- RIGHT IMAGES -->
-          <div class="col-span-5 grid min-h-0 grid-cols-2 grid-rows-2 gap-2">
-
-            <!-- TOP IMAGE -->
-            <div class="col-span-2 min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-              <img src="assets/images/process/craftsmanship.jpg" alt="Indian celebration food"
-                class="h-full w-full object-cover" loading="lazy" />
-            </div>
-
-            <!-- BOTTOM LEFT -->
-            <div class="min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-              <img src="assets/images/products/combo-halwa.jpg" alt="Traditional Indian food"
-                class="h-full w-full object-cover" loading="lazy" />
-            </div>
-
-            <!-- BOTTOM RIGHT -->
-            <div class="min-h-0 overflow-hidden rounded-md border border-[#5A160F]/10">
-              <img src="assets/images/products/halwa-box.jpg" alt="Indian function catering"
-                class="h-full w-full object-cover" loading="lazy" />
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-    </section>
-
-  </main>
-
-  <!-- Dynamic Common Footer Template -->
-  <div id="site-footer"></div>
-
-  <!-- MODALS & DRAWERS -->
-  <div id="drawerBackdrop" class="fixed inset-0 z-50 hidden bg-[#32110D]/40"></div>
-
-  <!-- Mobile Navigation Drawer -->
-  <aside id="mobileDrawer"
-    class="fixed inset-y-0 right-0 z-[60] flex w-full max-w-sm translate-x-full flex-col border-l border-[#5A160F]/10 bg-[#FBF5E9] p-6 transition-transform duration-300"
-    data-drawer aria-hidden="true" aria-label="Mobile menu">
-    <div class="mb-8 flex items-center justify-between">
-      <p class="font-serif-title text-xl font-bold">Menu</p>
-      <button type="button" id="closeMobileNav" class="h-11 w-11 text-[#32110D]" aria-label="Close menu">✕</button>
-    </div>
-    <nav class="flex flex-col gap-4 text-base font-medium text-[#32110D]">
-      <a href="index.html">Home</a>
-      <a href="pages/shop.html">Shop</a>
-      <a href="#halwas">Halwa</a>
-      <a href="#combo">Combo</a>
-      <a href="pages/our-story.html">Our Story</a>
-      <a href="pages/contact-us.html">Contact Us</a>
-    </nav>
-  </aside>
-
-  <!-- Cart Drawer -->
-  <aside id="cartDrawer"
-    class="fixed inset-y-0 right-0 z-[60] flex w-full max-w-md translate-x-full flex-col border-l border-[#5A160F]/10 bg-[#FBF5E9] transition-transform duration-300"
-    data-drawer aria-hidden="true" aria-label="Shopping cart">
-    <div class="flex items-center justify-between border-b border-[#5A160F]/10 px-5 py-4">
-      <h2 class="font-serif-title text-2xl font-bold">Your Cart</h2>
-      <button type="button" id="closeCartDrawer" class="h-11 w-11" aria-label="Close cart">✕</button>
-    </div>
-    <div id="cartEmpty" class="px-5 py-10 text-sm text-[#75675D]">Your cart is empty.</div>
-    <div id="cartList" class="flex-1 overflow-y-auto px-5"></div>
-    <div id="cartSummary" hidden class="border-t border-[#5A160F]/10 p-5">
-      <div class="flex items-center justify-between text-sm">
-        <span>Subtotal</span>
-        <span id="cartTotal" class="font-medium">₹0</span>
-      </div>
-      <p class="mt-3 text-xs text-[#75675D]">Checkout and payment will be available once connected. Selection saved
-        locally.</p>
-    </div>
-  </aside>
-
-  <!-- Search Modal -->
-  <div id="searchModal" class="fixed inset-0 z-[65] hidden items-center justify-center bg-[#32110D]/50 p-4"
-    aria-hidden="true" role="dialog">
-    <div class="w-full max-w-lg border border-[#5A160F]/15 bg-[#FBF5E9] p-6 rounded-xl">
-      <div class="mb-4 flex items-center justify-between">
-        <h2 class="font-serif-title text-2xl font-bold">Search</h2>
-        <button type="button" id="closeSearchModal" class="h-11 w-11" aria-label="Close search">✕</button>
-      </div>
-      <input id="searchInput" type="search" placeholder="Search halwa or combo"
-        class="w-full border border-[#5A160F]/20 bg-white px-4 py-3 text-sm rounded-lg">
-      <div id="searchResults" class="mt-4 text-sm text-[#75675D]">Start typing to find a halwa.</div>
-    </div>
-  </div>
-
-  <!-- Account Modal -->
-  <div id="accountModal" class="fixed inset-0 z-[65] hidden items-center justify-center bg-[#32110D]/50 p-4"
-    aria-hidden="true" role="dialog">
-    <div class="w-full max-w-md border border-[#5A160F]/15 bg-[#FBF5E9] p-6 rounded-xl">
-      <div class="mb-4 flex items-center justify-between">
-        <h2 class="font-serif-title text-2xl font-bold">Account</h2>
-        <button type="button" id="closeAccountModal" class="h-11 w-11" aria-label="Close account">✕</button>
-      </div>
-      <p class="text-sm leading-relaxed text-[#75675D]">Customer accounts will be available when checkout is connected.
-        For now, you can browse and save items to your cart on this device.</p>
-    </div>
-  </div>
-
-  <script src="assets/js/common.js" defer></script>
-  <script src="assets/js/home.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const observerOptions = {
-        threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px'
-      };
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    });
-  </script>
-</body>
-
+      </section>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/home.js"></script>
+  </body>
 </html>

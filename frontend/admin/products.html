@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products | Nellai Specialz</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body data-admin-page="products" data-admin-title="Products">
+    <div data-admin-shell></div>
+
+    <template id="admin-page-content">
+      <section class="space-y-6">
+        <div
+          class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center"
+        >
+          <p class="text-sm text-[#7e5a43]">
+            Manage your catalogue and inventory.
+          </p>
+          <button
+            class="rounded-xl bg-[#54170f] px-5 py-3 text-sm font-semibold text-white"
+          >
+            + Add product
+          </button>
+        </div>
+
+        <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
+          <div class="mb-5 flex flex-col gap-3 sm:flex-row">
+            <input
+              class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]"
+              placeholder="Search products..."
+            />
+            <select
+              class="rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm"
+            >
+              <option>All categories</option>
+              <option>Halwa</option>
+              <option>Combos</option>
+            </select>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[700px] text-left text-sm">
+              <thead
+                class="border-b border-[#eadbc6] text-xs uppercase tracking-wider text-[#9b6b2c]"
+              >
+                <tr>
+                  <th class="p-3">Product</th>
+                  <th class="p-3">Category</th>
+                  <th class="p-3">Price</th>
+                  <th class="p-3">Stock</th>
+                  <th class="p-3">Status</th>
+                  <th class="p-3">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#f0e5d8]">
+                <tr>
+                  <td class="p-3 font-semibold">Tirunelveli Karupatti Halwa</td>
+                  <td class="p-3">Halwa</td>
+                  <td class="p-3">₹600 - ₹1,150</td>
+                  <td class="p-3">42</td>
+                  <td class="p-3">
+                    <span
+                      class="rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-700"
+                      >Active</span
+                    >
+                  </td>
+                  <td class="p-3 text-[#8e281d]">Edit</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold">Cashew Halwa</td>
+                  <td class="p-3">Halwa</td>
+                  <td class="p-3">₹550 - ₹1,050</td>
+                  <td class="p-3">18</td>
+                  <td class="p-3">
+                    <span
+                      class="rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-700"
+                      >Active</span
+                    >
+                  </td>
+                  <td class="p-3 text-[#8e281d]">Edit</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold">Traditional Halwa Combo</td>
+                  <td class="p-3">Combos</td>
+                  <td class="p-3">₹1,500</td>
+                  <td class="p-3">0</td>
+                  <td class="p-3">
+                    <span
+                      class="rounded-full bg-red-50 px-3 py-1 text-xs text-red-700"
+                      >Out of stock</span
+                    >
+                  </td>
+                  <td class="p-3 text-[#8e281d]">Edit</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </template>
+
+    <script src="assets/admin.js" defer></script>
+  </body>
+</html>

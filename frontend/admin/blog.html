@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Nellai Specialz</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body data-admin-page="blog" data-admin-title="Blog">
+  <div data-admin-shell></div>
+
+  <template id="admin-page-content">
+    <section class="space-y-6">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center"><p class="text-sm text-[#7e5a43]">Publish stories about tradition, ingredients, and products.</p><button class="rounded-xl bg-[#54170f] px-5 py-3 text-sm font-semibold text-white">+ New post</button></div>
+      <div class="grid gap-5 lg:grid-cols-3">
+        <article class="rounded-2xl border border-[#eadbc6] bg-white p-6"><span class="text-xs font-bold uppercase tracking-wider text-[#9b6b2c]">Published · 12 Sep 2026</span><h2 class="mt-4 font-serif text-xl font-bold">The story behind Tirunelveli Halwa</h2><p class="mt-2 text-sm leading-6 text-[#7e5a43]">Discover the craft and patience behind every traditional batch.</p><button class="mt-5 text-sm font-semibold text-[#8e281d]">Edit post →</button></article>
+        <article class="rounded-2xl border border-[#eadbc6] bg-white p-6"><span class="text-xs font-bold uppercase tracking-wider text-amber-700">Draft · 08 Sep 2026</span><h2 class="mt-4 font-serif text-xl font-bold">5 ways to serve halwa</h2><p class="mt-2 text-sm leading-6 text-[#7e5a43]">Simple serving ideas for celebrations and everyday moments.</p><button class="mt-5 text-sm font-semibold text-[#8e281d]">Continue editing →</button></article>
+        <article class="rounded-2xl border border-[#eadbc6] bg-white p-6"><span class="text-xs font-bold uppercase tracking-wider text-[#9b6b2c]">Published · 26 Aug 2026</span><h2 class="mt-4 font-serif text-xl font-bold">From palm jaggery to perfect texture</h2><p class="mt-2 text-sm leading-6 text-[#7e5a43]">How carefully selected ingredients shape authentic flavour.</p><button class="mt-5 text-sm font-semibold text-[#8e281d]">Edit post →</button></article>
+      </div>
+    </section>
+  </template>
+
+  <script src="assets/admin.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offers | Nellai Specialz</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body data-admin-page="offers" data-admin-title="Offers">
+  <div data-admin-shell></div>
+
+  <template id="admin-page-content">
+    <section class="space-y-6">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+        <p class="text-sm text-[#7e5a43]">Create and manage promotional offers and coupon codes.</p>
+        <button class="rounded-xl bg-[#54170f] px-5 py-3 text-sm font-semibold text-white">+ Create offer</button>
+      </div>
+      <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[700px] text-left text-sm">
+            <thead class="border-b border-[#eadbc6] text-xs uppercase tracking-wider text-[#9b6b2c]"><tr><th class="p-3">Code</th><th class="p-3">Offer</th><th class="p-3">Uses</th><th class="p-3">Expires</th><th class="p-3">Status</th><th class="p-3">Action</th></tr></thead>
+            <tbody class="divide-y divide-[#f0e5d8]"><tr><td class="p-3 font-bold text-[#8e281d]">WELCOME10</td><td class="p-3">10% off first order</td><td class="p-3">64 / 200</td><td class="p-3">31 Dec 2026</td><td class="p-3"><span class="rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-700">Active</span></td><td class="p-3 text-[#8e281d]">Edit</td></tr><tr><td class="p-3 font-bold text-[#8e281d]">FESTIVE25</td><td class="p-3">₹250 off orders above ₹1,500</td><td class="p-3">89 / 100</td><td class="p-3">15 Nov 2026</td><td class="p-3"><span class="rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-700">Active</span></td><td class="p-3 text-[#8e281d]">Edit</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <script src="assets/admin.js" defer></script>
+</body>
+</html>
