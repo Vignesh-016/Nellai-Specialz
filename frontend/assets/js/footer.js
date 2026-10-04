@@ -9,7 +9,7 @@
 
   const footerHTML = `
     <footer class="relative overflow-hidden bg-[#321307] text-[#fff3d6]">
-      <div class="mx-auto max-w-[1320px] px-5 py-10 sm:px-8 lg:py-12">
+      <div class="mx-auto max-w-[1320px] w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
         <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.8fr_0.9fr_1fr_1.2fr] lg:gap-0">
           <!-- Brand -->
           <section class="lg:pr-10" aria-labelledby="footer-brand-title">
@@ -77,7 +77,7 @@
             <form class="mt-5 flex h-14 max-w-[300px] overflow-hidden rounded-2xl border border-[#d7a957]" action="#" method="post">
               <label for="footer-email" class="sr-only">Email address</label>
               <input id="footer-email" type="email" placeholder="Enter your email" class="min-w-0 flex-1 bg-transparent px-4 text-sm text-white outline-none placeholder:text-[#f6dfbd]" required>
-              <button type="submit" aria-label="Subscribe" class="w-14 shrink-0 bg-[#f2c875] text-2xl text-[#321307] transition hover:bg-[#ffe3a6]">›</button>
+              <button type="submit" aria-label="Subscribe" class="w-14 shrink-0 bg-[#f2c875] text-2xl text-[#321307] transition hover:bg-[#ffe3a6]">â†’</button>
             </form>
           </section>
         </div>
@@ -104,3 +104,5 @@
     mountFooter();
   }
 })();
+
+

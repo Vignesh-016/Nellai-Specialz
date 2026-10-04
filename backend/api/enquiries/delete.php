@@ -1,0 +1,2 @@
+<?php
+declare(strict_types=1); require_once __DIR__.'/../shared/response.php'; require_once __DIR__.'/../shared/request.php'; require_once __DIR__.'/../shared/auth.php'; methodOnly('DELETE'); requireAdmin(); safeApi(function():void{$db=apiDatabase();$id=requestId();$s=$db->prepare('DELETE FROM enquiries WHERE id=:id');$s->execute([':id'=>$id]);if(!$s->rowCount())jsonResponse(false,'Enquiry not found.',null,[],404);jsonResponse(true,'Enquiry deleted successfully.');});

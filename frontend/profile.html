@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Profile | Nellai Specialz</title>
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-[#F8F3E8] text-[#2A1B16]">
+    <div id="site-header"></div>
+    <main class="mx-auto w-full max-w-[1280px] px-4 py-12 sm:px-6 lg:px-8">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-[0.22em] text-[#B88932]">
+          Account
+        </p>
+        <h1 class="mt-2 font-serif text-4xl font-semibold text-[#321307]">
+          My profile
+        </h1>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-[260px_1fr]">
+        <nav
+          class="h-fit rounded-2xl border border-[#E7DDD1] bg-white p-3"
+          aria-label="Account navigation"
+        >
+          <a
+            href="#profile"
+            class="block rounded-xl bg-[#5A160F] px-4 py-3 text-sm font-semibold text-white"
+            >My Profile</a
+          ><a
+            href="#orders"
+            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#74685F] hover:bg-[#F8F3E8]"
+            >My Orders</a
+          ><a
+            href="#addresses"
+            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#74685F] hover:bg-[#F8F3E8]"
+            >Addresses</a
+          ><a
+            href="login.html"
+            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#8E281D] hover:bg-[#F8F3E8]"
+            >Logout</a
+          >
+        </nav>
+        <section
+          id="profile"
+          class="rounded-2xl border border-[#E7DDD1] bg-white p-6 sm:p-8"
+        >
+          <h2 class="font-serif text-2xl font-semibold text-[#321307]">
+            Personal details
+          </h2>
+          <p class="mt-2 text-sm text-[#74685F]">
+            Keep your contact details up to date.
+          </p>
+          <form
+            class="mt-8 grid gap-5 sm:grid-cols-2"
+            onsubmit="event.preventDefault()"
+          >
+            <div>
+              <label
+                for="profile-first"
+                class="mb-2 block text-sm font-semibold"
+                >First name</label
+              ><input
+                id="profile-first"
+                class="h-12 w-full rounded-lg border border-[#E7DDD1] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+              />
+            </div>
+            <div>
+              <label for="profile-last" class="mb-2 block text-sm font-semibold"
+                >Last name</label
+              ><input
+                id="profile-last"
+                class="h-12 w-full rounded-lg border border-[#E7DDD1] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+              />
+            </div>
+            <div>
+              <label
+                for="profile-email"
+                class="mb-2 block text-sm font-semibold"
+                >Email</label
+              ><input
+                id="profile-email"
+                type="email"
+                class="h-12 w-full rounded-lg border border-[#E7DDD1] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+              />
+            </div>
+            <div>
+              <label
+                for="profile-phone"
+                class="mb-2 block text-sm font-semibold"
+                >Phone</label
+              ><input
+                id="profile-phone"
+                type="tel"
+                class="h-12 w-full rounded-lg border border-[#E7DDD1] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+              />
+            </div>
+            <button
+              class="h-12 rounded-lg bg-[#5A160F] px-6 font-semibold text-white sm:col-span-2 sm:w-fit"
+            >
+              Save changes
+            </button>
+          </form>
+        </section>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/footer.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/account.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/profile.js"></script>
+  </body>
+</html>

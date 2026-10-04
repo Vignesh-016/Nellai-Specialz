@@ -3,321 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Our Story — Nellai Specialz | Authentic Tirunelveli Halwa Heritage</title>
-  <meta name="description" content="Learn about Nellai Specialz heritage, our traditional slow cooking recipes, and how we bring authentic Tirunelveli Halwa to every home.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+Tamil:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Our Story | Nellai Specialz</title>
   <link rel="stylesheet" href="../assets/css/app.css">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              cream: '#FDFBF7',
-              dark: '#32110D',
-              primary: '#5A160F',
-              gold: '#B88932',
-              'light-gold': '#D9B86C',
-              sand: '#F7F1E5',
-              text: '#2D211B'
-            }
-          },
-          fontFamily: {
-            serif: ['Cormorant Garamond', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-            tamil: ['Noto Serif Tamil', 'serif']
-          }
-        }
-      }
-    }
-  </script>
-  <script src="../assets/js/header.js"></script>
-  <script src="../assets/js/footer.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#FDFBF7] text-[#2D211B] antialiased selection:bg-[#B88932] selection:text-white">
-
-  <!-- Dynamic Common Header Template -->
+<body class="bg-[#F8F3E8] text-[#2A1B16] antialiased">
   <div id="site-header"></div>
 
   <main>
-    <!-- PAGE HERO BANNER -->
-    <section class="relative overflow-hidden bg-[#2D120B] text-white py-10 sm:py-14">
-      <div class="absolute inset-0 z-0 opacity-40 bg-cover bg-center" style="background-image: url('../assets/images/heritage/story-hero.jpg');"></div>
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        <!-- Breadcrumb -->
-        <div class="flex items-center space-x-2 text-[11px] uppercase tracking-widest text-[#D9B86C] font-semibold mb-4">
-          <a href="../index.html" class="hover:text-white transition-colors">HOME</a>
-          <span>&gt;</span>
-          <span class="text-white">ABOUT US</span>
-        </div>
-
-        <h1 class="font-serif text-4xl sm:text-6xl font-bold text-[#F5E6C8] mb-3">
-          About <br class="sm:hidden">Nellai Specialz
-        </h1>
-
-        <!-- Ornament Flourish -->
-        <div class="w-20 h-4 text-[#B88932] my-2">
-          <svg class="w-full h-full fill-current" viewBox="0 0 100 20">
-            <path d="M50 0 C30 10 20 0 0 10 C20 20 30 10 50 20 C70 10 80 20 100 10 C80 0 70 10 50 0 Z" />
-          </svg>
-        </div>
-
-        <div class="inline-block border border-[#B88932] bg-[#32110D]/80 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-[#F5E6C8] mt-2">
-          ✦ OUR STORY ✦
-        </div>
+    <section class="relative isolate min-h-[460px] overflow-hidden bg-[#321307] text-[#FFF8EB]">
+      <img src="../assets/images/heritage/story-hero.jpg" alt="Tirunelveli heritage landscape" class="absolute inset-0 -z-20 h-full w-full object-cover">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#321307]/95 via-[#321307]/70 to-[#321307]/20"></div>
+      <div class="mx-auto flex min-h-[460px] w-full max-w-[1280px] items-center px-4 py-16 sm:px-6 lg:px-8">
+        <div class="max-w-xl"><p class="text-xs font-bold uppercase tracking-[0.28em] text-[#D9B86C]">Our Story</p><h1 class="mt-5 font-serif text-5xl font-semibold leading-[0.95] sm:text-6xl">From Tirunelveli,<br>with tradition.</h1><p class="mt-6 max-w-lg text-base leading-7 text-[#F6DFBD]">A story shaped by authentic flavour, traditional preparation and the timeless taste of Tirunelveli.</p><a href="#story" class="mt-8 inline-flex items-center rounded-lg bg-[#B88932] px-6 py-3 text-sm font-semibold text-[#321307] transition hover:bg-[#F5D58A]">Discover our story ↓</a></div>
       </div>
     </section>
 
-    <!-- SECTION 1: OUR STORY NARRATIVE SPLIT -->
-    <section class="py-16 sm:py-24 bg-[#FDFBF7]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <!-- Left Image -->
-          <div class="lg:col-span-6 rounded-3xl overflow-hidden border border-[#B88932]/30 shadow-2xl h-80 sm:h-[450px]">
-            <img src="../assets/images/products/halwa-ghee.jpg" alt="Traditional brass uruli halwa cooking" class="w-full h-full object-cover">
-          </div>
+    <section id="story" class="py-16 sm:py-24"><div class="mx-auto grid w-full max-w-[1280px] items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8"><div class="overflow-hidden rounded-2xl border border-[#E7DDD1] bg-white shadow-[0_16px_40px_rgba(74,22,15,0.08)]"><img src="../assets/images/heritage/street-shop.jpg" alt="Traditional sweet shop in Tirunelveli" class="h-[360px] w-full object-cover sm:h-[480px]"></div><div><p class="text-xs font-bold uppercase tracking-[0.24em] text-[#B88932]">The Nellai Specialz story</p><h2 class="mt-4 font-serif text-4xl font-semibold leading-tight text-[#321307] sm:text-5xl">How Nellai Specialz began</h2><div class="mt-6 space-y-4 text-[15px] leading-7 text-[#74685F]"><p>Our story begins with the flavours that make Tirunelveli feel like home: generous, familiar and made with patience.</p><p>Nellai Specialz brings together authentic sweets and traditional snacks with a simple purpose — to preserve the taste people know and love, and share it with more homes.</p><p>From carefully chosen ingredients to thoughtful packing, every detail is guided by freshness, quality and care.</p></div></div></div></section>
 
-          <!-- Right Story Text -->
-          <div class="lg:col-span-6 space-y-6 text-left">
-            <div class="flex items-center space-x-2 text-[#B88932]">
-              <svg class="w-8 h-3 fill-current" viewBox="0 0 100 20"><path d="M50 0 C30 10 20 0 0 10 C20 20 30 10 50 20 C70 10 80 20 100 10 C80 0 70 10 50 0 Z"/></svg>
-            </div>
+    <section class="bg-[#321307] py-16 text-[#FFF8EB] sm:py-24"><div class="mx-auto grid w-full max-w-[1280px] items-center gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8"><div><p class="text-xs font-bold uppercase tracking-[0.24em] text-[#D9B86C]">The halwa story</p><h2 class="mt-4 font-serif text-4xl font-semibold leading-tight sm:text-5xl">What makes Tirunelveli halwa special?</h2><p class="mt-6 text-[15px] leading-7 text-[#F6DFBD]">Its appeal is in the balance: a rich texture, a distinctive Tirunelveli taste and the patience behind traditional preparation. It is a sweet that carries a sense of place.</p><p class="mt-4 text-[15px] leading-7 text-[#F6DFBD]">We honour that character with quality ingredients, careful preparation and packing that helps the experience reach you fresh.</p></div><div class="overflow-hidden rounded-2xl border border-[#B88932]/50"><img src="../assets/images/products/halwa-ghee.jpg" alt="Rich halwa prepared in a traditional vessel" class="h-[320px] w-full object-cover sm:h-[430px]"></div></div></section>
 
-            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-[#32110D] tracking-tight">
-              Our Story
-            </h2>
+    <section class="py-16 sm:py-24"><div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8"><div class="max-w-2xl"><p class="text-xs font-bold uppercase tracking-[0.24em] text-[#B88932]">What we stand for</p><h2 class="mt-3 font-serif text-4xl font-semibold text-[#321307]">Made with meaning</h2></div><div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><article class="rounded-2xl border border-[#E7DDD1] bg-white p-6"><span class="text-2xl text-[#B88932]">✦</span><h3 class="mt-5 font-serif text-2xl font-semibold">Authentic taste</h3><p class="mt-3 text-sm leading-6 text-[#74685F]">Flavours rooted in Tirunelveli and made to feel familiar.</p></article><article class="rounded-2xl border border-[#E7DDD1] bg-white p-6"><span class="text-2xl text-[#B88932]">◌</span><h3 class="mt-5 font-serif text-2xl font-semibold">Traditional preparation</h3><p class="mt-3 text-sm leading-6 text-[#74685F]">Time-honoured methods that respect the character of every sweet.</p></article><article class="rounded-2xl border border-[#E7DDD1] bg-white p-6"><span class="text-2xl text-[#B88932]">◇</span><h3 class="mt-5 font-serif text-2xl font-semibold">Quality ingredients</h3><p class="mt-3 text-sm leading-6 text-[#74685F]">Thoughtful selection from the first ingredient to the final finish.</p></article><article class="rounded-2xl border border-[#E7DDD1] bg-white p-6"><span class="text-2xl text-[#B88932]">♡</span><h3 class="mt-5 font-serif text-2xl font-semibold">Packed with care</h3><p class="mt-3 text-sm leading-6 text-[#74685F]">Prepared and packed with the care a meaningful gift deserves.</p></article></div></div></section>
 
-            <p class="font-serif text-lg text-[#B88932] font-semibold italic">
-              A Legacy of Taste. A Promise of Quality.
-            </p>
+    <section class="border-y border-[#E7DDD1] bg-[#FFFDF8] py-16 sm:py-20"><div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8"><div class="text-center"><p class="text-xs font-bold uppercase tracking-[0.24em] text-[#B88932]">From tradition to your home</p><h2 class="mt-3 font-serif text-4xl font-semibold text-[#321307]">A simple journey, thoughtfully made</h2></div><div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4"><article class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#F8F3E8] font-serif text-xl text-[#5A160F]">01</span><h3 class="mt-4 font-semibold">Carefully selected ingredients</h3><p class="mt-2 text-sm leading-6 text-[#74685F]">Starting with the foundations of good flavour.</p></article><article class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#F8F3E8] font-serif text-xl text-[#5A160F]">02</span><h3 class="mt-4 font-semibold">Traditional preparation</h3><p class="mt-2 text-sm leading-6 text-[#74685F]">Respecting the methods that make it special.</p></article><article class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#F8F3E8] font-serif text-xl text-[#5A160F]">03</span><h3 class="mt-4 font-semibold">Fresh packing</h3><p class="mt-2 text-sm leading-6 text-[#74685F]">Keeping every order ready to be shared.</p></article><article class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#F8F3E8] font-serif text-xl text-[#5A160F]">04</span><h3 class="mt-4 font-semibold">Delivered to your door</h3><p class="mt-2 text-sm leading-6 text-[#74685F]">Bringing a taste of Tirunelveli closer to home.</p></article></div></div></section>
 
-            <div class="space-y-4 text-xs sm:text-sm text-[#5C483D] leading-relaxed font-light">
-              <p>
-                Nellai Specialz is more than just a brand – it is a tribute to Tirunelveli's rich culinary heritage and the authentic recipes passed down through generations.
-              </p>
-              <p>
-                Our journey began with a simple belief – that true taste comes from tradition, patience and the finest ingredients. What started in a small traditional kitchen with a passion for making the perfect Halwa, has today become a trusted name loved by thousands.
-              </p>
-              <p>
-                Every batch we prepare carries the same love, care and dedication that our forefathers had – ensuring that the authentic taste of Tirunelveli reaches every home.
-              </p>
-            </div>
-
-            <!-- Since Badge -->
-            <div class="pt-4">
-              <div class="inline-flex items-center space-x-3 border-2 border-[#B88932] bg-[#F7F1E5] px-6 py-2.5 rounded-full shadow-sm">
-                <span class="font-serif text-sm font-bold uppercase tracking-widest text-[#32110D]">SINCE</span>
-                <span class="text-[#B88932]">🌿</span>
-                <span class="font-serif text-xl font-bold text-[#32110D]">2000</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: THE HEART OF TIRUNELVELI (4 core cards with Web SVG icons) -->
-    <section class="py-16 sm:py-24 bg-[#F7F1E5]/40 border-y border-[#B88932]/20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#32110D] mb-3">
-          The Heart of Tirunelveli
-        </h2>
-        <p class="max-w-2xl mx-auto text-xs sm:text-sm text-[#5C483D] leading-relaxed mb-14">
-          From our land to your home, we carry forward the rich heritage and timeless traditions of Tirunelveli in every bite.
-        </p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          <!-- Card 1: Scroll/Recipe Icon -->
-          <div class="bg-[#FDFBF7] p-8 rounded-2xl border border-[#B88932]/30 flex flex-col items-center text-center shadow-sm hover:border-[#B88932] hover:shadow-md transition-all group">
-            <div class="w-16 h-16 rounded-full bg-[#F7F1E5] border border-[#B88932]/40 flex items-center justify-center text-[#B88932] mb-6 group-hover:bg-[#32110D] group-hover:text-[#F5E6C8] transition-colors">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-              </svg>
-            </div>
-            <h3 class="font-serif text-xl font-bold text-[#32110D] mb-2">Authentic Recipes</h3>
-            <p class="text-xs text-[#5C483D] leading-relaxed">
-              Time-honored recipes passed down through generations, preserving the true taste of Tirunelveli.
-            </p>
-          </div>
-
-          <!-- Card 2: Vessel Pot Icon -->
-          <div class="bg-[#FDFBF7] p-8 rounded-2xl border border-[#B88932]/30 flex flex-col items-center text-center shadow-sm hover:border-[#B88932] hover:shadow-md transition-all group">
-            <div class="w-16 h-16 rounded-full bg-[#F7F1E5] border border-[#B88932]/40 flex items-center justify-center text-[#B88932] mb-6 group-hover:bg-[#32110D] group-hover:text-[#F5E6C8] transition-colors">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
-              </svg>
-            </div>
-            <h3 class="font-serif text-xl font-bold text-[#32110D] mb-2">Traditional Preparation</h3>
-            <p class="text-xs text-[#5C483D] leading-relaxed">
-              Prepared the traditional way with slow cooking and patience, just like our forefathers did.
-            </p>
-          </div>
-
-          <!-- Card 3: Mortar Pestle Icon -->
-          <div class="bg-[#FDFBF7] p-8 rounded-2xl border border-[#B88932]/30 flex flex-col items-center text-center shadow-sm hover:border-[#B88932] hover:shadow-md transition-all group">
-            <div class="w-16 h-16 rounded-full bg-[#F7F1E5] border border-[#B88932]/40 flex items-center justify-center text-[#B88932] mb-6 group-hover:bg-[#32110D] group-hover:text-[#F5E6C8] transition-colors">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L5.595 15.12a2 2 0 00-1.804.565l-.037.037a2 2 0 00-.565 1.804l.477 2.387a6 6 0 00.517 3.86l.158.318a6 6 0 003.86.517l2.387.477a2 2 0 001.804-.565l.037-.037a2 2 0 00.565-1.804l-.477-2.387a6 6 0 00-.517-3.86l-.158-.318a6 6 0 01-.517-3.86z"/>
-              </svg>
-            </div>
-            <h3 class="font-serif text-xl font-bold text-[#32110D] mb-2">Finest Ingredients</h3>
-            <p class="text-xs text-[#5C483D] leading-relaxed">
-              We use only handpicked, premium ingredients for unmatched taste and quality.
-            </p>
-          </div>
-
-          <!-- Card 4: Heart Hands Icon -->
-          <div class="bg-[#FDFBF7] p-8 rounded-2xl border border-[#B88932]/30 flex flex-col items-center text-center shadow-sm hover:border-[#B88932] hover:shadow-md transition-all group">
-            <div class="w-16 h-16 rounded-full bg-[#F7F1E5] border border-[#B88932]/40 flex items-center justify-center text-[#B88932] mb-6 group-hover:bg-[#32110D] group-hover:text-[#F5E6C8] transition-colors">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-              </svg>
-            </div>
-            <h3 class="font-serif text-xl font-bold text-[#32110D] mb-2">Made with Care</h3>
-            <p class="text-xs text-[#5C483D] leading-relaxed">
-              Every batch is made with love, care and attention to bring you the best we have.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: OUR JOURNEY (5 TIMELINE MILESTONES) -->
-    <section class="py-16 sm:py-24 bg-[#FDFBF7]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#32110D] mb-3">
-          Our Journey
-        </h2>
-        <p class="max-w-2xl mx-auto text-xs sm:text-sm text-[#5C483D] leading-relaxed mb-16">
-          A Legacy That Continues to Grow
-        </p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-          <div class="bg-[#F7F1E5]/60 p-6 rounded-2xl border border-[#B88932]/30 flex flex-col items-center text-center relative shadow-sm hover:border-[#B88932] transition-colors">
-            <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-[#B88932] mb-4">
-              <img src="../assets/images/products/halwa-bowl.jpg" alt="Started" class="w-full h-full object-cover">
-            </div>
-            <span class="bg-[#B88932] text-white text-[10px] font-bold px-3 py-0.5 rounded-full uppercase mb-2">01</span>
-            <h4 class="font-serif text-base font-bold text-[#32110D] mb-1">Started</h4>
-            <p class="text-[11px] text-[#5C483D]">Our journey began with a simple dream – to bring authentic taste to every home.</p>
-          </div>
-
-          <div class="bg-[#F7F1E5]/60 p-6 rounded-2xl border border-[#B88932]/30 flex flex-col items-center text-center relative shadow-sm hover:border-[#B88932] transition-colors">
-            <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-[#B88932] mb-4">
-              <img src="../assets/images/products/halwa-ghee.jpg" alt="Traditional Recipe" class="w-full h-full object-cover">
-            </div>
-            <span class="bg-[#B88932] text-white text-[10px] font-bold px-3 py-0.5 rounded-full uppercase mb-2">02</span>
-            <h4 class="font-serif text-base font-bold text-[#32110D] mb-1">Traditional Recipe</h4>
-            <p class="text-[11px] text-[#5C483D]">We follow traditional recipes passed down through generations.</p>
-          </div>
-
-          <div class="bg-[#F7F1E5]/60 p-6 rounded-2xl border border-[#B88932]/30 flex flex-col items-center text-center relative shadow-sm hover:border-[#B88932] transition-colors">
-            <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-[#B88932] mb-4">
-              <img src="../assets/images/heritage/street-shop.jpg" alt="Serving Families" class="w-full h-full object-cover">
-            </div>
-            <span class="bg-[#B88932] text-white text-[10px] font-bold px-3 py-0.5 rounded-full uppercase mb-2">03</span>
-            <h4 class="font-serif text-base font-bold text-[#32110D] mb-1">Serving Families</h4>
-            <p class="text-[11px] text-[#5C483D]">From our hometown to thousands of homes, part of sweet celebrations.</p>
-          </div>
-
-          <div class="bg-[#F7F1E5]/60 p-6 rounded-2xl border border-[#B88932]/30 flex flex-col items-center text-center relative shadow-sm hover:border-[#B88932] transition-colors">
-            <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-[#B88932] mb-4">
-              <img src="../assets/images/products/halwa-box.jpg" alt="Online Store" class="w-full h-full object-cover">
-            </div>
-            <span class="bg-[#B88932] text-white text-[10px] font-bold px-3 py-0.5 rounded-full uppercase mb-2">04</span>
-            <h4 class="font-serif text-base font-bold text-[#32110D] mb-1">Online Store</h4>
-            <p class="text-[11px] text-[#5C483D]">Brought Nellai Specialz online – making it easy to order from anywhere.</p>
-          </div>
-
-          <div class="bg-[#F7F1E5]/60 p-6 rounded-2xl border border-[#B88932]/30 flex flex-col items-center text-center relative shadow-sm hover:border-[#B88932] transition-colors">
-            <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-[#B88932] mb-4">
-              <img src="../assets/images/products/halwa-bowl.jpg" alt="Delivering Across India" class="w-full h-full object-cover">
-            </div>
-            <span class="bg-[#B88932] text-white text-[10px] font-bold px-3 py-0.5 rounded-full uppercase mb-2">05</span>
-            <h4 class="font-serif text-base font-bold text-[#32110D] mb-1">Delivering Across India</h4>
-            <p class="text-[11px] text-[#5C483D]">Delivering authentic Tirunelveli Halwa to every corner of India with care.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: OUR TRADITIONAL PROCESS (4 STAGES) -->
-    <section class="py-16 sm:py-24 bg-[#F7F1E5]/30 border-t border-[#B88932]/20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#32110D] mb-3">
-          Our Traditional Process
-        </h2>
-        <p class="max-w-2xl mx-auto text-xs sm:text-sm text-[#5C483D] leading-relaxed mb-16">
-          Crafted with Tradition. Made for You.
-        </p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-white rounded-2xl border border-[#B88932]/30 p-5 shadow-sm hover:shadow-md transition-shadow">
-            <div class="relative w-full h-44 rounded-xl overflow-hidden mb-4">
-              <img src="../assets/images/products/halwa-bowl.jpg" alt="Ingredient Selection" class="w-full h-full object-cover">
-              <span class="absolute top-2 left-2 w-7 h-7 rounded-full bg-[#32110D] text-[#F5E6C8] font-bold text-xs flex items-center justify-center border border-[#B88932]">01</span>
-            </div>
-            <h4 class="font-serif text-lg font-bold text-[#32110D] mb-1">Ingredient Selection</h4>
-            <p class="text-xs text-[#5C483D]">We choose only the finest ingredients to ensure authentic taste and quality.</p>
-          </div>
-
-          <div class="bg-white rounded-2xl border border-[#B88932]/30 p-5 shadow-sm hover:shadow-md transition-shadow">
-            <div class="relative w-full h-44 rounded-xl overflow-hidden mb-4">
-              <img src="../assets/images/products/halwa-ghee.jpg" alt="Slow Cooking" class="w-full h-full object-cover">
-              <span class="absolute top-2 left-2 w-7 h-7 rounded-full bg-[#32110D] text-[#F5E6C8] font-bold text-xs flex items-center justify-center border border-[#B88932]">02</span>
-            </div>
-            <h4 class="font-serif text-lg font-bold text-[#32110D] mb-1">Slow Cooking</h4>
-            <p class="text-xs text-[#5C483D]">Our Halwa is slow-cooked the traditional way for rich texture, aroma and true taste.</p>
-          </div>
-
-          <div class="bg-white rounded-2xl border border-[#B88932]/30 p-5 shadow-sm hover:shadow-md transition-shadow">
-            <div class="relative w-full h-44 rounded-xl overflow-hidden mb-4">
-              <img src="../assets/images/products/halwa-ghee.jpg" alt="Pure Ghee Finish" class="w-full h-full object-cover">
-              <span class="absolute top-2 left-2 w-7 h-7 rounded-full bg-[#32110D] text-[#F5E6C8] font-bold text-xs flex items-center justify-center border border-[#B88932]">03</span>
-            </div>
-            <h4 class="font-serif text-lg font-bold text-[#32110D] mb-1">Pure Ghee Finish</h4>
-            <p class="text-xs text-[#5C483D]">We finish it with pure ghee to bring out the natural richness and delightful flavor.</p>
-          </div>
-
-          <div class="bg-white rounded-2xl border border-[#B88932]/30 p-5 shadow-sm hover:shadow-md transition-shadow">
-            <div class="relative w-full h-44 rounded-xl overflow-hidden mb-4">
-              <img src="../assets/images/products/halwa-box.jpg" alt="Fresh Delivery" class="w-full h-full object-cover">
-              <span class="absolute top-2 left-2 w-7 h-7 rounded-full bg-[#32110D] text-[#F5E6C8] font-bold text-xs flex items-center justify-center border border-[#B88932]">04</span>
-            </div>
-            <h4 class="font-serif text-lg font-bold text-[#32110D] mb-1">Fresh Delivery</h4>
-            <p class="text-xs text-[#5C483D]">Packed with care and delivered fresh to your doorstep, preserving the taste.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: BRINGING TRADITION TO YOUR TABLE BANNER -->
-    <section class="py-16 sm:py-24 bg-[#32110D] text-[#F5E6C8] text-center relative overflow-hidden">
-      <div class="max-w-4xl mx-auto px-4 relative z-10">
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-[#F5E6C8] mb-2">
-          Bringing Tradition To Your Table
-        </h2>
-        <p class="font-tamil text-xl sm:text-2xl text-[#E0B86C] font-semibold mb-4">
-          பாரம்பரிய சுவை, உங்கள் இல்லத்தில்
-        </p>
-        <p class="text-xs sm:text-sm text-[#E8DCC4] mb-8 max-w-xl mx-auto">
-          Experience the authentic taste of Tirunelveli.<br> Made with love. Served with pride.
-        </p>
-        <a href="../index.html#product" class="btn-gold-gradient inline-block px-10 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-colors shadow-xl">
-          SHOP NOW
-        </a>
-      </div>
-    </section>
+    <section class="relative overflow-hidden bg-[#5A160F] py-20 text-center text-[#FFF8EB]"><img src="../assets/images/heritage/story-hero.jpg" alt="Tirunelveli heritage" class="absolute inset-0 h-full w-full object-cover opacity-20"><div class="relative mx-auto max-w-2xl px-4"><p class="text-xs font-bold uppercase tracking-[0.24em] text-[#D9B86C]">A taste that feels like home</p><h2 class="mt-4 font-serif text-4xl font-semibold sm:text-5xl">From our tradition to your table.</h2><p class="mx-auto mt-5 max-w-xl text-[15px] leading-7 text-[#F6DFBD]">Explore authentic halwa, sweets and traditional favourites from Nellai Specialz.</p><a href="shop.html" class="mt-8 inline-flex rounded-lg bg-[#F5C66D] px-7 py-3 text-sm font-semibold text-[#321307] transition hover:bg-[#FFF0C7]">Shop our favourites →</a></div></section>
   </main>
 
-  <!-- Dynamic Common Footer Template -->
   <div id="site-footer"></div>
-
-  <script src="../assets/js/home.js"></script>
+  <script src="../assets/js/header.js"></script><script src="../assets/js/footer.js"></script><script src="../assets/js/common.js"></script><script src="../assets/js/account.js"></script><script src="../assets/js/cart.js"></script>
 </body>
 </html>

@@ -1,0 +1,2 @@
+<?php
+declare(strict_types=1); require_once __DIR__.'/../shared/response.php'; require_once __DIR__.'/../shared/request.php'; methodOnly('GET'); safeApi(function():void{$db=apiDatabase();$id=filter_input(INPUT_GET,'id',FILTER_VALIDATE_INT);$s=$db->prepare($id?'SELECT * FROM categories WHERE id=:id ORDER BY sort_order':'SELECT * FROM categories ORDER BY sort_order, name');$s->execute($id?[':id'=>$id]:[]);$d=$id?$s->fetch():$s->fetchAll();if($id&&!$d)jsonResponse(false,'Category not found.',null,[],404);jsonResponse(true,'Categories loaded.',$d);});

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create Account | Nellai Specialz</title>
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="min-h-screen bg-[#F8F3E8] text-[#2A1B16]">
+    <div id="site-header"></div>
+    <main
+      class="mx-auto flex min-h-screen w-full max-w-[1280px] items-center justify-center px-4 py-10 sm:px-6 lg:px-8"
+    >
+      <section
+        class="w-full max-w-2xl rounded-2xl border border-[#E7DDD1] bg-white p-6 shadow-[0_20px_50px_rgba(74,22,15,0.08)] sm:p-10"
+      >
+        <a href="index.html" class="inline-block"
+          ><img
+            src="assets/images/nellai-specialz-logo.png"
+            alt="Nellai Specialz"
+            class="h-12 w-auto object-contain"
+        /></a>
+        <p
+          class="mt-8 text-xs font-bold uppercase tracking-[0.22em] text-[#B88932]"
+        >
+          Join us
+        </p>
+        <h1 class="mt-2 font-serif text-4xl font-semibold text-[#321307]">
+          Create your account
+        </h1>
+        <p class="mt-3 text-sm text-[#74685F]">
+          Save your details for a smoother shopping experience.
+        </p>
+        <form
+          class="mt-8 grid gap-5 sm:grid-cols-2"
+          onsubmit="event.preventDefault()"
+        >
+          <div>
+            <label for="first-name" class="mb-2 block text-sm font-semibold"
+              >First name</label
+            ><input
+              id="first-name"
+              required
+              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+            />
+          </div>
+          <div>
+            <label for="last-name" class="mb-2 block text-sm font-semibold"
+              >Last name</label
+            ><input
+              id="last-name"
+              required
+              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+            />
+          </div>
+          <div>
+            <label for="register-email" class="mb-2 block text-sm font-semibold"
+              >Email</label
+            ><input
+              id="register-email"
+              type="email"
+              required
+              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+            />
+          </div>
+          <div>
+            <label for="phone" class="mb-2 block text-sm font-semibold"
+              >Phone</label
+            ><input
+              id="phone"
+              type="tel"
+              required
+              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+            />
+          </div>
+          <div>
+            <label
+              for="register-password"
+              class="mb-2 block text-sm font-semibold"
+              >Password</label
+            ><input
+              id="register-password"
+              data-password-main
+              type="password"
+              required
+              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+            />
+          </div>
+          <div>
+            <label
+              for="confirm-password"
+              class="mb-2 block text-sm font-semibold"
+              >Confirm password</label
+            ><input
+              id="confirm-password"
+              data-password-confirm
+              type="password"
+              required
+              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+            />
+          </div>
+          <label
+            class="flex items-center gap-3 text-sm text-[#74685F] sm:col-span-2"
+            ><input type="checkbox" required class="h-4 w-4 accent-[#5A160F]" />
+            I agree to the Terms and Privacy Policy.</label
+          >
+          <button
+            type="submit"
+            class="h-12 rounded-lg bg-[#5A160F] font-semibold text-[#FFF8EB] transition hover:bg-[#321307] sm:col-span-2"
+          >
+            Create account
+          </button>
+        </form>
+        <p class="mt-6 text-center text-sm text-[#74685F]">
+          Already have an account?
+          <a
+            href="login.html"
+            class="font-semibold text-[#5A160F] underline decoration-[#B88932] underline-offset-4"
+            >Sign in</a
+          >
+        </p>
+      </section>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/footer.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/account.js"></script>
+    <script src="assets/js/cart.js"></script>
+  <script src="assets/js/register.js"></script>
+  </body>
+</html>

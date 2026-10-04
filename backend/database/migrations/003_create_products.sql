@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS products (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    category_id BIGINT UNSIGNED NOT NULL,
+    name VARCHAR(180) NOT NULL,
+    slug VARCHAR(200) NOT NULL,
+    description TEXT NULL,
+    weight VARCHAR(80) NULL,
+    price DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    sale_price DECIMAL(10,2) NULL,
+    image VARCHAR(500) NULL,
+    badge VARCHAR(80) NULL,
+    stock_quantity INT UNSIGNED NOT NULL DEFAULT 0,
+    status ENUM('ACTIVE', 'INACTIVE') NOT NULL DEFAULT 'ACTIVE',
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_products_slug (slug),
+    KEY idx_products_category (category_id),
+    KEY idx_products_status (status),
+    CONSTRAINT fk_products_category FOREIGN KEY (category_id) REFERENCES categories (id) ON UPDATE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
