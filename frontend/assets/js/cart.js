@@ -94,15 +94,15 @@
     <div class="w-full max-w-2xl bg-[#FBF5E9] border border-[#B88932]/30 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
       
       <!-- Modal Header -->
-      <div class="flex items-center justify-between border-b border-[#5A160F]/15 px-6 py-4 bg-white/80">
+      <div class="flex items-center justify-between border-b border-[#4d190e]/15 px-6 py-4 bg-white/80">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-[#5A160F] text-[#D9B86C] flex items-center justify-center font-bold text-lg shadow"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 8h12l1 12H5L6 8Zm3 0a3 3 0 0 1 6 0"/></svg></div>
+          <div class="w-10 h-10 rounded-full bg-[#4d190e] text-[#D9B86C] flex items-center justify-center font-bold text-lg shadow"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 8h12l1 12H5L6 8Zm3 0a3 3 0 0 1 6 0"/></svg></div>
           <div>
             <h2 class="font-serif text-xl font-bold text-[#32110D]">Your Shopping Cart &amp; Checkout</h2>
             <p class="text-[11px] text-[#B88932] font-semibold">à®¨à®®à¯à®® à®Šà®°à¯. à®¨à®®à¯à®® à®…à®²à¯à®µà®¾.</p>
           </div>
         </div>
-        <button type="button" id="closeCartModalBtn" class="h-10 w-10 text-xl font-bold text-[#32110D] hover:bg-[#5A160F]/10 rounded-full flex items-center justify-center transition" aria-label="Close cart"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="1.8" d="m6 6 12 12M18 6 6 18"/></svg></button>
+        <button type="button" id="closeCartModalBtn" class="h-10 w-10 text-xl font-bold text-[#32110D] hover:bg-[#4d190e]/10 rounded-full flex items-center justify-center transition" aria-label="Close cart"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="1.8" d="m6 6 12 12M18 6 6 18"/></svg></button>
       </div>
 
       <!-- Modal Content Scroll Body -->
@@ -119,7 +119,7 @@
         </div>
 
         <!-- Checkout Details Form -->
-        <div id="modalCheckoutForm" hidden class="border-t border-[#5A160F]/15 pt-6 space-y-4 bg-white/70 p-5 rounded-2xl border border-[#B88932]/20">
+        <div id="modalCheckoutForm" hidden class="border-t border-[#4d190e]/15 pt-6 space-y-4 bg-white/70 p-5 rounded-2xl border border-[#B88932]/20">
           <h3 class="font-serif text-lg font-bold text-[#32110D] flex items-center gap-2">
             <span aria-hidden="true">â–£</span> Quick Delivery Checkout Details
           </h3>
@@ -127,28 +127,28 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="block text-[11px] font-bold uppercase tracking-wider text-[#786153] mb-1">Your Name *</label>
-              <input type="text" id="custName" placeholder="e.g. Ramesh Kumar" class="w-full bg-white border border-[#B88932]/30 rounded-xl px-3 py-2 text-xs text-[#32110D] focus:outline-none focus:border-[#5A160F]">
+              <input type="text" id="custName" placeholder="e.g. Ramesh Kumar" class="w-full bg-white border border-[#B88932]/30 rounded-xl px-3 py-2 text-xs text-[#32110D] focus:outline-none focus:border-[#4d190e]">
             </div>
             <div>
               <label class="block text-[11px] font-bold uppercase tracking-wider text-[#786153] mb-1">Phone Number *</label>
-              <input type="tel" id="custPhone" placeholder="+91 70101 00590" class="w-full bg-white border border-[#B88932]/30 rounded-xl px-3 py-2 text-xs text-[#32110D] focus:outline-none focus:border-[#5A160F]">
+              <input type="tel" id="custPhone" placeholder="+91 70101 00590" class="w-full bg-white border border-[#B88932]/30 rounded-xl px-3 py-2 text-xs text-[#32110D] focus:outline-none focus:border-[#4d190e]">
             </div>
           </div>
 
           <div>
             <label class="block text-[11px] font-bold uppercase tracking-wider text-[#786153] mb-1">Delivery Address &amp; Pincode *</label>
-            <textarea id="custAddress" rows="2" placeholder="House/Flat No, Street, Landmark, City & Pincode" class="w-full bg-white border border-[#B88932]/30 rounded-xl px-3 py-2 text-xs text-[#32110D] focus:outline-none focus:border-[#5A160F]"></textarea>
+            <textarea id="custAddress" rows="2" placeholder="House/Flat No, Street, Landmark, City & Pincode" class="w-full bg-white border border-[#B88932]/30 rounded-xl px-3 py-2 text-xs text-[#32110D] focus:outline-none focus:border-[#4d190e]"></textarea>
           </div>
         </div>
 
       </div>
 
       <!-- Modal Footer / Checkout Action Bar -->
-      <div id="modalCartSummary" hidden class="border-t border-[#5A160F]/15 p-5 bg-white/95 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div id="modalCartSummary" hidden class="border-t border-[#4d190e]/15 p-5 bg-white/95 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
           <span class="text-xs text-[#75675D]">Subtotal Amount</span>
           <div class="flex items-baseline gap-2">
-            <span id="modalCartTotal" class="font-serif text-2xl font-bold text-[#5A160F]">â‚¹0</span>
+            <span id="modalCartTotal" class="font-serif text-2xl font-bold text-[#4d190e]">â‚¹0</span>
             <span class="text-[10px] text-green-700 font-bold bg-green-100 px-2.5 py-0.5 rounded-full">Free Express Shipping</span>
           </div>
         </div>
@@ -245,7 +245,7 @@
           <div class="min-w-0 flex-1">
             <h4 class="font-serif font-bold text-sm text-[#32110D] truncate">${item.name}</h4>
             <p class="text-[11px] text-[#786153]">${item.weight || ""}</p>
-            <p class="text-xs font-bold text-[#5A160F] mt-0.5">${formatRupees(itemPrice)}</p>
+            <p class="text-xs font-bold text-[#4d190e] mt-0.5">${formatRupees(itemPrice)}</p>
           </div>
         </div>
 

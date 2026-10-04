@@ -9,8 +9,8 @@
 
   const footerHTML = `
     <footer class="relative overflow-hidden bg-[#321307] text-[#fff3d6]">
-      <div class="mx-auto max-w-[1320px] w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
-        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.8fr_0.9fr_1fr_1.2fr] lg:gap-0">
+      <div class="mx-auto w-full max-w-[1280px] px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-0">
           <!-- Brand -->
           <section class="lg:pr-10" aria-labelledby="footer-brand-title">
             <a href="${basePath}index.html" class="inline-block" aria-label="Nellai Specialz home">
@@ -30,7 +30,6 @@
               <a href="#" aria-label="YouTube" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#dfb664] text-[#f5d99b] transition hover:bg-[#dfb664] hover:text-[#321307]">
                 ${icon('<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20.5 7.5a2 2 0 0 0-1.4-1.4C17.8 5.7 12 5.7 12 5.7s-5.8 0-7.1.4a2 2 0 0 0-1.4 1.4C3.1 8.8 3.1 12 3.1 12s0 3.2.4 4.5a2 2 0 0 0 1.4 1.4c1.3.4 7.1.4 7.1.4s5.8 0 7.1-.4a2 2 0 0 0 1.4-1.4c.4-1.3.4-4.5.4-4.5s0-3.2-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z"/>')}
               </a>
-              <a href="#" aria-label="Pinterest" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#dfb664] text-lg text-[#f5d99b] transition hover:bg-[#dfb664] hover:text-[#321307]">P</a>
             </div>
           </section>
 
@@ -77,7 +76,7 @@
             <form class="mt-5 flex h-14 max-w-[300px] overflow-hidden rounded-2xl border border-[#d7a957]" action="#" method="post">
               <label for="footer-email" class="sr-only">Email address</label>
               <input id="footer-email" type="email" placeholder="Enter your email" class="min-w-0 flex-1 bg-transparent px-4 text-sm text-white outline-none placeholder:text-[#f6dfbd]" required>
-              <button type="submit" aria-label="Subscribe" class="w-14 shrink-0 bg-[#f2c875] text-2xl text-[#321307] transition hover:bg-[#ffe3a6]">â†’</button>
+              <button type="submit" aria-label="Subscribe" class="flex w-14 shrink-0 items-center justify-center bg-[#f2c875] text-[#321307] transition hover:bg-[#ffe3a6]"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 12h13m-6-6 6 6-6 6" /></svg></button>
             </form>
           </section>
         </div>
@@ -85,17 +84,16 @@
 
       <!-- Decorative skyline -->
       <div class=" border-[#a8752c]/60">
-        <img src="${basePath}assets/images/Temple.png" alt="" class="mx-auto h-24 w-full max-w-[1500px] object-cover object-bottom opacity-40 sm:h-6">
+        <div class="relative h-20 overflow-hidden sm:h-24 lg:h-28"><img src="${basePath}assets/images/Temple.png" alt="" class="absolute inset-x-0 bottom-0 mx-auto h-full w-full object-contain object-bottom opacity-40"></div>
       </div>
 
-      <div class="border-t border-[#845624] px-5 py-4 text-center text-xs text-[#e7c98d]">© 2026 Nellai Specialz. All Rights Reserved.</div>
+      <div class="border-t border-[#845624] px-4 py-4 text-center text-xs text-[#e7c98d]">© 2026 Nellai Specialz. All Rights Reserved.</div>
     </footer>`;
 
   function mountFooter() {
-    const target =
-      document.getElementById("site-footer") ||
-      document.querySelector("footer");
-    if (target) target.outerHTML = `<div id="site-footer">${footerHTML}</div>`;
+    const target = document.getElementById("site-footer");
+
+    if (target) target.innerHTML = footerHTML;
   }
 
   if (document.readyState === "loading") {

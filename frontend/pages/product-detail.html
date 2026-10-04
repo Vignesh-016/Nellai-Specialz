@@ -11,38 +11,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@400;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/app.css">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              cream: '#FDFBF7',
-              dark: '#32110D',
-              primary: '#5A160F',
-              gold: '#B88932',
-              'light-gold': '#D9B86C',
-              sand: '#F7F1E5'
-            }
-          },
-          fontFamily: {
-            serif: ['Cormorant Garamond', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-            tamil: ['Noto Serif Tamil', 'serif']
-          }
-        }
-      }
-    }
-  </script>
   <script src="../assets/js/header.js"></script>
   <script src="../assets/js/footer.js"></script>
+  <script src="../assets/js/common.js"></script>
+  <script src="../assets/js/account.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/checkout.js"></script>
 </head>
 
-<body class="bg-[#FDFBF7] text-[#2D211B] antialiased selection:bg-[#B88932] selection:text-white">
+<body class="overflow-x-hidden bg-[#fff8eb] text-[#2c160f] antialiased selection:bg-[#b88932] selection:text-white">
 
   <!-- Dynamic Common Header Template -->
   <div id="site-header"></div>
@@ -52,9 +32,9 @@
     <!-- BREADCRUMB NAVIGATION -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
       <nav class="flex items-center space-x-2 text-xs font-semibold text-[#786153] uppercase tracking-wider">
-        <a href="../index.html" class="hover:text-[#5A160F] transition-colors">Home</a>
+        <a href="../index.html" class="hover:text-[#4d190e] transition-colors">Home</a>
         <span>/</span>
-        <a href="shop.html" class="hover:text-[#5A160F] transition-colors">Shop</a>
+        <a href="shop.html" class="hover:text-[#4d190e] transition-colors">Shop</a>
         <span>/</span>
         <span class="text-[#32110D]">Original Wheat Halwa</span>
       </nav>
@@ -79,7 +59,7 @@
 
               <!-- Badges -->
               <span
-                class="absolute top-4 left-4 bg-[#5A160F] text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">Authentic
+                class="absolute top-4 left-4 bg-[#4d190e] text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">Authentic
                 Recipe</span>
               <span
                 class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-[#32110D] text-xs font-bold px-3 py-1 rounded-full border border-[#B88932]/30 shadow">100%
@@ -89,7 +69,7 @@
             <!-- Thumbnail Carousel Grid -->
             <div class="grid grid-cols-4 gap-3">
               <button type="button" onclick="changeMainImg('../assets/images/products/wheat-halwa.jpg')"
-                class="thumb-btn border-2 border-[#5A160F] rounded-xl overflow-hidden aspect-square bg-[#F7F1E5] focus:outline-none shadow-sm">
+                class="thumb-btn border-2 border-[#4d190e] rounded-xl overflow-hidden aspect-square bg-[#F7F1E5] focus:outline-none shadow-sm">
                 <img src="../assets/images/products/wheat-halwa.jpg" alt="Wheat Halwa Thumbnail 1"
                   class="w-full h-full object-cover"
                   onerror="this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png'">
@@ -135,7 +115,7 @@
 
               <!-- Price Box -->
               <div class="mt-4 p-4 rounded-2xl bg-[#F7F1E5]/70 border border-[#B88932]/20 flex items-center gap-4">
-                <span id="displayPrice" class="text-3xl font-bold text-[#5A160F]">₹360</span>
+                <span id="displayPrice" class="text-3xl font-bold text-[#4d190e]">₹360</span>
                 <span id="displayMRP" class="text-sm text-[#786153] line-through">₹450</span>
                 <span class="bg-green-100 text-green-800 text-xs font-bold px-2.5 py-1 rounded-full">Save 20%</span>
                 <span class="text-xs text-[#786153] ml-auto">Taxes included</span>
@@ -153,19 +133,19 @@
                   Weight:</label>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="weightSelector">
                   <button type="button" data-weight="250g" data-price="190" data-mrp="240"
-                    class="weight-opt px-3 py-2.5 rounded-xl border border-[#B88932]/30 text-xs font-semibold text-[#32110D] hover:border-[#5A160F] text-center transition">
+                    class="weight-opt px-3 py-2.5 rounded-xl border border-[#B88932]/30 text-xs font-semibold text-[#32110D] hover:border-[#4d190e] text-center transition">
                     250g<span class="block text-[11px] font-normal text-[#786153]">₹190</span>
                   </button>
                   <button type="button" data-weight="500g" data-price="360" data-mrp="450"
-                    class="weight-opt active px-3 py-2.5 rounded-xl border-2 border-[#5A160F] bg-[#5A160F]/5 text-xs font-bold text-[#5A160F] text-center transition">
+                    class="weight-opt active px-3 py-2.5 rounded-xl border-2 border-[#4d190e] bg-[#4d190e]/5 text-xs font-bold text-[#4d190e] text-center transition">
                     500g<span class="block text-[11px] font-normal text-[#786153]">₹360</span>
                   </button>
                   <button type="button" data-weight="1kg" data-price="690" data-mrp="850"
-                    class="weight-opt px-3 py-2.5 rounded-xl border border-[#B88932]/30 text-xs font-semibold text-[#32110D] hover:border-[#5A160F] text-center transition">
+                    class="weight-opt px-3 py-2.5 rounded-xl border border-[#B88932]/30 text-xs font-semibold text-[#32110D] hover:border-[#4d190e] text-center transition">
                     1 kg<span class="block text-[11px] font-normal text-[#786153]">₹690</span>
                   </button>
                   <button type="button" data-weight="2kg" data-price="1320" data-mrp="1600"
-                    class="weight-opt px-3 py-2.5 rounded-xl border border-[#B88932]/30 text-xs font-semibold text-[#32110D] hover:border-[#5A160F] text-center transition">
+                    class="weight-opt px-3 py-2.5 rounded-xl border border-[#B88932]/30 text-xs font-semibold text-[#32110D] hover:border-[#4d190e] text-center transition">
                     2 kg Family<span class="block text-[11px] font-normal text-[#786153]">₹1,320</span>
                   </button>
                 </div>
@@ -186,7 +166,7 @@
 
                 <!-- Add to Cart Button -->
                 <button type="button" id="btnAddToCart"
-                  class="flex-1 bg-[#5A160F] hover:bg-[#32110D] text-white px-6 py-3.5 rounded-xl font-semibold text-sm shadow-md transition-colors flex items-center justify-center gap-2">
+                  class="flex-1 bg-[#4d190e] hover:bg-[#32110D] text-white px-6 py-3.5 rounded-xl font-semibold text-sm shadow-md transition-colors flex items-center justify-center gap-2">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -212,7 +192,7 @@
 
             <!-- TRUST FEATURES BAR -->
             <div
-              class="mt-8 pt-6 border-t border-[#5A160F]/10 grid grid-cols-3 gap-2 text-center text-[11px] text-[#786153] font-medium">
+              class="mt-8 pt-6 border-t border-[#4d190e]/10 grid grid-cols-3 gap-2 text-center text-[11px] text-[#786153] font-medium">
               <div class="flex flex-col items-center">
                 <span class="text-lg mb-0.5">🚚</span>
                 <span>Free Shipping ₹500+</span>
@@ -239,12 +219,12 @@
       <div class="bg-white/80 backdrop-blur-md rounded-3xl border border-[#B88932]/25 shadow-lg p-6 sm:p-10">
 
         <!-- Tab Headers -->
-        <div class="flex border-b border-[#5A160F]/15 text-sm sm:text-base font-bold text-[#32110D]">
+        <div class="flex border-b border-[#4d190e]/15 text-sm sm:text-base font-bold text-[#32110D]">
           <button type="button"
-            class="tab-btn active border-b-2 border-[#5A160F] text-[#5A160F] pb-3 px-4 focus:outline-none">
+            class="tab-btn active border-b-2 border-[#4d190e] text-[#4d190e] pb-3 px-4 focus:outline-none">
             Detailed Description &amp; Heritage
           </button>
-          <button type="button" class="tab-btn text-[#786153] hover:text-[#5A160F] pb-3 px-4 focus:outline-none">
+          <button type="button" class="tab-btn text-[#786153] hover:text-[#4d190e] pb-3 px-4 focus:outline-none">
             Customer Reviews (148)
           </button>
         </div>
@@ -280,7 +260,7 @@
         </div>
 
         <!-- REVIEWS LIST & ADD REVIEW FORM SECTION -->
-        <div class="mt-10 pt-8 border-t border-[#5A160F]/10">
+        <div class="mt-10 pt-8 border-t border-[#4d190e]/10">
           <h3 class="font-serif text-2xl font-bold text-[#32110D] mb-6">Customer Reviews</h3>
 
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -314,12 +294,12 @@
                 <div>
                   <label class="block text-xs font-semibold text-[#32110D] mb-1">Your Name</label>
                   <input type="text" required
-                    class="w-full bg-white border border-[#B88932]/30 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#5A160F]">
+                    class="w-full bg-white border border-[#B88932]/30 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#4d190e]">
                 </div>
                 <div>
                   <label class="block text-xs font-semibold text-[#32110D] mb-1">Rating</label>
                   <select
-                    class="w-full bg-white border border-[#B88932]/30 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#5A160F]">
+                    class="w-full bg-white border border-[#B88932]/30 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#4d190e]">
                     <option value="5">★★★★★ (5 Stars - Excellent)</option>
                     <option value="4">★★★★☆ (4 Stars - Good)</option>
                     <option value="3">★★★☆☆ (3 Stars - Average)</option>
@@ -328,10 +308,10 @@
                 <div>
                   <label class="block text-xs font-semibold text-[#32110D] mb-1">Your Review</label>
                   <textarea rows="3" required
-                    class="w-full bg-white border border-[#B88932]/30 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#5A160F]"></textarea>
+                    class="w-full bg-white border border-[#B88932]/30 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#4d190e]"></textarea>
                 </div>
                 <button type="submit"
-                  class="w-full bg-[#5A160F] text-white text-xs font-bold py-2.5 rounded-lg hover:bg-[#32110D] transition-colors shadow">
+                  class="w-full bg-[#4d190e] text-white text-xs font-bold py-2.5 rounded-lg hover:bg-[#32110D] transition-colors shadow">
                   Submit Review
                 </button>
               </form>
@@ -350,7 +330,7 @@
           <span class="text-xs font-bold uppercase tracking-wider text-[#B88932]">RECOMMENDED FOR YOU</span>
           <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#32110D]">You May Also Like</h2>
         </div>
-        <a href="shop.html" class="text-xs font-bold text-[#5A160F] hover:underline">View All →</a>
+        <a href="shop.html" class="text-xs font-bold text-[#4d190e] hover:underline">View All →</a>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -365,7 +345,7 @@
             <h3 class="font-serif font-bold text-base text-[#32110D]"><a href="product-detail.html?id=2">Karupatti
                 Halwa</a></h3>
             <p class="text-xs text-[#B88932]">Palm Jaggery Special</p>
-            <p class="text-sm font-bold text-[#5A160F] mt-1">₹420 <span class="text-xs font-normal text-[#786153]">/
+            <p class="text-sm font-bold text-[#4d190e] mt-1">₹420 <span class="text-xs font-normal text-[#786153]">/
                 500g</span></p>
           </div>
         </article>
@@ -380,7 +360,7 @@
             <h3 class="font-serif font-bold text-base text-[#32110D]"><a href="product-detail.html?id=4">Royal Combo
                 Box</a></h3>
             <p class="text-xs text-[#B88932]">4 Items Included</p>
-            <p class="text-sm font-bold text-[#5A160F] mt-1">₹999 <span class="text-xs font-normal text-[#786153]">/ 1
+            <p class="text-sm font-bold text-[#4d190e] mt-1">₹999 <span class="text-xs font-normal text-[#786153]">/ 1
                 kg</span></p>
           </div>
         </article>
@@ -395,7 +375,7 @@
             <h3 class="font-serif font-bold text-base text-[#32110D]"><a href="product-detail.html?id=3">Dry Fruit Ghee
                 Halwa</a></h3>
             <p class="text-xs text-[#B88932]">Cashew &amp; Almonds</p>
-            <p class="text-sm font-bold text-[#5A160F] mt-1">₹490 <span class="text-xs font-normal text-[#786153]">/
+            <p class="text-sm font-bold text-[#4d190e] mt-1">₹490 <span class="text-xs font-normal text-[#786153]">/
                 500g</span></p>
           </div>
         </article>
@@ -411,16 +391,16 @@
   <!-- Cart Drawer -->
   <div id="drawerBackdrop" class="fixed inset-0 z-50 hidden bg-[#32110D]/40 backdrop-blur-xs"></div>
   <aside id="cartDrawer"
-    class="fixed inset-y-0 right-0 z-[60] flex w-full max-w-md translate-x-full flex-col border-l border-[#5A160F]/10 bg-[#FBF5E9] transition-transform duration-300"
+    class="fixed inset-y-0 right-0 z-[60] flex w-full max-w-md translate-x-full flex-col border-l border-[#4d190e]/10 bg-[#FBF5E9] transition-transform duration-300"
     data-drawer aria-hidden="true">
-    <div class="flex items-center justify-between border-b border-[#5A160F]/10 px-5 py-4">
+    <div class="flex items-center justify-between border-b border-[#4d190e]/10 px-5 py-4">
       <h2 class="font-serif text-2xl font-bold text-[#32110D]">Your Cart</h2>
       <button type="button" id="closeCartDrawer" class="h-10 w-10 text-[#32110D] text-lg font-bold"
         aria-label="Close cart">✕</button>
     </div>
     <div id="cartEmpty" class="px-5 py-10 text-sm text-[#75675D]">Your cart is empty.</div>
     <div id="cartList" class="flex-1 overflow-y-auto px-5"></div>
-    <div id="cartSummary" hidden class="border-t border-[#5A160F]/10 p-5 bg-white/50">
+    <div id="cartSummary" hidden class="border-t border-[#4d190e]/10 p-5 bg-white/50">
       <div class="flex items-center justify-between text-base font-bold text-[#32110D]">
         <span>Subtotal</span>
         <span id="cartTotal">₹0</span>
@@ -446,11 +426,11 @@
     document.querySelectorAll('.weight-opt').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.weight-opt').forEach(b => {
-          b.classList.remove('active', 'border-2', 'border-[#5A160F]', 'bg-[#5A160F]/5', 'font-bold', 'text-[#5A160F]');
+          b.classList.remove('active', 'border-2', 'border-[#4d190e]', 'bg-[#4d190e]/5', 'font-bold', 'text-[#4d190e]');
           b.classList.add('border', 'border-[#B88932]/30', 'font-semibold', 'text-[#32110D]');
         });
 
-        btn.classList.add('active', 'border-2', 'border-[#5A160F]', 'bg-[#5A160F]/5', 'font-bold', 'text-[#5A160F]');
+        btn.classList.add('active', 'border-2', 'border-[#4d190e]', 'bg-[#4d190e]/5', 'font-bold', 'text-[#4d190e]');
         btn.classList.remove('border-[#B88932]/30', 'font-semibold', 'text-[#32110D]');
 
         selectedWeight = btn.getAttribute('data-weight');

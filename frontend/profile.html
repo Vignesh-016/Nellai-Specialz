@@ -1,17 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>My Profile | Nellai Specialz</title>
-    <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/footer.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/account.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/checkout.js"></script>
   </head>
-  <body class="bg-[#F8F3E8] text-[#2A1B16]">
+  <body
+    class="overflow-x-hidden bg-[#fff8eb] text-[#2c160f] antialiased selection:bg-[#b88932] selection:text-white"
+  >
     <div id="site-header"></div>
     <main class="mx-auto w-full max-w-[1280px] px-4 py-12 sm:px-6 lg:px-8">
       <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-[0.22em] text-[#B88932]">
+        <p class="text-xs font-bold uppercase tracking-[0.22em] text-[#b88932]">
           Account
         </p>
         <h1 class="mt-2 font-serif text-4xl font-semibold text-[#321307]">
@@ -25,19 +38,19 @@
         >
           <a
             href="#profile"
-            class="block rounded-xl bg-[#5A160F] px-4 py-3 text-sm font-semibold text-white"
+            class="block rounded-xl bg-[#4d190e] px-4 py-3 text-sm font-semibold text-white"
             >My Profile</a
           ><a
             href="#orders"
-            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#74685F] hover:bg-[#F8F3E8]"
+            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#806b58] hover:bg-[#f8f3e8]"
             >My Orders</a
           ><a
             href="#addresses"
-            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#74685F] hover:bg-[#F8F3E8]"
+            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#806b58] hover:bg-[#f8f3e8]"
             >Addresses</a
           ><a
             href="login.html"
-            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#8E281D] hover:bg-[#F8F3E8]"
+            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#702217] hover:bg-[#f8f3e8]"
             >Logout</a
           >
         </nav>
@@ -48,7 +61,7 @@
           <h2 class="font-serif text-2xl font-semibold text-[#321307]">
             Personal details
           </h2>
-          <p class="mt-2 text-sm text-[#74685F]">
+          <p class="mt-2 text-sm text-[#806b58]">
             Keep your contact details up to date.
           </p>
           <form
@@ -62,7 +75,7 @@
                 >First name</label
               ><input
                 id="profile-first"
-                class="h-12 w-full rounded-lg border border-[#E7DDD1] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+                class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
               />
             </div>
             <div>
@@ -70,7 +83,7 @@
                 >Last name</label
               ><input
                 id="profile-last"
-                class="h-12 w-full rounded-lg border border-[#E7DDD1] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+                class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
               />
             </div>
             <div>
@@ -81,7 +94,7 @@
               ><input
                 id="profile-email"
                 type="email"
-                class="h-12 w-full rounded-lg border border-[#E7DDD1] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+                class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
               />
             </div>
             <div>
@@ -92,11 +105,11 @@
               ><input
                 id="profile-phone"
                 type="tel"
-                class="h-12 w-full rounded-lg border border-[#E7DDD1] px-4 outline-none focus:border-[#B88932] focus:ring-2 focus:ring-[#B88932]/20"
+                class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
               />
             </div>
             <button
-              class="h-12 rounded-lg bg-[#5A160F] px-6 font-semibold text-white sm:col-span-2 sm:w-fit"
+              class="h-12 rounded-lg bg-[#4d190e] px-6 font-semibold text-[#fff6df] transition hover:bg-[#702217] sm:col-span-2 sm:w-fit"
             >
               Save changes
             </button>
@@ -105,11 +118,6 @@
       </div>
     </main>
     <div id="site-footer"></div>
-    <script src="assets/js/header.js"></script>
-    <script src="assets/js/footer.js"></script>
-    <script src="assets/js/common.js"></script>
-    <script src="assets/js/account.js"></script>
-    <script src="assets/js/cart.js"></script>
     <script src="assets/js/profile.js"></script>
   </body>
 </html>

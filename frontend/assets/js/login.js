@@ -14,7 +14,7 @@
     const button = document.createElement("button");
     button.type = "button";
     button.dataset.passwordToggle = "true";
-    button.className = "absolute right-3 top-9 text-xs font-semibold text-[#5A160F]";
+    button.className = "absolute right-3 top-9 text-xs font-semibold text-[#4d190e]";
     button.textContent = "Show";
     button.setAttribute("aria-label", "Show password");
     button.addEventListener("click", () => {
@@ -46,10 +46,10 @@
 
   const renderStep = (container, number) => {
     if (number === 1) {
-      container.innerHTML = '<p class="text-sm leading-6 text-[#74685F]">Enter your email or phone number to continue this frontend-only recovery flow.</p><label class="mt-5 block text-sm font-semibold">Email or phone<input class="mt-2 h-12 w-full rounded-lg border border-[#E7DDD1] px-4"></label><button data-next-step class="mt-5 h-12 w-full rounded-lg bg-[#5A160F] font-semibold text-white">Send OTP</button>';
+      container.innerHTML = '<p class="text-sm leading-6 text-[#74685F]">Enter your email or phone number to continue this frontend-only recovery flow.</p><label class="mt-5 block text-sm font-semibold">Email or phone<input class="mt-2 h-12 w-full rounded-lg border border-[#E7DDD1] px-4"></label><button data-next-step class="mt-5 h-12 w-full rounded-lg bg-[#4d190e] font-semibold text-white">Send OTP</button>';
     }
     if (number === 2) {
-      container.innerHTML = `<p class="text-sm leading-6 text-[#74685F]">Enter the 6-digit OTP for this frontend demo flow.</p><div class="mt-5 flex justify-between gap-1 sm:gap-2">${[1, 2, 3, 4, 5, 6].map((index) => `<input aria-label="OTP digit ${index}" inputmode="numeric" maxlength="1" class="h-11 w-9 rounded-lg border border-[#E7DDD1] text-center text-lg sm:h-12 sm:w-12">`).join("")}</div><button data-next-step class="mt-5 h-12 w-full rounded-lg bg-[#5A160F] font-semibold text-white">Verify OTP</button><button data-previous-step class="mt-3 w-full text-sm font-semibold text-[#5A160F]">Back</button>`;
+      container.innerHTML = `<p class="text-sm leading-6 text-[#74685F]">Enter the 6-digit OTP for this frontend demo flow.</p><div class="mt-5 flex justify-between gap-1 sm:gap-2">${[1, 2, 3, 4, 5, 6].map((index) => `<input aria-label="OTP digit ${index}" inputmode="numeric" maxlength="1" class="h-11 w-9 rounded-lg border border-[#E7DDD1] text-center text-lg sm:h-12 sm:w-12">`).join("")}</div><button data-next-step class="mt-5 h-12 w-full rounded-lg bg-[#4d190e] font-semibold text-white">Verify OTP</button><button data-previous-step class="mt-3 w-full text-sm font-semibold text-[#4d190e]">Back</button>`;
       const inputs = [...container.querySelectorAll("input")];
       inputs.forEach((input, index) => {
         input.addEventListener("input", () => { input.value = input.value.replace(/\D/g, ""); inputs[index + 1]?.focus(); });
@@ -58,7 +58,7 @@
       });
     }
     if (number === 3) {
-      container.innerHTML = '<p class="text-sm leading-6 text-[#74685F]">Choose a new password for your account.</p><label class="mt-5 block text-sm font-semibold">New password<input data-reset-password type="password" class="mt-2 h-12 w-full rounded-lg border border-[#E7DDD1] px-4"></label><label class="mt-4 block text-sm font-semibold">Confirm password<input data-reset-confirm type="password" class="mt-2 h-12 w-full rounded-lg border border-[#E7DDD1] px-4"></label><p data-reset-match class="mt-2 text-xs" aria-live="polite"></p><button data-next-step class="mt-5 h-12 w-full rounded-lg bg-[#5A160F] font-semibold text-white">Reset Password</button>';
+      container.innerHTML = '<p class="text-sm leading-6 text-[#74685F]">Choose a new password for your account.</p><label class="mt-5 block text-sm font-semibold">New password<input data-reset-password type="password" class="mt-2 h-12 w-full rounded-lg border border-[#E7DDD1] px-4"></label><label class="mt-4 block text-sm font-semibold">Confirm password<input data-reset-confirm type="password" class="mt-2 h-12 w-full rounded-lg border border-[#E7DDD1] px-4"></label><p data-reset-match class="mt-2 text-xs" aria-live="polite"></p><button data-next-step class="mt-5 h-12 w-full rounded-lg bg-[#4d190e] font-semibold text-white">Reset Password</button>';
       const password = container.querySelector("[data-reset-password]");
       const confirm = container.querySelector("[data-reset-confirm]");
       addVisibilityToggle(password); addVisibilityToggle(confirm); addStrengthMeter(password);
@@ -75,7 +75,7 @@
     if (!forgot) return;
     const modal = document.createElement("div");
     modal.className = "fixed inset-0 z-[80] hidden items-center justify-center bg-[#321307]/45 p-4";
-    modal.innerHTML = '<div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl sm:p-8" role="dialog" aria-modal="true"><div class="flex items-start justify-between"><div><p class="text-xs font-bold uppercase tracking-[0.2em] text-[#B88932]">Account recovery</p><h2 class="mt-2 font-serif text-3xl font-semibold text-[#321307]">Forgot password?</h2></div><button type="button" data-close-recovery class="text-2xl text-[#5A160F]" aria-label="Close">×</button></div><div data-recovery-step class="mt-6"></div></div>';
+    modal.innerHTML = '<div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl sm:p-8" role="dialog" aria-modal="true"><div class="flex items-start justify-between"><div><p class="text-xs font-bold uppercase tracking-[0.2em] text-[#B88932]">Account recovery</p><h2 class="mt-2 font-serif text-3xl font-semibold text-[#321307]">Forgot password?</h2></div><button type="button" data-close-recovery class="text-2xl text-[#4d190e]" aria-label="Close">×</button></div><div data-recovery-step class="mt-6"></div></div>';
     document.body.appendChild(modal);
     const container = modal.querySelector("[data-recovery-step]");
     forgot.addEventListener("click", () => { modal.classList.remove("hidden"); modal.classList.add("flex"); renderStep(container, 1); });

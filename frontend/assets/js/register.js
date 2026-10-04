@@ -6,7 +6,7 @@
     if (!wrapper || wrapper.querySelector("[data-register-toggle]")) return;
     wrapper.classList.add("relative");
     const button = document.createElement("button");
-    button.type = "button"; button.dataset.registerToggle = "true"; button.className = "absolute right-3 top-9 text-xs font-semibold text-[#5A160F]"; button.textContent = "Show";
+    button.type = "button"; button.dataset.registerToggle = "true"; button.className = "absolute right-3 top-9 text-xs font-semibold text-[#4d190e]"; button.textContent = "Show";
     button.addEventListener("click", () => { const visible = input.type === "text"; input.type = visible ? "password" : "text"; button.textContent = visible ? "Show" : "Hide"; });
     wrapper.appendChild(button);
   };
