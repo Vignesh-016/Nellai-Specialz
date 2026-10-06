@@ -1,13 +1,6 @@
-/* Homepage-only interactions: hero slider, auto-scrolling marquees, scroll reveals, and cart hooks. */
+/* Homepage JS: Hero slider, Testimonials switcher, Marquees, Scroll reveals, Cart integration */
 (function () {
   const products = {
-    "karupatti-halwa": {
-      id: "karupatti-halwa",
-      name: "Karupatti Halwa",
-      price: 199,
-      image: "assets/images/products/karupatti-halwa.jpg",
-      weight: "250g",
-    },
     "ghee-halwa": {
       id: "ghee-halwa",
       name: "Ghee Halwa",
@@ -15,97 +8,35 @@
       image: "assets/images/products/ghee-halwa.jpg",
       weight: "250g",
     },
-    "cashew-halwa": {
-      id: "cashew-halwa",
-      name: "Cashew Halwa",
+    "muscoth-halwa": {
+      id: "muscoth-halwa",
+      name: "Muscoth Halwa",
       price: 219,
       image: "assets/images/products/classic-halwa.jpg",
       weight: "250g",
     },
-    "dry-fruit-halwa": {
-      id: "dry-fruit-halwa",
-      name: "Special Dry Fruit Halwa",
-      price: 249,
-      image: "assets/images/Glistening Halwa in Brass Bowl.webp",
+    "karupatti-halwa": {
+      id: "karupatti-halwa",
+      name: "Karupatti Halwa",
+      price: 199,
+      image: "assets/images/products/karupatti-halwa.jpg",
+      weight: "250g",
+    },
+    "mixture": {
+      id: "mixture",
+      name: "Nellai Mixture",
+      price: 149,
+      image: "assets/images/Rustic Halwa Feast in Brass Vessels.png",
       weight: "250g",
     },
     "diwali-box": {
       id: "diwali-box",
-      name: "Diwali Special Treat Box",
-      price: 999,
-      image: "assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png",
-      weight: "1kg Assorted",
-    }
+      name: "Nellai Specialz Festive Sweet Gift Set",
+      price: 699,
+      image: "assets/images/WhatsApp Image 2026-09-24 at 9.25.09 PM.jpeg",
+      weight: "500g Assorted Box",
+    },
   };
-
-  function injectMarqueeStyles() {
-    if (document.getElementById("homepage-marquee-styles")) return;
-    const style = document.createElement("style");
-    style.id = "homepage-marquee-styles";
-    style.textContent = `
-      @keyframes uspMarqueeAnim {
-        0% { transform: translate3d(0, 0, 0); }
-        100% { transform: translate3d(-50%, 0, 0); }
-      }
-      .animate-usp-marquee {
-        display: flex;
-        width: max-content;
-        animation: uspMarqueeAnim 32s linear infinite;
-        will-change: transform;
-      }
-      .animate-usp-marquee:hover {
-        animation-play-state: paused;
-      }
-
-      @keyframes testimonialMarqueeAnim {
-        0% { transform: translate3d(0, 0, 0); }
-        100% { transform: translate3d(-50%, 0, 0); }
-      }
-      .animate-testimonial-marquee {
-        display: flex;
-        width: max-content;
-        animation: testimonialMarqueeAnim 42s linear infinite;
-        will-change: transform;
-      }
-      .animate-testimonial-marquee:hover {
-        animation-play-state: paused;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .animate-usp-marquee,
-        .animate-testimonial-marquee {
-          animation: none !important;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  function bindUspMarquee() {
-    const container = document.querySelector("[data-usp-marquee]");
-    if (!container || container.dataset.marqueeReady) return;
-    const sequence = container.innerHTML;
-    container.innerHTML = `
-      <div class="animate-usp-marquee flex items-center">
-        <div class="flex items-center gap-8 pr-8 shrink-0">${sequence}</div>
-        <div class="flex items-center gap-8 pr-8 shrink-0" aria-hidden="true">${sequence}</div>
-      </div>
-    `;
-    container.dataset.marqueeReady = "true";
-  }
-
-  function bindTestimonialMarquee() {
-    const container = document.querySelector("[data-testimonial-marquee]");
-    if (!container || container.dataset.marqueeReady) return;
-    const sequence = container.innerHTML;
-    container.innerHTML = `
-      <div class="animate-testimonial-marquee flex items-stretch">
-        <div class="flex items-stretch gap-6 pr-6 shrink-0">${sequence}</div>
-        <div class="flex items-stretch gap-6 pr-6 shrink-0" aria-hidden="true">${sequence}</div>
-      </div>
-    `;
-    container.dataset.marqueeReady = "true";
-  }
 
   function bindHeroSlider() {
     const slides = document.querySelectorAll("[data-hero-slide]");
@@ -133,12 +64,12 @@
 
       dots.forEach((dot, i) => {
         if (i === currentIndex) {
-          dot.classList.remove("bg-[#f3cd7c]/40", "w-3");
-          dot.classList.add("bg-[#f3cd7c]", "w-8");
+          dot.classList.remove("bg-[#8C1C13]/30", "w-3");
+          dot.classList.add("bg-[#8C1C13]", "w-8");
           dot.setAttribute("aria-current", "true");
         } else {
-          dot.classList.remove("bg-[#f3cd7c]", "w-8");
-          dot.classList.add("bg-[#f3cd7c]/40", "w-3");
+          dot.classList.remove("bg-[#8C1C13]", "w-8");
+          dot.classList.add("bg-[#8C1C13]/30", "w-3");
           dot.removeAttribute("aria-current");
         }
       });
@@ -179,6 +110,72 @@
     startTimer();
   }
 
+  function bindTestimonialSlider() {
+    const cards = document.querySelectorAll("[data-testimonial-slide]");
+    const dots = document.querySelectorAll("[data-testimonial-dot]");
+    const prevBtn = document.querySelector("[data-testimonial-prev]");
+    const nextBtn = document.querySelector("[data-testimonial-next]");
+
+    if (!cards.length) return;
+
+    let currentIndex = 0;
+    let timer = null;
+
+    function showCard(index) {
+      currentIndex = (index + cards.length) % cards.length;
+      cards.forEach((card, i) => {
+        if (i === currentIndex) {
+          card.classList.remove("hidden");
+          card.classList.add("block");
+        } else {
+          card.classList.remove("block");
+          card.classList.add("hidden");
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === currentIndex) {
+          dot.classList.remove("bg-[#8C1C13]/30", "w-2.5");
+          dot.classList.add("bg-[#8C1C13]", "w-7");
+        } else {
+          dot.classList.remove("bg-[#8C1C13]", "w-7");
+          dot.classList.add("bg-[#8C1C13]/30", "w-2.5");
+        }
+      });
+    }
+
+    function startTimer() {
+      stopTimer();
+      timer = setInterval(() => {
+        showCard(currentIndex + 1);
+      }, 5000);
+    }
+
+    function stopTimer() {
+      if (timer) clearInterval(timer);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        showCard(i);
+        startTimer();
+      });
+    });
+
+    prevBtn?.addEventListener("click", () => {
+      showCard(currentIndex - 1);
+      startTimer();
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      showCard(currentIndex + 1);
+      startTimer();
+    });
+
+    showCard(0);
+    startTimer();
+  }
+
   function reveal() {
     const items = document.querySelectorAll("[data-reveal]");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -194,41 +191,37 @@
             observer.unobserve(entry.target);
           }
         }),
-      { threshold: 0.12 },
+      { threshold: 0.1 },
     );
     items.forEach((item) => observer.observe(item));
   }
 
   function bindCart() {
     document.querySelectorAll("[data-add-to-cart]").forEach((button) => {
-      const card = button.closest("article") || button.closest("section");
-      const value = card?.querySelector("[data-qty-value]");
-      let quantity = 1;
-      card?.querySelector("[data-qty-minus]")?.addEventListener("click", () => {
-        quantity = Math.max(1, quantity - 1);
-        if (value) value.textContent = quantity;
-      });
-      card?.querySelector("[data-qty-plus]")?.addEventListener("click", () => {
-        quantity += 1;
-        if (value) value.textContent = quantity;
-      });
       button.addEventListener("click", () => {
-        const product = products[button.dataset.addToCart];
-        if (product && window.NellaiStore)
-          window.NellaiStore.addToCart({ ...product, quantity });
+        const itemKey = button.dataset.addToCart;
+        const product = products[itemKey];
+        if (product && window.NellaiStore) {
+          window.NellaiStore.addToCart({ ...product, quantity: 1 });
+          // Button feedback animation
+          const originalText = button.innerHTML;
+          button.innerHTML = `<span>✓ Added!</span>`;
+          button.classList.add("bg-[#2D6A4F]");
+          setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove("bg-[#2D6A4F]");
+          }, 1500);
+        }
       });
     });
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    injectMarqueeStyles();
-    bindUspMarquee();
-    bindTestimonialMarquee();
     bindHeroSlider();
+    bindTestimonialSlider();
     reveal();
     bindCart();
   });
+
   window.NELLAI_PRODUCTS = Object.values(products);
 })();
-
-
