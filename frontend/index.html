@@ -41,57 +41,114 @@
   >
     <div id="site-header"></div>
     <main>
-      <!-- 1) HERO SECTION WITH 2 SLIDES (DARK LUXURY OPENER) -->
+      <!-- 1) HERO SECTION WITH 2 SLIDES (FESTIVE RICH BANNER) -->
       <section
         id="hero-slider"
-        class="relative isolate overflow-hidden bg-[#2d1208] text-[#fff8eb]"
+        class="relative isolate overflow-hidden bg-[#2a0705] text-[#fff8eb]"
         aria-label="Hero Carousel"
       >
-        <!-- Ambient Glow -->
-        <div class="pointer-events-none absolute -left-20 -top-20 h-96 w-96 rounded-full bg-[#f3cd7c]/10 blur-3xl"></div>
-        <div class="pointer-events-none absolute right-0 bottom-0 h-96 w-96 rounded-full bg-[#b88932]/10 blur-3xl"></div>
+        <!-- Layered Background Aesthetics -->
+        <!-- Temple heritage pattern overlay -->
+        <div class="pointer-events-none absolute inset-0 mix-blend-overlay opacity-[0.06] bg-repeat" style="background-image: url('assets/images/Temple.png'); background-size: 300px;"></div>
+        <!-- Ambient Radial Glows -->
+        <div class="pointer-events-none absolute -left-20 -top-20 h-[450px] w-[450px] rounded-full bg-[#6e1510]/50 blur-3xl"></div>
+        <div class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-[#f3cd7c]/15 blur-3xl"></div>
+        <div class="pointer-events-none absolute left-1/3 bottom-0 h-64 w-64 rounded-full bg-[#8b1e16]/30 blur-2xl"></div>
+        <!-- Soft Golden Vignette & Dark Left Overlay -->
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#170302] via-[#2a0705]/85 to-transparent z-0"></div>
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1a0403] via-transparent to-[#1a0403]/40 z-0"></div>
 
-        <div class="relative mx-auto flex min-h-[460px] max-w-[1280px] items-center px-4 py-10 sm:min-h-[500px] sm:px-6 lg:min-h-[540px] lg:px-8 lg:py-12">
+        <div class="relative z-10 mx-auto flex min-h-[500px] max-w-[1280px] items-center px-4 py-10 sm:min-h-[540px] sm:px-6 lg:min-h-[580px] lg:px-8 lg:py-14">
           
-          <!-- Slide 1: Combo -->
+          <!-- Slide 1: Festive Combos -->
           <div
             data-hero-slide
-            class="grid w-full items-center gap-8 transition-opacity duration-700 ease-in-out lg:grid-cols-2"
+            class="grid w-full items-center gap-10 lg:grid-cols-12 transition-opacity duration-700 ease-in-out"
           >
-            <div class="max-w-xl">
-              <span class="inline-flex items-center gap-2 rounded-full border border-[#f3cd7c]/30 bg-[#f3cd7c]/10 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-[#f3cd7c]">
-                ✦ A LITTLE BIT OF EVERYTHING
+            <!-- Left Content Column -->
+            <div class="lg:col-span-6 xl:col-span-6 max-w-xl">
+              <span class="inline-flex items-center gap-2 rounded-full border border-[#f3cd7c]/40 bg-[#f3cd7c]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#f3cd7c] backdrop-blur-sm shadow-inner">
+                ✦ FESTIVE FAVOURITES FROM TIRUNELVELI
               </span>
               <h1 class="mt-4 font-serif text-3xl font-bold leading-tight text-[#fff3d6] sm:text-4xl md:text-5xl lg:text-[52px]">
-                One Box. All the <span class="text-[#f3cd7c]">Nellai Favourites.</span>
+                Gift Better. <br class="hidden sm:inline" />
+                <span class="text-[#f3cd7c]">Share Sweeter.</span>
               </h1>
               <p class="mt-4 max-w-lg text-base leading-relaxed text-[#f6dfbd]/90 sm:text-lg">
-                Halwa, sweets and savouries packed together for the days one favourite just isn’t enough.
+                From rich halwa boxes to festive combo packs, bring home sweets that feel thoughtful, celebratory and unmistakably Tirunelveli.
               </p>
+
+              <!-- CTA Buttons -->
               <div class="mt-7 flex flex-wrap items-center gap-4">
                 <a
                   href="#diwali-special"
-                  class="inline-flex items-center gap-3 rounded-full bg-[#f3cd7c] px-7 py-3.5 text-sm font-bold text-[#351507] shadow-lg transition hover:-translate-y-0.5 hover:bg-[#ffe6aa]"
+                  class="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#f3cd7c] to-[#e5b85c] px-7 py-3.5 text-sm font-bold text-[#2a0705] shadow-lg shadow-[#f3cd7c]/20 transition duration-200 hover:-translate-y-0.5 hover:from-[#ffe6aa] hover:to-[#f3cd7c]"
                 >
-                  Shop the Combo <span aria-hidden="true">→</span>
+                  Shop Festive Combos <span aria-hidden="true">→</span>
                 </a>
                 <a
-                  href="pages/shop.html"
-                  class="inline-flex items-center gap-2 rounded-full border border-[#f3cd7c]/50 px-6 py-3 text-sm font-semibold text-[#f3cd7c] transition hover:bg-[#f3cd7c]/10"
+                  href="#halwa-flavours"
+                  class="inline-flex items-center gap-2 rounded-full border border-[#f3cd7c]/50 bg-[#3a0d0a]/40 px-6 py-3.5 text-sm font-semibold text-[#f3cd7c] backdrop-blur-sm transition duration-200 hover:bg-[#f3cd7c]/15 hover:border-[#f3cd7c]"
                 >
-                  View All Products
+                  Explore Halwa Flavours
                 </a>
               </div>
+
+              <!-- Mini Trust Stats -->
+              <div class="mt-9 pt-6 border-t border-[#f3cd7c]/15 flex flex-wrap items-center gap-6 text-xs sm:text-sm font-medium text-[#f6dfbd]/80">
+                <div class="flex items-center gap-2">
+                  <span class="text-[#f3cd7c] text-base">✦</span> Freshly Packed
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[#f3cd7c] text-base">✦</span> Gift-Ready Boxes
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[#f3cd7c] text-base">✦</span> Pure Ingredients
+                </div>
+              </div>
             </div>
-            <div class="relative flex items-center justify-center">
-              <div class="relative w-full max-w-[500px] overflow-hidden rounded-2xl border border-[#b88932]/30 bg-[#3f1c10]/40 p-2 shadow-2xl backdrop-blur-sm">
-                <img
-                  src="assets/images/Rustic Halwa Feast in Brass Vessels.png"
-                  alt="Nellai Favourites Combo Box"
-                  class="h-64 sm:h-80 lg:h-96 w-full rounded-xl object-cover"
-                />
-                <div class="absolute bottom-4 left-4 right-4 rounded-xl border border-[#f3cd7c]/30 bg-[#2d1208]/85 px-4 py-2.5 text-center text-xs font-semibold text-[#f3cd7c] backdrop-blur-md">
-                  ✨ Halwa + Sweets + Savouries in One Box
+
+            <!-- Right Product Display Column -->
+            <div class="lg:col-span-6 xl:col-span-6 relative flex items-center justify-center pt-4 lg:pt-0">
+              <div class="relative w-full max-w-[520px] aspect-[5/4] sm:aspect-[4/3] flex items-center justify-center">
+                <!-- Golden Glow Circle behind products -->
+                <div class="absolute h-64 w-64 sm:h-80 sm:w-80 rounded-full bg-gradient-to-tr from-[#f3cd7c]/20 to-[#d9b86c]/30 blur-2xl"></div>
+
+                <!-- Main Featured Combo Pack (Center) -->
+                <div class="relative z-20 w-[68%] rounded-2xl border-2 border-[#f3cd7c]/40 bg-[#3a0d0a]/80 p-2.5 shadow-2xl shadow-black/60 backdrop-blur-md transition duration-300 hover:scale-[1.02]">
+                  <img
+                    src="assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png"
+                    alt="Nellai Specialz Festive Gift Box"
+                    class="h-48 sm:h-60 md:h-64 w-full rounded-xl object-cover shadow-inner"
+                  />
+                  <div class="mt-2 text-center text-xs font-semibold text-[#f3cd7c] tracking-wide">
+                    🎁 Festive Diwali Gift Box
+                  </div>
+                </div>
+
+                <!-- Supporting Product Card 1 (Top Right Overlay) -->
+                <div class="absolute -top-2 right-0 sm:right-2 z-30 w-[42%] rounded-xl border border-[#f3cd7c]/30 bg-[#2a0705]/90 p-2 shadow-xl backdrop-blur-md transform rotate-3 hover:rotate-0 transition duration-300">
+                  <img
+                    src="assets/images/products/combo-halwa.jpg"
+                    alt="Assorted Halwa Pack"
+                    class="h-24 sm:h-32 w-full rounded-lg object-cover"
+                  />
+                  <span class="mt-1 block text-center text-[11px] font-medium text-[#f6dfbd]">Combo Selection</span>
+                </div>
+
+                <!-- Supporting Product Card 2 (Bottom Left Overlay) -->
+                <div class="absolute -bottom-2 left-0 sm:left-2 z-30 w-[44%] rounded-xl border border-[#f3cd7c]/30 bg-[#2a0705]/90 p-2 shadow-xl backdrop-blur-md transform -rotate-3 hover:rotate-0 transition duration-300">
+                  <img
+                    src="assets/images/Rustic Halwa Feast in Brass Vessels.png"
+                    alt="Rustic Halwa Feast"
+                    class="h-24 sm:h-32 w-full rounded-lg object-cover"
+                  />
+                  <span class="mt-1 block text-center text-[11px] font-medium text-[#f6dfbd]">Traditional Taste</span>
+                </div>
+
+                <!-- Floating Festive Badge Tag -->
+                <div class="absolute -bottom-5 right-4 z-40 rounded-full border border-[#f3cd7c]/50 bg-[#4d0f0a]/95 px-4 py-1.5 text-xs font-bold text-[#f3cd7c] shadow-lg backdrop-blur-md flex items-center gap-1.5">
+                  <span>✨</span> All-India Express Delivery
                 </div>
               </div>
             </div>
@@ -100,42 +157,92 @@
           <!-- Slide 2: Halwa Flavours -->
           <div
             data-hero-slide
-            class="absolute inset-0 z-0 grid w-full items-center gap-8 opacity-0 pointer-events-none transition-opacity duration-700 ease-in-out lg:grid-cols-2 px-4 sm:px-6 lg:px-8 py-10 lg:py-12 max-w-[1280px] mx-auto"
+            class="absolute inset-0 z-0 grid w-full items-center gap-10 opacity-0 pointer-events-none transition-opacity duration-700 ease-in-out lg:grid-cols-12"
           >
-            <div class="max-w-xl">
-              <span class="inline-flex items-center gap-2 rounded-full border border-[#f3cd7c]/30 bg-[#f3cd7c]/10 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-[#f3cd7c]">
-                ✦ ONE HALWA IS NEVER ENOUGH
+            <!-- Left Content Column -->
+            <div class="lg:col-span-6 xl:col-span-6 max-w-xl">
+              <span class="inline-flex items-center gap-2 rounded-full border border-[#f3cd7c]/40 bg-[#f3cd7c]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#f3cd7c] backdrop-blur-sm shadow-inner">
+                ✦ AUTHENTIC TIRUNELVELI HALWA
               </span>
               <h2 class="mt-4 font-serif text-3xl font-bold leading-tight text-[#fff3d6] sm:text-4xl md:text-5xl lg:text-[52px]">
-                Pick Your Kind of <span class="text-[#f3cd7c]">Halwa Mood.</span>
+                Diwali Treats, <br class="hidden sm:inline" />
+                <span class="text-[#f3cd7c]">The Nellai Way.</span>
               </h2>
               <p class="mt-4 max-w-lg text-base leading-relaxed text-[#f6dfbd]/90 sm:text-lg">
-                From rich ghee classics to deeper karupatti notes — find the one your spoon keeps going back to.
+                Made with pure wheat milk, slow-cooked in cow ghee over wood fires, delivered fresh to your door across India.
               </p>
+
+              <!-- CTA Buttons -->
               <div class="mt-7 flex flex-wrap items-center gap-4">
                 <a
                   href="#halwa-flavours"
-                  class="inline-flex items-center gap-3 rounded-full bg-[#f3cd7c] px-7 py-3.5 text-sm font-bold text-[#351507] shadow-lg transition hover:-translate-y-0.5 hover:bg-[#ffe6aa]"
+                  class="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#f3cd7c] to-[#e5b85c] px-7 py-3.5 text-sm font-bold text-[#2a0705] shadow-lg shadow-[#f3cd7c]/20 transition duration-200 hover:-translate-y-0.5 hover:from-[#ffe6aa] hover:to-[#f3cd7c]"
                 >
                   Explore Halwa Flavours <span aria-hidden="true">→</span>
                 </a>
                 <a
-                  href="pages/shop.html"
-                  class="inline-flex items-center gap-2 rounded-full border border-[#f3cd7c]/50 px-6 py-3 text-sm font-semibold text-[#f3cd7c] transition hover:bg-[#f3cd7c]/10"
+                  href="#diwali-special"
+                  class="inline-flex items-center gap-2 rounded-full border border-[#f3cd7c]/50 bg-[#3a0d0a]/40 px-6 py-3.5 text-sm font-semibold text-[#f3cd7c] backdrop-blur-sm transition duration-200 hover:bg-[#f3cd7c]/15 hover:border-[#f3cd7c]"
                 >
-                  Order Sample Pack
+                  Order Combo Box
                 </a>
               </div>
+
+              <!-- Mini Trust Stats -->
+              <div class="mt-9 pt-6 border-t border-[#f3cd7c]/15 flex flex-wrap items-center gap-6 text-xs sm:text-sm font-medium text-[#f6dfbd]/80">
+                <div class="flex items-center gap-2">
+                  <span class="text-[#f3cd7c] text-base">✦</span> Pure Cow Ghee
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[#f3cd7c] text-base">✦</span> Wood-Fire Cooked
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[#f3cd7c] text-base">✦</span> Authentic Recipe
+                </div>
+              </div>
             </div>
-            <div class="relative flex items-center justify-center">
-              <div class="relative w-full max-w-[500px] overflow-hidden rounded-2xl border border-[#b88932]/30 bg-[#3f1c10]/40 p-2 shadow-2xl backdrop-blur-sm">
-                <img
-                  src="assets/images/Glistening Halwa in Brass Bowl.webp"
-                  alt="Authentic Halwa Varieties"
-                  class="h-64 sm:h-80 lg:h-96 w-full rounded-xl object-cover"
-                />
-                <div class="absolute bottom-4 left-4 right-4 rounded-xl border border-[#f3cd7c]/30 bg-[#2d1208]/85 px-4 py-2.5 text-center text-xs font-semibold text-[#f3cd7c] backdrop-blur-md">
-                  🍯 Karupatti, Ghee, Cashew &amp; Dry Fruit Varieties
+
+            <!-- Right Product Display Column -->
+            <div class="lg:col-span-6 xl:col-span-6 relative flex items-center justify-center pt-4 lg:pt-0">
+              <div class="relative w-full max-w-[520px] aspect-[5/4] sm:aspect-[4/3] flex items-center justify-center">
+                <!-- Golden Glow Circle behind products -->
+                <div class="absolute h-64 w-64 sm:h-80 sm:w-80 rounded-full bg-gradient-to-tr from-[#f3cd7c]/20 to-[#d9b86c]/30 blur-2xl"></div>
+
+                <!-- Main Featured Halwa Bowl (Center) -->
+                <div class="relative z-20 w-[68%] rounded-2xl border-2 border-[#f3cd7c]/40 bg-[#3a0d0a]/80 p-2.5 shadow-2xl shadow-black/60 backdrop-blur-md transition duration-300 hover:scale-[1.02]">
+                  <img
+                    src="assets/images/Glistening Halwa in Brass Bowl.webp"
+                    alt="Authentic Glistening Tirunelveli Halwa"
+                    class="h-48 sm:h-60 md:h-64 w-full rounded-xl object-cover shadow-inner"
+                  />
+                  <div class="mt-2 text-center text-xs font-semibold text-[#f3cd7c] tracking-wide">
+                    🍯 Glistening Pure Wheat Ghee Halwa
+                  </div>
+                </div>
+
+                <!-- Supporting Product Card 1 (Top Right Overlay) -->
+                <div class="absolute -top-2 right-0 sm:right-2 z-30 w-[42%] rounded-xl border border-[#f3cd7c]/30 bg-[#2a0705]/90 p-2 shadow-xl backdrop-blur-md transform rotate-3 hover:rotate-0 transition duration-300">
+                  <img
+                    src="assets/images/products/karupatti-halwa.jpg"
+                    alt="Karupatti Palm Jaggery Halwa"
+                    class="h-24 sm:h-32 w-full rounded-lg object-cover"
+                  />
+                  <span class="mt-1 block text-center text-[11px] font-medium text-[#f6dfbd]">Karupatti Halwa</span>
+                </div>
+
+                <!-- Supporting Product Card 2 (Bottom Left Overlay) -->
+                <div class="absolute -bottom-2 left-0 sm:left-2 z-30 w-[44%] rounded-xl border border-[#f3cd7c]/30 bg-[#2a0705]/90 p-2 shadow-xl backdrop-blur-md transform -rotate-3 hover:rotate-0 transition duration-300">
+                  <img
+                    src="assets/images/products/ghee-halwa.jpg"
+                    alt="Classic Cow Ghee Halwa"
+                    class="h-24 sm:h-32 w-full rounded-lg object-cover"
+                  />
+                  <span class="mt-1 block text-center text-[11px] font-medium text-[#f6dfbd]">Classic Ghee Halwa</span>
+                </div>
+
+                <!-- Floating Festive Badge Tag -->
+                <div class="absolute -bottom-5 right-4 z-40 rounded-full border border-[#f3cd7c]/50 bg-[#4d0f0a]/95 px-4 py-1.5 text-xs font-bold text-[#f3cd7c] shadow-lg backdrop-blur-md flex items-center gap-1.5">
+                  <span>🔥</span> Traditional Wood-Fire Recipe
                 </div>
               </div>
             </div>
@@ -165,7 +272,7 @@
                 type="button"
                 data-hero-prev
                 aria-label="Previous slide"
-                class="flex h-10 w-10 items-center justify-center rounded-full border border-[#f3cd7c]/30 bg-[#3f1c10]/60 text-lg text-[#f3cd7c] transition hover:bg-[#f3cd7c] hover:text-[#351507]"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-[#f3cd7c]/30 bg-[#3a0d0a]/60 text-lg text-[#f3cd7c] transition hover:bg-[#f3cd7c] hover:text-[#2a0705]"
               >
                 ‹
               </button>
@@ -173,7 +280,7 @@
                 type="button"
                 data-hero-next
                 aria-label="Next slide"
-                class="flex h-10 w-10 items-center justify-center rounded-full border border-[#f3cd7c]/30 bg-[#3f1c10]/60 text-lg text-[#f3cd7c] transition hover:bg-[#f3cd7c] hover:text-[#351507]"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-[#f3cd7c]/30 bg-[#3a0d0a]/60 text-lg text-[#f3cd7c] transition hover:bg-[#f3cd7c] hover:text-[#2a0705]"
               >
                 ›
               </button>
