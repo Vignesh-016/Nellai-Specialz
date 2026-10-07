@@ -18,11 +18,17 @@
       items: [
         ["products", "Products", "products.html", "□"],
         ["categories", "Categories", "categories.html", "◇"],
+        ["subcategories", "Sub Categories", "subcategories.html", "◈"],
+        ["combos", "Combo Products", "combos.html", "⊞"],
+        ["inventory", "Inventory", "inventory.html", "▤"],
       ],
     },
     {
       group: "Marketing",
-      items: [["offers", "Offers", "offers.html", "%"]],
+      items: [
+        ["offers", "Offers", "offers.html", "%"],
+        ["coupons", "Coupons", "coupons.html", "✂"],
+      ],
     },
     {
       group: "Content",
@@ -59,14 +65,14 @@
                   iconClasses,
                   '">',
                   icon,
-                  '</span><span>',
+                  "</span><span>",
                   label,
-                  '</span></a>',
+                  "</span></a>",
                 ].join("");
               })
               .join("")}
           </div>
-        </div>`
+        </div>`,
     )
     .join("");
 
@@ -113,6 +119,13 @@
         </div>
       </header>
 
+      <div class="px-4 pt-3 sm:px-8">
+        <div class="flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-xs text-amber-800">
+          <span class="text-base">⚠</span>
+          <span><strong>Demo UI</strong> — This admin panel is a frontend prototype. Data shown is sample data and changes are not persisted.</span>
+        </div>
+      </div>
+
       <main class="min-h-[calc(100vh-76px)] p-4 sm:p-8">
         <div class="mx-auto max-w-[1400px]">
           <div data-admin-content></div>
@@ -135,4 +148,83 @@
 
   menuButton?.addEventListener("click", () => toggleSidebar(true));
   overlay?.addEventListener("click", () => toggleSidebar(false));
+
+  /* ─── Reusable Modal System ─── */
+  window.AdminModal = {
+    open(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      requestAnimationFrame(() => {
+        modal
+          .querySelector("[data-modal-box]")
+          ?.classList.remove("scale-95", "opacity-0");
+        modal
+          .querySelector("[data-modal-box]")
+          ?.classList.add("scale-100", "opacity-100");
+      });
+    },
+    close(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      const box = modal.querySelector("[data-modal-box]");
+      box?.classList.add("scale-95", "opacity-0");
+      box?.classList.remove("scale-100", "opacity-100");
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }, 200);
+    },
+  };
+
+  /* ─── Toast Notification System ─── */
+  window.AdminToast = {
+    show(message, type = "success") {
+      const colors = {
+        success: "bg-emerald-600",
+        error: "bg-red-600",
+        info: "bg-[#5a160f]",
+      };
+      const toast = document.createElement("div");
+      toast.className = `fixed bottom-6 right-6 z-[100] ${colors[type] || colors.info} text-white px-5 py-3 rounded-xl shadow-xl text-sm font-semibold transform translate-y-4 opacity-0 transition-all duration-300`;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.classList.remove("translate-y-4", "opacity-0");
+      });
+      setTimeout(() => {
+        toast.classList.add("translate-y-4", "opacity-0");
+        setTimeout(() => toast.remove(), 300);
+      }, 2500);
+    },
+  };
+
+  /* ─── Confirm Delete utility ─── */
+  window.AdminConfirm = {
+    show(message, onConfirm) {
+      const existing = document.getElementById("admin-confirm-dialog");
+      if (existing) existing.remove();
+
+      const dialog = document.createElement("div");
+      dialog.id = "admin-confirm-dialog";
+      dialog.className =
+        "fixed inset-0 z-[90] flex items-center justify-center bg-[#24120f]/50 p-4";
+      dialog.innerHTML = `
+        <div class="w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl" data-modal-box>
+          <h3 class="text-lg font-bold text-[#32110d]">Confirm</h3>
+          <p class="mt-2 text-sm text-[#7e5a43]">${message}</p>
+          <div class="mt-5 flex gap-3 justify-end">
+            <button id="confirm-cancel" class="rounded-xl border border-[#e8e1da] px-4 py-2.5 text-sm font-semibold text-[#594b45] hover:bg-[#f8f6f3]">Cancel</button>
+            <button id="confirm-ok" class="rounded-xl bg-red-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-red-700">Delete</button>
+          </div>
+        </div>`;
+      document.body.appendChild(dialog);
+      document.getElementById("confirm-cancel").onclick = () => dialog.remove();
+      document.getElementById("confirm-ok").onclick = () => {
+        dialog.remove();
+        if (onConfirm) onConfirm();
+      };
+    },
+  };
 })();

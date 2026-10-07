@@ -4,25 +4,25 @@
     "ghee-halwa": {
       id: "ghee-halwa",
       name: "Ghee Halwa",
-      price: 189,
+      price: 600,
       image: "assets/images/products/ghee-halwa.jpg",
-      weight: "250g",
+      weight: "1kg",
     },
     "muscoth-halwa": {
       id: "muscoth-halwa",
       name: "Muscoth Halwa",
-      price: 219,
+      price: 500,
       image: "assets/images/products/classic-halwa.jpg",
-      weight: "250g",
+      weight: "1kg",
     },
     "karupatti-halwa": {
       id: "karupatti-halwa",
       name: "Karupatti Halwa",
-      price: 199,
+      price: 850,
       image: "assets/images/products/karupatti-halwa.jpg",
-      weight: "250g",
+      weight: "1kg",
     },
-    "mixture": {
+    mixture: {
       id: "mixture",
       name: "Nellai Mixture",
       price: 149,
@@ -31,9 +31,9 @@
     },
     "diwali-box": {
       id: "diwali-box",
-      name: "Nellai Specialz Festive Sweet Gift Set",
+      name: "Nellai Specialz Diwali Gift Box",
       price: 699,
-      image: "assets/images/WhatsApp Image 2026-09-24 at 9.25.09 PM.jpeg",
+      image: "assets/images/Nellai Specialz Festive Sweet Gift Set.png",
       weight: "500g Assorted Box",
     },
   };
@@ -54,22 +54,34 @@
       currentIndex = (index + slides.length) % slides.length;
       slides.forEach((slide, i) => {
         if (i === currentIndex) {
-          slide.classList.remove("opacity-0", "pointer-events-none", "absolute", "inset-0", "z-0");
+          slide.classList.remove(
+            "opacity-0",
+            "pointer-events-none",
+            "absolute",
+            "inset-0",
+            "z-0",
+          );
           slide.classList.add("opacity-100", "relative", "z-10");
         } else {
           slide.classList.remove("opacity-100", "relative", "z-10");
-          slide.classList.add("opacity-0", "pointer-events-none", "absolute", "inset-0", "z-0");
+          slide.classList.add(
+            "opacity-0",
+            "pointer-events-none",
+            "absolute",
+            "inset-0",
+            "z-0",
+          );
         }
       });
 
       dots.forEach((dot, i) => {
         if (i === currentIndex) {
-          dot.classList.remove("bg-[#8C1C13]/30", "w-3");
-          dot.classList.add("bg-[#8C1C13]", "w-8");
+          dot.classList.remove("bg-[#8C1C13]/30", "w-2.5");
+          dot.classList.add("bg-[#8C1C13]", "w-7");
           dot.setAttribute("aria-current", "true");
         } else {
-          dot.classList.remove("bg-[#8C1C13]", "w-8");
-          dot.classList.add("bg-[#8C1C13]/30", "w-3");
+          dot.classList.remove("bg-[#8C1C13]", "w-7");
+          dot.classList.add("bg-[#8C1C13]/30", "w-2.5");
           dot.removeAttribute("aria-current");
         }
       });
@@ -135,11 +147,11 @@
 
       dots.forEach((dot, i) => {
         if (i === currentIndex) {
-          dot.classList.remove("bg-[#8C1C13]/30", "w-2.5");
-          dot.classList.add("bg-[#8C1C13]", "w-7");
+          dot.classList.remove("bg-[#8C1C13]/30", "w-2");
+          dot.classList.add("bg-[#8C1C13]", "w-6");
         } else {
-          dot.classList.remove("bg-[#8C1C13]", "w-7");
-          dot.classList.add("bg-[#8C1C13]/30", "w-2.5");
+          dot.classList.remove("bg-[#8C1C13]", "w-6");
+          dot.classList.add("bg-[#8C1C13]/30", "w-2");
         }
       });
     }
@@ -216,9 +228,36 @@
     });
   }
 
+  function bindGalleryAutoScroll() {
+    const container = document.getElementById("gallery-container");
+    const track = document.getElementById("gallery-track");
+    if (!container || !track) return;
+
+    let isDown = false;
+    let startX, scrollLeft;
+
+    container.addEventListener("mousedown", (e) => {
+      isDown = true;
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener("mouseleave", () => { isDown = false; });
+    container.addEventListener("mouseup", () => { isDown = false; });
+
+    container.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 2;
+      container.scrollLeft = scrollLeft - walk;
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     bindHeroSlider();
     bindTestimonialSlider();
+    bindGalleryAutoScroll();
     reveal();
     bindCart();
   });

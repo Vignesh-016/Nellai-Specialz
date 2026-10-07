@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coupons | Nellai Specialz</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body data-admin-page="coupons" data-admin-title="Coupons" class="bg-[#f8f1e7] text-[#3a110d]">
+  <div data-admin-shell></div>
+
+  <template id="admin-page-content">
+    <section class="space-y-6">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+        <p class="text-sm text-[#7e5a43]">Create discount codes for customers to use at checkout.</p>
+        <button onclick="openCouponModal()" class="rounded-xl bg-[#54170f] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#54170f]/20 hover:bg-[#6e1f15] transition">+ Create coupon</button>
+      </div>
+
+      <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[800px] text-left text-sm">
+            <thead class="border-b border-[#eadbc6] text-xs uppercase tracking-wider text-[#9b6b2c]">
+              <tr>
+                <th class="p-3">Code</th>
+                <th class="p-3">Discount</th>
+                <th class="p-3">Applies to</th>
+                <th class="p-3">Uses</th>
+                <th class="p-3">Min. order</th>
+                <th class="p-3">Expires</th>
+                <th class="p-3">Status</th>
+                <th class="p-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="coupons-tbody" class="divide-y divide-[#f0e5d8]"></tbody>
+          </table>
+        </div>
+        <div id="coupons-empty" class="hidden py-12 text-center text-sm text-[#7e5a43]">No coupons yet.</div>
+      </div>
+    </section>
+
+    <!-- CREATE/EDIT COUPON MODAL -->
+    <div id="coupon-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#24120f]/50 p-4">
+      <div data-modal-box class="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl transform scale-95 opacity-0 transition-all duration-200">
+        <div class="sticky top-0 z-10 flex items-center justify-between border-b border-[#eee8e2] bg-white px-6 py-4 rounded-t-2xl">
+          <h2 id="coupon-modal-title" class="text-xl font-bold text-[#32110d]">Create coupon</h2>
+          <button onclick="AdminModal.close('coupon-modal')" class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45] hover:bg-[#f8f6f3] transition">✕</button>
+        </div>
+        <form onsubmit="saveCoupon(event)" class="p-6 space-y-5">
+          <input type="hidden" id="cpf-id" />
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Coupon code <span class="text-red-500">*</span></label>
+              <input id="cpf-code" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm font-mono uppercase outline-none focus:border-[#9b6b2c]" placeholder="e.g. WELCOME10" />
+              <p id="cpf-code-error" class="mt-1 text-xs text-red-600 hidden">Coupon code is required.</p>
+            </div>
+            <div>
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Discount type</label>
+              <select id="cpf-type" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+                <option value="percent">Percentage (%)</option>
+                <option value="flat">Flat amount (₹)</option>
+              </select>
+            </div>
+            <div>
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Discount value <span class="text-red-500">*</span></label>
+              <input id="cpf-value" type="number" required min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="0" />
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Application rules</h3>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Applies to</label>
+                <select id="cpf-applies" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+                  <option>All products</option>
+                  <option>Halwa only</option>
+                  <option>Combos only</option>
+                  <option>Specific products</option>
+                </select>
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Min. order value (₹)</label>
+                <input id="cpf-min" type="number" min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="No minimum" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Max uses</label>
+                <input id="cpf-max-uses" type="number" min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="Unlimited" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Expires on</label>
+                <input id="cpf-expiry" type="date" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" />
+              </div>
+            </div>
+            <label class="flex items-center gap-2.5 cursor-pointer">
+              <input type="checkbox" id="cpf-one-per-user" class="h-4 w-4 rounded border-[#d5c5b0] accent-[#8e281d]" />
+              <span class="text-sm font-semibold text-[#594b45]">One use per customer</span>
+            </label>
+          </div>
+
+          <label class="flex items-center gap-2.5 cursor-pointer">
+            <input type="checkbox" id="cpf-active" checked class="h-4 w-4 rounded border-[#d5c5b0] accent-[#8e281d]" />
+            <span class="text-sm font-semibold text-[#594b45]">Active</span>
+          </label>
+
+          <div class="flex gap-3 justify-end border-t border-[#eee8e2] pt-5">
+            <button type="button" onclick="AdminModal.close('coupon-modal')" class="rounded-xl border border-[#e8e1da] px-4 py-2.5 text-sm font-semibold text-[#594b45] hover:bg-[#f8f6f3] transition">Cancel</button>
+            <button type="submit" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Save coupon</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </template>
+
+  <script src="assets/admin.js" defer></script>
+  <script>
+    let coupons = [
+      { id: 1, code: "WELCOME10", type: "percent", value: 10, applies: "All products", minOrder: 0, maxUses: 200, used: 64, expiry: "2026-12-31", onePerUser: true, active: true },
+      { id: 2, code: "FESTIVE25", type: "flat", value: 250, applies: "All products", minOrder: 1500, maxUses: 100, used: 89, expiry: "2026-11-15", onePerUser: false, active: true },
+      { id: 3, code: "DIWALI50", type: "percent", value: 15, applies: "Combos only", minOrder: 1000, maxUses: 50, used: 12, expiry: "2026-11-05", onePerUser: true, active: true },
+      { id: 4, code: "HALWA20", type: "flat", value: 100, applies: "Halwa only", minOrder: 500, maxUses: 0, used: 33, expiry: "", onePerUser: false, active: false },
+    ];
+    let nextCpId = 5;
+
+    function renderCoupons() {
+      const tbody = document.getElementById("coupons-tbody");
+      const empty = document.getElementById("coupons-empty");
+
+      if (!coupons.length) {
+        tbody.innerHTML = "";
+        empty.classList.remove("hidden");
+        return;
+      }
+      empty.classList.add("hidden");
+
+      tbody.innerHTML = coupons.map(c => {
+        const discount = c.type === "percent" ? `${c.value}% off` : `₹${c.value} off`;
+        const uses = c.maxUses ? `${c.used} / ${c.maxUses}` : `${c.used} (unlimited)`;
+        const minOrder = c.minOrder ? `₹${c.minOrder.toLocaleString()}` : "None";
+        const expiry = c.expiry ? new Date(c.expiry).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "Never";
+        const statusColor = c.active ? "bg-emerald-50 text-emerald-700" : "bg-gray-100 text-gray-600";
+        const statusLabel = c.active ? "Active" : "Inactive";
+
+        return `
+          <tr class="hover:bg-[#fffcf7] transition">
+            <td class="p-3"><span class="font-bold text-[#8e281d] font-mono">${c.code}</span></td>
+            <td class="p-3 font-semibold">${discount}</td>
+            <td class="p-3 text-[#594b45]">${c.applies}</td>
+            <td class="p-3">${uses}</td>
+            <td class="p-3">${minOrder}</td>
+            <td class="p-3">${expiry}</td>
+            <td class="p-3"><span class="rounded-full ${statusColor} px-3 py-1 text-xs font-semibold">${statusLabel}</span></td>
+            <td class="p-3">
+              <div class="flex justify-end gap-2">
+                <button onclick="editCoupon(${c.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#8e281d] hover:bg-[#f5eee8] transition" title="Edit">✎</button>
+                <button onclick="deleteCoupon(${c.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition" title="Delete">🗑</button>
+              </div>
+            </td>
+          </tr>`;
+      }).join("");
+    }
+
+    function openCouponModal(cp) {
+      document.getElementById("coupon-modal-title").textContent = cp ? "Edit coupon" : "Create coupon";
+      document.getElementById("cpf-id").value = cp ? cp.id : "";
+      document.getElementById("cpf-code").value = cp ? cp.code : "";
+      document.getElementById("cpf-type").value = cp ? cp.type : "percent";
+      document.getElementById("cpf-value").value = cp ? cp.value : "";
+      document.getElementById("cpf-applies").value = cp ? cp.applies : "All products";
+      document.getElementById("cpf-min").value = cp && cp.minOrder ? cp.minOrder : "";
+      document.getElementById("cpf-max-uses").value = cp && cp.maxUses ? cp.maxUses : "";
+      document.getElementById("cpf-expiry").value = cp ? cp.expiry : "";
+      document.getElementById("cpf-one-per-user").checked = cp ? cp.onePerUser : false;
+      document.getElementById("cpf-active").checked = cp ? cp.active : true;
+      document.getElementById("cpf-code-error").classList.add("hidden");
+      AdminModal.open("coupon-modal");
+    }
+
+    function saveCoupon(e) {
+      e.preventDefault();
+      const code = document.getElementById("cpf-code").value.trim().toUpperCase();
+      if (!code) { document.getElementById("cpf-code-error").classList.remove("hidden"); return; }
+      document.getElementById("cpf-code-error").classList.add("hidden");
+
+      const id = document.getElementById("cpf-id").value;
+      const data = {
+        code,
+        type: document.getElementById("cpf-type").value,
+        value: parseInt(document.getElementById("cpf-value").value) || 0,
+        applies: document.getElementById("cpf-applies").value,
+        minOrder: parseInt(document.getElementById("cpf-min").value) || 0,
+        maxUses: parseInt(document.getElementById("cpf-max-uses").value) || 0,
+        expiry: document.getElementById("cpf-expiry").value,
+        onePerUser: document.getElementById("cpf-one-per-user").checked,
+        active: document.getElementById("cpf-active").checked,
+      };
+
+      if (id) {
+        const idx = coupons.findIndex(c => c.id === parseInt(id));
+        if (idx > -1) coupons[idx] = { ...coupons[idx], ...data };
+        AdminToast.show("Coupon updated");
+      } else {
+        data.id = nextCpId++;
+        data.used = 0;
+        coupons.push(data);
+        AdminToast.show("Coupon created");
+      }
+
+      AdminModal.close("coupon-modal");
+      renderCoupons();
+    }
+
+    function editCoupon(id) {
+      const c = coupons.find(x => x.id === id);
+      if (c) openCouponModal(c);
+    }
+
+    function deleteCoupon(id) {
+      const c = coupons.find(x => x.id === id);
+      if (!c) return;
+      AdminConfirm.show(`Delete coupon "${c.code}"? This cannot be undone.`, () => {
+        coupons = coupons.filter(x => x.id !== id);
+        renderCoupons();
+        AdminToast.show("Coupon deleted", "error");
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(renderCoupons, 100);
+    });
+  </script>
+</body>
+</html>

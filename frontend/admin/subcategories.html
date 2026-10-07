@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sub Categories | Nellai Specialz</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body data-admin-page="subcategories" data-admin-title="Sub Categories" class="bg-[#f8f1e7] text-[#3a110d]">
+  <div data-admin-shell></div>
+
+  <template id="admin-page-content">
+    <section class="space-y-6">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+        <p class="text-sm text-[#7e5a43]">Further classify products within their parent categories.</p>
+        <button onclick="openSubCatModal()" class="rounded-xl bg-[#54170f] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#54170f]/20 hover:bg-[#6e1f15] transition">+ Add sub category</button>
+      </div>
+
+      <!-- Filter -->
+      <div class="flex gap-3 flex-wrap">
+        <select id="sc-parent-filter" onchange="renderSubCategories()" class="rounded-xl border border-[#eadbc6] bg-white px-4 py-3 text-sm">
+          <option value="">All parent categories</option>
+          <option>Halwa</option>
+          <option>Combos</option>
+          <option>Savouries</option>
+          <option>Gift Boxes</option>
+        </select>
+      </div>
+
+      <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[600px] text-left text-sm">
+            <thead class="border-b border-[#eadbc6] text-xs uppercase tracking-wider text-[#9b6b2c]">
+              <tr>
+                <th class="p-3">Sub Category</th>
+                <th class="p-3">Parent Category</th>
+                <th class="p-3">Products</th>
+                <th class="p-3">Status</th>
+                <th class="p-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="subcat-tbody" class="divide-y divide-[#f0e5d8]"></tbody>
+          </table>
+        </div>
+        <div id="subcat-empty" class="hidden py-12 text-center text-sm text-[#7e5a43]">No sub categories found.</div>
+      </div>
+    </section>
+
+    <!-- ADD/EDIT SUB CATEGORY MODAL -->
+    <div id="subcat-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#24120f]/50 p-4">
+      <div data-modal-box class="w-full max-w-md rounded-2xl bg-white shadow-2xl transform scale-95 opacity-0 transition-all duration-200">
+        <div class="flex items-center justify-between border-b border-[#eee8e2] px-6 py-4">
+          <h2 id="subcat-modal-title" class="text-xl font-bold text-[#32110d]">Add sub category</h2>
+          <button onclick="AdminModal.close('subcat-modal')" class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45] hover:bg-[#f8f6f3] transition">✕</button>
+        </div>
+        <form onsubmit="saveSubCat(event)" class="p-6 space-y-5">
+          <input type="hidden" id="scf-id" />
+          <div>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Sub category name <span class="text-red-500">*</span></label>
+            <input id="scf-name" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="e.g. Traditional, Premium, Gift Box" />
+            <p id="scf-name-error" class="mt-1 text-xs text-red-600 hidden">Sub category name is required.</p>
+          </div>
+          <div>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Parent category <span class="text-red-500">*</span></label>
+            <select id="scf-parent" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+              <option value="">Select parent category</option>
+              <option>Halwa</option>
+              <option>Combos</option>
+              <option>Savouries</option>
+              <option>Gift Boxes</option>
+            </select>
+          </div>
+          <div>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Description</label>
+            <textarea id="scf-description" rows="2" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] resize-none" placeholder="Brief description..."></textarea>
+          </div>
+          <label class="flex items-center gap-2.5 cursor-pointer">
+            <input type="checkbox" id="scf-active" checked class="h-4 w-4 rounded border-[#d5c5b0] accent-[#8e281d]" />
+            <span class="text-sm font-semibold text-[#594b45]">Active</span>
+          </label>
+          <div class="flex gap-3 justify-end border-t border-[#eee8e2] pt-5">
+            <button type="button" onclick="AdminModal.close('subcat-modal')" class="rounded-xl border border-[#e8e1da] px-4 py-2.5 text-sm font-semibold text-[#594b45] hover:bg-[#f8f6f3] transition">Cancel</button>
+            <button type="submit" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </template>
+
+  <script src="assets/admin.js" defer></script>
+  <script>
+    let subCategories = [
+      { id: 1, name: "Traditional", parent: "Halwa", description: "Classic recipes passed down generations.", productCount: 8, active: true },
+      { id: 2, name: "Premium", parent: "Halwa", description: "Rich and luxurious halwa with premium ingredients.", productCount: 6, active: true },
+      { id: 3, name: "Gift Box", parent: "Combos", description: "Curated boxes ideal for festivals.", productCount: 4, active: true },
+      { id: 4, name: "Festival Pack", parent: "Combos", description: "Special packs for Diwali, Pongal, and more.", productCount: 3, active: true },
+      { id: 5, name: "Mixture", parent: "Savouries", description: "Crunchy mixtures and snack mixes.", productCount: 10, active: true },
+      { id: 6, name: "Chips", parent: "Savouries", description: "", productCount: 13, active: false },
+    ];
+    let nextScId = 7;
+
+    function renderSubCategories() {
+      const filter = document.getElementById("sc-parent-filter")?.value || "";
+      const filtered = filter ? subCategories.filter(s => s.parent === filter) : subCategories;
+      const tbody = document.getElementById("subcat-tbody");
+      const empty = document.getElementById("subcat-empty");
+
+      if (!filtered.length) {
+        tbody.innerHTML = "";
+        empty.classList.remove("hidden");
+        return;
+      }
+      empty.classList.add("hidden");
+
+      tbody.innerHTML = filtered.map(s => `
+        <tr class="hover:bg-[#fffcf7] transition">
+          <td class="p-3 font-semibold text-[#32110d]">${s.name}</td>
+          <td class="p-3">
+            <span class="rounded-full bg-[#f3e7d5] px-3 py-1 text-xs font-semibold text-[#9b6b2c]">${s.parent}</span>
+          </td>
+          <td class="p-3">${s.productCount}</td>
+          <td class="p-3">
+            <span class="rounded-full ${s.active ? "bg-emerald-50 text-emerald-700" : "bg-gray-100 text-gray-600"} px-3 py-1 text-xs font-semibold">${s.active ? "Active" : "Inactive"}</span>
+          </td>
+          <td class="p-3">
+            <div class="flex justify-end gap-2">
+              <button onclick="editSubCat(${s.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#8e281d] hover:bg-[#f5eee8] transition" title="Edit">✎</button>
+              <button onclick="deleteSubCat(${s.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition" title="Delete">🗑</button>
+            </div>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function openSubCatModal(sc) {
+      document.getElementById("subcat-modal-title").textContent = sc ? "Edit sub category" : "Add sub category";
+      document.getElementById("scf-id").value = sc ? sc.id : "";
+      document.getElementById("scf-name").value = sc ? sc.name : "";
+      document.getElementById("scf-parent").value = sc ? sc.parent : "";
+      document.getElementById("scf-description").value = sc ? sc.description : "";
+      document.getElementById("scf-active").checked = sc ? sc.active : true;
+      document.getElementById("scf-name-error").classList.add("hidden");
+      AdminModal.open("subcat-modal");
+    }
+
+    function saveSubCat(e) {
+      e.preventDefault();
+      const name = document.getElementById("scf-name").value.trim();
+      if (!name) { document.getElementById("scf-name-error").classList.remove("hidden"); return; }
+      document.getElementById("scf-name-error").classList.add("hidden");
+
+      const id = document.getElementById("scf-id").value;
+      const data = {
+        name,
+        parent: document.getElementById("scf-parent").value,
+        description: document.getElementById("scf-description").value.trim(),
+        active: document.getElementById("scf-active").checked,
+      };
+
+      if (id) {
+        const idx = subCategories.findIndex(s => s.id === parseInt(id));
+        if (idx > -1) subCategories[idx] = { ...subCategories[idx], ...data };
+        AdminToast.show("Sub category updated");
+      } else {
+        data.id = nextScId++;
+        data.productCount = 0;
+        subCategories.push(data);
+        AdminToast.show("Sub category added");
+      }
+
+      AdminModal.close("subcat-modal");
+      renderSubCategories();
+    }
+
+    function editSubCat(id) {
+      const s = subCategories.find(x => x.id === id);
+      if (s) openSubCatModal(s);
+    }
+
+    function deleteSubCat(id) {
+      const s = subCategories.find(x => x.id === id);
+      if (!s) return;
+      AdminConfirm.show(`Delete sub category "${s.name}"?`, () => {
+        subCategories = subCategories.filter(x => x.id !== id);
+        renderSubCategories();
+        AdminToast.show("Sub category deleted", "error");
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(renderSubCategories, 100);
+    });
+  </script>
+</body>
+</html>

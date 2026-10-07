@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory | Nellai Specialz</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body data-admin-page="inventory" data-admin-title="Inventory" class="bg-[#f8f1e7] text-[#3a110d]">
+  <div data-admin-shell></div>
+
+  <template id="admin-page-content">
+    <section class="space-y-6">
+      <p class="text-sm text-[#7e5a43]">Monitor and adjust stock levels across all products and variants.</p>
+
+      <!-- Summary cards -->
+      <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div class="rounded-2xl border border-[#eadbc6] bg-white p-5">
+          <p class="text-sm text-[#7e5a43]">Total SKUs</p>
+          <p class="mt-2 text-3xl font-bold" id="inv-total-skus">0</p>
+        </div>
+        <div class="rounded-2xl border border-[#eadbc6] bg-white p-5">
+          <p class="text-sm text-[#7e5a43]">In stock</p>
+          <p class="mt-2 text-3xl font-bold text-emerald-700" id="inv-in-stock">0</p>
+        </div>
+        <div class="rounded-2xl border border-[#eadbc6] bg-white p-5">
+          <p class="text-sm text-[#7e5a43]">Low stock (≤ 5)</p>
+          <p class="mt-2 text-3xl font-bold text-amber-600" id="inv-low-stock">0</p>
+        </div>
+        <div class="rounded-2xl border border-[#eadbc6] bg-white p-5">
+          <p class="text-sm text-[#7e5a43]">Out of stock</p>
+          <p class="mt-2 text-3xl font-bold text-red-600" id="inv-out-stock">0</p>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex gap-3 flex-wrap">
+        <input id="inv-search" oninput="renderInventory()" class="w-full sm:w-64 rounded-xl border border-[#eadbc6] bg-white px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="Search products..." />
+        <select id="inv-stock-filter" onchange="renderInventory()" class="rounded-xl border border-[#eadbc6] bg-white px-4 py-3 text-sm">
+          <option value="">All levels</option>
+          <option value="in">In stock</option>
+          <option value="low">Low stock (≤ 5)</option>
+          <option value="out">Out of stock</option>
+        </select>
+      </div>
+
+      <!-- Inventory table -->
+      <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[700px] text-left text-sm">
+            <thead class="border-b border-[#eadbc6] text-xs uppercase tracking-wider text-[#9b6b2c]">
+              <tr>
+                <th class="p-3">Product</th>
+                <th class="p-3">Variant</th>
+                <th class="p-3">Stock</th>
+                <th class="p-3">Status</th>
+                <th class="p-3 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="inv-tbody" class="divide-y divide-[#f0e5d8]"></tbody>
+          </table>
+        </div>
+        <div id="inv-empty" class="hidden py-12 text-center text-sm text-[#7e5a43]">No items match your filter.</div>
+      </div>
+    </section>
+
+    <!-- STOCK ADJUSTMENT MODAL -->
+    <div id="stock-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#24120f]/50 p-4">
+      <div data-modal-box class="w-full max-w-sm rounded-2xl bg-white shadow-2xl transform scale-95 opacity-0 transition-all duration-200">
+        <div class="flex items-center justify-between border-b border-[#eee8e2] px-6 py-4">
+          <h2 class="text-xl font-bold text-[#32110d]">Adjust stock</h2>
+          <button onclick="AdminModal.close('stock-modal')" class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45] hover:bg-[#f8f6f3] transition">✕</button>
+        </div>
+        <form onsubmit="saveStockAdjust(event)" class="p-6 space-y-5">
+          <input type="hidden" id="sa-idx" />
+          <div>
+            <p class="text-sm font-semibold text-[#32110d]" id="sa-name"></p>
+            <p class="text-xs text-[#7e5a43] mt-0.5" id="sa-variant"></p>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex-1">
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Current stock</label>
+              <input id="sa-current" disabled class="w-full rounded-xl border border-[#eadbc6] bg-[#f8f6f3] px-4 py-3 text-sm text-[#7e5a43]" />
+            </div>
+            <div class="flex-1">
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">New stock</label>
+              <input id="sa-new" type="number" min="0" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" />
+            </div>
+          </div>
+          <div>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Reason</label>
+            <select id="sa-reason" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+              <option>Restock / New shipment</option>
+              <option>Manual correction</option>
+              <option>Damaged / Expired</option>
+              <option>Returned stock</option>
+            </select>
+          </div>
+          <div class="flex gap-3 justify-end border-t border-[#eee8e2] pt-5">
+            <button type="button" onclick="AdminModal.close('stock-modal')" class="rounded-xl border border-[#e8e1da] px-4 py-2.5 text-sm font-semibold text-[#594b45] hover:bg-[#f8f6f3] transition">Cancel</button>
+            <button type="submit" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </template>
+
+  <script src="assets/admin.js" defer></script>
+  <script>
+    let inventoryItems = [
+      { name: "Tirunelveli Karupatti Halwa", variant: "250g", stock: 20 },
+      { name: "Tirunelveli Karupatti Halwa", variant: "500g", stock: 15 },
+      { name: "Tirunelveli Karupatti Halwa", variant: "1kg", stock: 7 },
+      { name: "Ghee Halwa", variant: "250g", stock: 30 },
+      { name: "Ghee Halwa", variant: "500g", stock: 22 },
+      { name: "Ghee Halwa", variant: "1kg", stock: 10 },
+      { name: "Muscoth Halwa", variant: "250g", stock: 25 },
+      { name: "Muscoth Halwa", variant: "500g", stock: 18 },
+      { name: "Muscoth Halwa", variant: "1kg", stock: 12 },
+      { name: "Cashew Halwa", variant: "250g", stock: 18 },
+      { name: "Cashew Halwa", variant: "500g", stock: 0 },
+      { name: "Cashew Halwa", variant: "1kg", stock: 5 },
+      { name: "Wheat Halwa", variant: "500g", stock: 35 },
+      { name: "Traditional Halwa Combo", variant: "Combo Box", stock: 0 },
+      { name: "Diwali Gift Box", variant: "Gift Pack", stock: 8 },
+      { name: "Sampler Pack", variant: "Mini Pack", stock: 3 },
+    ];
+
+    function getStockLevel(s) {
+      if (s === 0) return "out";
+      if (s <= 5) return "low";
+      return "in";
+    }
+
+    function renderInventory() {
+      const search = (document.getElementById("inv-search")?.value || "").toLowerCase();
+      const filter = document.getElementById("inv-stock-filter")?.value || "";
+      let filtered = inventoryItems;
+      if (search) filtered = filtered.filter(i => i.name.toLowerCase().includes(search) || i.variant.toLowerCase().includes(search));
+      if (filter) filtered = filtered.filter(i => getStockLevel(i.stock) === filter);
+
+      // Summary cards
+      const total = inventoryItems.length;
+      const inStock = inventoryItems.filter(i => i.stock > 5).length;
+      const low = inventoryItems.filter(i => i.stock > 0 && i.stock <= 5).length;
+      const out = inventoryItems.filter(i => i.stock === 0).length;
+      document.getElementById("inv-total-skus").textContent = total;
+      document.getElementById("inv-in-stock").textContent = inStock;
+      document.getElementById("inv-low-stock").textContent = low;
+      document.getElementById("inv-out-stock").textContent = out;
+
+      const tbody = document.getElementById("inv-tbody");
+      const empty = document.getElementById("inv-empty");
+
+      if (!filtered.length) {
+        tbody.innerHTML = "";
+        empty.classList.remove("hidden");
+        return;
+      }
+      empty.classList.add("hidden");
+
+      tbody.innerHTML = filtered.map((item, idx) => {
+        const origIdx = inventoryItems.indexOf(item);
+        const level = getStockLevel(item.stock);
+        const statusColor = level === "out" ? "bg-red-50 text-red-700" : level === "low" ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700";
+        const statusLabel = level === "out" ? "Out of stock" : level === "low" ? "Low stock" : "In stock";
+        return `
+          <tr class="hover:bg-[#fffcf7] transition">
+            <td class="p-3 font-semibold text-[#32110d]">${item.name}</td>
+            <td class="p-3"><span class="rounded-full bg-[#f3e7d5] px-2.5 py-0.5 text-xs font-semibold text-[#9b6b2c]">${item.variant}</span></td>
+            <td class="p-3 font-semibold ${level === "out" ? "text-red-600" : level === "low" ? "text-amber-600" : ""}">${item.stock}</td>
+            <td class="p-3"><span class="rounded-full ${statusColor} px-3 py-1 text-xs font-semibold">${statusLabel}</span></td>
+            <td class="p-3 text-right">
+              <button onclick="openStockAdjust(${origIdx})" class="rounded-lg bg-[#f3e7d5] px-3 py-1.5 text-xs font-semibold text-[#8e281d] hover:bg-[#eadbc6] transition">Adjust</button>
+            </td>
+          </tr>`;
+      }).join("");
+    }
+
+    function openStockAdjust(idx) {
+      const item = inventoryItems[idx];
+      if (!item) return;
+      document.getElementById("sa-idx").value = idx;
+      document.getElementById("sa-name").textContent = item.name;
+      document.getElementById("sa-variant").textContent = item.variant;
+      document.getElementById("sa-current").value = item.stock;
+      document.getElementById("sa-new").value = item.stock;
+      AdminModal.open("stock-modal");
+    }
+
+    function saveStockAdjust(e) {
+      e.preventDefault();
+      const idx = parseInt(document.getElementById("sa-idx").value);
+      const newStock = parseInt(document.getElementById("sa-new").value) || 0;
+      inventoryItems[idx].stock = newStock;
+      AdminModal.close("stock-modal");
+      renderInventory();
+      AdminToast.show("Stock updated");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(renderInventory, 100);
+    });
+  </script>
+</body>
+</html>
