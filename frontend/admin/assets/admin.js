@@ -1,10 +1,12 @@
 (() => {
-  const fontLink = document.createElement('link');
-  fontLink.rel = 'stylesheet';
-  fontLink.href = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap';
+  const fontLink = document.createElement("link");
+  fontLink.rel = "stylesheet";
+  fontLink.href =
+    "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap";
   document.head.appendChild(fontLink);
-  const adminStyle = document.createElement('style');
-  adminStyle.textContent = 'body{font-family:"DM Sans",sans-serif;letter-spacing:-.01em}h1,h2,h3,h4,.font-serif{font-family:"Cormorant Garamond",serif;letter-spacing:-.02em}';
+  const adminStyle = document.createElement("style");
+  adminStyle.textContent =
+    'body{font-family:"DM Sans",sans-serif;letter-spacing:-.01em}h1,h2,h3,h4,.font-serif{font-family:"Cormorant Garamond",serif;letter-spacing:-.02em}';
   document.head.appendChild(adminStyle);
   const page = document.body.dataset.adminPage || "dashboard";
   const title = document.body.dataset.adminTitle || "Dashboard";
@@ -145,12 +147,7 @@
         </div>
       </header>
 
-      <div class="px-4 pt-3 sm:px-8">
-        <div class="flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-xs text-amber-800">
-          <span class="text-base">⚠</span>
-          <span><strong>Live data</strong> — Changes are saved through the backend database.</span>
-        </div>
-      </div>
+
 
       <main class="min-h-[calc(100vh-76px)] p-4 sm:p-8">
         <div class="mx-auto max-w-[1400px]">
