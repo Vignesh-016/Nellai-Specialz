@@ -19,7 +19,13 @@ window.renderProductVariations = (product) => {
   const choose = (variation) => {
     selected = variation;
     box.querySelectorAll("button").forEach((button) => {
-      button.classList.toggle("active", button.dataset.variationId === String(variation.id));
+      const active = button.dataset.variationId === String(variation.id);
+      button.classList.toggle("active", active);
+      if (active) {
+        button.className = "weight-opt active px-3.5 py-2.5 rounded-xl border-2 border-[#8C1C13] bg-[#8C1C13]/10 text-xs font-bold text-[#8C1C13] text-center transition cursor-pointer shadow-xs";
+      } else {
+        button.className = "weight-opt px-3.5 py-2.5 rounded-xl border border-[#EADBC1] bg-white text-xs font-semibold text-[#321307] hover:border-[#8C1C13] text-center transition cursor-pointer";
+      }
     });
     if (price) price.textContent = formatPrice(variation.selling_price);
     if (mrp) mrp.textContent = Number(variation.strike_price) > 0
@@ -39,11 +45,11 @@ window.renderProductVariations = (product) => {
     const button = document.createElement("button");
     button.type = "button";
     button.dataset.variationId = String(variation.id);
-    button.className = "weight-opt px-3 py-2.5 rounded-xl border border-[#B88932]/30 text-xs font-semibold text-[#32110D] text-center";
+    button.className = "weight-opt px-3.5 py-2.5 rounded-xl border border-[#EADBC1] bg-white text-xs font-semibold text-[#321307] text-center";
     const label = document.createElement("span");
     label.textContent = variationLabel(variation);
     const amount = document.createElement("span");
-    amount.className = "block text-[11px] font-normal";
+    amount.className = "block text-[11px] font-normal text-[#806B58]";
     amount.textContent = formatPrice(variation.selling_price);
     button.append(label, amount);
     button.addEventListener("click", () => choose(variation));

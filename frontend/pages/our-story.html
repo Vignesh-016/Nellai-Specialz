@@ -24,32 +24,35 @@
     <script src="../assets/js/our-story.js"></script>
   </head>
   <body
-    class="overflow-x-hidden bg-[#fff8eb] text-[#2c160f] antialiased selection:bg-[#b88932] selection:text-white"
+    class="overflow-x-hidden bg-[#FBF5E9] text-[#32110D] antialiased selection:bg-[#8C1C13] selection:text-white"
   >
     <div id="site-header"></div>
 
-    <main>
+    <main class="bg-[#FBF5E9]">
       <!-- 1) COMPACT HERO -->
-      <section class="relative isolate overflow-hidden bg-[#fff8eb] border-b border-[#eadcc6] px-4 py-12 text-[#351507] sm:px-6 lg:px-8 lg:py-16">
-        <div class="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-[#f3cd7c]/20 blur-3xl"></div>
+      <section class="relative isolate min-h-[360px] overflow-hidden border-b border-[#EADBC1] px-4 py-16 text-white sm:min-h-[440px] sm:px-6 sm:py-24 lg:min-h-[500px] lg:px-8 lg:py-28">
+        <div class="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center" style="background-image:url('../assets/images/Abouts-us/Banner1.png');" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#321307]/75 via-[#321307]/60 to-[#321307]/85" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-[#D9B86C]/20 blur-3xl"></div>
         <div class="mx-auto max-w-[1280px] text-center">
-          <span class="inline-flex items-center gap-2 rounded-full border border-[#b88932]/30 bg-[#f3cd7c]/15 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-[#8b5f28]">
+          <span class="inline-flex items-center gap-2 rounded-full border border-[#D9B86C] bg-[#FFFBF5]/15 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#E7BD6D] backdrop-blur-md shadow-xs">
             OUR STORY
           </span>
-          <h1 class="mt-4 font-serif text-3xl font-bold leading-tight text-[#351507] sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 class="mt-4 font-serif text-3xl font-bold leading-tight text-[#FFF8EF] drop-shadow-md sm:text-4xl md:text-5xl lg:text-6xl">
             நெல்லை சுவை - <br />
-            <span class="text-[#8b5f28]">நெல்லையின் அடையாளம்</span>
+            <span class="text-[#E7BD6D]">நெல்லையின் அடையாளம்</span>
           </h1>
-          <p class="mt-4 mx-auto max-w-2xl text-base leading-relaxed text-[#5c3825] sm:text-lg">
+          <p class="mt-4 mx-auto max-w-2xl text-base leading-relaxed text-[#FFF8EF]/90 sm:text-lg">
             Welcome to Nellai Specialz, where we celebrate the rich culinary heritage of Nellai (Tirunelveli), offering sweet treats and organic goods that capture the traditions defining Nellai’s identity.
           </p>
         </div>
       </section>
+      
 
       <!-- 2) CINEMATIC SINGLE-BANNER STORYTELLING — 6 STEPS -->
       <section
         id="story-sticky-container"
-        class="relative bg-[#fff8eb] text-[#fff8eb] lg:h-[550vh]"
+        class="relative bg-[#FBF5E9] text-[#FFF8EF] lg:h-[550vh]"
       >
         <!-- === DESKTOP: Sticky cinematic banner === -->
         <div
@@ -57,7 +60,7 @@
           class="hidden lg:flex lg:sticky lg:top-0 lg:h-screen lg:items-center lg:justify-center lg:px-8"
         >
           <!-- Banner frame -->
-          <div class="relative mx-auto w-full max-w-[1280px] overflow-hidden rounded-[28px] shadow-2xl" style="height:660px">
+          <div class="relative mx-auto w-full max-w-[1280px] overflow-hidden rounded-[28px] shadow-2xl border border-[#EADBC1]" style="height:660px">
 
             <!-- Background images (crossfade per step) -->
             <img data-story-bg="0" src="../assets/images/ChatGPT Image Sep 26, 2026, 12_20_12 PM.png" alt="Tirunelveli Heritage Landscape" class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700" style="opacity:1" />
@@ -65,27 +68,25 @@
             <img data-story-bg="2" src="../assets/images/preparations.png" alt="Traditional Cooking in Brass Uruli" class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700" style="opacity:0" />
             <img data-story-bg="3" src="../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png" alt="Sealed Nellai Specialz Box" class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700" style="opacity:0" />
             <img data-story-bg="4" src="../assets/images/Rustic Halwa Feast in Brass Vessels.png" alt="Sharing Sweets with Family" class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700" style="opacity:0" />
-            <img data-story-bg="5" src="../assets/images/heritage/story-hero.jpg" alt="Tirunelveli Tradition Travels Nationwide" class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700" style="opacity:0" />
+            <img data-story-bg="5" src="../assets/images/Home/about-story-banner.png" alt="Nellai Specialz festive gift box beside Tirunelveli temple heritage" class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700" width="2048" height="768" loading="lazy" decoding="async" style="opacity:0" />
 
-            <!-- Gradient overlays: left-heavy for title readability, bottom for content card -->
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#1a0a03]/90 via-[#321307]/50 to-transparent"></div>
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1a0a03]/90 via-[#1a0a03]/30 to-transparent"></div>
+            <!-- Gradient overlays -->
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#321307]/90 via-[#321307]/50 to-transparent"></div>
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#321307]/90 via-[#321307]/30 to-transparent"></div>
 
-            <!-- === Step overlays (vertical hierarchy: top heading → center-low card) === -->
+            <!-- === Step overlays === -->
 
             <!-- Step 1 -->
             <div data-story-step="0" class="absolute inset-0 transition-all duration-[600ms] ease-out" style="opacity:1; transform:translate3d(0,0,0)">
-              <!-- Top heading block -->
               <div class="absolute left-12 top-14">
-                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#f3cd7c]/70">WHERE IT STARTS</span>
-                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#fff3d6]/85">01</p>
-                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#fff3d6]">Some Flavours Don't Need Reinvention.</h2>
+                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#E7BD6D]">WHERE IT STARTS</span>
+                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#FFF8EF]">01</p>
+                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#FFF8EF]">Some Flavours Don't Need Reinvention.</h2>
               </div>
-              <!-- Center-lower content card (slightly left of center) -->
               <div class="absolute bottom-28 left-1/2 -translate-x-[55%]">
-                <div class="max-w-[560px] rounded-2xl border border-[#f5c56b]/20 bg-[#24110B]/65 px-7 py-5 shadow-xl backdrop-blur-md">
-                  <p class="text-[13px] leading-relaxed text-[#f6dfbd]/90">
-                    <span class="mr-1.5 text-[#f5c56b]">✦</span>
+                <div class="max-w-[560px] rounded-2xl border border-[#D9B86C]/30 bg-[#321307]/80 px-7 py-5 shadow-xl backdrop-blur-md">
+                  <p class="text-[13px] leading-relaxed text-[#FFF8EF]/90">
+                    <span class="mr-1.5 text-[#E7BD6D]">✦</span>
                     Tirunelveli's halwa tradition isn't about chasing trends — it's built on slow-cooked perfection, pure wheat milk, and a memory of taste passed through generations.
                   </p>
                 </div>
@@ -95,15 +96,14 @@
             <!-- Step 2 -->
             <div data-story-step="1" class="absolute inset-0 transition-all duration-[600ms] ease-out" style="opacity:0; transform:translate3d(24px,0,0); pointer-events:none">
               <div class="absolute left-12 top-14">
-                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#f3cd7c]/70">THE HALWA</span>
-                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#fff3d6]/85">02</p>
-                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#fff3d6]">The Spoonful Everyone Comes Back For.</h2>
+                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#E7BD6D]">THE HALWA</span>
+                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#FFF8EF]">02</p>
+                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#FFF8EF]">The Spoonful Everyone Comes Back For.</h2>
               </div>
-              <!-- Slightly right of center -->
               <div class="absolute bottom-28 left-1/2 -translate-x-[45%]">
-                <div class="max-w-[560px] rounded-2xl border border-[#f5c56b]/20 bg-[#24110B]/65 px-7 py-5 shadow-xl backdrop-blur-md">
-                  <p class="text-[13px] leading-relaxed text-[#f6dfbd]/90">
-                    <span class="mr-1.5 text-[#f5c56b]">✦</span>
+                <div class="max-w-[560px] rounded-2xl border border-[#D9B86C]/30 bg-[#321307]/80 px-7 py-5 shadow-xl backdrop-blur-md">
+                  <p class="text-[13px] leading-relaxed text-[#FFF8EF]/90">
+                    <span class="mr-1.5 text-[#E7BD6D]">✦</span>
                     Translucent, glossy, and melting with cow ghee richness. The heart of what we make — crafted to stay true to the exact texture you remember.
                   </p>
                 </div>
@@ -113,15 +113,14 @@
             <!-- Step 3 -->
             <div data-story-step="2" class="absolute inset-0 transition-all duration-[600ms] ease-out" style="opacity:0; transform:translate3d(24px,0,0); pointer-events:none">
               <div class="absolute left-12 top-14">
-                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#f3cd7c]/70">THE PROCESS</span>
-                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#fff3d6]/85">03</p>
-                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#fff3d6]">Good Halwa Can't Be Rushed.</h2>
+                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#E7BD6D]">THE PROCESS</span>
+                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#FFF8EF]">03</p>
+                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#FFF8EF]">Good Halwa Can't Be Rushed.</h2>
               </div>
-              <!-- Slightly left of center -->
               <div class="absolute bottom-28 left-1/2 -translate-x-[55%]">
-                <div class="max-w-[560px] rounded-2xl border border-[#f5c56b]/20 bg-[#24110B]/65 px-7 py-5 shadow-xl backdrop-blur-md">
-                  <p class="text-[13px] leading-relaxed text-[#f6dfbd]/90">
-                    <span class="mr-1.5 text-[#f5c56b]">✦</span>
+                <div class="max-w-[560px] rounded-2xl border border-[#D9B86C]/30 bg-[#321307]/80 px-7 py-5 shadow-xl backdrop-blur-md">
+                  <p class="text-[13px] leading-relaxed text-[#FFF8EF]/90">
+                    <span class="mr-1.5 text-[#E7BD6D]">✦</span>
                     Hours of constant stirring over wood fires in heavy brass urulis. Pure cow ghee at precise moments. Time and patience are the main ingredients.
                   </p>
                 </div>
@@ -131,15 +130,14 @@
             <!-- Step 4 -->
             <div data-story-step="3" class="absolute inset-0 transition-all duration-[600ms] ease-out" style="opacity:0; transform:translate3d(24px,0,0); pointer-events:none">
               <div class="absolute left-12 top-14">
-                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#f3cd7c]/70">THE BOX</span>
-                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#fff3d6]/85">04</p>
-                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#fff3d6]">Made in Nellai. Packed to Travel.</h2>
+                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#E7BD6D]">THE BOX</span>
+                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#FFF8EF]">04</p>
+                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#FFF8EF]">Made in Nellai. Packed to Travel.</h2>
               </div>
-              <!-- Slightly right of center -->
               <div class="absolute bottom-28 left-1/2 -translate-x-[45%]">
-                <div class="max-w-[560px] rounded-2xl border border-[#f5c56b]/20 bg-[#24110B]/65 px-7 py-5 shadow-xl backdrop-blur-md">
-                  <p class="text-[13px] leading-relaxed text-[#f6dfbd]/90">
-                    <span class="mr-1.5 text-[#f5c56b]">✦</span>
+                <div class="max-w-[560px] rounded-2xl border border-[#D9B86C]/30 bg-[#321307]/80 px-7 py-5 shadow-xl backdrop-blur-md">
+                  <p class="text-[13px] leading-relaxed text-[#FFF8EF]/90">
+                    <span class="mr-1.5 text-[#E7BD6D]">✦</span>
                     Freshness sealed in insulated, food-grade packaging — so opening a box in Chennai or Mumbai feels like buying it fresh in Tirunelveli.
                   </p>
                 </div>
@@ -149,15 +147,14 @@
             <!-- Step 5 -->
             <div data-story-step="4" class="absolute inset-0 transition-all duration-[600ms] ease-out" style="opacity:0; transform:translate3d(24px,0,0); pointer-events:none">
               <div class="absolute left-12 top-14">
-                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#f3cd7c]/70">THE PEOPLE</span>
-                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#fff3d6]/85">05</p>
-                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#fff3d6]">For Homes, Gifts and &ldquo;Just One More Spoon.&rdquo;</h2>
+                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#E7BD6D]">THE PEOPLE</span>
+                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#FFF8EF]">05</p>
+                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#FFF8EF]">For Homes, Gifts and &ldquo;Just One More Spoon.&rdquo;</h2>
               </div>
-              <!-- Slightly left of center -->
               <div class="absolute bottom-28 left-1/2 -translate-x-[55%]">
-                <div class="max-w-[560px] rounded-2xl border border-[#f5c56b]/20 bg-[#24110B]/65 px-7 py-5 shadow-xl backdrop-blur-md">
-                  <p class="text-[13px] leading-relaxed text-[#f6dfbd]/90">
-                    <span class="mr-1.5 text-[#f5c56b]">✦</span>
+                <div class="max-w-[560px] rounded-2xl border border-[#D9B86C]/30 bg-[#321307]/80 px-7 py-5 shadow-xl backdrop-blur-md">
+                  <p class="text-[13px] leading-relaxed text-[#FFF8EF]/90">
+                    <span class="mr-1.5 text-[#E7BD6D]">✦</span>
                     From family get-togethers to gifting and late-night cravings, Nellai Specialz is made for the moments people share.
                   </p>
                 </div>
@@ -167,110 +164,105 @@
             <!-- Step 6 -->
             <div data-story-step="5" class="absolute inset-0 transition-all duration-[600ms] ease-out" style="opacity:0; transform:translate3d(24px,0,0); pointer-events:none">
               <div class="absolute left-12 top-14">
-                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#f3cd7c]/70">WHERE WE ARE NOW</span>
-                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#fff3d6]/85">06</p>
-                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#fff3d6]">Nellai Travels Further Now.</h2>
+                <span class="text-[11px] font-bold uppercase tracking-[.3em] text-[#E7BD6D]">WHERE WE ARE NOW</span>
+                <p class="mt-1.5 font-serif text-[60px] font-bold leading-none text-[#FFF8EF]">06</p>
+                <h2 class="mt-1 max-w-md font-serif text-[30px] font-bold leading-snug text-[#FFF8EF]">Nellai Travels Further Now.</h2>
               </div>
-              <!-- Slightly right of center -->
               <div class="absolute bottom-28 left-1/2 -translate-x-[45%]">
-                <div class="max-w-[560px] rounded-2xl border border-[#f5c56b]/20 bg-[#24110B]/65 px-7 py-5 shadow-xl backdrop-blur-md">
-                  <p class="text-[13px] leading-relaxed text-[#f6dfbd]/90">
-                    <span class="mr-1.5 text-[#f5c56b]">✦</span>
+                <div class="max-w-[560px] rounded-2xl border border-[#D9B86C]/30 bg-[#321307]/80 px-7 py-5 shadow-xl backdrop-blur-md">
+                  <p class="text-[13px] leading-relaxed text-[#FFF8EF]/90">
+                    <span class="mr-1.5 text-[#E7BD6D]">✦</span>
                     From Tirunelveli to homes across Tamil Nadu, Bengaluru and Mumbai — the distance changes, but the familiar taste stays the same.
                   </p>
-                  <a href="shop.html" class="mt-3 inline-flex items-center gap-2 rounded-full bg-[#f3cd7c] px-5 py-2 text-xs font-bold text-[#351507] transition hover:bg-[#ffe6aa]">
+                  <a href="shop.html" class="mt-3 inline-flex items-center gap-2 rounded-full bg-[#8C1C13] px-6 py-2.5 text-xs font-bold text-[#FFF8EF] transition hover:bg-[#7A120A] shadow-md">
                     Explore Our Collection →
                   </a>
                 </div>
               </div>
             </div>
 
-            <!-- Horizontal Timeline (sits below content cards) -->
+            <!-- Horizontal Timeline -->
             <div class="absolute bottom-10 left-12 right-12 z-30">
-              <!-- Background track line -->
-              <div class="absolute left-0 right-0 top-1/2 h-px bg-[#f5c56b]/20"></div>
-              <!-- Progress fill line -->
-              <div id="story-timeline-fill" class="absolute left-0 top-1/2 h-px bg-[#f5c56b]/60 transition-all duration-500" style="width:0%"></div>
-              <!-- Dots -->
+              <div class="absolute left-0 right-0 top-1/2 h-px bg-[#D9B86C]/30"></div>
+              <div id="story-timeline-fill" class="absolute left-0 top-1/2 h-px bg-[#E7BD6D] transition-all duration-500" style="width:0%"></div>
               <div class="relative flex w-full items-center justify-between">
-                <button type="button" data-story-dot="0" class="relative z-10 h-3.5 w-3.5 rounded-full bg-[#f5c56b] ring-4 ring-[#f5c56b]/25 transition-all duration-300 focus:outline-none focus-visible:ring-[#f5c56b]/50" aria-label="Step 1: Where It Starts" aria-current="true"></button>
-                <button type="button" data-story-dot="1" class="relative z-10 h-2.5 w-2.5 rounded-full bg-[#f5c56b]/30 transition-all duration-300 hover:bg-[#f5c56b]/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5c56b]/50" aria-label="Step 2: The Halwa"></button>
-                <button type="button" data-story-dot="2" class="relative z-10 h-2.5 w-2.5 rounded-full bg-[#f5c56b]/30 transition-all duration-300 hover:bg-[#f5c56b]/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5c56b]/50" aria-label="Step 3: The Process"></button>
-                <button type="button" data-story-dot="3" class="relative z-10 h-2.5 w-2.5 rounded-full bg-[#f5c56b]/30 transition-all duration-300 hover:bg-[#f5c56b]/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5c56b]/50" aria-label="Step 4: The Box"></button>
-                <button type="button" data-story-dot="4" class="relative z-10 h-2.5 w-2.5 rounded-full bg-[#f5c56b]/30 transition-all duration-300 hover:bg-[#f5c56b]/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5c56b]/50" aria-label="Step 5: The People"></button>
-                <button type="button" data-story-dot="5" class="relative z-10 h-2.5 w-2.5 rounded-full bg-[#f5c56b]/30 transition-all duration-300 hover:bg-[#f5c56b]/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5c56b]/50" aria-label="Step 6: Where We Are Now"></button>
+                <button type="button" data-story-dot="0" class="relative z-10 h-3.5 w-3.5 rounded-full bg-[#E7BD6D] ring-4 ring-[#E7BD6D]/25 transition-all duration-300 focus:outline-none" aria-label="Step 1: Where It Starts" aria-current="true"></button>
+                <button type="button" data-story-dot="1" class="relative z-10 h-2.5 w-2.5 rounded-full bg-[#E7BD6D]/40 transition-all duration-300 hover:bg-[#E7BD6D] focus:outline-none" aria-label="Step 2: The Halwa"></button>
+                <button type="button" data-story-dot="2" class="relative z-10 h-2.5 w-2.5 rounded-full bg-[#E7BD6D]/40 transition-all duration-300 hover:bg-[#E7BD6D] focus:outline-none" aria-label="Step 3: The Process"></button>
+                <button type="button" data-story-dot="3" class="relative z-10 h-2.5 w-2.5 rounded-full bg-[#E7BD6D]/40 transition-all duration-300 hover:bg-[#E7BD6D] focus:outline-none" aria-label="Step 4: The Box"></button>
+                <button type="button" data-story-dot="4" class="relative z-10 h-2.5 w-2.5 rounded-full bg-[#E7BD6D]/40 transition-all duration-300 hover:bg-[#E7BD6D] focus:outline-none" aria-label="Step 5: The People"></button>
+                <button type="button" data-story-dot="5" class="relative z-10 h-2.5 w-2.5 rounded-full bg-[#E7BD6D]/40 transition-all duration-300 hover:bg-[#E7BD6D] focus:outline-none" aria-label="Step 6: Where We Are Now"></button>
               </div>
-              <!-- Counter -->
               <div class="mt-2 text-right">
-                <span id="story-counter" class="font-serif text-xs font-semibold text-[#f5c56b]/50 tracking-wider">01 / 06</span>
+                <span id="story-counter" class="font-serif text-xs font-semibold text-[#E7BD6D] tracking-wider">01 / 06</span>
               </div>
             </div>
 
           </div>
         </div>
 
-        <!-- === MOBILE / TABLET / REDUCED-MOTION: Vertical story cards === -->
+        <!-- === MOBILE / TABLET: Vertical story cards === -->
         <div class="lg:hidden px-4 py-12 sm:px-6">
           <div class="mx-auto max-w-lg flex flex-col gap-8">
 
             <!-- Mobile Card 1 -->
-            <div class="overflow-hidden rounded-xl bg-[#fbf5e9] shadow-lg">
+            <div class="overflow-hidden rounded-2xl bg-white border border-[#EADBC1] shadow-md shadow-[#321307]/5">
               <img src="../assets/images/ChatGPT Image Sep 26, 2026, 12_20_12 PM.png" alt="Tirunelveli Heritage Landscape" class="aspect-[4/3] w-full object-cover" />
-              <div class="p-5">
-                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#b88932]">01 — WHERE IT STARTS</span>
-                <h3 class="mt-2 font-serif text-2xl font-bold text-[#351507]">Some Flavours Don't Need Reinvention.</h3>
-                <p class="mt-2 text-sm leading-relaxed text-[#5c3825]">Tirunelveli's halwa tradition isn't about chasing trends — it's built on slow-cooked perfection, pure wheat milk, and a memory of taste passed through generations.</p>
+              <div class="p-6">
+                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#8C1C13]">01 — WHERE IT STARTS</span>
+                <h3 class="mt-2 font-serif text-2xl font-bold text-[#321307]">Some Flavours Don't Need Reinvention.</h3>
+                <p class="mt-2 text-sm leading-relaxed text-[#806B58]">Tirunelveli's halwa tradition isn't about chasing trends — it's built on slow-cooked perfection, pure wheat milk, and a memory of taste passed through generations.</p>
               </div>
             </div>
 
             <!-- Mobile Card 2 -->
-            <div class="overflow-hidden rounded-xl bg-[#fbf5e9] shadow-lg">
+            <div class="overflow-hidden rounded-2xl bg-white border border-[#EADBC1] shadow-md shadow-[#321307]/5">
               <img src="../assets/images/Glistening Halwa in Brass Bowl.webp" alt="Glistening Authentic Halwa" class="aspect-[4/3] w-full object-cover" />
-              <div class="p-5">
-                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#b88932]">02 — THE HALWA</span>
-                <h3 class="mt-2 font-serif text-2xl font-bold text-[#351507]">The Spoon Everyone Comes Back For.</h3>
-                <p class="mt-2 text-sm leading-relaxed text-[#5c3825]">Translucent, glossy, and melting with cow ghee richness. The heart of what we make — crafted to stay true to the exact texture you remember.</p>
+              <div class="p-6">
+                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#8C1C13]">02 — THE HALWA</span>
+                <h3 class="mt-2 font-serif text-2xl font-bold text-[#321307]">The Spoon Everyone Comes Back For.</h3>
+                <p class="mt-2 text-sm leading-relaxed text-[#806B58]">Translucent, glossy, and melting with cow ghee richness. The heart of what we make — crafted to stay true to the exact texture you remember.</p>
               </div>
             </div>
 
             <!-- Mobile Card 3 -->
-            <div class="overflow-hidden rounded-xl bg-[#fbf5e9] shadow-lg">
+            <div class="overflow-hidden rounded-2xl bg-white border border-[#EADBC1] shadow-md shadow-[#321307]/5">
               <img src="../assets/images/preparations.png" alt="Traditional Cooking in Brass Uruli" class="aspect-[4/3] w-full object-cover" />
-              <div class="p-5">
-                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#b88932]">03 — THE PROCESS</span>
-                <h3 class="mt-2 font-serif text-2xl font-bold text-[#351507]">Good Halwa Can't Be Rushed.</h3>
-                <p class="mt-2 text-sm leading-relaxed text-[#5c3825]">Hours of constant stirring over wood fires in heavy brass urulis. Pure cow ghee at precise moments. Time and patience are the main ingredients.</p>
+              <div class="p-6">
+                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#8C1C13]">03 — THE PROCESS</span>
+                <h3 class="mt-2 font-serif text-2xl font-bold text-[#321307]">Good Halwa Can't Be Rushed.</h3>
+                <p class="mt-2 text-sm leading-relaxed text-[#806B58]">Hours of constant stirring over wood fires in heavy brass urulis. Pure cow ghee at precise moments. Time and patience are the main ingredients.</p>
               </div>
             </div>
 
             <!-- Mobile Card 4 -->
-            <div class="overflow-hidden rounded-xl bg-[#fbf5e9] shadow-lg">
+            <div class="overflow-hidden rounded-2xl bg-white border border-[#EADBC1] shadow-md shadow-[#321307]/5">
               <img src="../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png" alt="Sealed Nellai Specialz Box" class="aspect-[4/3] w-full object-cover" />
-              <div class="p-5">
-                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#b88932]">04 — THE BOX</span>
-                <h3 class="mt-2 font-serif text-2xl font-bold text-[#351507]">Made in Nellai. Packed to Travel.</h3>
-                <p class="mt-2 text-sm leading-relaxed text-[#5c3825]">Freshness sealed in insulated, food-grade packaging — so opening a box in Chennai or Mumbai feels like buying it fresh in Tirunelveli.</p>
+              <div class="p-6">
+                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#8C1C13]">04 — THE BOX</span>
+                <h3 class="mt-2 font-serif text-2xl font-bold text-[#321307]">Made in Nellai. Packed to Travel.</h3>
+                <p class="mt-2 text-sm leading-relaxed text-[#806B58]">Freshness sealed in insulated, food-grade packaging — so opening a box in Chennai or Mumbai feels like buying it fresh in Tirunelveli.</p>
               </div>
             </div>
 
             <!-- Mobile Card 5 -->
-            <div class="overflow-hidden rounded-xl bg-[#fbf5e9] shadow-lg">
+            <div class="overflow-hidden rounded-2xl bg-white border border-[#EADBC1] shadow-md shadow-[#321307]/5">
               <img src="../assets/images/Rustic Halwa Feast in Brass Vessels.png" alt="Sharing Sweets with Family" class="aspect-[4/3] w-full object-cover" />
-              <div class="p-5">
-                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#b88932]">05 — THE PEOPLE</span>
-                <h3 class="mt-2 font-serif text-2xl font-bold text-[#351507]">For Homes, Gifts and &ldquo;Just One More Spoon.&rdquo;</h3>
-                <p class="mt-2 text-sm leading-relaxed text-[#5c3825]">From family get-togethers to gifting and late-night cravings, Nellai Specialz is made for the moments people share.</p>
+              <div class="p-6">
+                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#8C1C13]">05 — THE PEOPLE</span>
+                <h3 class="mt-2 font-serif text-2xl font-bold text-[#321307]">For Homes, Gifts and &ldquo;Just One More Spoon.&rdquo;</h3>
+                <p class="mt-2 text-sm leading-relaxed text-[#806B58]">From family get-togethers to gifting and late-night cravings, Nellai Specialz is made for the moments people share.</p>
               </div>
             </div>
 
             <!-- Mobile Card 6 -->
-            <div class="overflow-hidden rounded-xl bg-[#fbf5e9] shadow-lg">
-              <img src="../assets/images/heritage/story-hero.jpg" alt="Tirunelveli Tradition Travels Nationwide" class="aspect-[4/3] w-full object-cover" />
-              <div class="p-5">
-                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#b88932]">06 — WHERE WE ARE NOW</span>
-                <h3 class="mt-2 font-serif text-2xl font-bold text-[#351507]">Nellai Travels Further Now.</h3>
-                <p class="mt-2 text-sm leading-relaxed text-[#5c3825]">From Tirunelveli to homes across Tamil Nadu, Bengaluru and Mumbai — the distance changes, but the familiar taste stays the same.</p>
-                <a href="shop.html" class="mt-4 inline-flex items-center gap-2 rounded-full bg-[#351507] px-6 py-2.5 text-xs font-bold text-[#fff8eb] transition hover:bg-[#5c240e]">
+            <div class="overflow-hidden rounded-2xl bg-white border border-[#EADBC1] shadow-md shadow-[#321307]/5">
+              <img src="../assets/images/Home/about-story-banner.png" alt="Nellai Specialz festive gift box beside Tirunelveli temple heritage" class="aspect-[4/3] w-full object-cover" width="2048" height="768" loading="lazy" decoding="async" />
+              <div class="p-6">
+                <span class="text-xs font-bold uppercase tracking-[.25em] text-[#8C1C13]">06 — WHERE WE ARE NOW</span>
+                <h3 class="mt-2 font-serif text-2xl font-bold text-[#321307]">Nellai Travels Further Now.</h3>
+                <p class="mt-2 text-sm leading-relaxed text-[#806B58]">From Tirunelveli to homes across Tamil Nadu, Bengaluru and Mumbai — the distance changes, but the familiar taste stays the same.</p>
+                <a href="shop.html" class="mt-4 inline-flex items-center gap-2 rounded-full bg-[#8C1C13] px-6 py-2.5 text-xs font-bold text-[#FFF8EF] transition hover:bg-[#7A120A] shadow-md">
                   Explore Our Collection →
                 </a>
               </div>
@@ -280,48 +272,36 @@
         </div>
 
       </section>
-
-      <!-- 3) COMPACT WHY CHOOSE US STRIP -->
-      <section class="h-[90px] sm:h-[110px] overflow-hidden border-y border-[#eadcc6] bg-[#fdf6e9] flex items-center">
-        <div class="mx-auto max-w-[1280px] w-full px-4 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 text-center">
-            <div class="flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-[#351507]">
-              <span class="text-[#b88932]">✦</span> Made Fresh, Not Stored
-            </div>
-            <div class="flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-[#351507]">
-              <span class="text-[#b88932]">✦</span> Packed to Stay Fresh
-            </div>
-            <div class="flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-[#351507]">
-              <span class="text-[#b88932]">✦</span> Flavours Worth Sharing
-            </div>
-            <div class="flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-[#351507]">
-              <span class="text-[#b88932]">✦</span> Nellai to Your Door
-            </div>
-          </div>
-        </div>
+      <section id="usp-strip" class="border-y border-[#EADBC1] bg-[#F8F1E4] py-5 text-[#32110D]" aria-label="Why Choose Nellai Specialz">
+        <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8"><div class="grid grid-cols-2 gap-3.5 md:grid-cols-4 lg:gap-5">
+          <div class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs"><div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25"><img src="../assets/images/Home/Pure ghee.png" alt="" class="h-8 w-8 object-contain"></div><div><h3 class="font-serif text-sm sm:text-base font-bold">Pure Ghee</h3><p class="text-[11px] font-semibold text-[#8C1C13]">100% Cow Ghee</p></div></div>
+          <div class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs"><div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25"><img src="../assets/images/Home/No Palm Oil.png" alt="" class="h-8 w-8 object-contain"></div><div><h3 class="font-serif text-sm sm:text-base font-bold">No Palm Oil</h3><p class="text-[11px] font-semibold text-[#8C1C13]">Zero Preservatives</p></div></div>
+          <div class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs"><div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25"><img src="../assets/images/Home/Thamirabarani Water.png" alt="" class="h-8 w-8 object-contain"></div><div><h3 class="font-serif text-sm sm:text-base font-bold">Thamirabarani Water</h3><p class="text-[11px] font-semibold text-[#8C1C13]">Mineral-Rich River</p></div></div>
+          <div class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs"><div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25"><img src="../assets/images/Home/Slow Cooked Process.png" alt="" class="h-8 w-8 object-contain"></div><div><h3 class="font-serif text-sm sm:text-base font-bold">Slow Cooked Process</h3><p class="text-[11px] font-semibold text-[#8C1C13]">Wood-Fire Kadai</p></div></div>
+        </div></div>
       </section>
 
-      <!-- 4) ONE IMAGE-LED HERITAGE / VALUE SECTION -->
-      <section class="bg-[#fff8eb] px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+      <!-- 4) HERITAGE / VALUE SECTION -->
+      <section class="bg-[#FBF5E9] px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div class="mx-auto grid max-w-[1280px] grid-cols-1 items-center gap-10 lg:grid-cols-2">
-          <div class="overflow-hidden rounded-2xl border border-[#eadcc6] shadow-xl">
+          <div class="overflow-hidden rounded-2xl border border-[#EADBC1] shadow-xl shadow-[#321307]/5 bg-white p-2">
             <img
               src="../assets/images/heritage/street-shop.jpg"
               alt="Traditional Sweet Shop Heritage"
-              class="h-72 sm:h-96 w-full object-cover"
+              class="h-72 sm:h-96 w-full object-cover rounded-xl"
             />
           </div>
           <div class="max-w-xl">
-            <span class="text-xs font-bold uppercase tracking-[.28em] text-[#b88932]">WHAT WE KEEP</span>
-            <h2 class="mt-2 font-serif text-3xl font-bold text-[#351507] sm:text-4xl">
+            <span class="text-xs font-bold uppercase tracking-[.28em] text-[#8C1C13]">WHAT WE KEEP</span>
+            <h2 class="mt-2 font-serif text-3xl font-bold text-[#321307] sm:text-4xl">
               The Taste. The Care. The Nellai Way.
             </h2>
-            <p class="mt-4 text-base leading-relaxed text-[#5c3825]">
+            <p class="mt-4 text-base leading-relaxed text-[#806B58]">
               We keep the recipe authentic while improving how it travels. Every batch honors traditional craftsmanship, ensuring that distance never dilutes the quality or emotion of real Tirunelveli halwa.
             </p>
             <a
               href="shop.html"
-              class="mt-7 inline-flex items-center gap-2 rounded-full bg-[#351507] px-7 py-3.5 text-sm font-semibold text-[#fff8eb] shadow-md transition hover:bg-[#5c240e]"
+              class="mt-7 inline-flex items-center gap-2 rounded-full bg-[#8C1C13] px-7 py-3.5 text-sm font-bold text-[#FFF8EF] shadow-md shadow-[#8C1C13]/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#7A120A]"
             >
               Explore Our Favourites →
             </a>
@@ -330,24 +310,24 @@
       </section>
 
       <!-- 5) FINAL CTA -->
-      <section class="bg-[#351507] px-4 py-12 text-center text-[#fff8eb] sm:px-6 lg:px-8 lg:py-16">
+      <section class="bg-[#321307] px-4 py-12 text-center text-[#FFF8EF] sm:px-6 lg:px-8 lg:py-16">
         <div class="mx-auto max-w-2xl">
-          <h2 class="font-serif text-3xl font-bold text-[#fff3d6] sm:text-4xl">
+          <h2 class="font-serif text-3xl font-bold text-[#FFF8EF] sm:text-4xl">
             Ready for a Taste of Nellai?
           </h2>
-          <p class="mt-3 text-sm text-[#f6dfbd]/90 sm:text-base">
+          <p class="mt-3 text-sm text-[#FFF8EF]/80 sm:text-base">
             Find your favourite halwa, sweets and combo boxes.
           </p>
           <div class="mt-7 flex flex-wrap items-center justify-center gap-4">
             <a
               href="shop.html"
-              class="inline-flex items-center gap-2 rounded-full bg-[#f3cd7c] px-7 py-3 text-sm font-bold text-[#351507] shadow-lg transition hover:bg-[#ffe6aa]"
+              class="inline-flex items-center gap-2 rounded-full bg-[#8C1C13] px-7 py-3 text-sm font-bold text-[#FFF8EF] shadow-md shadow-[#8C1C13]/30 transition hover:bg-[#7A120A]"
             >
               Shop Halwa
             </a>
             <a
               href="../index.html#combo"
-              class="inline-flex items-center gap-2 rounded-full border-2 border-[#f3cd7c] px-7 py-3 text-sm font-bold text-[#f3cd7c] transition hover:bg-[#f3cd7c] hover:text-[#351507]"
+              class="inline-flex items-center gap-2 rounded-full border-2 border-[#D9B86C] bg-[#FFFBF5]/10 px-7 py-3 text-sm font-bold text-[#E7BD6D] transition hover:bg-[#D9B86C] hover:text-[#321307]"
             >
               Explore Combos
             </a>

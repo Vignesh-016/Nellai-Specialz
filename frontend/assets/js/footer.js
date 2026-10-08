@@ -10,7 +10,8 @@
 
   const footerHTML = `
     <footer class="relative overflow-hidden bg-[#321307] text-[#fff3d6]">
-      <div class="mx-auto w-full max-w-[1280px] px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+      <img src="${basePath}assets/images/Temple.png" alt="" aria-hidden="true" class="pointer-events-none absolute bottom-0 left-1/2 z-0 h-[85%] w-[min(1100px,100%)] -translate-x-1/2 object-contain object-bottom opacity-[0.08]">
+      <div class="relative z-10 mx-auto w-full max-w-[1280px] px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-0">
           <!-- Brand -->
           <section class="lg:pr-10" aria-labelledby="footer-brand-title">
@@ -36,37 +37,38 @@
 
           <!-- Shop -->
           <section class="border-[#845624] lg:border-l lg:pl-8" aria-labelledby="footer-shop-title">
-            <h2 id="footer-shop-title" class="font-serif text-[22px] font-semibold text-[#e7bd6d]">Shop</h2>
+            <h2 id="footer-shop-title" class="font-serif text-[22px] font-semibold text-[#e7bd6d]">Quick Links</h2>
             <ul class="mt-4 space-y-2 text-[15px] text-[#f6dfbd]">
-              <li><a href="${basePath}pages/shop.html" class="hover:text-white">Halwa</a></li>
-              <li><a href="${basePath}pages/shop.html" class="hover:text-white">Sweets</a></li>
-              <li><a href="${basePath}pages/shop.html" class="hover:text-white">Snacks &amp; Mixtures</a></li>
-              <li><a href="${basePath}index.html#combo" class="hover:text-white">Combos</a></li>
-              <li><a href="${basePath}pages/shop.html" class="hover:text-white">Gift Boxes</a></li>
+              <li><a href="${basePath}index.html" class="hover:text-[#e7bd6d]">Home</a></li>
+              <li><a href="${basePath}pages/shop.html" class="hover:text-[#e7bd6d]">Shop</a></li>
+              <li><a href="${basePath}pages/our-story.html" class="hover:text-[#e7bd6d]">About Us</a></li>
+              <li><a href="${basePath}pages/contact-us.html" class="hover:text-[#e7bd6d]">Contact Us</a></li>
+              <li><a href="${basePath}profile.html" class="hover:text-[#e7bd6d]">My Profile</a></li>
+              <li><a href="${basePath}profile.html#orders" class="hover:text-[#e7bd6d]">My Orders</a></li>
+              <li><a href="${basePath}pages/contact-us.html#bulk-order" class="hover:text-[#e7bd6d]">Bulk Orders</a></li>
             </ul>
           </section>
 
           <!-- About -->
           <section class="border-[#845624] lg:border-l lg:pl-8" aria-labelledby="footer-about-title">
-            <h2 id="footer-about-title" class="font-serif text-[22px] font-semibold text-[#e7bd6d]">About</h2>
+            <h2 id="footer-about-title" class="font-serif text-[22px] font-semibold text-[#e7bd6d]">Policies</h2>
             <ul class="mt-4 space-y-2 text-[15px] text-[#f6dfbd]">
-              <li><a href="${basePath}pages/our-story.html" class="hover:text-white">Our Story</a></li>
-              <li><a href="${basePath}pages/our-story.html" class="hover:text-white">Our Ingredients</a></li>
-              <li><a href="${basePath}pages/our-story.html" class="hover:text-white">Our Process</a></li>
-              <li><a href="${basePath}pages/our-story.html" class="hover:text-white">Quality Assurance</a></li>
-              <li><a href="${basePath}pages/contact-us.html" class="hover:text-white">Contact Us</a></li>
+              <li><a href="${basePath}pages/shipping-delivery.html" class="hover:text-[#e7bd6d]">Shipping &amp; Delivery</a></li>
+              <li><a href="${basePath}pages/return-refunds.html" class="hover:text-[#e7bd6d]">Returns &amp; Refunds</a></li>
+              <li><a href="${basePath}pages/privacy-policy.html" class="hover:text-[#e7bd6d]">Privacy Policy</a></li>
+              <li><a href="${basePath}pages/terms-conditions.html" class="hover:text-[#e7bd6d]">Terms &amp; Conditions</a></li>
+              <li><a href="${basePath}pages/faq.html" class="hover:text-[#e7bd6d]">FAQs</a></li>
             </ul>
           </section>
 
           <!-- Customer Care -->
           <section class="border-[#845624] lg:border-l lg:pl-8" aria-labelledby="footer-care-title">
-            <h2 id="footer-care-title" class="font-serif text-[22px] font-semibold text-[#e7bd6d]">Customer Care</h2>
+            <h2 id="footer-care-title" class="font-serif text-[22px] font-semibold text-[#e7bd6d]">Contact Details</h2>
             <ul class="mt-4 space-y-2 text-[15px] text-[#f6dfbd]">
-              <li><a href="${basePath}pages/shop.html" class="hover:text-white">Track Your Order</a></li>
-              <li><a href="${basePath}pages/shipping-delivery.html" class="hover:text-white">Shipping &amp; Delivery</a></li>
-              <li><a href="${basePath}pages/return-refunds.html" class="hover:text-white">Returns &amp; Refunds</a></li>
-              <li><a href="${basePath}pages/faq.html" class="hover:text-white">FAQs</a></li>
-              <li><a href="${basePath}pages/contact-us.html" class="hover:text-white">Bulk Orders</a></li>
+              <li><a href="tel:+917010100590" class="hover:text-[#e7bd6d]">+91 70101 00590</a></li>
+              <li><a href="mailto:nellaispecialz@gmail.com" class="hover:text-[#e7bd6d]">nellaispecialz@gmail.com</a></li>
+              <li class="leading-relaxed">514/260H Indira Nagar,<br>2nd Street Sankar Nagar,<br>Tirunelveli</li>
+              <li><a href="${basePath}pages/contact-us.html" class="hover:text-[#e7bd6d]">Contact Us</a></li>
             </ul>
           </section>
 
@@ -83,12 +85,7 @@
         </div>
       </div>
 
-      <!-- Decorative skyline -->
-      <div class=" border-[#a8752c]/60">
-        <div class="relative h-20 overflow-hidden sm:h-24 lg:h-28"><img src="${basePath}assets/images/Temple.png" alt="" class="absolute inset-x-0 bottom-0 mx-auto h-full w-full object-contain object-bottom opacity-40"></div>
-      </div>
-
-      <div class="border-t border-[#845624] px-4 py-4 text-center text-xs text-[#e7c98d]">© 2026 Nellai Specialz. All Rights Reserved.</div>
+      <div class="relative z-10 border-t border-[#D9B86C]/30 px-4 py-4 text-center text-xs text-[#e7c98d]">© 2026 Nellai Specialz. All Rights Reserved.</div>
     </footer>`;
 
   function mountFooter() {
@@ -245,4 +242,3 @@
     mountFooter();
   }
 })();
-

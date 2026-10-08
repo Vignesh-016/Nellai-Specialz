@@ -68,17 +68,17 @@
           || [product.weight, product.weight_unit].filter(Boolean).join(" ");
         const slug = encodeURIComponent(product.slug || "");
         return `
-          <article class="product-card group flex flex-col justify-between overflow-hidden rounded-2xl border border-[#B88932]/20 bg-white shadow-xs transition-all duration-300 hover:shadow-xl">
+          <article class="product-card group flex flex-col justify-between overflow-hidden rounded-2xl border border-[#EADBC1] bg-white shadow-md shadow-[#321307]/5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
             <a href="product-detail.html?slug=${slug}">
-              <div class="product-card-img-wrap relative aspect-square overflow-hidden">
-                <img src="${escapeHtml(image)}" alt="${escapeHtml(product.name)}" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='${fallbackImage}';">
+              <div class="product-card-img-wrap relative aspect-square overflow-hidden bg-[#FFFBF5]">
+                <img src="${escapeHtml(image)}" alt="${escapeHtml(product.name)}" class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='${fallbackImage}';">
               </div>
               <div class="flex flex-1 flex-col justify-between p-5 text-left">
                 <div>
-                  <h3 class="font-serif text-xl font-bold text-[#32110D]">${escapeHtml(product.name)}</h3>
-                  ${product.short_description ? `<p class="mt-1 line-clamp-2 text-xs leading-relaxed text-[#786153]">${escapeHtml(product.short_description)}</p>` : ""}
-                  ${weight ? `<p class="mt-2 text-xs text-[#786153]">${escapeHtml(weight)}</p>` : ""}
-                  <p class="mt-3 font-serif text-lg font-bold text-[#32110D]">${window.getProductDisplayPrice(product)}</p>
+                  <h3 class="font-serif text-xl font-bold text-[#321307] group-hover:text-[#8C1C13] transition-colors">${escapeHtml(product.name)}</h3>
+                  ${product.short_description ? `<p class="mt-1 line-clamp-2 text-xs leading-relaxed text-[#806B58]">${escapeHtml(product.short_description)}</p>` : ""}
+                  ${weight ? `<p class="mt-2 text-xs text-[#806B58]">${escapeHtml(weight)}</p>` : ""}
+                  <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">${window.getProductDisplayPrice(product)}</p>
                 </div>
               </div>
             </a>

@@ -1,1 +1,20 @@
-(() => { document.addEventListener('DOMContentLoaded', () => { const form=document.getElementById('customerVerifyForm'); const email=document.getElementById('verify-email'); const otp=document.getElementById('verify-otp'); const error=document.querySelector('[data-verify-error]'); const params=new URLSearchParams(location.search); email.value=params.get('email')||''; form?.addEventListener('submit',async(event)=>{event.preventDefault();const button=form.querySelector('button[type="submit"]');button.disabled=true;try{await NellaiApi.request('customer-auth/verify-otp.php',{method:'POST',credentials:'include',body:JSON.stringify({email:email.value.trim(),otp:otp.value.trim()})});location.href=params.get('redirect')||'login.html';}catch(requestError){error.textContent=requestError.message||'We could not verify that code. Please try again.';}finally{button.disabled=false;}}); }); })();
+(() => {
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("customerVerifyForm");
+    const email = document.getElementById("verify-email");
+    const otp = document.getElementById("verify-otp");
+    const error = document.querySelector("[data-verify-error]");
+    const params = new URLSearchParams(location.search);
+    email.value = params.get("email") || "";
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = form.querySelector('button[type="submit"]');
+      button.disabled = true;
+      try {
+        await NellaiApi.request("customer-auth/verify-otp.php", { method: "POST", credentials: "include", body: JSON.stringify({ email: email.value.trim(), otp: otp.value.trim() }) });
+        location.replace(window.NellaiCustomerSession?.safeRedirect(params.get("redirect"), "login.html") || "login.html");
+      } catch (requestError) { error.textContent = requestError.message || "We could not verify that code. Please try again."; }
+      finally { button.disabled = false; }
+    });
+  });
+})();

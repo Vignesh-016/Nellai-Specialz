@@ -21,49 +21,49 @@
     <script src="assets/js/auth/session.js"></script>
   </head>
   <body
-    class="overflow-x-hidden bg-[#fff8eb] text-[#2c160f] antialiased selection:bg-[#b88932] selection:text-white"
+    class="overflow-x-hidden bg-[#FBF5E9] text-[#32110D] antialiased selection:bg-[#8C1C13] selection:text-white"
   >
     <div id="site-header"></div>
-    <main class="mx-auto w-full max-w-[1280px] px-4 py-12 sm:px-6 lg:px-8">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-[0.22em] text-[#b88932]">
-          Account
+    <main class="mx-auto w-full max-w-[1280px] px-4 py-10 sm:px-6 lg:px-8 bg-[#FBF5E9]">
+      <div class="mb-8">
+        <p class="text-xs font-bold uppercase tracking-[0.22em] text-[#8C1C13]">
+          Account Center
         </p>
-        <h1 class="mt-2 font-serif text-4xl font-semibold text-[#321307]">
-          My profile
+        <h1 class="mt-2 font-serif text-3xl font-bold text-[#321307] sm:text-4xl">
+          My Profile
         </h1>
       </div>
       <div class="grid gap-6 lg:grid-cols-[260px_1fr]">
         <nav
-          class="h-fit rounded-2xl border border-[#E7DDD1] bg-white p-3"
+          class="h-fit rounded-2xl border border-[#EADBC1] bg-white p-3 shadow-md shadow-[#321307]/5"
           aria-label="Account navigation"
         >
           <a
             href="#profile"
-            class="block rounded-xl bg-[#4d190e] px-4 py-3 text-sm font-semibold text-white"
+            class="block rounded-xl bg-[#8C1C13] px-4 py-3 text-sm font-bold text-[#FFF8EF] shadow-sm"
             data-view="profile">My Profile</a
           ><a
             href="#orders"
-            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#806b58] hover:bg-[#f8f3e8]"
+            class="mt-1 block rounded-xl px-4 py-3 text-sm font-medium text-[#806B58] transition hover:bg-[#FFF8EF] hover:text-[#321307]"
             data-view="orders">My Orders</a
           ><a
             href="#addresses"
-            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#806b58] hover:bg-[#f8f3e8]"
+            class="mt-1 block rounded-xl px-4 py-3 text-sm font-medium text-[#806B58] transition hover:bg-[#FFF8EF] hover:text-[#321307]"
             data-view="addresses">Addresses</a
           ><a
             href="#logout" data-view="logout"
-            class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#702217] hover:bg-[#f8f3e8]"
+            class="mt-1 block rounded-xl px-4 py-3 text-sm font-semibold text-[#8C1C13] transition hover:bg-[#FFF8EF]"
             >Logout</a
           >
         </nav>
         <section
           id="profile"
-          class="rounded-2xl border border-[#E7DDD1] bg-white p-6 sm:p-8"
+          class="rounded-2xl border border-[#EADBC1] bg-white p-6 shadow-md shadow-[#321307]/5 sm:p-8"
         >
-          <h2 class="font-serif text-2xl font-semibold text-[#321307]">
-            Personal details
+          <h2 class="font-serif text-2xl font-bold text-[#321307]">
+            Personal Details
           </h2>
-          <p class="mt-2 text-sm text-[#806b58]">
+          <p class="mt-2 text-sm text-[#806B58]">
             Keep your contact details up to date.
           </p>
           <form
@@ -73,45 +73,45 @@
             <div>
               <label
                 for="profile-first"
-                class="mb-2 block text-sm font-semibold"
+                class="mb-2 block text-sm font-semibold text-[#321307]"
                 >First name</label
               ><input
                 id="profile-first"
-                class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
+                class="h-12 w-full rounded-lg border border-[#EADBC1] bg-[#FFFBF5] px-4 text-[#321307] outline-none transition focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
               />
             </div>
             <div>
-              <label for="profile-last" class="mb-2 block text-sm font-semibold"
+              <label for="profile-last" class="mb-2 block text-sm font-semibold text-[#321307]"
                 >Last name</label
               ><input
                 id="profile-last"
-                class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
+                class="h-12 w-full rounded-lg border border-[#EADBC1] bg-[#FFFBF5] px-4 text-[#321307] outline-none transition focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
               />
             </div>
             <div>
               <label
                 for="profile-email"
-                class="mb-2 block text-sm font-semibold"
+                class="mb-2 block text-sm font-semibold text-[#321307]"
                 >Email</label
               ><input
                 id="profile-email"
                 type="email"
-                class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
+                class="h-12 w-full rounded-lg border border-[#EADBC1] bg-[#FFFBF5] px-4 text-[#321307] outline-none transition focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
               />
             </div>
             <div>
               <label
                 for="profile-phone"
-                class="mb-2 block text-sm font-semibold"
+                class="mb-2 block text-sm font-semibold text-[#321307]"
                 >Phone</label
               ><input
                 id="profile-phone"
                 type="tel"
-                class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
+                class="h-12 w-full rounded-lg border border-[#EADBC1] bg-[#FFFBF5] px-4 text-[#321307] outline-none transition focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
               />
             </div>
             <button
-              class="h-12 rounded-lg bg-[#4d190e] px-6 font-semibold text-[#fff6df] transition hover:bg-[#702217] sm:col-span-2 sm:w-fit"
+              class="h-12 rounded-full bg-[#8C1C13] px-8 font-bold text-[#FFF8EF] shadow-md shadow-[#8C1C13]/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#7A120A] sm:col-span-2 sm:w-fit cursor-pointer"
             >
               Save changes
             </button>

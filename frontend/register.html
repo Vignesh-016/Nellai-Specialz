@@ -21,14 +21,14 @@
     <script src="assets/js/auth/session.js"></script>
   </head>
   <body
-    class="min-h-screen overflow-x-hidden bg-[#fff8eb] text-[#2c160f] antialiased selection:bg-[#b88932] selection:text-white"
+    class="min-h-screen overflow-x-hidden bg-[#FBF5E9] text-[#32110D] antialiased selection:bg-[#8C1C13] selection:text-white"
   >
     <div id="site-header"></div>
     <main
-      class="mx-auto flex min-h-screen w-full max-w-[1280px] items-center justify-center px-4 py-10 sm:px-6 lg:px-8"
+      class="mx-auto flex min-h-screen w-full max-w-[1280px] items-center justify-center px-4 py-10 sm:px-6 lg:px-8 bg-[#FBF5E9]"
     >
       <section
-        class="w-full max-w-2xl rounded-2xl border border-[#E7DDD1] bg-white p-6 shadow-[0_20px_50px_rgba(74,22,15,0.08)] sm:p-10"
+        class="w-full max-w-2xl rounded-2xl border border-[#EADBC1] bg-white p-6 shadow-xl shadow-[#321307]/5 sm:p-10"
       >
         <a href="index.html" class="inline-block"
           ><img
@@ -37,14 +37,14 @@
             class="h-12 w-auto object-contain"
         /></a>
         <p
-          class="mt-8 text-xs font-bold uppercase tracking-[0.22em] text-[#b88932]"
+          class="mt-8 text-xs font-bold uppercase tracking-[0.22em] text-[#8C1C13]"
         >
-          Join us
+          Join Us
         </p>
-        <h1 class="mt-2 font-serif text-4xl font-semibold text-[#321307]">
+        <h1 class="mt-2 font-serif text-3xl font-bold text-[#321307] sm:text-4xl">
           Create your account
         </h1>
-        <p class="mt-3 text-sm text-[#806b58]">
+        <p class="mt-2 text-sm text-[#806B58]">
           Save your details for a smoother shopping experience.
         </p>
         <form id="customerRegisterForm"
@@ -52,86 +52,92 @@
           
         >
           <div>
-            <label for="first-name" class="mb-2 block text-sm font-semibold"
+            <label for="first-name" class="mb-2 block text-sm font-semibold text-[#321307]"
               >First name</label
             ><input
               id="first-name"
               required
-              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
+              placeholder="First name"
+              class="h-12 w-full rounded-lg border border-[#EADBC1] bg-[#FFFBF5] px-4 text-[#321307] outline-none transition focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
             />
           </div>
           <div>
-            <label for="last-name" class="mb-2 block text-sm font-semibold"
+            <label for="last-name" class="mb-2 block text-sm font-semibold text-[#321307]"
               >Last name</label
             ><input
               id="last-name"
               required
-              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
+              placeholder="Last name"
+              class="h-12 w-full rounded-lg border border-[#EADBC1] bg-[#FFFBF5] px-4 text-[#321307] outline-none transition focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
             />
           </div>
           <div>
-            <label for="register-email" class="mb-2 block text-sm font-semibold"
+            <label for="register-email" class="mb-2 block text-sm font-semibold text-[#321307]"
               >Email</label
             ><input
               id="register-email"
               type="email"
               required
-              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
+              placeholder="your@email.com"
+              class="h-12 w-full rounded-lg border border-[#EADBC1] bg-[#FFFBF5] px-4 text-[#321307] outline-none transition focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
             />
           </div>
           <div>
-            <label for="phone" class="mb-2 block text-sm font-semibold"
+            <label for="phone" class="mb-2 block text-sm font-semibold text-[#321307]"
               >Phone</label
             ><input
               id="phone"
               type="tel"
               required
-              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
+              placeholder="Mobile number"
+              class="h-12 w-full rounded-lg border border-[#EADBC1] bg-[#FFFBF5] px-4 text-[#321307] outline-none transition focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
             />
           </div>
           <div>
             <label
               for="register-password"
-              class="mb-2 block text-sm font-semibold"
+              class="mb-2 block text-sm font-semibold text-[#321307]"
               >Password</label
             ><input
               id="register-password"
               data-password-main
               type="password"
               required
-              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
+              placeholder="Create password"
+              class="h-12 w-full rounded-lg border border-[#EADBC1] bg-[#FFFBF5] px-4 text-[#321307] outline-none transition focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
             />
           </div>
           <div>
             <label
               for="confirm-password"
-              class="mb-2 block text-sm font-semibold"
+              class="mb-2 block text-sm font-semibold text-[#321307]"
               >Confirm password</label
             ><input
               id="confirm-password"
               data-password-confirm
               type="password"
               required
-              class="h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
+              placeholder="Confirm password"
+              class="h-12 w-full rounded-lg border border-[#EADBC1] bg-[#FFFBF5] px-4 text-[#321307] outline-none transition focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
             />
           </div>
           <label
-            class="flex items-center gap-3 text-sm text-[#806b58] sm:col-span-2"
-            ><input type="checkbox" required class="h-4 w-4 accent-[#4d190e]" />
+            class="flex items-center gap-3 text-sm text-[#806B58] sm:col-span-2 cursor-pointer"
+            ><input type="checkbox" required class="h-4 w-4 rounded border-[#EADBC1] accent-[#8C1C13]" />
             I agree to the Terms and Privacy Policy.</label
           >
           <button
             type="submit"
-            class="h-12 rounded-lg bg-[#4d190e] font-semibold text-[#fff6df] transition hover:bg-[#702217] sm:col-span-2"
+            class="h-12 rounded-full bg-[#8C1C13] font-bold text-[#FFF8EF] shadow-md shadow-[#8C1C13]/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#7A120A] sm:col-span-2 cursor-pointer"
           >
             Create account
           </button>
         </form>
-        <p class="mt-6 text-center text-sm text-[#806b58]">
+        <p class="mt-6 text-center text-sm text-[#806B58]">
           Already have an account?
           <a
             href="login.html"
-            class="font-semibold text-[#4d190e] underline decoration-[#b88932] underline-offset-4 transition hover:text-[#702217]"
+            class="font-semibold text-[#8C1C13] underline decoration-[#D9B86C] underline-offset-4 transition hover:text-[#7A120A]"
             >Sign in</a
           >
         </p>

@@ -48,16 +48,16 @@
       else subtotal += itemPrice * quantity;
 
       const row = document.createElement("div");
-      row.className = "flex items-center justify-between gap-4 rounded-xl border border-[#E7DDD1] bg-[#FFFCF7] p-3";
+      row.className = "flex items-center justify-between gap-4 rounded-xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5";
       row.innerHTML = `
         <div class="min-w-0 flex-1">
-          <p class="truncate font-semibold text-[#32110D]">${escapeHtml(item.name)}</p>
-          <p class="text-xs text-[#786153]">${escapeHtml(item.variation_name || item.weight)} × ${quantity}</p>
-          <p class="text-xs text-[#786153]">${itemPrice === null ? "Price unavailable" : `${formatRupees(itemPrice)} each`}</p>
+          <p class="truncate font-semibold text-[#321307]">${escapeHtml(item.name)}</p>
+          <p class="text-xs text-[#806B58]">${escapeHtml(item.variation_name || item.weight)} × ${quantity}</p>
+          <p class="text-xs text-[#806B58]">${itemPrice === null ? "Price unavailable" : `${formatRupees(itemPrice)} each`}</p>
           ${staleVariationKeys.has(item.id) ? '<p class="mt-1 text-xs font-semibold text-red-700">Please reselect this product option.</p>' : ""}
         </div>
         <div class="text-right">
-          <span class="font-semibold text-[#32110D]">${itemPrice === null ? "Price unavailable" : formatRupees(itemPrice * quantity)}</span>
+          <span class="font-bold text-[#8C1C13]">${itemPrice === null ? "Price unavailable" : formatRupees(itemPrice * quantity)}</span>
           ${staleVariationKeys.has(item.id) ? '<button type="button" data-remove-stale-cart-item class="mt-1 block text-xs font-semibold text-red-700 underline">Remove item</button>' : ""}
         </div>`;
       if (staleVariationKeys.has(item.id)) {
@@ -117,6 +117,7 @@
   }
 
   async function ensureCustomer() {
+    if (window.NellaiCustomerSession?.isAuthPage()) return null;
     try {
       const customer = await window.NellaiCustomerSession.getCurrentCustomer();
       if (customer) return customer;
@@ -124,49 +125,51 @@
       showMessage(error.message || "Unable to verify your customer session.");
       return null;
     }
-    const redirect = `${location.pathname}${location.search}${location.hash}`;
-    location.href = `login.html?redirect=${encodeURIComponent(redirect)}`;
+    const target = `${location.pathname}${location.search}${location.hash}`;
+    const safeTarget = window.NellaiCustomerSession.safeRedirect(target);
+    console.log("[AUTH REDIRECT]", { source: "checkout.js", pathname: location.pathname, search: location.search, target });
+    location.replace(`/frontend/login.html?redirect=${encodeURIComponent(safeTarget)}`);
     return null;
   }
 
   function addressFormMarkup() {
     return `
-      <div id="newAddressPanel" class="mt-5 rounded-2xl border border-dashed border-[#B88932]/40 bg-[#FFF9F1] p-5">
-        <h3 class="font-serif text-2xl font-semibold text-[#32110D]">Add a delivery address</h3>
+      <div id="newAddressPanel" class="mt-5 rounded-2xl border border-dashed border-[#D9B86C] bg-[#FFFBF5] p-5">
+        <h3 class="font-serif text-2xl font-bold text-[#321307]">Add a delivery address</h3>
         <form id="newAddressForm" class="mt-4 grid gap-4 sm:grid-cols-2">
-          <label class="text-sm font-semibold text-[#32110D]">Address label
-            <input name="label" value="Home" class="mt-2 h-11 w-full rounded-lg border border-[#E7DDD1] bg-white px-3" required>
+          <label class="text-sm font-semibold text-[#321307]">Address label
+            <input name="label" value="Home" class="mt-2 h-11 w-full rounded-lg border border-[#EADBC1] bg-white px-3 text-[#321307] outline-none focus:border-[#8C1C13]" required>
           </label>
-          <label class="text-sm font-semibold text-[#32110D]">Full name
-            <input name="full_name" class="mt-2 h-11 w-full rounded-lg border border-[#E7DDD1] bg-white px-3" required>
+          <label class="text-sm font-semibold text-[#321307]">Full name
+            <input name="full_name" class="mt-2 h-11 w-full rounded-lg border border-[#EADBC1] bg-white px-3 text-[#321307] outline-none focus:border-[#8C1C13]" required>
           </label>
-          <label class="text-sm font-semibold text-[#32110D]">Phone
-            <input name="phone" type="tel" class="mt-2 h-11 w-full rounded-lg border border-[#E7DDD1] bg-white px-3" required>
+          <label class="text-sm font-semibold text-[#321307]">Phone
+            <input name="phone" type="tel" class="mt-2 h-11 w-full rounded-lg border border-[#EADBC1] bg-white px-3 text-[#321307] outline-none focus:border-[#8C1C13]" required>
           </label>
-          <label class="text-sm font-semibold text-[#32110D]">Country
-            <input name="country" value="India" class="mt-2 h-11 w-full rounded-lg border border-[#E7DDD1] bg-white px-3">
+          <label class="text-sm font-semibold text-[#321307]">Country
+            <input name="country" value="India" class="mt-2 h-11 w-full rounded-lg border border-[#EADBC1] bg-white px-3 text-[#321307] outline-none focus:border-[#8C1C13]">
           </label>
-          <label class="text-sm font-semibold text-[#32110D] sm:col-span-2">Address line 1
-            <input name="address_line1" class="mt-2 h-11 w-full rounded-lg border border-[#E7DDD1] bg-white px-3" required>
+          <label class="text-sm font-semibold text-[#321307] sm:col-span-2">Address line 1
+            <input name="address_line1" class="mt-2 h-11 w-full rounded-lg border border-[#EADBC1] bg-white px-3 text-[#321307] outline-none focus:border-[#8C1C13]" required>
           </label>
-          <label class="text-sm font-semibold text-[#32110D] sm:col-span-2">Address line 2
-            <input name="address_line2" class="mt-2 h-11 w-full rounded-lg border border-[#E7DDD1] bg-white px-3">
+          <label class="text-sm font-semibold text-[#321307] sm:col-span-2">Address line 2
+            <input name="address_line2" class="mt-2 h-11 w-full rounded-lg border border-[#EADBC1] bg-white px-3 text-[#321307] outline-none focus:border-[#8C1C13]">
           </label>
-          <label class="text-sm font-semibold text-[#32110D]">City
-            <input name="city" class="mt-2 h-11 w-full rounded-lg border border-[#E7DDD1] bg-white px-3" required>
+          <label class="text-sm font-semibold text-[#321307]">City
+            <input name="city" class="mt-2 h-11 w-full rounded-lg border border-[#EADBC1] bg-white px-3 text-[#321307] outline-none focus:border-[#8C1C13]" required>
           </label>
-          <label class="text-sm font-semibold text-[#32110D]">State
-            <input name="state" class="mt-2 h-11 w-full rounded-lg border border-[#E7DDD1] bg-white px-3" required>
+          <label class="text-sm font-semibold text-[#321307]">State
+            <input name="state" class="mt-2 h-11 w-full rounded-lg border border-[#EADBC1] bg-white px-3 text-[#321307] outline-none focus:border-[#8C1C13]" required>
           </label>
-          <label class="text-sm font-semibold text-[#32110D]">Postal code
-            <input name="postal_code" class="mt-2 h-11 w-full rounded-lg border border-[#E7DDD1] bg-white px-3" required>
+          <label class="text-sm font-semibold text-[#321307]">Postal code
+            <input name="postal_code" class="mt-2 h-11 w-full rounded-lg border border-[#EADBC1] bg-white px-3 text-[#321307] outline-none focus:border-[#8C1C13]" required>
           </label>
-          <label class="flex items-center gap-2 self-end rounded-lg border border-[#E7DDD1] bg-white px-3 py-3 text-sm text-[#32110D]">
-            <input type="checkbox" name="is_default" value="1" class="h-4 w-4 accent-[#4d190e]"> Set as default
+          <label class="flex items-center gap-2 self-end rounded-lg border border-[#EADBC1] bg-white px-3 py-3 text-sm text-[#806B58]">
+            <input type="checkbox" name="is_default" value="1" class="h-4 w-4 accent-[#8C1C13]"> Set as default
           </label>
           <div class="flex gap-3 sm:col-span-2">
-            <button type="submit" class="h-11 rounded-lg bg-[#4d190e] px-5 font-semibold text-white">Save address</button>
-            <button type="button" id="cancelAddressButton" class="h-11 rounded-lg border px-5 font-semibold">Cancel</button>
+            <button type="submit" class="h-11 rounded-full bg-[#8C1C13] px-6 font-bold text-[#FFF8EF] shadow-xs hover:bg-[#7A120A]">Save address</button>
+            <button type="button" id="cancelAddressButton" class="h-11 rounded-full border border-[#EADBC1] bg-white px-6 font-semibold text-[#806B58] hover:bg-[#FFF8EF]">Cancel</button>
           </div>
         </form>
       </div>`;
@@ -224,7 +227,7 @@
         credentials: "include",
       });
       if (!addresses.length) {
-        container.innerHTML = '<p class="rounded-xl border border-dashed border-[#B88932]/40 bg-[#FFF9F1] p-4 text-sm text-[#806b58]">No saved addresses yet. Add your delivery address to continue.</p>';
+        container.innerHTML = '<p class="rounded-xl border border-dashed border-[#D9B86C] bg-[#FFFBF5] p-5 text-sm text-[#806B58]">No saved addresses yet. Add your delivery address to continue.</p>';
         formContainer.innerHTML = addressFormMarkup();
         bindAddressForm();
         return;
@@ -238,18 +241,18 @@
         const addressLine1 = address.address_line1 ?? address.address_line_1 ?? "";
         const postalCode = address.postal_code ?? address.pincode ?? "";
         return `
-          <label class="flex cursor-pointer gap-3 rounded-2xl border border-[#E7DDD1] bg-[#FFFCF7] p-4 ${checked ? "border-[#B88932] ring-2 ring-[#B88932]/15" : ""}">
-            <input type="radio" name="selected-address" value="${Number(address.id)}" ${checked ? "checked" : ""} class="mt-1 h-4 w-4 accent-[#4d190e]">
+          <label class="flex cursor-pointer gap-3 rounded-2xl border ${checked ? "border-[#8C1C13] bg-[#FFF8EF] ring-2 ring-[#8C1C13]/20" : "border-[#EADBC1] bg-[#FFFBF5] hover:bg-[#FFF8EF]"} p-4 transition-all">
+            <input type="radio" name="selected-address" value="${Number(address.id)}" ${checked ? "checked" : ""} class="mt-1 h-4 w-4 accent-[#8C1C13]">
             <span class="min-w-0 flex-1">
-              <span class="flex items-center gap-2 text-sm font-semibold text-[#32110D]">${escapeHtml(address.label || "Home")}
-                ${Number(address.is_default) ? '<span class="rounded-full bg-[#E7F3EA] px-2 py-0.5 text-[10px] uppercase tracking-wide text-[#1E7A4B]">Default</span>' : ""}
+              <span class="flex items-center gap-2 text-sm font-bold text-[#321307]">${escapeHtml(address.label || "Home")}
+                ${Number(address.is_default) ? '<span class="rounded-full border border-[#D9B86C] bg-[#FFFBF5] px-2.5 py-0.5 text-[10px] font-bold uppercase text-[#8C1C13]">Default</span>' : ""}
               </span>
-              <span class="mt-2 block text-sm text-[#4f3d35]">${escapeHtml(address.full_name)}<br>${escapeHtml(addressLine1)}${address.address_line2 ? `, ${escapeHtml(address.address_line2)}` : ""}<br>${escapeHtml(address.city)}, ${escapeHtml(address.state)} - ${escapeHtml(postalCode)}<br>${escapeHtml(address.phone)}</span>
+              <span class="mt-1.5 block text-sm leading-relaxed text-[#806B58]"><strong class="text-[#321307]">${escapeHtml(address.full_name)}</strong><br>${escapeHtml(addressLine1)}${address.address_line2 ? `, ${escapeHtml(address.address_line2)}` : ""}<br>${escapeHtml(address.city)}, ${escapeHtml(address.state)} - ${escapeHtml(postalCode)}<br>Phone: ${escapeHtml(address.phone)}</span>
             </span>
           </label>`;
       }).join("");
       formContainer.innerHTML = `
-        <button id="addNewAddressButton" type="button" class="mt-5 rounded-lg border border-[#B88932]/50 px-4 py-2.5 text-sm font-semibold text-[#4d190e]">+ Add New Address</button>
+        <button id="addNewAddressButton" type="button" class="mt-5 rounded-full border border-[#8C1C13] bg-[#FFFBF5] px-5 py-2.5 text-xs font-bold text-[#8C1C13] transition hover:bg-[#8C1C13] hover:text-[#FFF8EF] cursor-pointer">+ Add New Address</button>
         <div id="newAddressWrapper" hidden>${addressFormMarkup()}</div>`;
       document.getElementById("addNewAddressButton")?.addEventListener("click", () => {
         const wrapper = document.getElementById("newAddressWrapper");

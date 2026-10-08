@@ -116,7 +116,9 @@
 
   function redirectToLogin() {
     const redirect = `${location.pathname}${location.search}${location.hash}`;
-    location.href = `${pageBase()}login.html?redirect=${encodeURIComponent(redirect)}`;
+    if (window.NellaiCustomerSession?.isAuthPage()) return;
+    const safeTarget = window.NellaiCustomerSession?.safeRedirect(redirect) || redirect;
+    location.replace(`${pageBase()}login.html?redirect=${encodeURIComponent(safeTarget)}`);
   }
 
   async function addToCart(item) {
