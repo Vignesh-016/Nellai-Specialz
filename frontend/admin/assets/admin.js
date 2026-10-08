@@ -1,10 +1,40 @@
 (() => {
+  const fontLink = document.createElement('link');
+  fontLink.rel = 'stylesheet';
+  fontLink.href = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap';
+  document.head.appendChild(fontLink);
+  const adminStyle = document.createElement('style');
+  adminStyle.textContent = 'body{font-family:"DM Sans",sans-serif;letter-spacing:-.01em}h1,h2,h3,h4,.font-serif{font-family:"Cormorant Garamond",serif;letter-spacing:-.02em}';
+  document.head.appendChild(adminStyle);
   const page = document.body.dataset.adminPage || "dashboard";
   const title = document.body.dataset.adminTitle || "Dashboard";
   const shell = document.querySelector("[data-admin-shell]");
   const template = document.querySelector("#admin-page-content");
 
-  window.AdminApi = { base: "https://backend.nellaispecialz.com/api/", async request(path, options = {}) { const headers = { Accept: "application/json", ...(options.headers || {}) }; if (!(options.body instanceof FormData) && options.body !== undefined) headers["Content-Type"] = "application/json"; const response = await fetch(this.base + path, { credentials: "include", ...options, headers }); const result = await response.json().catch(() => ({})); if (response.status === 401) { window.location.href = "login.html"; throw new Error("Authentication required."); } if (!response.ok || !result.success) throw new Error(result.message || "Request failed."); return result.data; } };
+  window.AdminApi = {
+    base: "https://backend.nellaispecialz.com/api/",
+    async request(path, options = {}) {
+      const headers = {
+        Accept: "application/json",
+        ...(options.headers || {}),
+      };
+      if (!(options.body instanceof FormData) && options.body !== undefined)
+        headers["Content-Type"] = "application/json";
+      const response = await fetch(this.base + path, {
+        credentials: "include",
+        ...options,
+        headers,
+      });
+      const result = await response.json().catch(() => ({}));
+      if (response.status === 401) {
+        window.location.href = "login.html";
+        throw new Error("Authentication required.");
+      }
+      if (!response.ok || !result.success)
+        throw new Error(result.message || "Request failed.");
+      return result.data;
+    },
+  };
 
   if (!shell || !template) {
     return;
@@ -46,7 +76,7 @@
           <p class="px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#a89387]">${group}</p>
           <div class="space-y-1">
             ${items
-              .map(([key, label, href, icon]) => {
+              .map(([key, label, href]) => {
                 const active = page === key;
                 const activeClasses = active
                   ? "bg-[#6e1f15] text-white shadow-[0_8px_18px_rgba(90,22,15,0.18)]"
@@ -61,11 +91,7 @@
                   '" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ',
                   activeClasses,
                   '">',
-                  '<span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg text-base ',
-                  iconClasses,
-                  '">',
-                  icon,
-                  "</span><span>",
+                  '<span class="flex-1">',
                   label,
                   "</span></a>",
                 ].join("");
@@ -138,13 +164,26 @@
     .appendChild(template.content.cloneNode(true));
 
   const applyAdminIdentity = (admin) => {
-    const initials = String(admin.name || 'A').split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase();
-    document.querySelectorAll('[data-admin-name]').forEach((node) => { node.textContent = admin.name || 'Admin'; });
-    document.querySelectorAll('[data-admin-role]').forEach((node) => { node.textContent = admin.role || 'Admin'; });
-    document.querySelectorAll('[data-admin-initials]').forEach((node) => { node.textContent = initials; });
+    const initials = String(admin.name || "A")
+      .split(/\s+/)
+      .map((part) => part[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase();
+    document.querySelectorAll("[data-admin-name]").forEach((node) => {
+      node.textContent = admin.name || "Admin";
+    });
+    document.querySelectorAll("[data-admin-role]").forEach((node) => {
+      node.textContent = admin.role || "Admin";
+    });
+    document.querySelectorAll("[data-admin-initials]").forEach((node) => {
+      node.textContent = initials;
+    });
   };
   if (window.currentAdmin) applyAdminIdentity(window.currentAdmin);
-  window.addEventListener('admin:authenticated', (event) => applyAdminIdentity(event.detail || {}));
+  window.addEventListener("admin:authenticated", (event) =>
+    applyAdminIdentity(event.detail || {}),
+  );
 
   const sidebar = document.querySelector("#admin-sidebar");
   const overlay = document.querySelector("#admin-overlay");
@@ -240,24 +279,29 @@
   /* ─── Slug Generator utility ─── */
   window.AdminSlug = {
     generate(text) {
-      return text.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+      return text
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
     },
     bind(sourceId, targetId) {
       const source = document.getElementById(sourceId);
       const target = document.getElementById(targetId);
       if (!source || !target) return;
-      source.addEventListener('input', () => {
+      source.addEventListener("input", () => {
         if (!target.dataset.manual) {
           target.value = this.generate(source.value);
         }
       });
-      target.addEventListener('input', () => {
-        target.dataset.manual = '1';
+      target.addEventListener("input", () => {
+        target.dataset.manual = "1";
       });
     },
     reset(targetId) {
       const target = document.getElementById(targetId);
       if (target) delete target.dataset.manual;
-    }
+    },
   };
 })();

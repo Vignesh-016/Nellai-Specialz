@@ -3,6 +3,7 @@
   let staleVariationKeys = new Set();
   let isPlacingOrder = false;
   let isSavingAddress = false;
+  let appliedCoupon = null;
   const escapeHtml = (value) =>
     String(value ?? "").replace(/[&<>"']/g, (character) => ({
       "&": "&amp;",
@@ -72,7 +73,14 @@
     });
 
     subtotalElement.textContent = hasUnavailablePrice ? "Price unavailable" : formatRupees(subtotal);
-    totalElement.textContent = hasUnavailablePrice ? "Price unavailable" : formatRupees(subtotal);
+    totalElement.textContent = hasUnavailablePrice ? "Price unavailable" : formatRupees(Math.max(0, subtotal - Number(appliedCoupon?.discount_amount || 0)));
+    const discountRow = document.getElementById("checkoutDiscountRow");
+    const discountValue = document.getElementById("checkoutDiscount");
+    const discountLabel = document.getElementById("checkoutDiscountLabel");
+    if (discountRow && discountValue && discountLabel) {
+      discountRow.classList.toggle("hidden", !appliedCoupon || Number(appliedCoupon.discount_amount) <= 0);
+      if (appliedCoupon) { discountLabel.textContent = `Coupon ${appliedCoupon.code}`; discountValue.textContent = `-${formatRupees(appliedCoupon.discount_amount)}`; }
+    }
     const placeOrderButton = document.getElementById("placeOrderBtn");
     if (placeOrderButton) {
       placeOrderButton.disabled = hasUnavailablePrice || cart.length === 0 || staleVariationKeys.size > 0;
@@ -306,6 +314,7 @@
         body: JSON.stringify({
           address_id: Number(selectedAddress.value),
           payment_method: "COD",
+          coupon_code: appliedCoupon?.code || null,
           items: cart.map((item) => ({
             product_id: item.product_id,
             variation_id: item.variation_id,
@@ -354,6 +363,20 @@
       return;
     }
     await loadAddresses();
+    const couponInput = document.getElementById("checkoutCouponCode");
+    const couponButton = document.getElementById("applyCouponBtn");
+    couponButton?.addEventListener("click", async () => {
+      const code = couponInput?.value.trim().toUpperCase();
+      if (!code) { showMessage("Enter a coupon code."); return; }
+      couponButton.disabled = true; couponButton.textContent = "Applying...";
+      try {
+        appliedCoupon = await window.NellaiApi.request("coupons/validate.php", { method: "POST", credentials: "include", body: JSON.stringify({ code, items: getCart().map((item) => ({ product_id: item.product_id, variation_id: item.variation_id, quantity: item.quantity })) }) });
+        document.getElementById("couponStatus").textContent = `${appliedCoupon.code} applied. You saved ${formatRupees(appliedCoupon.discount_amount)}.`;
+        document.getElementById("couponStatus").className = "mt-2 text-sm text-emerald-700";
+        renderOrderSummary(getCart());
+      } catch (error) { appliedCoupon = null; document.getElementById("couponStatus").textContent = error.message || "Unable to apply coupon."; document.getElementById("couponStatus").className = "mt-2 text-sm text-red-700"; renderOrderSummary(getCart()); }
+      finally { couponButton.disabled = false; couponButton.textContent = "Apply"; }
+    });
     document.getElementById("placeOrderBtn")?.addEventListener("click", placeOrder);
     document.getElementById("continueShoppingBtn")?.addEventListener("click", () => {
       location.href = "pages/shop.html";

@@ -52,6 +52,15 @@
 
             <div id="checkoutCartRows" class="mt-6 space-y-3"></div>
 
+            <div class="mt-6 rounded-xl border border-[#EADBC1] bg-[#FFFBF5] p-4">
+              <label for="checkoutCouponCode" class="text-sm font-bold text-[#321307]">Coupon code</label>
+              <div class="mt-2 flex gap-2">
+                <input id="checkoutCouponCode" type="text" maxlength="80" placeholder="Enter coupon code" class="min-w-0 flex-1 rounded-lg border border-[#EADBC1] bg-white px-3 py-2 text-sm uppercase outline-none focus:border-[#8C1C13]">
+                <button id="applyCouponBtn" type="button" class="rounded-lg bg-[#8C1C13] px-4 py-2 text-sm font-bold text-white">Apply</button>
+              </div>
+              <div id="couponStatus" class="mt-2 text-sm" aria-live="polite"></div>
+            </div>
+
             <div class="mt-6 space-y-3 border-t border-[#EADBC1] pt-4 text-sm text-[#806B58]">
               <div class="flex items-center justify-between">
                 <span>Subtotal</span>
@@ -60,6 +69,10 @@
               <div class="flex items-center justify-between">
                 <span>Delivery</span>
                 <span class="font-semibold text-emerald-700">FREE</span>
+              </div>
+              <div id="checkoutDiscountRow" class="hidden flex items-center justify-between text-emerald-700">
+                <span id="checkoutDiscountLabel">Coupon discount</span>
+                <span id="checkoutDiscount">-₹0</span>
               </div>
               <div class="flex items-center justify-between border-t border-[#EADBC1] pt-3 text-lg font-bold text-[#321307]">
                 <span>Total</span>

@@ -21,6 +21,7 @@ safeApi(function () use ($customer): void {
     $input = jsonRequest();
     $addressId = filter_var($input['address_id'] ?? $input['selected_address_id'] ?? null, FILTER_VALIDATE_INT);
     $items = $input['items'] ?? null;
+    $couponCode = strtoupper(trim((string) ($input['coupon_code'] ?? '')));
     $paymentMethod = strtoupper(trim((string) ($input['payment_method'] ?? 'COD')));
     if (!$addressId || $addressId < 1 || !is_array($items) || $items === []) {
         jsonResponse(false, 'Please provide a valid address and cart.', null, [], 422);
@@ -154,6 +155,34 @@ safeApi(function () use ($customer): void {
             ];
         }
 
+        $discountCents = 0;
+        $coupon = null;
+        if ($couponCode !== '') {
+            $couponQuery = $db->prepare('SELECT * FROM coupons WHERE code = :code FOR UPDATE');
+            $couponQuery->execute([':code' => $couponCode]);
+            $coupon = $couponQuery->fetch();
+            if (!$coupon || $coupon['status'] !== 'ACTIVE') throw new CustomerOrderException('This coupon is not valid.', 422);
+            $today = date('Y-m-d');
+            if (($coupon['start_date'] && $today < substr((string) $coupon['start_date'], 0, 10)) || ($coupon['expiry_date'] && $today > substr((string) $coupon['expiry_date'], 0, 10))) throw new CustomerOrderException('This coupon is not currently valid.', 422);
+            $usage = $db->prepare('SELECT COUNT(*) FROM coupon_usages WHERE coupon_id = :id');
+            $usage->execute([':id' => $coupon['id']]);
+            if ((int) $coupon['usage_limit'] > 0 && (int) $usage->fetchColumn() >= (int) $coupon['usage_limit']) throw new CustomerOrderException('This coupon has reached its usage limit.', 429);
+            $userUsage = $db->prepare('SELECT COUNT(*) FROM coupon_usages WHERE coupon_id = :id AND customer_id = :customer');
+            $userUsage->execute([':id' => $coupon['id'], ':customer' => $customer['id']]);
+            if ((int) $coupon['per_user_limit'] > 0 && (int) $userUsage->fetchColumn() >= (int) $coupon['per_user_limit']) throw new CustomerOrderException('You have already used this coupon the maximum number of times.', 429);
+            if (($subtotalCents / 100) < (float) $coupon['min_order_amount']) throw new CustomerOrderException('Minimum order value for this coupon was not met.', 422);
+            $eligibleCents = $subtotalCents;
+            if ($coupon['applies_to'] !== 'ALL') {
+                $eligibleCents = 0;
+                foreach ($lines as $line) {
+                    $eligibleCents += (int) round((float) $line['line_total'] * 100);
+                }
+            }
+            $discount = $coupon['discount_type'] === 'PERCENTAGE' ? ($eligibleCents * (float) $coupon['discount_value'] / 100) : ((float) $coupon['discount_value'] * 100);
+            if ($coupon['max_discount'] !== null) $discount = min($discount, (float) $coupon['max_discount'] * 100);
+            $discountCents = (int) min($discount, $eligibleCents, $subtotalCents);
+        }
+
         $addressText = implode(', ', array_filter([
             $address['full_name'],
             $address['phone'],
@@ -164,22 +193,25 @@ safeApi(function () use ($customer): void {
             $address['postal_code'],
             $address['country'],
         ], static fn($value): bool => $value !== null && $value !== ''));
-        $total = number_format($subtotalCents / 100, 2, '.', '');
+        $subtotal = number_format($subtotalCents / 100, 2, '.', '');
+        $discountAmount = number_format($discountCents / 100, 2, '.', '');
+        $total = number_format(($subtotalCents - $discountCents) / 100, 2, '.', '');
         $orderNumber = 'NS' . date('ymdHis') . random_int(10000000, 99999999);
         $insertOrder = $db->prepare(
-            "INSERT INTO orders (customer_id, order_number, customer_name, email, phone, shipping_address, subtotal, "
-            . "total_amount, payment_method, payment_status, order_status) "
-            . "VALUES (:customer_id, :order_number, :customer_name, :email, :phone, :shipping_address, :subtotal, "
-            . ":total_amount, :payment_method, 'PENDING', 'NEW')"
+            "INSERT INTO orders (customer_id, coupon_id, coupon_code, order_number, customer_name, email, phone, shipping_address, subtotal, discount_amount, total_amount, payment_method, payment_status, order_status) "
+            . "VALUES (:customer_id, :coupon_id, :coupon_code, :order_number, :customer_name, :email, :phone, :shipping_address, :subtotal, :discount_amount, :total_amount, :payment_method, 'PENDING', 'NEW')"
         );
         $insertOrder->execute([
             ':customer_id' => $customer['id'],
+            ':coupon_id' => $coupon['id'] ?? null,
+            ':coupon_code' => $coupon['code'] ?? null,
             ':order_number' => $orderNumber,
             ':customer_name' => $address['full_name'],
             ':email' => $customer['email'],
             ':phone' => $address['phone'],
             ':shipping_address' => $addressText,
-            ':subtotal' => $total,
+            ':subtotal' => $subtotal,
+            ':discount_amount' => $discountAmount,
             ':total_amount' => $total,
             ':payment_method' => $paymentMethod,
         ]);
@@ -218,6 +250,10 @@ safeApi(function () use ($customer): void {
                         ':id' => $update['product_id'],
                     ]);
             }
+        }
+
+        if ($coupon) {
+            $db->prepare('INSERT INTO coupon_usages (coupon_id, customer_id, order_id, discount_amount) VALUES (:coupon, :customer, :order, :discount)')->execute([':coupon' => $coupon['id'], ':customer' => $customer['id'], ':order' => $orderId, ':discount' => $discountAmount]);
         }
 
         $db->commit();

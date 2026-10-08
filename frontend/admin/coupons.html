@@ -13,7 +13,7 @@
     <section class="space-y-6">
       <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <p class="text-sm text-[#7e5a43]">Create discount codes for customers to use at checkout.</p>
-        <button onclick="openCouponModal()" class="rounded-xl bg-[#54170f] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#54170f]/20 hover:bg-[#6e1f15] transition">+ Create coupon</button>
+        <button type="button" onclick="AdminCoupons.open()" class="rounded-xl bg-[#54170f] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#54170f]/20 hover:bg-[#6e1f15] transition">+ Create coupon</button>
       </div>
 
       <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
@@ -46,7 +46,7 @@
           <h2 id="coupon-modal-title" class="text-xl font-bold text-[#32110d]">Create coupon</h2>
           <button onclick="AdminModal.close('coupon-modal')" class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45] hover:bg-[#f8f6f3] transition">✕</button>
         </div>
-        <form onsubmit="saveCoupon(event)" class="p-6 space-y-5">
+        <form id="couponForm" class="p-6 space-y-5">
           <input type="hidden" id="cpf-id" />
 
           <!-- Code & Title -->
@@ -74,8 +74,8 @@
               <div>
                 <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Discount type</label>
                 <select id="cpf-type" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
-                  <option value="percent">Percentage (%)</option>
-                  <option value="flat">Flat Amount (₹)</option>
+                  <option value="PERCENTAGE">Percentage (%)</option>
+                  <option value="FIXED">Flat Amount (₹)</option>
                 </select>
               </div>
               <div>
@@ -121,9 +121,9 @@
           <div class="space-y-4">
             <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Applies To</h3>
             <select id="cpf-applies" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
-              <option>All Products</option>
-              <option>Selected Products</option>
-              <option>Selected Categories</option>
+              <option value="ALL">All Products</option>
+              <option value="PRODUCTS">Selected Products</option>
+              <option value="CATEGORIES">Selected Categories</option>
             </select>
           </div>
 
@@ -131,14 +131,14 @@
           <div>
             <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Status</label>
             <select id="cpf-status" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+              <option value="ACTIVE">Active</option>
+              <option value="INACTIVE">Inactive</option>
             </select>
           </div>
 
           <div class="flex gap-3 justify-end border-t border-[#eee8e2] pt-5">
             <button type="button" onclick="AdminModal.close('coupon-modal')" class="rounded-xl border border-[#e8e1da] px-4 py-2.5 text-sm font-semibold text-[#594b45] hover:bg-[#f8f6f3] transition">Cancel</button>
-            <button type="submit" id="cpf-submit-btn" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Save coupon</button>
+            <button type="submit" id="couponSubmitBtn" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Save coupon</button>
           </div>
         </form>
       </div>
@@ -146,7 +146,7 @@
   </template>
 
   <script src="assets/admin.js" defer></script>
-  <script>
+  <script type="application/legacy-disabled">
     let coupons = [
       { id: 1, code: "WELCOME10", title: "Welcome Discount", desc: "10% off for new customers on their first order.", type: "percent", value: 10, applies: "All Products", minOrder: 0, maxDiscount: 200, maxUses: 200, perUser: 1, used: 64, start: "2026-01-01", expiry: "2026-12-31", status: "active" },
       { id: 2, code: "FESTIVE25", title: "Festive Season Offer", desc: "₹250 flat discount on orders above ₹1500.", type: "flat", value: 250, applies: "All Products", minOrder: 1500, maxDiscount: 0, maxUses: 100, perUser: 0, used: 89, start: "2026-10-01", expiry: "2026-11-15", status: "active" },
@@ -288,5 +288,7 @@
       setTimeout(renderCoupons, 100);
     });
   </script>
+  <script src="assets/admin-api.js"></script>
+  <script src="assets/coupons/coupons.js"></script>
 </body>
 </html>
