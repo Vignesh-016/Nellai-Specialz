@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="assets/admin-auth.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders | Nellai Specialz</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body data-admin-page="orders" data-admin-title="Orders" class="bg-[#f8f1e7] text-[#3a110d]">
+    <div data-admin-shell></div>
+
+    <template id="admin-page-content">
+      <section class="space-y-6">
+        <p class="text-sm text-[#7e5a43]">Track and manage customer orders.</p>
+
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div class="rounded-2xl border border-[#eadbc6] bg-white p-5">
+            <p class="text-sm text-[#7e5a43]">Total Orders</p>
+            <p class="mt-2 text-3xl font-bold" id="stat-total">0</p>
+          </div>
+          <div class="rounded-2xl border border-[#eadbc6] bg-white p-5">
+            <p class="text-sm text-[#7e5a43]">New / Pending</p>
+            <p class="mt-2 text-3xl font-bold text-amber-600" id="stat-pending">0</p>
+          </div>
+          <div class="rounded-2xl border border-[#eadbc6] bg-white p-5">
+            <p class="text-sm text-[#7e5a43]">Delivered</p>
+            <p class="mt-2 text-3xl font-bold text-emerald-700" id="stat-delivered">0</p>
+          </div>
+          <div class="rounded-2xl border border-[#eadbc6] bg-white p-5">
+            <p class="text-sm text-[#7e5a43]">Cancelled</p>
+            <p class="mt-2 text-3xl font-bold text-red-600" id="stat-cancelled">0</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <input id="order-search" class="w-full rounded-xl border border-[#eadbc6] bg-white px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] sm:w-64" placeholder="Search by order, customer, phone...">
+          <select id="order-status-filter" class="rounded-xl border border-[#eadbc6] bg-white px-4 py-3 text-sm">
+            <option value="">All status</option>
+            <option>New</option>
+            <option>Confirmed</option>
+            <option>Processing</option>
+            <option>Packed</option>
+            <option>Shipped</option>
+            <option>Delivered</option>
+            <option>Cancelled</option>
+          </select>
+          <select id="order-payment-filter" class="rounded-xl border border-[#eadbc6] bg-white px-4 py-3 text-sm">
+            <option value="">All payments</option>
+            <option>Pending</option>
+            <option>Paid</option>
+            <option>Failed</option>
+            <option>Refunded</option>
+          </select>
+        </div>
+
+        <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[1100px] text-left text-sm">
+              <thead class="border-b border-[#eadbc6] text-xs uppercase tracking-wider text-[#9b6b2c]">
+                <tr>
+                  <th class="p-3">Order ID</th>
+                  <th class="p-3">Customer</th>
+                  <th class="p-3">Phone</th>
+                  <th class="p-3">Date</th>
+                  <th class="p-3">Items</th>
+                  <th class="p-3">Total</th>
+                  <th class="p-3">Payment</th>
+                  <th class="p-3">Status</th>
+                  <th class="p-3">Delivery</th>
+                  <th class="p-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="orders-tbody" class="divide-y divide-[#f0e5d8]"></tbody>
+            </table>
+          </div>
+          <div id="orders-empty" class="hidden py-12 text-center text-sm text-[#7e5a43]"></div>
+        </div>
+      </section>
+
+      <div id="order-view-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#24120f]/50 p-4">
+        <div data-modal-box class="max-h-[90vh] w-full max-w-2xl scale-95 transform overflow-y-auto rounded-2xl bg-white opacity-0 shadow-2xl transition-all duration-200">
+          <div class="sticky top-0 z-10 flex items-center justify-between rounded-t-2xl border-b border-[#eee8e2] bg-white px-6 py-4">
+            <h2 class="text-xl font-bold text-[#32110d]">Order details</h2>
+            <button type="button" onclick="AdminModal.close('order-view-modal')" aria-label="Close order details" class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45] transition hover:bg-[#f8f6f3]">×</button>
+          </div>
+          <div id="order-view-body" class="space-y-5 p-6"></div>
+        </div>
+      </div>
+    </template>
+
+    <script src="assets/admin.js" defer></script>
+    <script src="assets/orders/orders.js" defer></script>
+  </body>
+</html>

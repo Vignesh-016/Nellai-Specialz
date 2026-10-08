@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
+  <head><script src="assets/admin-auth.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog | Nellai Specialz</title>
@@ -25,8 +25,26 @@
         </select>
       </div>
 
-      <div id="blog-grid" class="grid gap-5 lg:grid-cols-3"></div>
-      <div id="blog-empty" class="hidden rounded-2xl border border-[#eadbc6] bg-white py-12 text-center text-sm text-[#7e5a43]">No blog posts yet.</div>
+      <!-- Blog Table -->
+      <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[800px] text-left text-sm">
+            <thead class="border-b border-[#eadbc6] text-xs uppercase tracking-wider text-[#9b6b2c]">
+              <tr>
+                <th class="p-3">Image</th>
+                <th class="p-3">Title</th>
+                <th class="p-3">Slug</th>
+                <th class="p-3">Tags</th>
+                <th class="p-3">Status</th>
+                <th class="p-3">Publish Date</th>
+                <th class="p-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="blog-tbody" class="divide-y divide-[#f0e5d8]"></tbody>
+          </table>
+        </div>
+        <div id="blog-empty" class="hidden py-12 text-center text-sm text-[#7e5a43]">No blog posts yet.</div>
+      </div>
     </section>
 
     <!-- BLOG EDITOR MODAL -->
@@ -38,70 +56,94 @@
         </div>
         <form onsubmit="saveBlog(event)" class="p-6 space-y-5">
           <input type="hidden" id="bf-id" />
-          <div>
-            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Post title <span class="text-red-500">*</span></label>
-            <input id="bf-title" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="Enter a compelling title..." />
-            <p id="bf-title-error" class="mt-1 text-xs text-red-600 hidden">Post title is required.</p>
-          </div>
-          <div>
-            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Excerpt</label>
-            <input id="bf-excerpt" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="Short summary for previews..." />
-          </div>
 
-          <!-- Rich content area -->
-          <div>
-            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Content</label>
-            <!-- Toolbar -->
-            <div class="flex flex-wrap gap-1 rounded-t-xl border border-b-0 border-[#eadbc6] bg-[#f8f6f3] px-2 py-1.5">
-              <button type="button" onclick="execCmd('bold')" class="grid h-8 w-8 place-items-center rounded text-sm font-bold text-[#594b45] hover:bg-[#eadbc6] transition" title="Bold">B</button>
-              <button type="button" onclick="execCmd('italic')" class="grid h-8 w-8 place-items-center rounded text-sm italic text-[#594b45] hover:bg-[#eadbc6] transition" title="Italic">I</button>
-              <button type="button" onclick="execCmd('underline')" class="grid h-8 w-8 place-items-center rounded text-sm underline text-[#594b45] hover:bg-[#eadbc6] transition" title="Underline">U</button>
-              <span class="mx-1 w-px bg-[#d5c5b0]"></span>
-              <button type="button" onclick="execCmd('formatBlock','<h2>')" class="grid h-8 w-8 place-items-center rounded text-xs font-bold text-[#594b45] hover:bg-[#eadbc6] transition" title="Heading">H2</button>
-              <button type="button" onclick="execCmd('formatBlock','<h3>')" class="grid h-8 w-8 place-items-center rounded text-xs font-bold text-[#594b45] hover:bg-[#eadbc6] transition" title="Sub heading">H3</button>
-              <button type="button" onclick="execCmd('formatBlock','<p>')" class="grid h-8 w-8 place-items-center rounded text-xs text-[#594b45] hover:bg-[#eadbc6] transition" title="Paragraph">¶</button>
-              <span class="mx-1 w-px bg-[#d5c5b0]"></span>
-              <button type="button" onclick="execCmd('insertUnorderedList')" class="grid h-8 w-8 place-items-center rounded text-sm text-[#594b45] hover:bg-[#eadbc6] transition" title="Bullet list">•≡</button>
-              <button type="button" onclick="execCmd('insertOrderedList')" class="grid h-8 w-8 place-items-center rounded text-sm text-[#594b45] hover:bg-[#eadbc6] transition" title="Numbered list">1≡</button>
-              <span class="mx-1 w-px bg-[#d5c5b0]"></span>
-              <button type="button" onclick="insertLink()" class="grid h-8 w-8 place-items-center rounded text-sm text-[#594b45] hover:bg-[#eadbc6] transition" title="Link">🔗</button>
-              <button type="button" onclick="insertImage()" class="grid h-8 w-8 place-items-center rounded text-sm text-[#594b45] hover:bg-[#eadbc6] transition" title="Image">📷</button>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Blog title <span class="text-red-500">*</span></label>
+              <input id="bf-title" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="Enter a compelling title..." />
+              <p id="bf-title-error" class="mt-1 text-xs text-red-600 hidden">Blog title is required.</p>
             </div>
-            <div id="bf-content" contenteditable="true" class="min-h-[200px] rounded-b-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] leading-relaxed" style="overflow-y:auto;max-height:300px"></div>
-          </div>
-
-          <!-- Cover image -->
-          <div>
-            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Cover image</label>
-            <div id="blog-cover-area" class="flex gap-3 items-center">
-              <div id="blog-cover-preview" class="hidden grid h-20 w-28 place-items-center rounded-xl border border-[#eadbc6] bg-[#f3e7d5] text-2xl text-[#9b6b2c]">🖼</div>
-              <button type="button" onclick="simulateCoverUpload()" class="rounded-lg bg-[#f3e7d5] px-4 py-2 text-xs font-semibold text-[#8e281d] hover:bg-[#eadbc6] transition">Upload cover image</button>
+            <div class="sm:col-span-2">
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Slug <span class="text-red-500">*</span></label>
+              <input id="bf-slug" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm font-mono outline-none focus:border-[#9b6b2c]" placeholder="auto-generated-slug" />
+              <p id="bf-slug-error" class="mt-1 text-xs text-red-600 hidden">Slug is required.</p>
             </div>
           </div>
 
-          <!-- Tags -->
+          <div>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Short Description</label>
+            <textarea id="bf-excerpt" rows="2" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] resize-none" placeholder="Short summary for previews..."></textarea>
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Full Content</label>
+            <textarea id="bf-content" rows="8" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] resize-y leading-relaxed" placeholder="Write the full blog content here..."></textarea>
+          </div>
+
           <div>
             <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Tags</label>
             <input id="bf-tags" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="tradition, halwa, ingredients (comma-separated)" />
           </div>
 
-          <!-- Status -->
-          <div class="flex gap-4 flex-wrap">
-            <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="radio" name="bf-status" value="published" checked class="accent-[#8e281d]" />
-              <span class="text-sm font-semibold text-[#594b45]">Publish now</span>
-            </label>
-            <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="radio" name="bf-status" value="draft" class="accent-[#8e281d]" />
-              <span class="text-sm font-semibold text-[#594b45]">Save as draft</span>
-            </label>
+          <!-- Featured Image -->
+          <div>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Featured Image</label>
+            <div class="flex gap-3 items-center">
+              <div id="blog-cover-preview" class="hidden h-20 w-28 rounded-xl border border-[#eadbc6] bg-[#f3e7d5] overflow-hidden">
+                <img id="blog-cover-img" class="h-full w-full object-cover" />
+              </div>
+              <div>
+                <input type="file" id="blog-cover-input" accept="image/*" class="hidden" onchange="previewBlogCover(this)" />
+                <button type="button" onclick="document.getElementById('blog-cover-input').click()" class="rounded-lg bg-[#f3e7d5] px-4 py-2 text-xs font-semibold text-[#8e281d] hover:bg-[#eadbc6] transition">Upload image</button>
+                <button type="button" id="blog-cover-remove" onclick="removeBlogCover()" class="hidden ml-2 rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-red-500 hover:bg-red-50 transition">Remove</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Status & Date -->
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Status</label>
+              <select id="bf-status" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+                <option value="published">Published</option>
+                <option value="draft">Draft</option>
+              </select>
+            </div>
+            <div>
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Publish Date</label>
+              <input id="bf-date" type="date" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" />
+            </div>
+          </div>
+
+          <!-- SEO -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">SEO</h3>
+            <div>
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Meta Title</label>
+              <input id="bf-meta-title" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="SEO title (defaults to blog title)" />
+            </div>
+            <div>
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Meta Description</label>
+              <textarea id="bf-meta-desc" rows="2" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] resize-none" placeholder="SEO description (defaults to short description)"></textarea>
+            </div>
           </div>
 
           <div class="flex gap-3 justify-end border-t border-[#eee8e2] pt-5">
             <button type="button" onclick="AdminModal.close('blog-modal')" class="rounded-xl border border-[#e8e1da] px-4 py-2.5 text-sm font-semibold text-[#594b45] hover:bg-[#f8f6f3] transition">Cancel</button>
-            <button type="submit" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Save post</button>
+            <button type="submit" id="bf-submit-btn" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Save post</button>
           </div>
         </form>
+      </div>
+    </div>
+
+    <!-- VIEW BLOG MODAL -->
+    <div id="blog-view-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#24120f]/50 p-4">
+      <div data-modal-box class="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl transform scale-95 opacity-0 transition-all duration-200">
+        <div class="sticky top-0 z-10 flex items-center justify-between border-b border-[#eee8e2] bg-white px-6 py-4 rounded-t-2xl">
+          <h2 class="text-xl font-bold text-[#32110d]">Blog preview</h2>
+          <button onclick="AdminModal.close('blog-view-modal')" class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45] hover:bg-[#f8f6f3] transition">✕</button>
+        </div>
+        <div id="blog-view-body" class="p-6 space-y-5"></div>
       </div>
     </div>
   </template>
@@ -109,102 +151,130 @@
   <script src="assets/admin.js" defer></script>
   <script>
     let blogs = [
-      { id: 1, title: "The story behind Tirunelveli Halwa", excerpt: "Discover the craft and patience behind every traditional batch.", content: "<p>The making of Tirunelveli Halwa is an art passed down through generations...</p>", status: "published", date: "12 Sep 2026", tags: ["tradition", "halwa"], hasCover: true },
-      { id: 2, title: "5 ways to serve halwa", excerpt: "Simple serving ideas for celebrations and everyday moments.", content: "<p>Halwa isn't just a dessert — it's an experience...</p>", status: "draft", date: "08 Sep 2026", tags: ["recipes", "tips"], hasCover: false },
-      { id: 3, title: "From palm jaggery to perfect texture", excerpt: "How carefully selected ingredients shape authentic flavour.", content: "<p>Every batch of our Karupatti Halwa starts with hand-selected palm jaggery...</p>", status: "published", date: "26 Aug 2026", tags: ["ingredients", "karupatti"], hasCover: true },
+      { id: 1, title: "The story behind Tirunelveli Halwa", slug: "the-story-behind-tirunelveli-halwa", excerpt: "Discover the craft and patience behind every traditional batch.", content: "The making of Tirunelveli Halwa is an art passed down through generations. Each batch is carefully prepared using the finest wheat flour, pure ghee, and the perfect blend of sugar or palm jaggery.", status: "published", date: "2026-09-12", tags: ["tradition", "halwa"], hasCover: true, metaTitle: "", metaDesc: "" },
+      { id: 2, title: "5 ways to serve halwa", slug: "5-ways-to-serve-halwa", excerpt: "Simple serving ideas for celebrations and everyday moments.", content: "Halwa isn't just a dessert — it's an experience. Here are five creative ways to serve halwa at your next gathering.", status: "draft", date: "", tags: ["recipes", "tips"], hasCover: false, metaTitle: "", metaDesc: "" },
+      { id: 3, title: "From palm jaggery to perfect texture", slug: "from-palm-jaggery-to-perfect-texture", excerpt: "How carefully selected ingredients shape authentic flavour.", content: "Every batch of our Karupatti Halwa starts with hand-selected palm jaggery from local farmers. The quality of this key ingredient determines the final taste and colour.", status: "published", date: "2026-08-26", tags: ["ingredients", "karupatti"], hasCover: true, metaTitle: "Palm Jaggery Halwa — The Secret Ingredient", metaDesc: "Learn how carefully selected palm jaggery creates the authentic flavour of Tirunelveli Karupatti Halwa." },
     ];
     let nextBlogId = 4;
 
     function renderBlogs() {
       const filter = document.getElementById("blog-status-filter")?.value || "";
       const filtered = filter ? blogs.filter(b => b.status === filter) : blogs;
-      const grid = document.getElementById("blog-grid");
+      const tbody = document.getElementById("blog-tbody");
       const empty = document.getElementById("blog-empty");
 
-      if (!filtered.length) { grid.innerHTML = ""; empty.classList.remove("hidden"); return; }
+      if (!filtered.length) { tbody.innerHTML = ""; empty.classList.remove("hidden"); return; }
       empty.classList.add("hidden");
 
-      grid.innerHTML = filtered.map(b => {
-        const statusColor = b.status === "published" ? "text-[#9b6b2c]" : "text-amber-700";
+      tbody.innerHTML = filtered.map(b => {
+        const statusColor = b.status === "published" ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700";
         const statusLabel = b.status === "published" ? "Published" : "Draft";
+        const displayDate = b.date ? new Date(b.date).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "—";
+
         return `
-        <article class="group rounded-2xl border border-[#eadbc6] bg-white p-6 hover:shadow-lg hover:shadow-[#eadbc6]/40 transition-all duration-200 flex flex-col">
-          ${b.hasCover ? '<div class="mb-4 h-32 rounded-xl bg-[#f3e7d5] flex items-center justify-center text-3xl text-[#9b6b2c]">🖼</div>' : ""}
-          <span class="text-xs font-bold uppercase tracking-wider ${statusColor}">${statusLabel} · ${b.date}</span>
-          <h2 class="mt-3 font-serif text-xl font-bold text-[#32110d]">${b.title}</h2>
-          <p class="mt-2 text-sm leading-6 text-[#7e5a43] flex-1">${b.excerpt}</p>
-          ${b.tags.length ? `<div class="mt-3 flex flex-wrap gap-1">${b.tags.map(t => `<span class="rounded-full bg-[#f3e7d5] px-2 py-0.5 text-[10px] font-semibold text-[#9b6b2c]">${t}</span>`).join("")}</div>` : ""}
-          <div class="mt-4 flex gap-2 justify-end border-t border-[#f0e5d8] pt-4">
-            <button onclick="editBlog(${b.id})" class="text-sm font-semibold text-[#8e281d] hover:underline">${b.status === "draft" ? "Continue editing →" : "Edit post →"}</button>
-            <button onclick="deleteBlog(${b.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition ml-2" title="Delete">🗑</button>
-          </div>
-        </article>`;
+          <tr class="hover:bg-[#fffcf7] transition">
+            <td class="p-3">
+              <div class="grid h-10 w-14 place-items-center rounded-lg bg-[#f3e7d5] text-lg text-[#9b6b2c]">${b.hasCover ? "🖼" : "—"}</div>
+            </td>
+            <td class="p-3">
+              <p class="font-semibold text-[#32110d]">${b.title}</p>
+              <p class="text-xs text-[#a89387] truncate max-w-[250px]">${b.excerpt}</p>
+            </td>
+            <td class="p-3 font-mono text-xs text-[#7e5a43]">/${b.slug}</td>
+            <td class="p-3">
+              <div class="flex flex-wrap gap-1">
+                ${b.tags.length ? b.tags.map(t => `<span class="rounded-full bg-[#f3e7d5] px-2 py-0.5 text-[10px] font-semibold text-[#9b6b2c]">${t}</span>`).join("") : '<span class="text-xs text-[#c4b5a5]">—</span>'}
+              </div>
+            </td>
+            <td class="p-3"><span class="rounded-full ${statusColor} px-3 py-1 text-xs font-semibold">${statusLabel}</span></td>
+            <td class="p-3 text-xs text-[#7e5a43]">${displayDate}</td>
+            <td class="p-3">
+              <div class="flex justify-end gap-2">
+                <button onclick="viewBlog(${b.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#594b45] hover:bg-[#f5eee8] transition" title="View">👁</button>
+                <button onclick="editBlog(${b.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#8e281d] hover:bg-[#f5eee8] transition" title="Edit">✎</button>
+                <button onclick="deleteBlog(${b.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition" title="Delete">🗑</button>
+              </div>
+            </td>
+          </tr>`;
       }).join("");
     }
 
-    function execCmd(cmd, val) {
-      document.execCommand(cmd, false, val || null);
-      document.getElementById("bf-content").focus();
+    /* ═══ Image handling ═══ */
+    function previewBlogCover(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          document.getElementById("blog-cover-img").src = e.target.result;
+          document.getElementById("blog-cover-preview").classList.remove("hidden");
+          document.getElementById("blog-cover-remove").classList.remove("hidden");
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
     }
 
-    function insertLink() {
-      const url = prompt("Enter URL:");
-      if (url) document.execCommand("createLink", false, url);
-    }
-
-    function insertImage() {
-      AdminToast.show("Image inserted (demo)", "info");
-      document.execCommand("insertHTML", false, '<div style="margin:8px 0;padding:16px;background:#f3e7d5;border-radius:8px;text-align:center;font-size:24px">🖼 Image placeholder</div>');
-    }
-
-    function simulateCoverUpload() {
-      const preview = document.getElementById("blog-cover-preview");
-      preview.classList.remove("hidden");
-      preview.classList.add("grid");
-      AdminToast.show("Cover image uploaded (demo)", "info");
+    function removeBlogCover() {
+      document.getElementById("blog-cover-preview").classList.add("hidden");
+      document.getElementById("blog-cover-remove").classList.add("hidden");
+      document.getElementById("blog-cover-input").value = "";
     }
 
     function openBlogModal(blog) {
       document.getElementById("blog-modal-title").textContent = blog ? "Edit post" : "New post";
+      document.getElementById("bf-submit-btn").textContent = blog ? "Update post" : "Save post";
       document.getElementById("bf-id").value = blog ? blog.id : "";
       document.getElementById("bf-title").value = blog ? blog.title : "";
+      document.getElementById("bf-slug").value = blog ? blog.slug : "";
       document.getElementById("bf-excerpt").value = blog ? blog.excerpt : "";
-      document.getElementById("bf-content").innerHTML = blog ? blog.content : "";
+      document.getElementById("bf-content").value = blog ? blog.content : "";
       document.getElementById("bf-tags").value = blog ? blog.tags.join(", ") : "";
+      document.getElementById("bf-status").value = blog ? blog.status : "published";
+      document.getElementById("bf-date").value = blog ? blog.date : "";
+      document.getElementById("bf-meta-title").value = blog ? blog.metaTitle : "";
+      document.getElementById("bf-meta-desc").value = blog ? blog.metaDesc : "";
       document.getElementById("bf-title-error").classList.add("hidden");
-
-      const statusRadios = document.querySelectorAll('input[name="bf-status"]');
-      statusRadios.forEach(r => r.checked = r.value === (blog ? blog.status : "published"));
+      document.getElementById("bf-slug-error").classList.add("hidden");
 
       const preview = document.getElementById("blog-cover-preview");
+      const removeBtn = document.getElementById("blog-cover-remove");
       if (blog && blog.hasCover) {
         preview.classList.remove("hidden");
-        preview.classList.add("grid");
+        removeBtn.classList.remove("hidden");
+        document.getElementById("blog-cover-img").src = "";
       } else {
         preview.classList.add("hidden");
-        preview.classList.remove("grid");
+        removeBtn.classList.add("hidden");
       }
+      document.getElementById("blog-cover-input").value = "";
 
+      AdminSlug.reset("bf-slug");
+      AdminSlug.bind("bf-title", "bf-slug");
       AdminModal.open("blog-modal");
     }
 
     function saveBlog(e) {
       e.preventDefault();
       const title = document.getElementById("bf-title").value.trim();
-      if (!title) { document.getElementById("bf-title-error").classList.remove("hidden"); return; }
-      document.getElementById("bf-title-error").classList.add("hidden");
+      const slug = document.getElementById("bf-slug").value.trim();
+      let valid = true;
+      if (!title) { document.getElementById("bf-title-error").classList.remove("hidden"); valid = false; }
+      else { document.getElementById("bf-title-error").classList.add("hidden"); }
+      if (!slug) { document.getElementById("bf-slug-error").classList.remove("hidden"); valid = false; }
+      else { document.getElementById("bf-slug-error").classList.add("hidden"); }
+      if (!valid) return;
 
-      const status = document.querySelector('input[name="bf-status"]:checked')?.value || "draft";
-      const id = document.getElementById("bf-id").value;
       const tags = document.getElementById("bf-tags").value.split(",").map(t => t.trim()).filter(Boolean);
+      const hasCover = !document.getElementById("blog-cover-preview").classList.contains("hidden");
 
+      const id = document.getElementById("bf-id").value;
       const data = {
-        title,
+        title, slug,
         excerpt: document.getElementById("bf-excerpt").value.trim(),
-        content: document.getElementById("bf-content").innerHTML,
-        status,
-        tags,
-        hasCover: !document.getElementById("blog-cover-preview").classList.contains("hidden"),
+        content: document.getElementById("bf-content").value.trim(),
+        status: document.getElementById("bf-status").value,
+        date: document.getElementById("bf-date").value,
+        tags, hasCover,
+        metaTitle: document.getElementById("bf-meta-title").value.trim(),
+        metaDesc: document.getElementById("bf-meta-desc").value.trim(),
       };
 
       if (id) {
@@ -213,13 +283,43 @@
         AdminToast.show("Post updated");
       } else {
         data.id = nextBlogId++;
-        data.date = new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+        if (!data.date) data.date = new Date().toISOString().split('T')[0];
         blogs.push(data);
         AdminToast.show("Post created");
       }
 
       AdminModal.close("blog-modal");
       renderBlogs();
+    }
+
+    function viewBlog(id) {
+      const b = blogs.find(x => x.id === id);
+      if (!b) return;
+      const displayDate = b.date ? new Date(b.date).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "Not set";
+
+      document.getElementById("blog-view-body").innerHTML = `
+        ${b.hasCover ? '<div class="h-40 rounded-xl bg-[#f3e7d5] flex items-center justify-center text-4xl text-[#9b6b2c]">🖼</div>' : ""}
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="rounded-full ${b.status === 'published' ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'} px-3 py-1 text-xs font-semibold">${b.status === 'published' ? 'Published' : 'Draft'}</span>
+          <span class="text-xs text-[#9b6b2c]">${displayDate}</span>
+        </div>
+        <h3 class="text-2xl font-bold text-[#32110d]">${b.title}</h3>
+        <p class="text-xs font-mono text-[#7e5a43]">/${b.slug}</p>
+        ${b.excerpt ? `<p class="text-sm italic text-[#7e5a43] border-l-4 border-[#eadbc6] pl-4">${b.excerpt}</p>` : ""}
+        <div class="rounded-xl bg-[#fffcf7] border border-[#eadbc6] p-4">
+          <p class="text-sm text-[#594b45] leading-relaxed whitespace-pre-line">${b.content || "No content yet."}</p>
+        </div>
+        ${b.tags.length ? `<div class="flex flex-wrap gap-2">${b.tags.map(t => `<span class="rounded-full bg-[#f3e7d5] px-3 py-1 text-xs font-semibold text-[#9b6b2c]">${t}</span>`).join("")}</div>` : ""}
+        ${b.metaTitle || b.metaDesc ? `
+        <div class="rounded-xl bg-[#fffcf7] border border-[#eadbc6] p-4 space-y-2">
+          <p class="text-xs font-bold uppercase tracking-wider text-[#9b6b2c]">SEO</p>
+          ${b.metaTitle ? `<p class="text-sm"><span class="text-[#7e5a43]">Meta Title:</span> ${b.metaTitle}</p>` : ""}
+          ${b.metaDesc ? `<p class="text-sm"><span class="text-[#7e5a43]">Meta Desc:</span> ${b.metaDesc}</p>` : ""}
+        </div>` : ""}
+        <div class="flex gap-3 justify-end border-t border-[#eee8e2] pt-4">
+          <button onclick="AdminModal.close('blog-view-modal');editBlog(${b.id})" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Edit post</button>
+        </div>`;
+      AdminModal.open("blog-view-modal");
     }
 
     function editBlog(id) {
@@ -230,7 +330,7 @@
     function deleteBlog(id) {
       const b = blogs.find(x => x.id === id);
       if (!b) return;
-      AdminConfirm.show(`Delete blog post "${b.title}"?`, () => {
+      AdminConfirm.show(`Are you sure you want to delete this item? Blog post "${b.title}" will be permanently removed.`, () => {
         blogs = blogs.filter(x => x.id !== id);
         renderBlogs();
         AdminToast.show("Post deleted", "error");

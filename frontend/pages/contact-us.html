@@ -18,6 +18,8 @@
     <script src="../assets/js/header.js"></script>
     <script src="../assets/js/footer.js"></script>
     <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/forms/contact-form.js" defer></script>
     <script src="../assets/js/account.js"></script>
     <script src="../assets/js/cart.js"></script>
     <script src="../assets/js/checkout.js"></script>
@@ -113,6 +115,7 @@
               <label class="text-sm font-semibold"
                 >Name<input
                   name="name"
+                  maxlength="150"
                   required
                   class="mt-2 h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
               /></label>
@@ -120,26 +123,33 @@
                 >Email<input
                   name="email"
                   type="email"
+                  maxlength="255"
                   required
                   class="mt-2 h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
               /></label>
               <label class="text-sm font-semibold"
                 >Phone<input
                   name="phone"
+                  maxlength="25"
                   class="mt-2 h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
               /></label>
               <label class="text-sm font-semibold"
                 >Subject<input
                   name="subject"
+                  maxlength="200"
                   required
                   class="mt-2 h-12 w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] px-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
               /></label>
               <label class="text-sm font-semibold sm:col-span-2"
                 >Message<textarea
                   name="message"
+                  maxlength="3000"
                   required
                   class="mt-2 min-h-[160px] w-full rounded-lg border border-[#E7DDD1] bg-[#FFFCF7] p-4 outline-none focus:border-[#b88932] focus:ring-2 focus:ring-[#b88932]/20"
                 ></textarea>
+              </label>
+              <label class="hidden" aria-hidden="true">Leave this field empty
+                <input name="website" tabindex="-1" autocomplete="off" />
               </label>
             </div>
             <button
@@ -148,6 +158,7 @@
             >
               Send Message
             </button>
+            <p data-form-status class="mt-4 text-sm" role="status" aria-live="polite"></p>
           </form>
         </div>
       </section>
@@ -190,6 +201,51 @@
           class="mt-6 inline-flex h-12 items-center rounded-lg bg-[#4d190e] px-8 font-semibold text-[#fff6df] transition hover:bg-[#702217]"
           >Explore Our Products</a
         >
+      </section>
+      <section class="py-16 bg-[#FBF5E9] border-t border-[#B88932]/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div class="text-center mb-10">
+            <span class="text-xs font-bold uppercase tracking-[0.25em] text-[#B88932]">HELP CENTER</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#32110D] mt-1">Frequently Asked Questions</h2>
+            <p class="font-tamil text-sm text-[#4d190e] font-semibold mt-1">பொதுவான கேள்விகள்</p>
+          </div>
+
+          <div class="space-y-4">
+
+            <details class="group bg-white/90 backdrop-blur-md rounded-2xl border border-[#B88932]/20 p-5 shadow-xs [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-[#32110D] group-open:text-[#4d190e]">
+                <span>How long does Nellai Specialz Halwa stay fresh?</span>
+                <span class="ml-4 shrink-0 text-[#B88932] group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="mt-3 text-xs sm:text-sm text-[#786153] leading-relaxed">
+                Our Original Wheat Halwa stays fresh for up to 25–30 days at room temperature when stored in an airtight container. Karupatti Halwa has a shelf life of up to 45 days thanks to natural palm jaggery preservation.
+              </p>
+            </details>
+
+            <details class="group bg-white/90 backdrop-blur-md rounded-2xl border border-[#B88932]/20 p-5 shadow-xs [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-[#32110D] group-open:text-[#4d190e]">
+                <span>Do you deliver across India &amp; International destinations?</span>
+                <span class="ml-4 shrink-0 text-[#B88932] group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="mt-3 text-xs sm:text-sm text-[#786153] leading-relaxed">
+                Yes! We ship across all pincodes in India with express courier service (delivery within 2-4 business days). International bulk orders can be coordinated via our WhatsApp support team.
+              </p>
+            </details>
+
+            <details class="group bg-white/90 backdrop-blur-md rounded-2xl border border-[#B88932]/20 p-5 shadow-xs [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-[#32110D] group-open:text-[#4d190e]">
+                <span>Are white sugar or artificial colors used in Karupatti Halwa?</span>
+                <span class="ml-4 shrink-0 text-[#B88932] group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="mt-3 text-xs sm:text-sm text-[#786153] leading-relaxed">
+                No artificial colors, preservatives, or refined white sugar are added to our Karupatti Halwa. It is prepared 100% naturally using authentic palm jaggery, pure cow ghee, and hand-extracted wheat milk.
+              </p>
+            </details>
+
+          </div>
+
+        </div>
       </section>
     </main>
     <div id="site-footer"></div>

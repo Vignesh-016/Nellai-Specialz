@@ -10,13 +10,48 @@ function startAdminSession(): void
         return;
     }
 
+    $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+    $sameSite = in_array($origin, ['http://127.0.0.1:5500', 'http://localhost:5500'], true) ? 'None' : 'Lax';
     session_set_cookie_params([
         'httponly' => true,
-        'secure' => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
-        'samesite' => 'Lax',
+        'secure' => true,
+        'samesite' => $sameSite,
     ]);
 
     session_start();
+}
+
+function startCustomerSession(): void
+{
+    if (session_status() === PHP_SESSION_ACTIVE) {
+        return;
+    }
+
+    $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+    $isLocalOrigin = in_array($origin, ['http://127.0.0.1:5500', 'http://localhost:5500'], true);
+    $params = [
+        'lifetime' => 0,
+        'path' => '/',
+        'secure' => true,
+        'httponly' => true,
+        'samesite' => 'None',
+    ];
+
+    if (!$isLocalOrigin) {
+        $params['domain'] = '.nellaispecialz.com';
+    }
+
+    session_name('NELLAI_CUSTOMER_SESSION');
+    session_set_cookie_params($params);
+    session_start();
+}
+
+function getCurrentCustomer(): ?array
+{
+    startCustomerSession();
+    return isset($_SESSION['customer']) && is_array($_SESSION['customer'])
+        ? $_SESSION['customer']
+        : null;
 }
 
 function getCurrentAdmin(): ?array

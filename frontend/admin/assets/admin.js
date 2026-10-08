@@ -4,6 +4,8 @@
   const shell = document.querySelector("[data-admin-shell]");
   const template = document.querySelector("#admin-page-content");
 
+  window.AdminApi = { base: "https://backend.nellaispecialz.com/api/", async request(path, options = {}) { const headers = { Accept: "application/json", ...(options.headers || {}) }; if (!(options.body instanceof FormData) && options.body !== undefined) headers["Content-Type"] = "application/json"; const response = await fetch(this.base + path, { credentials: "include", ...options, headers }); const result = await response.json().catch(() => ({})); if (response.status === 401) { window.location.href = "login.html"; throw new Error("Authentication required."); } if (!response.ok || !result.success) throw new Error(result.message || "Request failed."); return result.data; } };
+
   if (!shell || !template) {
     return;
   }
@@ -14,28 +16,26 @@
       items: [["dashboard", "Dashboard", "index.html", "▦"]],
     },
     {
-      group: "Catalogue",
+      group: "Catalog",
       items: [
-        ["products", "Products", "products.html", "□"],
         ["categories", "Categories", "categories.html", "◇"],
-        ["subcategories", "Sub Categories", "subcategories.html", "◈"],
-        ["combos", "Combo Products", "combos.html", "⊞"],
-        ["inventory", "Inventory", "inventory.html", "▤"],
+        ["products", "Products", "products.html", "□"],
       ],
+    },
+    {
+      group: "Sales",
+      items: [["orders", "Orders", "orders.html", "📦"]],
     },
     {
       group: "Marketing",
       items: [
-        ["offers", "Offers", "offers.html", "%"],
         ["coupons", "Coupons", "coupons.html", "✂"],
+        ["blog", "Blog", "blog.html", "✎"],
       ],
     },
     {
-      group: "Content",
-      items: [
-        ["blog", "Blog", "blog.html", "✎"],
-        ["enquiries", "Enquiries", "enquiries.html", "✉"],
-      ],
+      group: "Customers",
+      items: [["enquiries", "Enquiries", "enquiries.html", "✉"]],
     },
   ];
 
@@ -98,8 +98,8 @@
           <span>View storefront</span>
         </a>
         <div class="mt-3 flex items-center gap-3 rounded-xl bg-[#f8f6f3] p-3">
-          <span class="grid h-9 w-9 place-items-center rounded-full bg-[#5a160f] text-xs font-bold text-[#f5c56b]">AU</span>
-          <div class="min-w-0"><p class="truncate text-xs font-bold text-[#32110d]">Admin User</p><p class="truncate text-[11px] text-[#736962]">Store manager</p></div>
+          <span data-admin-initials class="grid h-9 w-9 place-items-center rounded-full bg-[#5a160f] text-xs font-bold text-[#f5c56b]">A</span>
+          <div class="min-w-0"><p data-admin-name class="truncate text-xs font-bold text-[#32110d]">Admin</p><p data-admin-role class="truncate text-[11px] text-[#736962]">Admin</p></div>
         </div>
       </div>
     </aside>
@@ -114,15 +114,15 @@
           </div>
         </div>
         <div class="flex shrink-0 items-center gap-3">
-          <div class="hidden text-right sm:block"><p class="text-sm font-semibold text-[#251a16]">Admin User</p><p class="text-xs text-[#736962]">Store manager</p></div>
-          <span class="grid h-10 w-10 place-items-center rounded-full bg-[#5a160f] text-xs font-bold text-[#f5c56b]">AU</span>
+          <div class="hidden text-right sm:block"><p data-admin-name class="text-sm font-semibold text-[#251a16]">Admin</p><p data-admin-role class="text-xs text-[#736962]">Admin</p></div>
+          <span data-admin-initials class="grid h-10 w-10 place-items-center rounded-full bg-[#5a160f] text-xs font-bold text-[#f5c56b]">A</span>
         </div>
       </header>
 
       <div class="px-4 pt-3 sm:px-8">
         <div class="flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-xs text-amber-800">
           <span class="text-base">⚠</span>
-          <span><strong>Demo UI</strong> — This admin panel is a frontend prototype. Data shown is sample data and changes are not persisted.</span>
+          <span><strong>Live data</strong> — Changes are saved through the backend database.</span>
         </div>
       </div>
 
@@ -136,6 +136,15 @@
   document
     .querySelector("[data-admin-content]")
     .appendChild(template.content.cloneNode(true));
+
+  const applyAdminIdentity = (admin) => {
+    const initials = String(admin.name || 'A').split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase();
+    document.querySelectorAll('[data-admin-name]').forEach((node) => { node.textContent = admin.name || 'Admin'; });
+    document.querySelectorAll('[data-admin-role]').forEach((node) => { node.textContent = admin.role || 'Admin'; });
+    document.querySelectorAll('[data-admin-initials]').forEach((node) => { node.textContent = initials; });
+  };
+  if (window.currentAdmin) applyAdminIdentity(window.currentAdmin);
+  window.addEventListener('admin:authenticated', (event) => applyAdminIdentity(event.detail || {}));
 
   const sidebar = document.querySelector("#admin-sidebar");
   const overlay = document.querySelector("#admin-overlay");
@@ -226,5 +235,29 @@
         if (onConfirm) onConfirm();
       };
     },
+  };
+
+  /* ─── Slug Generator utility ─── */
+  window.AdminSlug = {
+    generate(text) {
+      return text.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    },
+    bind(sourceId, targetId) {
+      const source = document.getElementById(sourceId);
+      const target = document.getElementById(targetId);
+      if (!source || !target) return;
+      source.addEventListener('input', () => {
+        if (!target.dataset.manual) {
+          target.value = this.generate(source.value);
+        }
+      });
+      target.addEventListener('input', () => {
+        target.dataset.manual = '1';
+      });
+    },
+    reset(targetId) {
+      const target = document.getElementById(targetId);
+      if (target) delete target.dataset.manual;
+    }
   };
 })();

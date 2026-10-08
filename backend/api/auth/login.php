@@ -11,7 +11,7 @@ methodOnly('POST');
 startAdminSession();
 
 $input = jsonRequest();
-$email = strtolower((string) inputString($input, 'email', true));
+$email = strtolower(trim((string) inputString($input, 'email', true)));
 $password = (string) inputString($input, 'password', true);
 $db = getDbConnection();
 
@@ -19,12 +19,24 @@ if (!$db) {
     jsonResponse(false, 'Database connection unavailable.', null, [], 503);
 }
 
-$statement = $db->prepare('SELECT id, name, email, password_hash, role, status FROM admin_users WHERE email = :email LIMIT 1');
+$statement = $db->prepare('SELECT id, name, email, password_hash, email_verified_at, role, status FROM admin_users WHERE email = :email LIMIT 1');
 $statement->execute([':email' => $email]);
 $admin = $statement->fetch();
 
-if (!$admin || $admin['status'] !== 'ACTIVE' || !password_verify($password, $admin['password_hash'])) {
+if (!$admin || !password_verify($password, $admin['password_hash'])) {
     jsonResponse(false, 'Invalid email or password.', null, [], 401);
+}
+
+if (empty($admin['email_verified_at'])) {
+    jsonResponse(false, 'Please verify your email.', null, [], 403);
+}
+
+if ($admin['status'] === 'PENDING') {
+    jsonResponse(false, 'Your admin account is awaiting approval.', null, [], 403);
+}
+
+if ($admin['status'] !== 'ACTIVE') {
+    jsonResponse(false, 'Your admin account is disabled.', null, [], 403);
 }
 
 session_regenerate_id(true);

@@ -17,6 +17,8 @@
     <script src="assets/js/account.js"></script>
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/checkout.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/auth/session.js"></script>
   </head>
   <body
     class="min-h-screen overflow-x-hidden bg-[#fff8eb] text-[#2c160f] antialiased selection:bg-[#b88932] selection:text-white"
@@ -45,9 +47,9 @@
         <p class="mt-3 text-sm text-[#806b58]">
           Save your details for a smoother shopping experience.
         </p>
-        <form
+        <form id="customerRegisterForm"
           class="mt-8 grid gap-5 sm:grid-cols-2"
-          onsubmit="event.preventDefault()"
+          
         >
           <div>
             <label for="first-name" class="mb-2 block text-sm font-semibold"

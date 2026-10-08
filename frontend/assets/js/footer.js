@@ -1,6 +1,7 @@
 /* Shared footer injected across the site. */
 (function () {
   const basePath = window.location.pathname.includes("/pages/") ? "../" : "./";
+  const footerScriptUrl = document.currentScript?.src || new URL(`${basePath}assets/js/footer.js`, window.location.href).href;
 
   const icon = (content, className = "h-5 w-5") => `
     <svg aria-hidden="true" class="${className}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,11 +143,11 @@
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label for="bulkName" class="block text-xs font-bold text-[#5C3A21] mb-1">Name *</label>
-                <input type="text" id="bulkName" required placeholder="Enter full name" class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] placeholder-[#5C3A21]/40 focus:border-[#8C1C13] focus:outline-none" />
+                <input type="text" id="bulkName" name="name" maxlength="150" required placeholder="Enter full name" class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] placeholder-[#5C3A21]/40 focus:border-[#8C1C13] focus:outline-none" />
               </div>
               <div>
                 <label for="bulkCompany" class="block text-xs font-bold text-[#5C3A21] mb-1">Company Name *</label>
-                <input type="text" id="bulkCompany" required placeholder="Enter company / organization name" class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] placeholder-[#5C3A21]/40 focus:border-[#8C1C13] focus:outline-none" />
+                <input type="text" id="bulkCompany" name="company_name" maxlength="200" required placeholder="Enter company / organization name" class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] placeholder-[#5C3A21]/40 focus:border-[#8C1C13] focus:outline-none" />
               </div>
             </div>
 
@@ -154,11 +155,11 @@
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label for="bulkPhone" class="block text-xs font-bold text-[#5C3A21] mb-1">Phone Number *</label>
-                <input type="tel" id="bulkPhone" required placeholder="+91 98765 43210" class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] placeholder-[#5C3A21]/40 focus:border-[#8C1C13] focus:outline-none" />
+                <input type="tel" id="bulkPhone" name="phone" maxlength="25" required placeholder="+91 98765 43210" class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] placeholder-[#5C3A21]/40 focus:border-[#8C1C13] focus:outline-none" />
               </div>
               <div>
                 <label for="bulkEmpSize" class="block text-xs font-bold text-[#5C3A21] mb-1">Employee Size *</label>
-                <select id="bulkEmpSize" required class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] focus:border-[#8C1C13] focus:outline-none cursor-pointer">
+                <select id="bulkEmpSize" name="employee_size" required class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] focus:border-[#8C1C13] focus:outline-none cursor-pointer">
                   <option value="Below 25">Below 25</option>
                   <option value="25–50">25–50</option>
                   <option value="51–100">51–100</option>
@@ -172,14 +173,14 @@
             <!-- Row 3: Address -->
             <div>
               <label for="bulkAddress" class="block text-xs font-bold text-[#5C3A21] mb-1">Address *</label>
-              <input type="text" id="bulkAddress" required placeholder="Full delivery address or office location" class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] placeholder-[#5C3A21]/40 focus:border-[#8C1C13] focus:outline-none" />
+              <input type="text" id="bulkAddress" name="address" maxlength="1000" required placeholder="Full delivery address or office location" class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] placeholder-[#5C3A21]/40 focus:border-[#8C1C13] focus:outline-none" />
             </div>
 
             <!-- Row 4: Combo Boxes Required Dropdown & Dynamic Custom Quantity -->
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label for="bulkComboBoxes" class="block text-xs font-bold text-[#5C3A21] mb-1">Combo Boxes Required *</label>
-                <select id="bulkComboBoxes" required class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] focus:border-[#8C1C13] focus:outline-none cursor-pointer">
+                <select id="bulkComboBoxes" name="combo_boxes_required" required class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] focus:border-[#8C1C13] focus:outline-none cursor-pointer">
                   <option value="Below 20">Below 20</option>
                   <option value="20 to 50">20 to 50</option>
                   <option value="50 to 100">50 to 100</option>
@@ -190,11 +191,14 @@
               <!-- Dynamic Custom Quantity Field (hidden until Customize is selected) -->
               <div id="customQtyWrapper" class="hidden">
                 <label for="bulkCustomQty" class="block text-xs font-bold text-[#5C3A21] mb-1">Custom Quantity *</label>
-                <input type="number" id="bulkCustomQty" min="1" placeholder="Enter required count" class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] placeholder-[#5C3A21]/40 focus:border-[#8C1C13] focus:outline-none" />
+                <input type="number" id="bulkCustomQty" name="custom_quantity" min="1" step="1" placeholder="Enter required count" class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] placeholder-[#5C3A21]/40 focus:border-[#8C1C13] focus:outline-none" />
               </div>
             </div>
 
-            <div id="bulkFormStatus" class="hidden rounded-xl p-3 text-xs font-semibold text-center"></div>
+            <label class="hidden" aria-hidden="true">Leave this field empty
+              <input name="website" tabindex="-1" autocomplete="off" />
+            </label>
+            <div id="bulkFormStatus" class="hidden rounded-xl p-3 text-xs font-semibold text-center" role="status" aria-live="polite"></div>
 
             <!-- Action Buttons: Cancel & Submit Enquiry -->
             <div class="pt-3 border-t border-[#EADBC1] flex items-center justify-end gap-3 shrink-0">
@@ -211,81 +215,27 @@
       `;
       document.body.appendChild(modalDiv);
 
-      // Event listeners for Bulk Order modal
-      const modal = document.getElementById("bulkOrderModal");
-      const modalContent = modal?.querySelector("div");
-      const openBtn = document.getElementById("openBulkOrderModalBtn");
-      const closeBtn = document.getElementById("closeBulkOrderModalBtn");
-      const cancelBtn = document.getElementById("cancelBulkOrderBtn");
-      const form = document.getElementById("bulkOrderForm");
-      const statusDiv = document.getElementById("bulkFormStatus");
-      const comboBoxesSelect = document.getElementById("bulkComboBoxes");
-      const customQtyWrapper = document.getElementById("customQtyWrapper");
-      const customQtyInput = document.getElementById("bulkCustomQty");
-
-      // Toggle Custom Quantity field on select change
-      comboBoxesSelect?.addEventListener("change", () => {
-        if (comboBoxesSelect.value === "Customize") {
-          customQtyWrapper?.classList.remove("hidden");
-          if (customQtyInput) customQtyInput.required = true;
-        } else {
-          customQtyWrapper?.classList.add("hidden");
-          if (customQtyInput) customQtyInput.required = false;
-        }
+      const baseUrl = new URL(".", footerScriptUrl);
+      const loadScript = (src) => new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = () => reject(new Error(`Unable to load ${src}`));
+        document.head.appendChild(script);
       });
-
-      function openModal() {
-        if (!modal) return;
-        modal.classList.remove("opacity-0", "pointer-events-none");
-        modal.classList.add("opacity-100", "pointer-events-auto");
-        modalContent?.classList.remove("scale-95");
-        modalContent?.classList.add("scale-100");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.remove("opacity-100", "pointer-events-auto");
-        modal.classList.add("opacity-0", "pointer-events-none");
-        modalContent?.classList.remove("scale-100");
-        modalContent?.classList.add("scale-95");
-        document.body.style.overflow = "";
-      }
-
-      window.openBulkOrderModal = openModal;
-      window.closeBulkOrderModal = closeModal;
-
-      openBtn?.addEventListener("click", openModal);
-      closeBtn?.addEventListener("click", closeModal);
-      cancelBtn?.addEventListener("click", closeModal);
-
-      modal?.addEventListener("click", (e) => {
-        if (e.target === modal) closeModal();
-      });
-
-      // Bind all corporate gifting or bulk order buttons across the page
-      document.addEventListener("click", (e) => {
-        const target = e.target.closest("a[href*='contact-us.html'], [data-open-bulk-modal]");
-        if (target && target.innerText.toLowerCase().includes("corporate") || (target && target.innerText.toLowerCase().includes("bulk"))) {
-          e.preventDefault();
-          openModal();
-        }
-      });
-
-      form?.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if (statusDiv) {
-          statusDiv.className = "rounded-xl p-3 text-xs font-semibold text-center bg-emerald-100 text-emerald-800 border border-emerald-300";
-          statusDiv.innerHTML = "✨ Thank you! Your bulk enquiry has been submitted. Our team will reach out via Phone/WhatsApp shortly.";
-          statusDiv.classList.remove("hidden");
-        }
-        form.reset();
-        customQtyWrapper?.classList.add("hidden");
-        setTimeout(() => {
-          closeModal();
-          if (statusDiv) statusDiv.classList.add("hidden");
-        }, 2000);
-      });
+      const ready = window.NellaiApi
+        ? Promise.resolve()
+        : loadScript(new URL("api.js", baseUrl).href);
+      ready
+        .then(() => loadScript(new URL("forms/bulk-order-form.js", baseUrl).href))
+        .catch((error) => {
+          console.error("[Bulk Enquiry]", error);
+          const status = document.getElementById("bulkFormStatus");
+          if (status) {
+            status.textContent = "The bulk enquiry form is temporarily unavailable. Please try again later.";
+            status.className = "rounded-xl border border-red-200 bg-red-50 p-3 text-xs font-semibold text-center text-red-700";
+          }
+        });
     }
   }
 
@@ -295,5 +245,4 @@
     mountFooter();
   }
 })();
-
 

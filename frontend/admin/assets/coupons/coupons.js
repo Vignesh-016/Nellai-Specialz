@@ -1,0 +1,1 @@
+(() => { const api=window.AdminApi; if(!api)return; window.AdminCoupons={load(){return api.request('coupons/get.php');},save(data,id){return api.request(`coupons/${id?'put':'post'}.php${id?`?id=${id}`:''}`,{method:id?'PUT':'POST',body:JSON.stringify(data)});},remove(id){return api.request(`coupons/delete.php?id=${id}`,{method:'DELETE'});}}; })();

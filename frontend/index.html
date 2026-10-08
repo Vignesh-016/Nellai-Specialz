@@ -35,6 +35,12 @@
     <script src="assets/js/account.js"></script>
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/checkout.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/auth/session.js"></script>
+    <script src="assets/js/home/home-product-section.js"></script>
+    <script src="assets/js/home/combo-offer-section.js"></script>
+    <script src="assets/js/home/home-init.js"></script>
+    <script src="assets/js/catalog.js"></script>
     <style>
       @keyframes galleryScroll {
         0% { transform: translateX(0); }
@@ -260,7 +266,7 @@
             <!-- USP 1: Pure Ghee -->
             <div class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm">
               <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25 text-[#8C1C13]">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L5.6 15.12a2 2 0 01-1.183-1.876V10.5A2.5 2.5 0 016.916 8.03l2.842-.568a6 6 0 003.744-.517l.54-.27a6 6 0 013.744-.517l1.714.343A2.5 2.5 0 0121.5 9.03v4.47a2.5 2.5 0 01-2.072 2.464z"/></svg>
+                <img src="assets/images/Home/Pure ghee.png" alt="" class="h-8 w-8 object-contain">
               </div>
               <div class="min-w-0">
                 <h3 class="font-serif text-sm sm:text-base font-bold text-[#32110D] tracking-wide leading-tight">Pure Ghee</h3>
@@ -271,7 +277,7 @@
             <!-- USP 2: No Palm Oil -->
             <div class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm">
               <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25 text-[#8C1C13]">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <img src="assets/images/Home/No Palm Oil.png" alt="" class="h-8 w-8 object-contain">
               </div>
               <div class="min-w-0">
                 <h3 class="font-serif text-sm sm:text-base font-bold text-[#32110D] tracking-wide leading-tight">No Palm Oil</h3>
@@ -282,7 +288,7 @@
             <!-- USP 3: Thamirabarani Water -->
             <div class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm">
               <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25 text-[#8C1C13]">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 14c0 4.418-3.582 8-8 8s-8-3.582-8-8c0-3.314 4-10 8-12 4 2 8 8.686 8 12z"/></svg>
+                <img src="assets/images/Home/Thamirabarani Water.png" alt="" class="h-8 w-8 object-contain">
               </div>
               <div class="min-w-0">
                 <h3 class="font-serif text-sm sm:text-base font-bold text-[#32110D] tracking-wide leading-tight">Thamirabarani Water</h3>
@@ -293,7 +299,7 @@
             <!-- USP 4: Slow Cooked Process -->
             <div class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm">
               <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25 text-[#8C1C13]">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+                <img src="assets/images/Home/Slow Cooked Process.png" alt="" class="h-8 w-8 object-contain">
               </div>
               <div class="min-w-0">
                 <h3 class="font-serif text-sm sm:text-base font-bold text-[#32110D] tracking-wide leading-tight">Slow Cooked Process</h3>
@@ -403,13 +409,12 @@
 
               <!-- CTAs -->
               <div class="mt-5 flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  data-add-to-cart="diwali-box"
+                <a
+                  href="pages/shop.html"
                   class="inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] px-7 py-3 text-sm font-bold text-[#FFF8EF] shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#7A120A] cursor-pointer"
                 >
                   Order Now <span aria-hidden="true">→</span>
-                </button>
+                </a>
                 <button
                   type="button"
                   data-open-bulk-modal
@@ -542,7 +547,7 @@
           </div>
 
           <!-- Simplified Product Cards Grid -->
-          <div class="mt-6 sm:mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+          <div data-home-products hidden class="mt-6 sm:mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
             
             <!-- Product 1: Ghee Halwa (1kg - ₹600) -->
             <div class="group flex flex-col justify-between relative h-full">

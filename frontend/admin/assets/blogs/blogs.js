@@ -1,0 +1,1 @@
+(() => { const api=window.AdminApi; if(!api)return; window.AdminBlogs={load(){return api.request('blogs/get.php');},save(data,id){return api.request(`blogs/${id?'put':'post'}.php${id?`?id=${id}`:''}`,{method:id?'PUT':'POST',body:data instanceof FormData?data:JSON.stringify(data)});},remove(id){return api.request(`blogs/delete.php?id=${id}`,{method:'DELETE'});}}; })();

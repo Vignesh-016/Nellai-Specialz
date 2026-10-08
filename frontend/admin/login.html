@@ -11,12 +11,13 @@
       <div class="grid h-12 w-12 place-items-center rounded-xl bg-[#5A160F] text-xl font-bold text-[#F5C56B]">N</div>
       <p class="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-[#B88932]">Store administration</p>
       <h1 class="mt-2 font-serif text-4xl font-semibold text-[#32110D]">Sign in</h1>
-      <form class="mt-8 space-y-5" data-admin-login-form>
+      <form id="adminLoginForm" class="mt-8 space-y-5" data-admin-login-form>
         <label class="block text-sm font-semibold" for="admin-email">Email</label>
         <input id="admin-email" type="email" required class="h-12 w-full rounded-lg border border-[#E8E1DA] px-4" />
         <label class="block text-sm font-semibold" for="admin-password">Password</label>
         <input id="admin-password" data-admin-password type="password" required class="h-12 w-full rounded-lg border border-[#E8E1DA] px-4" />
-        <button type="submit" class="h-12 w-full rounded-lg bg-[#5A160F] font-semibold text-white">Sign in to admin</button>
+        <button id="adminLoginBtn" type="submit" class="h-12 w-full rounded-lg bg-[#5A160F] font-semibold text-white">Sign in to admin</button>
+        <p class="text-center text-sm text-[#736962]">Don’t have an admin account? <a href="register.html" class="font-semibold text-[#6E1F15]">Sign Up</a></p>
       </form>
       <a href="../index.html" class="mt-6 block text-center text-sm font-semibold text-[#6E1F15]">Back to storefront</a>
     </main>

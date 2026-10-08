@@ -1,0 +1,11 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__ . '/../../config/database.php'; require_once __DIR__ . '/../shared/response.php'; require_once __DIR__ . '/../shared/request.php';
+methodOnly('POST');
+safeApi(function (): void {
+    $i=jsonRequest();$email=strtolower(trim((string)inputString($i,'email',true)));$otp=inputString($i,'otp',true);if(!preg_match('/^\d{6}$/',$otp))jsonResponse(false,'Invalid verification code.',null,[],422);$db=getDbConnection();if(!$db)jsonResponse(false,'Database connection unavailable.',null,[],503);
+    $p=$db->prepare('SELECT * FROM admin_pending_registrations WHERE email=:email AND expires_at>NOW() LIMIT 1');$p->execute([':email'=>$email]);$pending=$p->fetch();if(!$pending)jsonResponse(false,'Registration has expired. Please register again.',null,[],422);
+    $q=$db->prepare("SELECT * FROM admin_email_otps WHERE email=:email AND purpose='SIGNUP' AND used_at IS NULL AND expires_at>NOW() ORDER BY id DESC LIMIT 1");$q->execute([':email'=>$email]);$record=$q->fetch();if(!$record||(int)$record['attempts']>=5)jsonResponse(false,'Verification code is invalid or expired.',null,[],422);$db->prepare('UPDATE admin_email_otps SET attempts=attempts+1 WHERE id=:id')->execute([':id'=>$record['id']]);if(!password_verify($otp,$record['otp_hash']))jsonResponse(false,'Verification code is invalid or expired.',null,[],422);
+    try{$db->beginTransaction();$check=$db->prepare('SELECT id FROM admin_users WHERE email=:email LIMIT 1');$check->execute([':email'=>$email]);if($check->fetch()){$db->rollBack();jsonResponse(false,'An admin account already exists with this email.',null,[],409);}$ins=$db->prepare("INSERT INTO admin_users(name,email,password_hash,email_verified_at,role,status) VALUES(:name,:email,:hash,NOW(),'ADMIN','ACTIVE')");$ins->execute([':name'=>$pending['name'],':email'=>$pending['email'],':hash'=>$pending['password_hash']]);$db->prepare('UPDATE admin_email_otps SET used_at=NOW() WHERE id=:id')->execute([':id'=>$record['id']]);$db->prepare('DELETE FROM admin_pending_registrations WHERE id=:id')->execute([':id'=>$pending['id']]);$db->commit();}catch(Throwable $e){if($db->inTransaction())$db->rollBack();throw $e;}
+    jsonResponse(true,'Email verified successfully. You can now sign in.');
+});

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
+  <head><script src="assets/admin-auth.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Categories | Nellai Specialz</title>
@@ -16,50 +16,120 @@
         <button onclick="openCategoryModal()" class="rounded-xl bg-[#54170f] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#54170f]/20 hover:bg-[#6e1f15] transition">+ Add category</button>
       </div>
 
-      <div id="categories-grid" class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3"></div>
+      <!-- Categories Table -->
+      <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[700px] text-left text-sm">
+            <thead class="border-b border-[#eadbc6] text-xs uppercase tracking-wider text-[#9b6b2c]">
+              <tr>
+                <th class="p-3">Category</th>
+                <th class="p-3">Slug</th>
+                <th class="p-3">Sub Categories</th>
+                <th class="p-3">Products</th>
+                <th class="p-3">Status</th>
+                <th class="p-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="categories-tbody" class="divide-y divide-[#f0e5d8]"></tbody>
+          </table>
+        </div>
+        <div id="categories-empty" class="hidden py-12 text-center text-sm text-[#7e5a43]">No categories yet.</div>
+      </div>
     </section>
 
     <!-- ═══════════════ ADD/EDIT CATEGORY MODAL ═══════════════ -->
     <div id="category-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#24120f]/50 p-4">
-      <div data-modal-box class="w-full max-w-md rounded-2xl bg-white shadow-2xl transform scale-95 opacity-0 transition-all duration-200">
-        <div class="flex items-center justify-between border-b border-[#eee8e2] px-6 py-4">
+      <div data-modal-box class="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl transform scale-95 opacity-0 transition-all duration-200">
+        <div class="sticky top-0 z-10 flex items-center justify-between border-b border-[#eee8e2] bg-white px-6 py-4 rounded-t-2xl">
           <h2 id="category-modal-title" class="text-xl font-bold text-[#32110d]">Add category</h2>
           <button onclick="AdminModal.close('category-modal')" class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45] hover:bg-[#f8f6f3] transition">✕</button>
         </div>
         <form onsubmit="saveCategory(event)" class="p-6 space-y-5">
           <input type="hidden" id="cf-id" />
-          <div>
-            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Category name <span class="text-red-500">*</span></label>
-            <input id="cf-name" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="e.g. Halwa, Snacks, Gift Boxes" />
-            <p id="cf-name-error" class="mt-1 text-xs text-red-600 hidden">Category name is required.</p>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Category name <span class="text-red-500">*</span></label>
+              <input id="cf-name" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="e.g. Halwa, Snacks, Gift Boxes" />
+              <p id="cf-name-error" class="mt-1 text-xs text-red-600 hidden">Category name is required.</p>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Slug <span class="text-red-500">*</span></label>
+              <input id="cf-slug" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm font-mono outline-none focus:border-[#9b6b2c]" placeholder="auto-generated-slug" />
+              <p id="cf-slug-error" class="mt-1 text-xs text-red-600 hidden">Slug is required.</p>
+            </div>
           </div>
+
           <div>
             <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Description</label>
             <textarea id="cf-description" rows="3" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] resize-none" placeholder="Brief description of this category..."></textarea>
           </div>
+
+          <!-- Category Image -->
           <div>
-            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Display icon</label>
-            <div class="flex gap-2 flex-wrap" id="cf-icon-picker">
-              <button type="button" data-icon="◈" class="icon-pick grid h-10 w-10 place-items-center rounded-lg border border-[#eadbc6] text-lg hover:border-[#9b6b2c] transition">◈</button>
-              <button type="button" data-icon="✦" class="icon-pick grid h-10 w-10 place-items-center rounded-lg border border-[#eadbc6] text-lg hover:border-[#9b6b2c] transition">✦</button>
-              <button type="button" data-icon="♢" class="icon-pick grid h-10 w-10 place-items-center rounded-lg border border-[#eadbc6] text-lg hover:border-[#9b6b2c] transition">♢</button>
-              <button type="button" data-icon="◆" class="icon-pick grid h-10 w-10 place-items-center rounded-lg border border-[#eadbc6] text-lg hover:border-[#9b6b2c] transition">◆</button>
-              <button type="button" data-icon="★" class="icon-pick grid h-10 w-10 place-items-center rounded-lg border border-[#eadbc6] text-lg hover:border-[#9b6b2c] transition">★</button>
-              <button type="button" data-icon="▣" class="icon-pick grid h-10 w-10 place-items-center rounded-lg border border-[#eadbc6] text-lg hover:border-[#9b6b2c] transition">▣</button>
-              <button type="button" data-icon="⊛" class="icon-pick grid h-10 w-10 place-items-center rounded-lg border border-[#eadbc6] text-lg hover:border-[#9b6b2c] transition">⊛</button>
-              <button type="button" data-icon="⬡" class="icon-pick grid h-10 w-10 place-items-center rounded-lg border border-[#eadbc6] text-lg hover:border-[#9b6b2c] transition">⬡</button>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Category Image</label>
+            <div id="cf-image-area" class="flex items-center gap-4">
+              <div id="cf-image-preview" class="hidden h-20 w-20 rounded-xl border border-[#eadbc6] bg-[#f3e7d5] overflow-hidden">
+                <img id="cf-image-img" class="h-full w-full object-cover" />
+              </div>
+              <div>
+                <input type="file" id="cf-image-input" accept="image/*" class="hidden" onchange="previewCategoryImage(this)" />
+                <button type="button" onclick="document.getElementById('cf-image-input').click()" class="rounded-lg bg-[#f3e7d5] px-4 py-2 text-xs font-semibold text-[#8e281d] hover:bg-[#eadbc6] transition">Upload image</button>
+                <button type="button" id="cf-image-remove" onclick="removeCategoryImage()" class="hidden ml-2 rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-red-500 hover:bg-red-50 transition">Remove</button>
+              </div>
             </div>
-            <input type="hidden" id="cf-icon" value="◈" />
           </div>
-          <label class="flex items-center gap-2.5 cursor-pointer">
-            <input type="checkbox" id="cf-active" checked class="h-4 w-4 rounded border-[#d5c5b0] accent-[#8e281d]" />
-            <span class="text-sm font-semibold text-[#594b45]">Active (visible in store)</span>
-          </label>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Status</label>
+              <select id="cf-status" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+            <div>
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Sort Order</label>
+              <input id="cf-sort" type="number" min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="0" value="0" />
+            </div>
+          </div>
+
+          <!-- Sub Categories Section -->
+          <div class="space-y-3 border-t border-[#eee8e2] pt-5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Sub Categories</h3>
+              <button type="button" onclick="addSubCatRow()" class="rounded-lg bg-[#f3e7d5] px-3 py-1.5 text-xs font-semibold text-[#8e281d] hover:bg-[#eadbc6] transition">+ Add sub category</button>
+            </div>
+            <div id="subcats-container" class="space-y-3"></div>
+            <p id="no-subcats" class="text-xs text-[#a89387]">No sub categories added yet.</p>
+          </div>
+
           <div class="flex gap-3 justify-end border-t border-[#eee8e2] pt-5">
             <button type="button" onclick="AdminModal.close('category-modal')" class="rounded-xl border border-[#e8e1da] px-4 py-2.5 text-sm font-semibold text-[#594b45] hover:bg-[#f8f6f3] transition">Cancel</button>
-            <button type="submit" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Save category</button>
+            <button type="submit" id="cf-submit-btn" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Save category</button>
           </div>
         </form>
+      </div>
+    </div>
+
+    <!-- ═══════════════ SUB CATEGORIES MANAGEMENT MODAL ═══════════════ -->
+    <div id="subcats-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#24120f]/50 p-4">
+      <div data-modal-box class="w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl transform scale-95 opacity-0 transition-all duration-200">
+        <div class="sticky top-0 z-10 flex items-center justify-between border-b border-[#eee8e2] bg-white px-6 py-4 rounded-t-2xl">
+          <h2 id="subcats-modal-title" class="text-xl font-bold text-[#32110d]">Manage Sub Categories</h2>
+          <button onclick="AdminModal.close('subcats-modal')" class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45] hover:bg-[#f8f6f3] transition">✕</button>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <p class="text-sm text-[#7e5a43]" id="subcats-modal-desc">Sub categories for this category.</p>
+            <button onclick="addSubCatToView()" class="rounded-lg bg-[#f3e7d5] px-3 py-1.5 text-xs font-semibold text-[#8e281d] hover:bg-[#eadbc6] transition">+ Add</button>
+          </div>
+          <div id="subcats-view-list" class="space-y-3"></div>
+          <div id="subcats-view-empty" class="hidden py-8 text-center text-sm text-[#7e5a43]">No sub categories.</div>
+          <div class="flex justify-end border-t border-[#eee8e2] pt-4">
+            <button onclick="AdminModal.close('subcats-modal')" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Done</button>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -67,73 +137,263 @@
   <script src="assets/admin.js" defer></script>
   <script>
     let categories = [
-      { id: 1, name: "Halwa", icon: "◈", description: "Traditional Tirunelveli halwa varieties made with pure ghee.", productCount: 18, active: true },
-      { id: 2, name: "Combos", icon: "✦", description: "Curated gift boxes and combo packs for festivals and celebrations.", productCount: 7, active: true },
-      { id: 3, name: "Savouries", icon: "♢", description: "Crispy snacks and traditional savoury items.", productCount: 23, active: true },
-      { id: 4, name: "Gift Boxes", icon: "★", description: "Premium gifting options for special occasions.", productCount: 5, active: false },
+      { id: 1, name: "Halwa", slug: "halwa", description: "Traditional Tirunelveli halwa varieties made with pure ghee.", productCount: 18, status: "active", sortOrder: 1, image: null, subCategories: [
+        { id: 1, name: "Traditional", slug: "traditional", description: "Classic recipes passed down generations.", status: "active" },
+        { id: 2, name: "Premium", slug: "premium", description: "Rich and luxurious halwa with premium ingredients.", status: "active" },
+      ]},
+      { id: 2, name: "Combos", slug: "combos", description: "Curated gift boxes and combo packs for festivals.", productCount: 7, status: "active", sortOrder: 2, image: null, subCategories: [
+        { id: 3, name: "Gift Box", slug: "gift-box", description: "Curated boxes ideal for festivals.", status: "active" },
+        { id: 4, name: "Festival Pack", slug: "festival-pack", description: "Special packs for Diwali, Pongal, and more.", status: "active" },
+      ]},
+      { id: 3, name: "Savouries", slug: "savouries", description: "Crispy snacks and traditional savoury items.", productCount: 23, status: "active", sortOrder: 3, image: null, subCategories: [
+        { id: 5, name: "Mixture", slug: "mixture", description: "Crunchy mixtures and snack mixes.", status: "active" },
+        { id: 6, name: "Chips", slug: "chips", description: "", status: "inactive" },
+      ]},
+      { id: 4, name: "Gift Boxes", slug: "gift-boxes", description: "Premium gifting options for special occasions.", productCount: 5, status: "inactive", sortOrder: 4, image: null, subCategories: [] },
     ];
     let nextCatId = 5;
-    let selectedIcon = "◈";
+    let nextSubCatId = 7;
+    let viewCatId = null;
 
     function renderCategories() {
-      const grid = document.getElementById("categories-grid");
-      grid.innerHTML = categories.map(c => `
-        <article class="group rounded-2xl border border-[#eadbc6] bg-white p-6 hover:shadow-lg hover:shadow-[#eadbc6]/40 transition-all duration-200">
-          <div class="flex items-center justify-between">
-            <span class="grid h-12 w-12 place-items-center rounded-xl bg-[#f3e7d5] text-2xl text-[#9b6b2c] group-hover:scale-110 transition-transform">${c.icon}</span>
-            <div class="flex gap-2">
-              <button onclick="editCategory(${c.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#8e281d] hover:bg-[#f5eee8] transition" title="Edit">✎</button>
-              <button onclick="deleteCategory(${c.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition" title="Delete">🗑</button>
-            </div>
-          </div>
-          <h2 class="mt-5 font-serif text-xl font-bold">${c.name}</h2>
-          <p class="mt-1 text-sm text-[#7e5a43]">${c.productCount} products</p>
-          ${c.description ? `<p class="mt-2 text-xs text-[#a89387] leading-5">${c.description}</p>` : ""}
-          ${!c.active ? '<span class="mt-3 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-bold text-gray-500">Inactive</span>' : ""}
-        </article>
-      `).join("");
+      const tbody = document.getElementById("categories-tbody");
+      const empty = document.getElementById("categories-empty");
+      if (!categories.length) { tbody.innerHTML = ""; empty.classList.remove("hidden"); return; }
+      empty.classList.add("hidden");
+
+      tbody.innerHTML = categories.map(c => {
+        const statusColor = c.status === "active" ? "bg-emerald-50 text-emerald-700" : "bg-gray-100 text-gray-600";
+        const statusLabel = c.status === "active" ? "Active" : "Inactive";
+        return `
+          <tr class="group hover:bg-[#fffcf7] transition">
+            <td class="p-3">
+              <div class="flex items-center gap-3">
+                <div class="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[#f3e7d5] text-lg text-[#9b6b2c] overflow-hidden">
+                  ${c.image ? `<img src="${c.image}" class="h-full w-full object-cover" />` : "◈"}
+                </div>
+                <div>
+                  <p class="font-semibold text-[#32110d]">${c.name}</p>
+                  ${c.description ? `<p class="text-xs text-[#a89387] truncate max-w-[200px]">${c.description}</p>` : ""}
+                </div>
+              </div>
+            </td>
+            <td class="p-3 font-mono text-xs text-[#7e5a43]">${c.slug}</td>
+            <td class="p-3">
+              <span class="rounded-full bg-[#f3e7d5] px-3 py-1 text-xs font-semibold text-[#9b6b2c]">${c.subCategories.length}</span>
+            </td>
+            <td class="p-3">${c.productCount}</td>
+            <td class="p-3"><span class="rounded-full ${statusColor} px-3 py-1 text-xs font-semibold">${statusLabel}</span></td>
+            <td class="p-3">
+              <div class="flex justify-end gap-2">
+                <button onclick="manageSubCats(${c.id})" title="Manage Sub Categories" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#9b6b2c] hover:bg-[#f5eee8] transition">◈</button>
+                <button onclick="editCategory(${c.id})" title="Edit" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#8e281d] hover:bg-[#f5eee8] transition">✎</button>
+                <button onclick="deleteCategory(${c.id})" title="Delete" class="grid h-8 w-8 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition">🗑</button>
+              </div>
+            </td>
+          </tr>`;
+      }).join("");
     }
 
+    /* ═══ Category Modal ═══ */
     function openCategoryModal(cat) {
       document.getElementById("category-modal-title").textContent = cat ? "Edit category" : "Add category";
+      document.getElementById("cf-submit-btn").textContent = cat ? "Update category" : "Save category";
       document.getElementById("cf-id").value = cat ? cat.id : "";
       document.getElementById("cf-name").value = cat ? cat.name : "";
+      document.getElementById("cf-slug").value = cat ? cat.slug : "";
       document.getElementById("cf-description").value = cat ? cat.description : "";
-      document.getElementById("cf-active").checked = cat ? cat.active : true;
-      selectedIcon = cat ? cat.icon : "◈";
-      document.getElementById("cf-icon").value = selectedIcon;
+      document.getElementById("cf-status").value = cat ? cat.status : "active";
+      document.getElementById("cf-sort").value = cat ? cat.sortOrder : 0;
       document.getElementById("cf-name-error").classList.add("hidden");
-      highlightIcon();
+      document.getElementById("cf-slug-error").classList.add("hidden");
+
+      // Image
+      const preview = document.getElementById("cf-image-preview");
+      const removeBtn = document.getElementById("cf-image-remove");
+      if (cat && cat.image) {
+        document.getElementById("cf-image-img").src = cat.image;
+        preview.classList.remove("hidden");
+        removeBtn.classList.remove("hidden");
+      } else {
+        preview.classList.add("hidden");
+        removeBtn.classList.add("hidden");
+      }
+      document.getElementById("cf-image-input").value = "";
+
+      // Sub categories
+      renderSubCatRows(cat ? cat.subCategories : []);
+
+      AdminSlug.reset("cf-slug");
+      AdminSlug.bind("cf-name", "cf-slug");
       AdminModal.open("category-modal");
     }
 
-    function highlightIcon() {
-      document.querySelectorAll("#cf-icon-picker .icon-pick").forEach(btn => {
-        if (btn.dataset.icon === selectedIcon) {
-          btn.classList.add("bg-[#f3e7d5]", "border-[#9b6b2c]");
-          btn.classList.remove("border-[#eadbc6]");
-        } else {
-          btn.classList.remove("bg-[#f3e7d5]", "border-[#9b6b2c]");
-          btn.classList.add("border-[#eadbc6]");
-        }
+    function previewCategoryImage(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          document.getElementById("cf-image-img").src = e.target.result;
+          document.getElementById("cf-image-preview").classList.remove("hidden");
+          document.getElementById("cf-image-remove").classList.remove("hidden");
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function removeCategoryImage() {
+      document.getElementById("cf-image-preview").classList.add("hidden");
+      document.getElementById("cf-image-remove").classList.add("hidden");
+      document.getElementById("cf-image-input").value = "";
+      document.getElementById("cf-image-img").src = "";
+    }
+
+    /* ═══ Sub Category Rows in Category Modal ═══ */
+    function renderSubCatRows(subs) {
+      const container = document.getElementById("subcats-container");
+      const noSubs = document.getElementById("no-subcats");
+      container.innerHTML = "";
+      if (!subs.length) { noSubs.classList.remove("hidden"); return; }
+      noSubs.classList.add("hidden");
+
+      subs.forEach((sc, i) => {
+        const div = document.createElement("div");
+        div.className = "rounded-xl border border-[#eadbc6] bg-[#fffcf7] p-4 space-y-3";
+        div.dataset.scIndex = i;
+        div.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#9b6b2c]">Sub Category #${i+1}</span>
+            <button type="button" onclick="removeSubCatRow(this)" class="grid h-7 w-7 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition">✕</button>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <div>
+              <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Name <span class="text-red-500">*</span></label>
+              <input class="sc-name w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" value="${sc.name || ''}" placeholder="Sub category name" />
+            </div>
+            <div>
+              <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Slug</label>
+              <input class="sc-slug w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm font-mono outline-none focus:border-[#9b6b2c]" value="${sc.slug || ''}" placeholder="auto-generated" />
+            </div>
+          </div>
+          <div>
+            <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Description</label>
+            <input class="sc-desc w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" value="${sc.description || ''}" placeholder="Brief description..." />
+          </div>
+          <div>
+            <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Status</label>
+            <select class="sc-status rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm">
+              <option value="active" ${sc.status === 'active' ? 'selected' : ''}>Active</option>
+              <option value="inactive" ${sc.status === 'inactive' ? 'selected' : ''}>Inactive</option>
+            </select>
+          </div>`;
+        container.appendChild(div);
+
+        // Auto-slug for sub category
+        const nameInput = div.querySelector('.sc-name');
+        const slugInput = div.querySelector('.sc-slug');
+        nameInput.addEventListener('input', () => {
+          if (!slugInput.dataset.manual) {
+            slugInput.value = AdminSlug.generate(nameInput.value);
+          }
+        });
+        slugInput.addEventListener('input', () => { slugInput.dataset.manual = '1'; });
       });
     }
 
+    function addSubCatRow() {
+      document.getElementById("no-subcats").classList.add("hidden");
+      const container = document.getElementById("subcats-container");
+      const i = container.children.length;
+      const div = document.createElement("div");
+      div.className = "rounded-xl border border-[#eadbc6] bg-[#fffcf7] p-4 space-y-3";
+      div.innerHTML = `
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#9b6b2c]">Sub Category #${i+1}</span>
+          <button type="button" onclick="removeSubCatRow(this)" class="grid h-7 w-7 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition">✕</button>
+        </div>
+        <div class="grid gap-3 sm:grid-cols-2">
+          <div>
+            <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Name <span class="text-red-500">*</span></label>
+            <input class="sc-name w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" placeholder="Sub category name" />
+          </div>
+          <div>
+            <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Slug</label>
+            <input class="sc-slug w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm font-mono outline-none focus:border-[#9b6b2c]" placeholder="auto-generated" />
+          </div>
+        </div>
+        <div>
+          <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Description</label>
+          <input class="sc-desc w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" placeholder="Brief description..." />
+        </div>
+        <div>
+          <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Status</label>
+          <select class="sc-status rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>`;
+      container.appendChild(div);
+      div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      // Auto-slug
+      const nameInput = div.querySelector('.sc-name');
+      const slugInput = div.querySelector('.sc-slug');
+      nameInput.addEventListener('input', () => {
+        if (!slugInput.dataset.manual) slugInput.value = AdminSlug.generate(nameInput.value);
+      });
+      slugInput.addEventListener('input', () => { slugInput.dataset.manual = '1'; });
+    }
+
+    function removeSubCatRow(btn) {
+      const row = btn.closest('.rounded-xl');
+      AdminConfirm.show("Are you sure you want to delete this sub category?", () => {
+        row.remove();
+        const container = document.getElementById("subcats-container");
+        if (!container.children.length) document.getElementById("no-subcats").classList.remove("hidden");
+      });
+    }
+
+    function getSubCatsFromForm() {
+      const rows = document.querySelectorAll("#subcats-container > div");
+      const subs = [];
+      rows.forEach(row => {
+        const name = row.querySelector('.sc-name')?.value.trim();
+        if (name) {
+          subs.push({
+            id: nextSubCatId++,
+            name,
+            slug: row.querySelector('.sc-slug')?.value.trim() || AdminSlug.generate(name),
+            description: row.querySelector('.sc-desc')?.value.trim() || "",
+            status: row.querySelector('.sc-status')?.value || "active",
+          });
+        }
+      });
+      return subs;
+    }
+
+    /* ═══ Save Category ═══ */
     function saveCategory(e) {
       e.preventDefault();
       const name = document.getElementById("cf-name").value.trim();
-      if (!name) {
-        document.getElementById("cf-name-error").classList.remove("hidden");
-        return;
-      }
-      document.getElementById("cf-name-error").classList.add("hidden");
+      const slug = document.getElementById("cf-slug").value.trim();
+      let valid = true;
+
+      if (!name) { document.getElementById("cf-name-error").classList.remove("hidden"); valid = false; }
+      else { document.getElementById("cf-name-error").classList.add("hidden"); }
+      if (!slug) { document.getElementById("cf-slug-error").classList.remove("hidden"); valid = false; }
+      else { document.getElementById("cf-slug-error").classList.add("hidden"); }
+      if (!valid) return;
+
+      const imgEl = document.getElementById("cf-image-img");
+      const image = imgEl.src && !document.getElementById("cf-image-preview").classList.contains("hidden") ? imgEl.src : null;
 
       const id = document.getElementById("cf-id").value;
       const data = {
-        name,
-        icon: document.getElementById("cf-icon").value,
+        name, slug,
         description: document.getElementById("cf-description").value.trim(),
-        active: document.getElementById("cf-active").checked,
+        status: document.getElementById("cf-status").value,
+        sortOrder: parseInt(document.getElementById("cf-sort").value) || 0,
+        image,
+        subCategories: getSubCatsFromForm(),
       };
 
       if (id) {
@@ -159,26 +419,96 @@
     function deleteCategory(id) {
       const c = categories.find(x => x.id === id);
       if (!c) return;
-      AdminConfirm.show(`Delete category "${c.name}"? Products in this category will become uncategorised.`, () => {
+      AdminConfirm.show(`Are you sure you want to delete this item? Category "${c.name}" and its sub categories will be removed. Products in this category will become uncategorised.`, () => {
         categories = categories.filter(x => x.id !== id);
         renderCategories();
         AdminToast.show("Category deleted", "error");
       });
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(() => {
+    /* ═══ Manage Sub Categories (standalone viewer) ═══ */
+    function manageSubCats(catId) {
+      const c = categories.find(x => x.id === catId);
+      if (!c) return;
+      viewCatId = catId;
+      document.getElementById("subcats-modal-title").textContent = `Sub Categories — ${c.name}`;
+      document.getElementById("subcats-modal-desc").textContent = `Manage sub categories for "${c.name}".`;
+      renderSubCatsView(c);
+      AdminModal.open("subcats-modal");
+    }
+
+    function renderSubCatsView(cat) {
+      const list = document.getElementById("subcats-view-list");
+      const empty = document.getElementById("subcats-view-empty");
+      if (!cat.subCategories.length) { list.innerHTML = ""; empty.classList.remove("hidden"); return; }
+      empty.classList.add("hidden");
+
+      list.innerHTML = cat.subCategories.map((sc, i) => {
+        const statusColor = sc.status === "active" ? "bg-emerald-50 text-emerald-700" : "bg-gray-100 text-gray-600";
+        return `
+          <div class="flex items-center justify-between rounded-xl border border-[#eadbc6] bg-[#fffcf7] p-4">
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <p class="font-semibold text-[#32110d]">${sc.name}</p>
+                <span class="font-mono text-[10px] text-[#7e5a43]">${sc.slug}</span>
+                <span class="rounded-full ${statusColor} px-2 py-0.5 text-[10px] font-semibold">${sc.status === 'active' ? 'Active' : 'Inactive'}</span>
+              </div>
+              ${sc.description ? `<p class="mt-1 text-xs text-[#a89387]">${sc.description}</p>` : ""}
+            </div>
+            <div class="flex gap-2 shrink-0 ml-3">
+              <button onclick="editSubCatInView(${cat.id}, ${sc.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#8e281d] hover:bg-[#f5eee8] transition" title="Edit">✎</button>
+              <button onclick="deleteSubCatInView(${cat.id}, ${sc.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition" title="Delete">🗑</button>
+            </div>
+          </div>`;
+      }).join("");
+    }
+
+    function addSubCatToView() {
+      const cat = categories.find(x => x.id === viewCatId);
+      if (!cat) return;
+      const name = prompt("Sub category name:");
+      if (!name || !name.trim()) return;
+      cat.subCategories.push({
+        id: nextSubCatId++,
+        name: name.trim(),
+        slug: AdminSlug.generate(name.trim()),
+        description: "",
+        status: "active",
+      });
+      renderSubCatsView(cat);
+      renderCategories();
+      AdminToast.show("Sub category added");
+    }
+
+    function editSubCatInView(catId, scId) {
+      const cat = categories.find(x => x.id === catId);
+      if (!cat) return;
+      const sc = cat.subCategories.find(s => s.id === scId);
+      if (!sc) return;
+      // Open the category modal with this category to edit inline
+      AdminModal.close("subcats-modal");
+      setTimeout(() => openCategoryModal(cat), 250);
+    }
+
+    function deleteSubCatInView(catId, scId) {
+      const cat = categories.find(x => x.id === catId);
+      if (!cat) return;
+      const sc = cat.subCategories.find(s => s.id === scId);
+      if (!sc) return;
+      AdminConfirm.show(`Are you sure you want to delete this item? Sub category "${sc.name}" will be removed.`, () => {
+        cat.subCategories = cat.subCategories.filter(s => s.id !== scId);
+        renderSubCatsView(cat);
         renderCategories();
-        // Icon picker event binding
-        document.querySelectorAll("#cf-icon-picker .icon-pick").forEach(btn => {
-          btn.addEventListener("click", () => {
-            selectedIcon = btn.dataset.icon;
-            document.getElementById("cf-icon").value = selectedIcon;
-            highlightIcon();
-          });
-        });
-      }, 100);
+        AdminToast.show("Sub category deleted", "error");
+      });
+    }
+
+    /* ═══ INIT ═══ */
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(renderCategories, 100);
     });
   </script>
+  <script src="assets/admin-api.js"></script>
+  <script src="assets/categories/categories.js"></script>
 </body>
 </html>

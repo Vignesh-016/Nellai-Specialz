@@ -34,6 +34,7 @@
   <script src="../assets/js/account.js"></script>
   <script src="../assets/js/cart.js"></script>
   <script src="../assets/js/checkout.js"></script>
+  <script src="../assets/js/api.js"></script>
 </head>
 <body class="overflow-x-hidden bg-[#fff8eb] text-[#2c160f] antialiased selection:bg-[#b88932] selection:text-white">
 
@@ -117,7 +118,8 @@
           </div>
         </div>
 
-        <!-- 2. FILTER & TOOLBAR BAR (SEARCH, FILTER BUTTON, PRICE SLIDER, SORT BY) -->
+        <!-- 2. PRODUCTS -->
+        <template data-retired-shop-controls>
         <div class="mb-8 bg-[#FBF5ED] border border-[#B88932]/20 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-wrap lg:flex-nowrap items-center justify-between gap-4">
           
           <!-- Search Input Box -->
@@ -150,9 +152,10 @@
           </div>
 
         </div>
+        </template>
 
         <!-- 3. PRODUCTS GRID (4 COLUMNS EXACT LIKE DESIGN IMAGE) -->
-        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div id="productsGrid" hidden class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
           <!-- Card 1: Tirunelveli Halwa -->
           <article class="product-card group bg-white rounded-2xl border border-[#B88932]/20 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="halwa" data-price="320" data-rating="5.0" data-[#title]="Tirunelveli Halwa">
@@ -170,7 +173,7 @@
                 <p class="mt-3 font-serif text-lg font-bold text-[#32110D]">₹320 – ₹640</p>
               </div>
               <div class="mt-4">
-                <button type="button" onclick="if(window.NellaiStore){NellaiStore.addToCart({id: 'tirunelveli-halwa-500g', name: 'Tirunelveli Halwa (500g)', price: 320, image: '../assets/images/products/classic-halwa.jpg'})}" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300" data-add-to-cart="tirunelveli-halwa">
+                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                   <span>Add to Cart</span>
                 </button>
@@ -195,7 +198,7 @@
                 <p class="mt-3 font-serif text-lg font-bold text-[#32110D]">₹280 – ₹560</p>
               </div>
               <div class="mt-4">
-                <button type="button" onclick="if(window.NellaiStore){NellaiStore.addToCart({id: 'wheat-halwa-500g', name: 'Wheat Halwa (500g)', price: 280, image: '../assets/images/products/wheat-halwa.jpg'})}" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300" data-add-to-cart="wheat-halwa">
+                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                   <span>Add to Cart</span>
                 </button>
@@ -219,7 +222,7 @@
                 <p class="mt-3 font-serif text-lg font-bold text-[#32110D]">₹260 – ₹520</p>
               </div>
               <div class="mt-4">
-                <button type="button" onclick="if(window.NellaiStore){NellaiStore.addToCart({id: 'mysore-pak-500g', name: 'Mysore Pak (500g)', price: 260, image: '../assets/images/products/ghee-halwa.jpg'})}" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300" data-add-to-cart="mysore-pak">
+                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                   <span>Add to Cart</span>
                 </button>
@@ -243,7 +246,7 @@
                 <p class="mt-3 font-serif text-lg font-bold text-[#32110D]">₹120 – ₹240</p>
               </div>
               <div class="mt-4">
-                <button type="button" onclick="if(window.NellaiStore){NellaiStore.addToCart({id: 'special-mixture-250g', name: 'Special Mixture (250g)', price: 120, image: '../assets/images/products/fourth-halwa.jpg'})}" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300" data-add-to-cart="mixture">
+                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                   <span>Add to Cart</span>
                 </button>
@@ -267,7 +270,7 @@
                 <p class="mt-3 font-serif text-lg font-bold text-[#32110D]">₹380 – ₹760</p>
               </div>
               <div class="mt-4">
-                <button type="button" onclick="if(window.NellaiStore){NellaiStore.addToCart({id: 'karupatti-halwa-500g', name: 'Karupatti Halwa (500g)', price: 380, image: '../assets/images/products/karupatti-halwa.jpg'})}" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300" data-add-to-cart="karupatti-halwa">
+                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                   <span>Add to Cart</span>
                 </button>
@@ -290,7 +293,7 @@
                 <p class="mt-3 font-serif text-lg font-bold text-[#32110D]">₹340 – ₹680</p>
               </div>
               <div class="mt-4">
-                <button type="button" onclick="if(window.NellaiStore){NellaiStore.addToCart({id: 'muscoth-halwa-500g', name: 'Special Muscoth Halwa (500g)', price: 340, image: '../assets/images/products/ghee-halwa.jpg'})}" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300" data-add-to-cart="muscoth-halwa">
+                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                   <span>Add to Cart</span>
                 </button>
@@ -314,7 +317,7 @@
                 <p class="mt-3 font-serif text-lg font-bold text-[#32110D]">₹599 – ₹1,199</p>
               </div>
               <div class="mt-4">
-                <button type="button" onclick="if(window.NellaiStore){NellaiStore.addToCart({id: 'halwa-combo-1kg', name: 'Nellai Halwa Combo Box (1kg)', price: 599, image: '../assets/images/products/combo-halwa.jpg'})}" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300" data-add-to-cart="nellai-halwa-combo">
+                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                   <span>Add to Cart</span>
                 </button>
@@ -337,7 +340,7 @@
                 <p class="mt-3 font-serif text-lg font-bold text-[#32110D]">₹240 – ₹480</p>
               </div>
               <div class="mt-4">
-                <button type="button" onclick="if(window.NellaiStore){NellaiStore.addToCart({id: 'ghee-laddu-500g', name: 'Pure Ghee Laddu (500g)', price: 240, image: '../assets/images/products/classic-halwa.jpg'})}" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300" data-add-to-cart="ghee-laddu">
+                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#B88932] hover:bg-[#4d190e] py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition-colors duration-300">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                   <span>Add to Cart</span>
                 </button>
@@ -350,50 +353,105 @@
       </div>
     </section>
 
-    <!-- SHOP FAQ SECTION -->
-    <section class="py-16 bg-[#FBF5E9] border-t border-[#B88932]/20">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center mb-10">
-          <span class="text-xs font-bold uppercase tracking-[0.25em] text-[#B88932]">HELP CENTER</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#32110D] mt-1">Frequently Asked Questions</h2>
-          <p class="font-tamil text-sm text-[#4d190e] font-semibold mt-1">பொதுவான கேள்விகள்</p>
+    <!-- Customer testimonials -->
+    <section
+      id="testimonials"
+      class="bg-[#FFF8EF] px-4 py-12 sm:px-6 lg:px-8 lg:py-16 border-b border-[#EADBC1]"
+      data-reveal
+    >
+      <div class="mx-auto max-w-[1280px]">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 items-stretch">
+          <div class="lg:col-span-7 flex flex-col justify-center">
+            <div class="h-full rounded-3xl border border-[#EADBC1] bg-[#FFFBF5] p-5 sm:p-7 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between border-b border-[#EADBC1] pb-3">
+                  <div>
+                    <h2 class="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-[#32110D]">
+                      Loved by Our Customers
+                    </h2>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <button type="button" data-testimonial-prev aria-label="Previous review" class="flex h-8 w-8 items-center justify-center rounded-full border border-[#EADBC1] bg-[#F8F1E4] text-sm font-bold text-[#8C1C13] hover:bg-[#8C1C13] hover:text-[#FFF8EF] transition cursor-pointer">‹</button>
+                    <button type="button" data-testimonial-next aria-label="Next review" class="flex h-8 w-8 items-center justify-center rounded-full border border-[#EADBC1] bg-[#F8F1E4] text-sm font-bold text-[#8C1C13] hover:bg-[#8C1C13] hover:text-[#FFF8EF] transition cursor-pointer">›</button>
+                  </div>
+                </div>
+                <div class="mt-5 min-h-[150px]">
+                  <div data-testimonial-slide class="block transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                      <div class="flex h-11 w-11 items-center justify-center rounded-full bg-[#8C1C13] font-serif text-base font-bold text-[#FFF8EF] shrink-0">PM</div>
+                      <div>
+                        <h3 class="font-serif text-base font-bold text-[#32110D]">Priya M.</h3>
+                        <p class="text-[11px] text-[#5C3A21]">Verified Customer • Chennai</p>
+                      </div>
+                    </div>
+                    <div class="mt-2 text-sm text-[#D9B86C]">★★★★★</div>
+                    <blockquote class="mt-2 text-sm leading-relaxed text-[#32110D] font-medium">
+                      "Ordered the Diwali combo for my parents in Chennai. The halwa arrived fresh, fragrant, and tasted like it came straight from a Tirunelveli shop. The packaging kept it completely leak-proof!"
+                    </blockquote>
+                  </div>
+                  <div data-testimonial-slide class="hidden transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                      <div class="flex h-11 w-11 items-center justify-center rounded-full bg-[#7A120A] font-serif text-base font-bold text-[#FFF8EF] shrink-0">RK</div>
+                      <div>
+                        <h3 class="font-serif text-base font-bold text-[#32110D]">Ramesh K.</h3>
+                        <p class="text-[11px] text-[#5C3A21]">Verified Customer • Bengaluru</p>
+                      </div>
+                    </div>
+                    <div class="mt-2 text-sm text-[#D9B86C]">★★★★★</div>
+                    <blockquote class="mt-2 text-sm leading-relaxed text-[#32110D] font-medium">
+                      "Finally found a festive gift box where every single item gets finished instantly. The Karupatti halwa has the perfect natural jaggery aroma."
+                    </blockquote>
+                  </div>
+                  <div data-testimonial-slide class="hidden transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                      <div class="flex h-11 w-11 items-center justify-center rounded-full bg-[#8C1C13] font-serif text-base font-bold text-[#FFF8EF] shrink-0">AV</div>
+                      <div>
+                        <h3 class="font-serif text-base font-bold text-[#32110D]">Arun V.</h3>
+                        <p class="text-[11px] text-[#5C3A21]">Verified Customer • Mumbai</p>
+                      </div>
+                    </div>
+                    <div class="mt-2 text-sm text-[#D9B86C]">★★★★★</div>
+                    <blockquote class="mt-2 text-sm leading-relaxed text-[#32110D] font-medium">
+                      "Delivered all the way to Mumbai intact and fresh. The cow ghee halwa richness is unbeatable!"
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center gap-2 pt-3 border-t border-[#EADBC1]">
+                <button type="button" data-testimonial-dot="0" aria-label="Review 1" class="h-2 w-6 rounded-full bg-[#8C1C13] cursor-pointer transition-all"></button>
+                <button type="button" data-testimonial-dot="1" aria-label="Review 2" class="h-2 w-2 rounded-full bg-[#8C1C13]/30 cursor-pointer transition-all"></button>
+                <button type="button" data-testimonial-dot="2" aria-label="Review 3" class="h-2 w-2 rounded-full bg-[#8C1C13]/30 cursor-pointer transition-all"></button>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-5 flex flex-col">
+            <div class="relative h-full overflow-hidden rounded-3xl border border-[#EADBC1] bg-[#32110D] p-5 text-[#FFF8EF] shadow-lg flex flex-col justify-between">
+              <div class="relative mb-3 h-28 sm:h-32 w-full overflow-hidden rounded-2xl shadow-inner border border-[#FFF8EF]/20">
+                <img src="../assets/images/Rustic Halwa Feast in Brass Vessels.png" alt="Customer Sweet Celebration Feast" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#32110D] via-transparent to-transparent"></div>
+                <span class="absolute bottom-2 left-3 rounded-full bg-[#8C1C13] px-2.5 py-0.5 text-[10px] font-bold text-[#FFF8EF] shadow-xs">
+                  ❤️ Shared Sweet Moments
+                </span>
+              </div>
+              <div class="relative z-10 flex-1 flex flex-col justify-center">
+                <h2 class="font-serif text-xl sm:text-2xl font-bold text-[#FFF8EF]">Thank You!</h2>
+                <p class="mt-1.5 text-xs leading-relaxed text-[#F8F1E4]/90">
+                  To every customer who lets us be a part of their home, family celebrations, and sweet moments across India.
+                </p>
+              </div>
+              <div class="relative z-10 mt-3.5 grid grid-cols-2 gap-2.5 border-t border-[#FFF8EF]/15 pt-3">
+                <div class="rounded-xl border border-[#FFF8EF]/20 bg-[#FFF8EF]/10 p-2 text-center backdrop-blur-sm">
+                  <p class="font-serif text-xs sm:text-sm font-bold text-[#D9B86C]">Handcrafted with Love</p>
+                  <p class="text-[10px] font-medium text-[#F8F1E4]/80">Traditional Craft</p>
+                </div>
+                <div class="rounded-xl border border-[#FFF8EF]/20 bg-[#FFF8EF]/10 p-2 text-center backdrop-blur-sm">
+                  <p class="font-serif text-xs sm:text-sm font-bold text-[#D9B86C]">Pure Ingredients</p>
+                  <p class="text-[10px] font-medium text-[#F8F1E4]/80">100% Authentic</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="space-y-4">
-          
-          <details class="group bg-white/90 backdrop-blur-md rounded-2xl border border-[#B88932]/20 p-5 shadow-xs [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-[#32110D] group-open:text-[#4d190e]">
-              <span>How long does Nellai Specialz Halwa stay fresh?</span>
-              <span class="ml-4 shrink-0 text-[#B88932] group-open:rotate-180 transition-transform">▼</span>
-            </summary>
-            <p class="mt-3 text-xs sm:text-sm text-[#786153] leading-relaxed">
-              Our Original Wheat Halwa stays fresh for up to 25–30 days at room temperature when stored in an airtight container. Karupatti Halwa has a shelf life of up to 45 days thanks to natural palm jaggery preservation.
-            </p>
-          </details>
-
-          <details class="group bg-white/90 backdrop-blur-md rounded-2xl border border-[#B88932]/20 p-5 shadow-xs [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-[#32110D] group-open:text-[#4d190e]">
-              <span>Do you deliver across India &amp; International destinations?</span>
-              <span class="ml-4 shrink-0 text-[#B88932] group-open:rotate-180 transition-transform">▼</span>
-            </summary>
-            <p class="mt-3 text-xs sm:text-sm text-[#786153] leading-relaxed">
-              Yes! We ship across all pincodes in India with express courier service (delivery within 2-4 business days). International bulk orders can be coordinated via our WhatsApp support team.
-            </p>
-          </details>
-
-          <details class="group bg-white/90 backdrop-blur-md rounded-2xl border border-[#B88932]/20 p-5 shadow-xs [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-[#32110D] group-open:text-[#4d190e]">
-              <span>Are white sugar or artificial colors used in Karupatti Halwa?</span>
-              <span class="ml-4 shrink-0 text-[#B88932] group-open:rotate-180 transition-transform">▼</span>
-            </summary>
-            <p class="mt-3 text-xs sm:text-sm text-[#786153] leading-relaxed">
-              No artificial colors, preservatives, or refined white sugar are added to our Karupatti Halwa. It is prepared 100% naturally using authentic palm jaggery, pure cow ghee, and hand-extracted wheat milk.
-            </p>
-          </details>
-
-        </div>
-
       </div>
     </section>
 
@@ -425,7 +483,11 @@
   <script src="../assets/js/common.js" defer></script>
   <script src="../assets/js/account.js" defer></script>
   <script src="../assets/js/cart.js" defer></script>
-  <script>
+  <script src="../assets/js/shop/shop-categories.js" defer></script>
+  <script src="../assets/js/shop/shop-products.js" defer></script>
+  <script src="../assets/js/shop/shop-init.js" defer></script>
+  <script src="../assets/js/home.js" defer></script>
+  <script type="application/json" data-retired-shop-filter-script>
     // INTERACTIVE CATEGORY & SEARCH & PRICE FILTER SCRIPT
     document.addEventListener('DOMContentLoaded', () => {
       const catBtns = document.querySelectorAll('.cat-btn');

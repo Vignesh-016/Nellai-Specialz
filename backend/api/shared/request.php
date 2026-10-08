@@ -65,7 +65,11 @@ function safeApi(callable $callback): never
         $callback();
     } catch (PDOException $exception) {
         error_log($exception->getMessage());
-        jsonResponse(false, 'Something went wrong.', null, [], 500);
+        $status = str_contains($exception->getMessage(), 'Duplicate entry') ? 409 : 500;
+        jsonResponse(false, $status === 409 ? 'A record with this value already exists.' : 'Internal server error.', null, [], $status);
+    } catch (Throwable $exception) {
+        error_log($exception->getMessage());
+        jsonResponse(false, 'Internal server error.', null, [], 500);
     }
 
     exit;

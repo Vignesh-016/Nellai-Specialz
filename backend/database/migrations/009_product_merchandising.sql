@@ -1,0 +1,1 @@
+ALTER TABLE products ADD COLUMN ingredient_type VARCHAR(80) NULL AFTER weight_unit, ADD COLUMN is_combo_offer TINYINT(1) NOT NULL DEFAULT 0 AFTER featured, ADD COLUMN show_in_hero TINYINT(1) NOT NULL DEFAULT 0 AFTER is_combo_offer;

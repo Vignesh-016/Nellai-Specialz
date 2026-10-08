@@ -1,0 +1,1 @@
+window.initComboOffer=async()=>{const e=document.querySelector('[data-combo-products]');if(!e)return;try{const ps=await NellaiApi.request('products/get.php?combo_offer=1&limit=3');ps.forEach(p=>{const a=document.createElement('a');a.href=`pages/product-detail.html?slug=${encodeURIComponent(p.slug)}`;a.textContent=p.name;e.append(a);});}catch{e.textContent='';}};

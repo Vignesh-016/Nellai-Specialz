@@ -12,6 +12,25 @@
   };
 
   document.addEventListener("DOMContentLoaded", () => {
+    const customerRegisterForm = document.getElementById('customerRegisterForm');
+    customerRegisterForm?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      const email = document.getElementById('register-email').value.trim();
+      const password = document.getElementById('register-password').value;
+      const confirm = document.getElementById('confirm-password').value;
+      if (password !== confirm) return;
+      try {
+        await NellaiApi.request('customer-auth/register.php', { method: 'POST', credentials: 'include', body: JSON.stringify({ name: `${document.getElementById('first-name').value.trim()} ${document.getElementById('last-name').value.trim()}`, email, phone: document.getElementById('phone').value.trim(), password }) });
+        const redirect = new URLSearchParams(location.search).get('redirect') || 'index.html';
+        location.href = `verify-otp.html?email=${encodeURIComponent(email)}&redirect=${encodeURIComponent(redirect)}`;
+      } catch (error) {
+        let status = customerRegisterForm.querySelector('[data-auth-error]');
+        if (!status) { status = document.createElement('p'); status.dataset.authError = 'true'; status.className = 'text-sm text-red-700 sm:col-span-2'; customerRegisterForm.prepend(status); }
+        status.textContent = error.message || 'Unable to create account. Please try again.';
+      }
+    }, true);
+    const form=document.getElementById('customerRegisterForm'); form?.addEventListener('submit',async(event)=>{event.preventDefault();const button=form.querySelector('button[type="submit"]');const password=document.getElementById('register-password').value;const confirm=document.getElementById('confirm-password').value;if(password!==confirm){return;}button.disabled=true;button.textContent='Creating account…';try{await NellaiApi.request('customer-auth/register.php',{method:'POST',credentials:'include',body:JSON.stringify({name:`${document.getElementById('first-name').value.trim()} ${document.getElementById('last-name').value.trim()}`,email:document.getElementById('register-email').value.trim(),phone:document.getElementById('phone').value.trim(),password})});location.href=`login.html?registered=1&redirect=${encodeURIComponent(new URLSearchParams(location.search).get('redirect')||'index.html')}`;}catch(error){let status=form.querySelector('[data-auth-error]');if(!status){status=document.createElement('p');status.dataset.authError='true';status.className='text-sm text-red-700 sm:col-span-2';form.prepend(status);}status.textContent=error.message;}finally{button.disabled=false;button.textContent='Create account';}});
     const password = document.querySelector("[data-password-main]");
     const confirm = document.querySelector("[data-password-confirm]");
     if (!password || !confirm) return;

@@ -1,238 +1,77 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enquiries | Nellai Specialz</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body data-admin-page="enquiries" data-admin-title="Enquiries" class="bg-[#f8f1e7] text-[#3a110d]">
-  <div data-admin-shell></div>
+  <head>
+    <script src="assets/admin-auth.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiries | Nellai Specialz</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body data-admin-page="enquiries" data-admin-title="Enquiries" class="bg-[#f8f1e7] text-[#3a110d]">
+    <div data-admin-shell></div>
 
-  <template id="admin-page-content">
-    <section class="space-y-6">
-      <p class="text-sm text-[#7e5a43]">Review customer questions, bulk orders, and corporate gifting requests.</p>
+    <template id="admin-page-content">
+      <section class="space-y-6">
+        <p class="text-sm text-[#7e5a43]">Review contact and bulk order enquiries submitted through the storefront.</p>
 
-      <!-- Tab navigation -->
-      <div class="flex gap-1 rounded-xl bg-white border border-[#eadbc6] p-1 w-fit">
-        <button onclick="switchTab('general')" id="tab-general" class="tab-btn rounded-lg px-4 py-2.5 text-sm font-semibold transition bg-[#54170f] text-white">General enquiries</button>
-        <button onclick="switchTab('corporate')" id="tab-corporate" class="tab-btn rounded-lg px-4 py-2.5 text-sm font-semibold transition text-[#594b45] hover:bg-[#f5eee8]">Corporate gifting</button>
-      </div>
+        <div id="enquiries-status" class="hidden rounded-xl px-4 py-3 text-sm" role="status" aria-live="polite"></div>
 
-      <!-- General Enquiries -->
-      <div id="panel-general">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-center mb-5">
-          <input id="enq-search" oninput="renderEnquiries()" class="w-full sm:w-64 rounded-xl border border-[#eadbc6] bg-white px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="Search enquiries..." />
-          <select id="enq-status-filter" onchange="renderEnquiries()" class="rounded-xl border border-[#eadbc6] bg-white px-4 py-3 text-sm">
-            <option value="">All status</option>
-            <option>New</option>
-            <option>In progress</option>
-            <option>Resolved</option>
+        <div class="flex flex-wrap items-center gap-2 rounded-xl border border-[#eadbc6] bg-white p-2">
+          <button type="button" data-enquiry-type="ALL" class="rounded-lg bg-[#54170f] px-4 py-2.5 text-sm font-semibold text-white">All</button>
+          <button type="button" data-enquiry-type="CONTACT" class="rounded-lg px-4 py-2.5 text-sm font-semibold text-[#594b45]">Contact Enquiries</button>
+          <button type="button" data-enquiry-type="BULK_ORDER" class="rounded-lg px-4 py-2.5 text-sm font-semibold text-[#594b45]">Corporate / Bulk Enquiries</button>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <input id="enquiry-search" type="search" maxlength="150" class="w-full rounded-xl border border-[#eadbc6] bg-white px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] sm:max-w-sm" placeholder="Search enquiries">
+          <select id="enquiry-status-filter" class="rounded-xl border border-[#eadbc6] bg-white px-4 py-3 text-sm">
+            <option value="">All statuses</option>
+            <option value="NEW">New</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="RESOLVED">Resolved</option>
+            <option value="CLOSED">Closed</option>
           </select>
+          <button id="enquiries-refresh" type="button" class="rounded-xl border border-[#eadbc6] bg-white px-4 py-3 text-sm font-semibold">Refresh</button>
         </div>
-        <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
-          <div id="enquiries-list" class="space-y-1"></div>
-          <div id="enq-empty" class="hidden py-12 text-center text-sm text-[#7e5a43]">No enquiries match your filter.</div>
+
+        <div class="overflow-x-auto rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
+          <table class="w-full min-w-[780px] text-left text-sm">
+            <thead id="enquiries-head" class="border-b border-[#eadbc6] text-xs uppercase tracking-wider text-[#9b6b2c]"></thead>
+            <tbody id="enquiries-body" class="divide-y divide-[#f0e5d8]"></tbody>
+          </table>
+          <p id="enquiries-empty" class="hidden py-12 text-center text-sm text-[#7e5a43]">No enquiries match these filters.</p>
         </div>
-      </div>
+      </section>
 
-      <!-- Corporate Gifting Tab -->
-      <div id="panel-corporate" class="hidden">
-        <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
-          <div id="corporate-list" class="space-y-1"></div>
-          <div id="corp-empty" class="hidden py-12 text-center text-sm text-[#7e5a43]">No corporate gifting requests.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VIEW ENQUIRY MODAL -->
-    <div id="enquiry-view-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#24120f]/50 p-4">
-      <div data-modal-box class="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl transform scale-95 opacity-0 transition-all duration-200">
-        <div class="flex items-center justify-between border-b border-[#eee8e2] px-6 py-4">
-          <h2 class="text-xl font-bold text-[#32110d]">Enquiry details</h2>
-          <button onclick="AdminModal.close('enquiry-view-modal')" class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45] hover:bg-[#f8f6f3] transition">✕</button>
-        </div>
-        <div id="enquiry-view-body" class="p-6 space-y-4"></div>
-      </div>
-    </div>
-  </template>
-
-  <script src="assets/admin.js" defer></script>
-  <script>
-    let enquiries = [
-      { id: 1, name: "Priya S.", email: "priya@email.com", phone: "9876543210", subject: "Bulk order enquiry for a wedding function", message: "We need 50 boxes of assorted halwa for a wedding on 15th November. Can you provide a quote and delivery options for Chennai?", status: "New", date: "Today, 10:24 AM", type: "general" },
-      { id: 2, name: "Ramesh Kumar", email: "ramesh@email.com", phone: "9123456789", subject: "Need delivery details for Chennai", message: "What are the delivery charges and expected delivery time for an order to Chennai? Also, do you have cash on delivery option?", status: "In progress", date: "Yesterday, 4:12 PM", type: "general" },
-      { id: 3, name: "Anitha M.", email: "anitha@email.com", phone: "9988776655", subject: "Question about ingredients and preservatives", message: "Are your halwa products made without any preservatives? My family has dietary restrictions and I need to confirm before ordering.", status: "Resolved", date: "18 Sep 2026", type: "general" },
-      { id: 4, name: "Suresh V.", email: "suresh@email.com", phone: "9876501234", subject: "Corporate Diwali gifts", message: "We're looking for 200 gift boxes for our employees for Diwali. Need customised packaging with our company logo.", status: "New", date: "Today, 9:15 AM", type: "general" },
-    ];
-
-    let corporateEnquiries = [
-      { id: 101, company: "TCS Chennai", contact: "Lakshmi R.", email: "lakshmi@tcs.com", phone: "9445566778", employees: "500+", requirement: "Diwali gift boxes for all employees. Need customised packaging with company logo. Budget: ₹500-800 per box.", comboType: "Traditional Halwa Combo", qty: 500, status: "New", date: "Today, 11:30 AM" },
-      { id: 102, company: "Infosys Madurai", contact: "Karthik M.", email: "karthik@infosys.com", phone: "9887766554", employees: "100-500", requirement: "Employee appreciation gifts. Assorted halwa selection boxes. Delivery to Madurai office.", comboType: "Diwali Gift Box", qty: 150, status: "In progress", date: "Yesterday, 2:45 PM" },
-      { id: 103, company: "ZOHO Corp", contact: "Deepa S.", email: "deepa@zoho.com", phone: "9556677889", employees: "100-500", requirement: "Client gifting during Pongal. Need premium packaging and personalized notes.", comboType: "Custom", qty: 200, status: "Resolved", date: "15 Sep 2026" },
-    ];
-
-    const statusColors = {
-      "New": "bg-amber-50 text-amber-700",
-      "In progress": "bg-blue-50 text-blue-700",
-      "Resolved": "bg-emerald-50 text-emerald-700",
-    };
-
-    let activeTab = "general";
-
-    function switchTab(tab) {
-      activeTab = tab;
-      document.getElementById("panel-general").classList.toggle("hidden", tab !== "general");
-      document.getElementById("panel-corporate").classList.toggle("hidden", tab !== "corporate");
-
-      document.querySelectorAll(".tab-btn").forEach(btn => {
-        btn.classList.remove("bg-[#54170f]", "text-white");
-        btn.classList.add("text-[#594b45]");
-      });
-      const activeBtn = document.getElementById(`tab-${tab}`);
-      activeBtn.classList.add("bg-[#54170f]", "text-white");
-      activeBtn.classList.remove("text-[#594b45]");
-
-      if (tab === "general") renderEnquiries();
-      else renderCorporate();
-    }
-
-    function renderEnquiries() {
-      const search = (document.getElementById("enq-search")?.value || "").toLowerCase();
-      const statusFilter = document.getElementById("enq-status-filter")?.value || "";
-      let filtered = enquiries;
-      if (search) filtered = filtered.filter(e => e.name.toLowerCase().includes(search) || e.subject.toLowerCase().includes(search));
-      if (statusFilter) filtered = filtered.filter(e => e.status === statusFilter);
-
-      const list = document.getElementById("enquiries-list");
-      const empty = document.getElementById("enq-empty");
-
-      if (!filtered.length) { list.innerHTML = ""; empty.classList.remove("hidden"); return; }
-      empty.classList.add("hidden");
-
-      list.innerHTML = filtered.map(e => `
-        <div class="flex flex-col gap-3 border-b border-[#f0e5d8] py-5 sm:flex-row sm:items-center sm:justify-between last:border-0 hover:bg-[#fffcf7] -mx-2 px-2 rounded-lg transition">
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-3 flex-wrap">
-              <h2 class="font-semibold text-[#32110d]">${e.name}</h2>
-              <span class="rounded-full ${statusColors[e.status]} px-3 py-1 text-xs font-semibold">${e.status}</span>
-            </div>
-            <p class="mt-1 text-sm text-[#7e5a43] truncate">${e.subject}</p>
+      <div id="enquiry-view-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#24120f]/50 p-4" aria-modal="true" role="dialog" aria-labelledby="enquiry-modal-title">
+        <div data-modal-box class="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl">
+          <div class="sticky top-0 z-10 flex items-center justify-between border-b border-[#eee8e2] bg-white px-6 py-4">
+            <h2 id="enquiry-modal-title" class="text-xl font-bold text-[#32110d]">Enquiry details</h2>
+            <button type="button" data-close-enquiry-modal class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45]" aria-label="Close enquiry details">×</button>
           </div>
-          <div class="flex items-center gap-2 shrink-0">
-            <span class="text-xs text-[#9b6b2c]">${e.date}</span>
-            <button onclick="viewEnquiry(${e.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#594b45] hover:bg-[#f5eee8] transition" title="View">👁</button>
-            <select onchange="changeEnqStatus(${e.id}, this.value)" class="rounded-lg border border-[#eadbc6] bg-[#fffaf2] px-2 py-1.5 text-xs font-semibold">
-              <option ${e.status === "New" ? "selected" : ""}>New</option>
-              <option ${e.status === "In progress" ? "selected" : ""}>In progress</option>
-              <option ${e.status === "Resolved" ? "selected" : ""}>Resolved</option>
-            </select>
-            <button onclick="deleteEnquiry(${e.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition" title="Delete">🗑</button>
-          </div>
-        </div>
-      `).join("");
-    }
-
-    function renderCorporate() {
-      const list = document.getElementById("corporate-list");
-      const empty = document.getElementById("corp-empty");
-
-      if (!corporateEnquiries.length) { list.innerHTML = ""; empty.classList.remove("hidden"); return; }
-      empty.classList.add("hidden");
-
-      list.innerHTML = corporateEnquiries.map(c => `
-        <div class="border-b border-[#f0e5d8] py-5 last:border-0 hover:bg-[#fffcf7] -mx-2 px-2 rounded-lg transition">
-          <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-3 flex-wrap">
-                <h2 class="font-semibold text-[#32110d]">${c.company}</h2>
-                <span class="rounded-full ${statusColors[c.status]} px-3 py-1 text-xs font-semibold">${c.status}</span>
-              </div>
-              <p class="mt-1 text-sm text-[#7e5a43]">Contact: ${c.contact} · ${c.email}</p>
-              <p class="mt-1 text-sm text-[#594b45]">${c.requirement}</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="rounded-lg bg-[#f3e7d5] px-2.5 py-1 text-[10px] font-bold text-[#9b6b2c]">Employees: ${c.employees}</span>
-                <span class="rounded-lg bg-[#f3e7d5] px-2.5 py-1 text-[10px] font-bold text-[#9b6b2c]">Combo: ${c.comboType}</span>
-                <span class="rounded-lg bg-[#f3e7d5] px-2.5 py-1 text-[10px] font-bold text-[#9b6b2c]">Qty: ${c.qty}</span>
-              </div>
-            </div>
-            <div class="flex items-center gap-2 shrink-0">
-              <span class="text-xs text-[#9b6b2c]">${c.date}</span>
-              <select onchange="changeCorpStatus(${c.id}, this.value)" class="rounded-lg border border-[#eadbc6] bg-[#fffaf2] px-2 py-1.5 text-xs font-semibold">
-                <option ${c.status === "New" ? "selected" : ""}>New</option>
-                <option ${c.status === "In progress" ? "selected" : ""}>In progress</option>
-                <option ${c.status === "Resolved" ? "selected" : ""}>Resolved</option>
+          <div id="enquiry-detail" class="space-y-4 p-6"></div>
+          <form id="enquiry-update-form" class="space-y-4 border-t border-[#eee8e2] p-6">
+            <label class="block text-sm font-semibold text-[#594b45]">Status
+              <select id="enquiry-detail-status" class="mt-2 w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3">
+                <option value="NEW">New</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="RESOLVED">Resolved</option>
+                <option value="CLOSED">Closed</option>
               </select>
-              <button onclick="deleteCorpEnquiry(${c.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition" title="Delete">🗑</button>
+            </label>
+            <label class="block text-sm font-semibold text-[#594b45]">Admin notes
+              <textarea id="enquiry-admin-notes" maxlength="3000" rows="4" class="mt-2 w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 font-normal" placeholder="Internal notes (not visible to the customer)"></textarea>
+            </label>
+            <div class="flex justify-end gap-3">
+              <button type="button" data-close-enquiry-modal class="rounded-xl border border-[#e8e1da] px-5 py-3 text-sm font-semibold text-[#594b45]">Close</button>
+              <button id="enquiry-save-button" type="submit" class="rounded-xl bg-[#54170f] px-5 py-3 text-sm font-semibold text-white">Save changes</button>
             </div>
-          </div>
+          </form>
         </div>
-      `).join("");
-    }
+      </div>
+    </template>
 
-    function viewEnquiry(id) {
-      const e = enquiries.find(x => x.id === id);
-      if (!e) return;
-      document.getElementById("enquiry-view-body").innerHTML = `
-        <div class="flex items-center gap-3 flex-wrap">
-          <h3 class="text-lg font-bold text-[#32110d]">${e.name}</h3>
-          <span class="rounded-full ${statusColors[e.status]} px-3 py-1 text-xs font-semibold">${e.status}</span>
-        </div>
-        <div class="grid gap-3 sm:grid-cols-2">
-          <div class="rounded-xl bg-[#fffcf7] border border-[#eadbc6] p-3">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-[#9b6b2c] mb-1">Email</p>
-            <p class="text-sm">${e.email}</p>
-          </div>
-          <div class="rounded-xl bg-[#fffcf7] border border-[#eadbc6] p-3">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-[#9b6b2c] mb-1">Phone</p>
-            <p class="text-sm">${e.phone}</p>
-          </div>
-        </div>
-        <div class="rounded-xl bg-[#fffcf7] border border-[#eadbc6] p-4">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#9b6b2c] mb-1">Subject</p>
-          <p class="text-sm font-semibold">${e.subject}</p>
-        </div>
-        <div class="rounded-xl bg-[#fffcf7] border border-[#eadbc6] p-4">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#9b6b2c] mb-2">Message</p>
-          <p class="text-sm text-[#594b45] leading-relaxed">${e.message}</p>
-        </div>
-        <p class="text-xs text-[#a89387]">Received: ${e.date}</p>`;
-      AdminModal.open("enquiry-view-modal");
-    }
-
-    function changeEnqStatus(id, status) {
-      const e = enquiries.find(x => x.id === id);
-      if (e) { e.status = status; renderEnquiries(); AdminToast.show(`Status changed to "${status}"`); }
-    }
-
-    function changeCorpStatus(id, status) {
-      const c = corporateEnquiries.find(x => x.id === id);
-      if (c) { c.status = status; renderCorporate(); AdminToast.show(`Status changed to "${status}"`); }
-    }
-
-    function deleteEnquiry(id) {
-      const e = enquiries.find(x => x.id === id);
-      if (!e) return;
-      AdminConfirm.show(`Delete enquiry from "${e.name}"?`, () => {
-        enquiries = enquiries.filter(x => x.id !== id);
-        renderEnquiries();
-        AdminToast.show("Enquiry deleted", "error");
-      });
-    }
-
-    function deleteCorpEnquiry(id) {
-      const c = corporateEnquiries.find(x => x.id === id);
-      if (!c) return;
-      AdminConfirm.show(`Delete corporate request from "${c.company}"?`, () => {
-        corporateEnquiries = corporateEnquiries.filter(x => x.id !== id);
-        renderCorporate();
-        AdminToast.show("Request deleted", "error");
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(renderEnquiries, 100);
-    });
-  </script>
-</body>
+    <script src="assets/admin.js" defer></script>
+    <script src="assets/enquiries/enquiries.js" defer></script>
+  </body>
 </html>

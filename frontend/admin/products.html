@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
+  <head><script src="assets/admin-auth.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products | Nellai Specialz</title>
@@ -14,38 +14,40 @@
       <!-- Header -->
       <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <p class="text-sm text-[#7e5a43]">Manage your catalogue and inventory.</p>
-        <button onclick="openProductModal()" class="rounded-xl bg-[#54170f] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#54170f]/20 hover:bg-[#6e1f15] transition">+ Add product</button>
+        <button id="addProductBtn" type="button" onclick="openProductModal()" class="rounded-xl bg-[#54170f] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#54170f]/20 hover:bg-[#6e1f15] transition">+ Add product</button>
       </div>
 
       <!-- Filters -->
       <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
         <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <input id="product-search" oninput="filterProducts()" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] transition" placeholder="Search products..." />
-          <select id="product-category-filter" onchange="filterProducts()" class="rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+          <input id="product-search" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] transition" placeholder="Search products..." />
+          <select id="product-category-filter" class="rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
             <option value="">All categories</option>
             <option>Halwa</option>
             <option>Combos</option>
             <option>Savouries</option>
           </select>
-          <select id="product-status-filter" onchange="filterProducts()" class="rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+          <select id="product-status-filter" class="rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
             <option value="">All status</option>
             <option>Active</option>
             <option>Draft</option>
-            <option>Out of stock</option>
+            <option>Inactive</option>
           </select>
         </div>
 
+        <div id="products-api-status" class="hidden mb-4 rounded-xl"></div>
+
         <!-- Products Table -->
         <div class="overflow-x-auto">
-          <table class="w-full min-w-[800px] text-left text-sm">
+          <table class="w-full min-w-[900px] text-left text-sm">
             <thead class="border-b border-[#eadbc6] text-xs uppercase tracking-wider text-[#9b6b2c]">
               <tr>
                 <th class="p-3">Product</th>
                 <th class="p-3">Category</th>
+                <th class="p-3">Sub Category</th>
                 <th class="p-3">Price</th>
                 <th class="p-3">Stock</th>
                 <th class="p-3">Status</th>
-                <th class="p-3">Flags</th>
                 <th class="p-3 text-right">Actions</th>
               </tr>
             </thead>
@@ -63,10 +65,10 @@
           <h2 id="product-modal-title" class="text-xl font-bold text-[#32110d]">Add product</h2>
           <button onclick="AdminModal.close('product-modal')" class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45] hover:bg-[#f8f6f3] transition">✕</button>
         </div>
-        <form id="product-form" onsubmit="saveProduct(event)" class="p-6 space-y-6">
+        <form id="product-form" class="p-6 space-y-6">
           <input type="hidden" id="pf-id" />
 
-          <!-- Basic Info -->
+          <!-- 1. Basic Information -->
           <div class="space-y-4">
             <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Basic information</h3>
             <div class="grid gap-4 sm:grid-cols-2">
@@ -75,9 +77,37 @@
                 <input id="pf-name" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="e.g. Tirunelveli Karupatti Halwa" />
                 <p id="pf-name-error" class="mt-1 text-xs text-red-600 hidden">Product name is required.</p>
               </div>
+              <div class="sm:col-span-2">
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Slug <span class="text-red-500">*</span></label>
+                <input id="pf-slug" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm font-mono outline-none focus:border-[#9b6b2c]" placeholder="auto-generated-slug" />
+                <p id="pf-slug-error" class="mt-1 text-xs text-red-600 hidden">Slug is required.</p>
+              </div>
+            </div>
+            <div>
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Short Description</label>
+              <textarea id="pf-short-desc" rows="2" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] resize-none" placeholder="Brief summary of the product..."></textarea>
+            </div>
+          <div>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Product Description</label>
+            <textarea id="pf-description" rows="4" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] resize-none" placeholder="Detailed product description..."></textarea>
+          </div>
+          <div>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Key Ingredients</label>
+            <textarea id="pf-key-ingredients" rows="3" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] resize-none" placeholder="Add one ingredient per line"></textarea>
+          </div>
+          <div>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Storage &amp; Shelf Life</label>
+            <textarea id="pf-storage-shelf-life" rows="3" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] resize-none" placeholder="Add one instruction per line"></textarea>
+          </div>
+          </div>
+
+          <!-- 2. Category -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Category</h3>
+            <div class="grid gap-4 sm:grid-cols-2">
               <div>
                 <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Category <span class="text-red-500">*</span></label>
-                <select id="pf-category" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+                <select id="pf-category" required onchange="updateSubCategoryOptions()" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
                   <option value="">Select category</option>
                   <option>Halwa</option>
                   <option>Combos</option>
@@ -88,79 +118,102 @@
                 <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Sub Category</label>
                 <select id="pf-subcategory" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
                   <option value="">Select sub category</option>
-                  <option>Traditional</option>
-                  <option>Premium</option>
-                  <option>Gift Box</option>
                 </select>
               </div>
             </div>
-            <div>
-              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Description</label>
-              <textarea id="pf-description" rows="3" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] resize-none" placeholder="Describe the product..."></textarea>
-            </div>
           </div>
 
-          <!-- Pricing & Variations -->
+          <!-- 3. Price Variations -->
           <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Pricing & Variations</h3>
-              <button type="button" onclick="addVariation()" class="rounded-lg bg-[#f3e7d5] px-3 py-1.5 text-xs font-semibold text-[#8e281d] hover:bg-[#eadbc6] transition">+ Add variation</button>
+              <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Price Variations</h3>
+              <button type="button" id="addVariationBtn" class="rounded-lg bg-[#f3e7d5] px-3 py-1.5 text-xs font-semibold text-[#8e281d] hover:bg-[#eadbc6] transition">+ Add variation</button>
             </div>
-            <div id="variations-container" class="space-y-3">
-              <!-- Default variation row -->
-              <div class="variation-row flex flex-col sm:flex-row gap-3 items-start sm:items-end rounded-xl border border-[#eadbc6] bg-[#fffcf7] p-4">
-                <div class="flex-1">
-                  <label class="mb-1 block text-xs font-semibold text-[#594b45]">Weight / Size</label>
-                  <input class="var-weight w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" placeholder="e.g. 250g, 500g, 1kg" />
+            <div id="variations-container" class="space-y-3"></div>
+          </div>
+
+          <!-- 4. Inventory Management -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Inventory Management</h3>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <div class="relative">
+                <input type="checkbox" id="pf-manage-inventory" class="sr-only peer" />
+                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#8e281d]"></div>
+              </div>
+              <span class="text-sm font-semibold text-[#594b45]">Manage Inventory</span>
+            </label>
+            <div id="inventory-fields" class="hidden space-y-4">
+              <div id="inventory-simple" class="grid gap-4 sm:grid-cols-3">
+                <div>
+                  <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Stock Quantity</label>
+                  <input id="pf-stock-qty" type="number" min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="0" />
                 </div>
-                <div class="w-full sm:w-36">
-                  <label class="mb-1 block text-xs font-semibold text-[#594b45]">Price (₹) <span class="text-red-500">*</span></label>
-                  <input type="number" class="var-price w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" placeholder="0" min="0" />
+                <div>
+                  <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Low Stock Threshold</label>
+                  <input id="pf-low-threshold" type="number" min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="5" value="5" />
                 </div>
-                <div class="w-full sm:w-28">
-                  <label class="mb-1 block text-xs font-semibold text-[#594b45]">Stock</label>
-                  <input type="number" class="var-stock w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" placeholder="0" min="0" />
+                <div>
+                  <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Stock Status</label>
+                  <select id="pf-stock-status" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+                    <option value="IN_STOCK">In Stock</option>
+                    <option value="LOW_STOCK">Low Stock</option>
+                    <option value="OUT_OF_STOCK">Out of Stock</option>
+                  </select>
                 </div>
-                <button type="button" onclick="removeVariation(this)" class="hidden mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-red-200 text-red-500 hover:bg-red-50 transition">✕</button>
+              </div>
+              <div id="inventory-variation-note" class="hidden rounded-xl border border-blue-200 bg-blue-50 p-4">
+                <p class="text-xs font-semibold text-blue-700">ℹ Stock is managed per variation above. Product stock totals are derived from the variation quantities.</p>
               </div>
             </div>
           </div>
 
-          <!-- Image Upload UI -->
+          <!-- 5. Product Status -->
           <div class="space-y-4">
-            <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Images</h3>
-            <div id="image-upload-area" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <div id="image-add-btn" onclick="simulateImageUpload()" class="group cursor-pointer flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-[#d5c5b0] bg-[#fffcf7] p-6 hover:border-[#9b6b2c] hover:bg-[#faf5ed] transition min-h-[120px]">
-                <span class="text-2xl text-[#9b6b2c] group-hover:scale-110 transition-transform">📷</span>
-                <span class="text-xs font-semibold text-[#7e5a43]">Add image</span>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Product Status</h3>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Status</label>
+                <select id="pf-status" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+                  <option value="active">Active</option>
+                  <option value="draft">Draft</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+              </div>
+              <div class="flex items-end pb-1">
+                <label class="flex items-center gap-2.5 cursor-pointer">
+                  <input type="checkbox" id="pf-featured" class="h-4 w-4 rounded border-[#d5c5b0] text-[#8e281d] accent-[#8e281d]" />
+                  <span class="text-sm font-semibold text-[#594b45]">Featured product</span>
+                </label>
               </div>
             </div>
-            <p class="text-xs text-[#a89387]">Click to upload. First image is the primary thumbnail. Drag to reorder.</p>
           </div>
 
-          <!-- Flags -->
+          <!-- 6. Product Images -->
           <div class="space-y-4">
-            <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Flags & Status</h3>
-            <div class="flex flex-wrap gap-4">
-              <label class="flex items-center gap-2.5 cursor-pointer">
-                <input type="checkbox" id="pf-featured" class="h-4 w-4 rounded border-[#d5c5b0] text-[#8e281d] accent-[#8e281d]" />
-                <span class="text-sm font-semibold text-[#594b45]">Featured product</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer">
-                <input type="checkbox" id="pf-bestseller" class="h-4 w-4 rounded border-[#d5c5b0] text-[#8e281d] accent-[#8e281d]" />
-                <span class="text-sm font-semibold text-[#594b45]">Bestseller</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer">
-                <input type="checkbox" id="pf-active" checked class="h-4 w-4 rounded border-[#d5c5b0] text-[#8e281d] accent-[#8e281d]" />
-                <span class="text-sm font-semibold text-[#594b45]">Active (visible in store)</span>
-              </label>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Main Product Image</h3>
+            <div id="main-image-area">
+              <div id="main-image-preview" class="hidden relative w-40 h-40 rounded-xl border border-[#eadbc6] bg-[#f3e7d5] overflow-hidden mb-3">
+                <img id="main-image-img" class="h-full w-full object-cover" />
+                <button type="button" id="remove-main-image" class="absolute -top-2 -right-2 grid h-6 w-6 place-items-center rounded-full bg-red-500 text-[10px] text-white shadow hover:bg-red-600">✕</button>
+              </div>
+              <input type="file" id="main-image-input" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" class="hidden" />
+              <button type="button" id="main-image-button" class="rounded-lg bg-[#f3e7d5] px-4 py-2.5 text-xs font-semibold text-[#8e281d] hover:bg-[#eadbc6] transition">Upload main image</button>
             </div>
+          </div>
+
+          <!-- 7. Gallery Images -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Gallery Images</h3>
+            <div id="gallery-area" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+            <input type="file" id="gallery-input" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" multiple class="hidden" />
+            <button type="button" id="gallery-button" class="rounded-lg bg-[#f3e7d5] px-4 py-2.5 text-xs font-semibold text-[#8e281d] hover:bg-[#eadbc6] transition">+ Add gallery images</button>
+            <p class="text-xs text-[#a89387]">Upload JPG, PNG, or WebP images (5 MB maximum each).</p>
           </div>
 
           <!-- Actions -->
           <div class="flex gap-3 justify-end border-t border-[#eee8e2] pt-5">
             <button type="button" onclick="AdminModal.close('product-modal')" class="rounded-xl border border-[#e8e1da] px-5 py-3 text-sm font-semibold text-[#594b45] hover:bg-[#f8f6f3] transition">Cancel</button>
-            <button type="submit" class="rounded-xl bg-[#54170f] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#54170f]/20 hover:bg-[#6e1f15] transition">Save product</button>
+            <button type="submit" id="pf-submit-btn" class="rounded-xl bg-[#54170f] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#54170f]/20 hover:bg-[#6e1f15] transition">Save product</button>
           </div>
         </form>
       </div>
@@ -176,100 +229,88 @@
         <div id="product-view-body" class="p-6 space-y-5"></div>
       </div>
     </div>
-
-    <!-- ═══════════════ INVENTORY ADJUSTMENT MODAL ═══════════════ -->
-    <div id="inventory-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#24120f]/50 p-4">
-      <div data-modal-box class="w-full max-w-md rounded-2xl bg-white shadow-2xl transform scale-95 opacity-0 transition-all duration-200">
-        <div class="flex items-center justify-between border-b border-[#eee8e2] px-6 py-4">
-          <h2 class="text-xl font-bold text-[#32110d]">Adjust stock</h2>
-          <button onclick="AdminModal.close('inventory-modal')" class="grid h-9 w-9 place-items-center rounded-lg border border-[#e8e1da] text-lg text-[#594b45] hover:bg-[#f8f6f3] transition">✕</button>
-        </div>
-        <form onsubmit="saveInventory(event)" class="p-6 space-y-5">
-          <input type="hidden" id="inv-product-id" />
-          <div>
-            <p class="text-sm font-semibold text-[#32110d]" id="inv-product-name"></p>
-            <p class="text-xs text-[#7e5a43] mt-1" id="inv-current-stock"></p>
-          </div>
-          <div id="inv-variations-list" class="space-y-3"></div>
-          <div>
-            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Reason for adjustment</label>
-            <select id="inv-reason" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
-              <option>Restock / New shipment</option>
-              <option>Manual correction</option>
-              <option>Damaged / Expired</option>
-              <option>Returned stock</option>
-            </select>
-          </div>
-          <div class="flex gap-3 justify-end border-t border-[#eee8e2] pt-5">
-            <button type="button" onclick="AdminModal.close('inventory-modal')" class="rounded-xl border border-[#e8e1da] px-4 py-2.5 text-sm font-semibold text-[#594b45] hover:bg-[#f8f6f3] transition">Cancel</button>
-            <button type="submit" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Update stock</button>
-          </div>
-        </form>
-      </div>
-    </div>
   </template>
 
   <script src="assets/admin.js" defer></script>
-  <script>
+  <script type="application/json" data-retired-admin-product-demo>
+    /* ═══════════════ SUB CATEGORY MAP ═══════════════ */
+    const subCategoryMap = {
+      "Halwa": ["Traditional", "Premium"],
+      "Combos": ["Gift Box", "Festival Pack"],
+      "Savouries": ["Mixture", "Chips"],
+    };
+
     /* ═══════════════ SAMPLE PRODUCT DATA ═══════════════ */
     let products = [
       {
-        id: 1, name: "Tirunelveli Karupatti Halwa", category: "Halwa", subcategory: "Traditional",
-        description: "Authentic palm jaggery halwa handmade with pure ghee and wheat, following the centuries-old Tirunelveli tradition.",
+        id: 1, name: "Tirunelveli Karupatti Halwa", slug: "tirunelveli-karupatti-halwa", category: "Halwa", subcategory: "Traditional",
+        shortDesc: "Authentic palm jaggery halwa handmade with pure ghee.",
+        description: "Authentic palm jaggery halwa handmade with pure ghee and wheat, following the centuries-old Tirunelveli tradition. Made fresh to order.",
         variations: [
-          { weight: "250g", price: 250, stock: 20 },
-          { weight: "500g", price: 450, stock: 15 },
-          { weight: "1kg", price: 850, stock: 7 },
+          { weight: "250g", price: 250, strikePrice: 300, stock: 20, sku: "KH-250", status: "active" },
+          { weight: "500g", price: 450, strikePrice: 550, stock: 15, sku: "KH-500", status: "active" },
+          { weight: "1kg", price: 850, strikePrice: 1000, stock: 7, sku: "KH-1000", status: "active" },
         ],
-        featured: true, bestseller: true, active: true,
-        images: ["karupatti-1.jpg", "karupatti-2.jpg"],
+        manageInventory: true, stockQty: 42, lowThreshold: 5, stockStatus: "in-stock",
+        status: "active", featured: true,
+        mainImage: null, galleryImages: ["img1.jpg", "img2.jpg"],
       },
       {
-        id: 2, name: "Ghee Halwa", category: "Halwa", subcategory: "Traditional",
+        id: 2, name: "Ghee Halwa", slug: "ghee-halwa", category: "Halwa", subcategory: "Traditional",
+        shortDesc: "Rich and silky ghee-based wheat halwa.",
         description: "Rich and silky ghee-based wheat halwa, golden brown and aromatic.",
         variations: [
-          { weight: "250g", price: 180, stock: 30 },
-          { weight: "500g", price: 320, stock: 22 },
-          { weight: "1kg", price: 600, stock: 10 },
+          { weight: "250g", price: 180, strikePrice: 0, stock: 30, sku: "GH-250", status: "active" },
+          { weight: "500g", price: 320, strikePrice: 0, stock: 22, sku: "GH-500", status: "active" },
+          { weight: "1kg", price: 600, strikePrice: 0, stock: 10, sku: "GH-1000", status: "active" },
         ],
-        featured: false, bestseller: true, active: true,
-        images: ["ghee-halwa.jpg"],
+        manageInventory: true, stockQty: 62, lowThreshold: 5, stockStatus: "in-stock",
+        status: "active", featured: false,
+        mainImage: null, galleryImages: ["ghee-halwa.jpg"],
       },
       {
-        id: 3, name: "Muscoth Halwa", category: "Halwa", subcategory: "Premium",
+        id: 3, name: "Muscoth Halwa", slug: "muscoth-halwa", category: "Halwa", subcategory: "Premium",
+        shortDesc: "Melt-in-mouth muscoth halwa with cashews.",
         description: "Delicate, melt-in-mouth muscoth halwa made with premium cornflour and cashews.",
         variations: [
-          { weight: "250g", price: 160, stock: 25 },
-          { weight: "500g", price: 280, stock: 18 },
-          { weight: "1kg", price: 500, stock: 12 },
+          { weight: "250g", price: 160, strikePrice: 0, stock: 25, sku: "", status: "active" },
+          { weight: "500g", price: 280, strikePrice: 0, stock: 18, sku: "", status: "active" },
+          { weight: "1kg", price: 500, strikePrice: 0, stock: 12, sku: "", status: "active" },
         ],
-        featured: false, bestseller: false, active: true,
-        images: ["muscoth.jpg"],
+        manageInventory: true, stockQty: 55, lowThreshold: 5, stockStatus: "in-stock",
+        status: "active", featured: false,
+        mainImage: null, galleryImages: [],
       },
       {
-        id: 4, name: "Traditional Halwa Combo", category: "Combos", subcategory: "Gift Box",
+        id: 4, name: "Traditional Halwa Combo", slug: "traditional-halwa-combo", category: "Combos", subcategory: "Gift Box",
+        shortDesc: "Three heritage halwa varieties in one box.",
         description: "A curated box featuring three heritage halwa varieties for gifting.",
-        variations: [{ weight: "Combo Box", price: 1500, stock: 0 }],
-        featured: true, bestseller: false, active: true,
-        images: ["combo.jpg"],
+        variations: [{ weight: "Combo Box", price: 1500, strikePrice: 1800, stock: 0, sku: "THC-1", status: "active" }],
+        manageInventory: true, stockQty: 0, lowThreshold: 3, stockStatus: "out-of-stock",
+        status: "active", featured: true,
+        mainImage: null, galleryImages: [],
       },
       {
-        id: 5, name: "Cashew Halwa", category: "Halwa", subcategory: "Premium",
+        id: 5, name: "Cashew Halwa", slug: "cashew-halwa", category: "Halwa", subcategory: "Premium",
+        shortDesc: "Premium halwa loaded with roasted cashews.",
         description: "Premium halwa loaded with roasted cashews and flavoured with cardamom.",
         variations: [
-          { weight: "250g", price: 220, stock: 18 },
-          { weight: "500g", price: 400, stock: 0 },
-          { weight: "1kg", price: 750, stock: 5 },
+          { weight: "250g", price: 220, strikePrice: 0, stock: 18, sku: "", status: "active" },
+          { weight: "500g", price: 400, strikePrice: 0, stock: 0, sku: "", status: "active" },
+          { weight: "1kg", price: 750, strikePrice: 0, stock: 5, sku: "", status: "active" },
         ],
-        featured: false, bestseller: false, active: true,
-        images: [],
+        manageInventory: true, stockQty: 23, lowThreshold: 5, stockStatus: "low-stock",
+        status: "active", featured: false,
+        mainImage: null, galleryImages: [],
       },
       {
-        id: 6, name: "Wheat Halwa", category: "Halwa", subcategory: "Traditional",
+        id: 6, name: "Wheat Halwa", slug: "wheat-halwa", category: "Halwa", subcategory: "Traditional",
+        shortDesc: "Classic wheat-based halwa.",
         description: "Classic wheat-based halwa with a smooth, creamy texture.",
-        variations: [{ weight: "500g", price: 280, stock: 35 }],
-        featured: false, bestseller: false, active: false,
-        images: [],
+        variations: [{ weight: "500g", price: 280, strikePrice: 0, stock: 35, sku: "", status: "active" }],
+        manageInventory: false, stockQty: 35, lowThreshold: 5, stockStatus: "in-stock",
+        status: "draft", featured: false,
+        mainImage: null, galleryImages: [],
       },
     ];
     let nextId = 7;
@@ -293,38 +334,34 @@
           const priceRange = p.variations.length > 1
             ? `₹${Math.min(...p.variations.map(v => v.price))} – ₹${Math.max(...p.variations.map(v => v.price))}`
             : `₹${p.variations[0].price}`;
-          const statusLabel = !p.active ? "Draft" : totalStock === 0 ? "Out of stock" : "Active";
-          const statusColor = !p.active
-            ? "bg-gray-100 text-gray-600"
-            : totalStock === 0
-            ? "bg-red-50 text-red-700"
-            : "bg-emerald-50 text-emerald-700";
-          const flags = [];
-          if (p.featured) flags.push('<span class="rounded-full bg-purple-50 px-2 py-0.5 text-[10px] font-bold text-purple-700">Featured</span>');
-          if (p.bestseller) flags.push('<span class="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700">Bestseller</span>');
+          const statusLabel = p.status === "active" ? "Active" : p.status === "draft" ? "Draft" : "Inactive";
+          const statusColor = p.status === "active"
+            ? "bg-emerald-50 text-emerald-700"
+            : p.status === "draft"
+            ? "bg-amber-50 text-amber-700"
+            : "bg-gray-100 text-gray-600";
 
           return `<tr class="group hover:bg-[#fffcf7] transition">
             <td class="p-3">
               <div class="flex items-center gap-3">
-                <div class="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[#f3e7d5] text-lg text-[#9b6b2c]">${p.images.length ? "🖼" : "□"}</div>
+                <div class="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[#f3e7d5] text-lg text-[#9b6b2c] overflow-hidden">${p.mainImage ? `<img src="${p.mainImage}" class="h-full w-full object-cover"/>` : "□"}</div>
                 <div>
                   <p class="font-semibold text-[#32110d]">${p.name}</p>
-                  <p class="text-xs text-[#a89387]">${p.variations.length} variant${p.variations.length > 1 ? "s" : ""}</p>
+                  <p class="text-xs text-[#a89387]">${p.variations.length} variant${p.variations.length > 1 ? "s" : ""}${p.featured ? ' · <span class="text-purple-600">Featured</span>' : ""}</p>
                 </div>
               </div>
             </td>
             <td class="p-3 text-[#594b45]">${p.category}</td>
+            <td class="p-3 text-[#7e5a43]">${p.subcategory || "—"}</td>
             <td class="p-3 font-semibold">${priceRange}</td>
             <td class="p-3">
               <span class="${totalStock <= 5 && totalStock > 0 ? "text-amber-600 font-semibold" : totalStock === 0 ? "text-red-600 font-semibold" : ""}">${totalStock}</span>
             </td>
             <td class="p-3"><span class="rounded-full ${statusColor} px-3 py-1 text-xs font-semibold">${statusLabel}</span></td>
-            <td class="p-3"><div class="flex flex-wrap gap-1">${flags.join("") || '<span class="text-xs text-[#c4b5a5]">—</span>'}</div></td>
             <td class="p-3">
               <div class="flex justify-end gap-2">
                 <button onclick="viewProduct(${p.id})" title="View" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#594b45] hover:bg-[#f5eee8] transition">👁</button>
                 <button onclick="editProduct(${p.id})" title="Edit" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#8e281d] hover:bg-[#f5eee8] transition">✎</button>
-                <button onclick="openInventory(${p.id})" title="Stock" class="grid h-8 w-8 place-items-center rounded-lg border border-[#e8e1da] text-xs text-[#9b6b2c] hover:bg-[#f5eee8] transition">▤</button>
                 <button onclick="deleteProduct(${p.id})" title="Delete" class="grid h-8 w-8 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition">🗑</button>
               </div>
             </td>
@@ -342,8 +379,7 @@
         if (search && !p.name.toLowerCase().includes(search)) return false;
         if (cat && p.category !== cat) return false;
         if (status) {
-          const totalStock = p.variations.reduce((s, v) => s + v.stock, 0);
-          const s = !p.active ? "Draft" : totalStock === 0 ? "Out of stock" : "Active";
+          const s = p.status === "active" ? "Active" : p.status === "draft" ? "Draft" : "Inactive";
           if (s !== status) return false;
         }
         return true;
@@ -352,50 +388,96 @@
 
     function filterProducts() { renderProducts(); }
 
+    /* ═══════════════ SUB CATEGORY FILTER ═══════════════ */
+    function updateSubCategoryOptions() {
+      const cat = document.getElementById("pf-category").value;
+      const subSel = document.getElementById("pf-subcategory");
+      subSel.innerHTML = '<option value="">Select sub category</option>';
+      if (cat && subCategoryMap[cat]) {
+        subCategoryMap[cat].forEach(sc => {
+          subSel.innerHTML += `<option>${sc}</option>`;
+        });
+      }
+    }
+
     /* ═══════════════ ADD / EDIT ═══════════════ */
     function openProductModal(product) {
       document.getElementById("product-modal-title").textContent = product ? "Edit product" : "Add product";
+      document.getElementById("pf-submit-btn").textContent = product ? "Update product" : "Save product";
       document.getElementById("pf-id").value = product ? product.id : "";
       document.getElementById("pf-name").value = product ? product.name : "";
-      document.getElementById("pf-category").value = product ? product.category : "";
-      document.getElementById("pf-subcategory").value = product ? product.subcategory || "" : "";
+      document.getElementById("pf-slug").value = product ? product.slug : "";
+      document.getElementById("pf-short-desc").value = product ? product.shortDesc || "" : "";
       document.getElementById("pf-description").value = product ? product.description : "";
+      document.getElementById("pf-category").value = product ? product.category : "";
+      updateSubCategoryOptions();
+      if (product) document.getElementById("pf-subcategory").value = product.subcategory || "";
+      document.getElementById("pf-status").value = product ? product.status : "active";
       document.getElementById("pf-featured").checked = product ? product.featured : false;
-      document.getElementById("pf-bestseller").checked = product ? product.bestseller : false;
-      document.getElementById("pf-active").checked = product ? product.active : true;
       document.getElementById("pf-name-error").classList.add("hidden");
+      document.getElementById("pf-slug-error").classList.add("hidden");
+
+      // Inventory
+      const manageInv = product ? product.manageInventory : false;
+      document.getElementById("pf-manage-inventory").checked = manageInv;
+      document.getElementById("pf-stock-qty").value = product ? product.stockQty : "";
+      document.getElementById("pf-low-threshold").value = product ? product.lowThreshold : 5;
+      document.getElementById("pf-stock-status").value = product ? product.stockStatus : "in-stock";
+      toggleInventory();
 
       // Build variations
       const container = document.getElementById("variations-container");
       container.innerHTML = "";
-      const vars = product ? product.variations : [{ weight: "", price: "", stock: "" }];
+      const vars = product ? product.variations : [{ weight: "", price: "", strikePrice: "", stock: "", sku: "", status: "active" }];
       vars.forEach((v) => addVariationRow(v));
 
-      // Reset image area
-      resetImageArea(product ? product.images : []);
+      // Reset images
+      resetMainImage(product ? product.mainImage : null);
+      resetGallery(product ? product.galleryImages : []);
 
+      AdminSlug.reset("pf-slug");
+      AdminSlug.bind("pf-name", "pf-slug");
       AdminModal.open("product-modal");
     }
 
+    /* ═══ Variation Rows ═══ */
     function addVariationRow(v = {}) {
       const container = document.getElementById("variations-container");
-      const rows = container.querySelectorAll(".variation-row");
       const div = document.createElement("div");
-      div.className = "variation-row flex flex-col sm:flex-row gap-3 items-start sm:items-end rounded-xl border border-[#eadbc6] bg-[#fffcf7] p-4";
+      div.className = "variation-row rounded-xl border border-[#eadbc6] bg-[#fffcf7] p-4";
       div.innerHTML = `
-        <div class="flex-1">
-          <label class="mb-1 block text-xs font-semibold text-[#594b45]">Weight / Size</label>
-          <input class="var-weight w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" value="${v.weight || ""}" placeholder="e.g. 250g, 500g, 1kg" />
+        <div class="grid gap-3 sm:grid-cols-6">
+          <div class="sm:col-span-2">
+            <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Weight / Variant <span class="text-red-500">*</span></label>
+            <input class="var-weight w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" value="${v.weight || ""}" placeholder="e.g. 250g, 500g, 1kg" />
+          </div>
+          <div>
+            <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Price (₹) <span class="text-red-500">*</span></label>
+            <input type="number" class="var-price w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" value="${v.price || ""}" placeholder="0" min="0" />
+          </div>
+          <div>
+            <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Strike Price</label>
+            <input type="number" class="var-strike w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" value="${v.strikePrice || ""}" placeholder="0" min="0" />
+          </div>
+          <div>
+            <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">Stock Qty</label>
+            <input type="number" class="var-stock w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" value="${v.stock ?? ""}" placeholder="0" min="0" />
+          </div>
+          <div>
+            <label class="mb-1 block text-[10px] font-semibold text-[#594b45]">SKU</label>
+            <input class="var-sku w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" value="${v.sku || ""}" placeholder="Optional" />
+          </div>
         </div>
-        <div class="w-full sm:w-36">
-          <label class="mb-1 block text-xs font-semibold text-[#594b45]">Price (₹) <span class="text-red-500">*</span></label>
-          <input type="number" class="var-price w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" value="${v.price || ""}" placeholder="0" min="0" />
-        </div>
-        <div class="w-full sm:w-28">
-          <label class="mb-1 block text-xs font-semibold text-[#594b45]">Stock</label>
-          <input type="number" class="var-stock w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2.5 text-sm outline-none focus:border-[#9b6b2c]" value="${v.stock ?? ""}" placeholder="0" min="0" />
-        </div>
-        <button type="button" onclick="removeVariation(this)" class="${rows.length === 0 && !v.weight ? "hidden" : ""} mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-red-200 text-red-500 hover:bg-red-50 transition">✕</button>`;
+        <div class="flex items-center justify-between mt-3">
+          <div class="flex items-center gap-3">
+            <label class="text-[10px] font-semibold text-[#594b45]">Status</label>
+            <select class="var-status rounded-lg border border-[#eadbc6] bg-white px-2 py-1.5 text-xs">
+              <option value="active" ${(v.status || 'active') === 'active' ? 'selected' : ''}>Active</option>
+              <option value="inactive" ${v.status === 'inactive' ? 'selected' : ''}>Inactive</option>
+            </select>
+          </div>
+          <button type="button" onclick="removeVariation(this)" class="var-remove-btn grid h-8 w-8 place-items-center rounded-lg border border-red-200 text-xs text-red-500 hover:bg-red-50 transition">🗑</button>
+        </div>`;
       container.appendChild(div);
       updateRemoveButtons();
     }
@@ -412,81 +494,136 @@
     function updateRemoveButtons() {
       const rows = document.querySelectorAll("#variations-container .variation-row");
       rows.forEach((row) => {
-        const btn = row.querySelector("button");
-        if (rows.length <= 1) btn.classList.add("hidden");
-        else btn.classList.remove("hidden");
+        const btn = row.querySelector(".var-remove-btn");
+        if (rows.length <= 1) btn.classList.add("invisible");
+        else btn.classList.remove("invisible");
       });
     }
 
-    function resetImageArea(images = []) {
-      const area = document.getElementById("image-upload-area");
+    /* ═══ Inventory Toggle ═══ */
+    function toggleInventory() {
+      const checked = document.getElementById("pf-manage-inventory").checked;
+      const fields = document.getElementById("inventory-fields");
+      fields.classList.toggle("hidden", !checked);
+
+      // Show variation note if multiple variations
+      const varCount = document.querySelectorAll("#variations-container .variation-row").length;
+      document.getElementById("inventory-variation-note").classList.toggle("hidden", varCount <= 1);
+    }
+
+    /* ═══ Image Handling ═══ */
+    function resetMainImage(img) {
+      const preview = document.getElementById("main-image-preview");
+      if (img) {
+        document.getElementById("main-image-img").src = img;
+        preview.classList.remove("hidden");
+      } else {
+        preview.classList.add("hidden");
+      }
+      document.getElementById("main-image-input").value = "";
+    }
+
+    function previewMainImage(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          document.getElementById("main-image-img").src = e.target.result;
+          document.getElementById("main-image-preview").classList.remove("hidden");
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function removeMainImage() {
+      document.getElementById("main-image-preview").classList.add("hidden");
+      document.getElementById("main-image-input").value = "";
+    }
+
+    function resetGallery(images = []) {
+      const area = document.getElementById("gallery-area");
       area.innerHTML = "";
       images.forEach((img, i) => {
         const div = document.createElement("div");
-        div.className = "relative rounded-xl border border-[#eadbc6] bg-[#f3e7d5] p-4 flex items-center justify-center min-h-[120px]";
+        div.className = "relative rounded-xl border border-[#eadbc6] bg-[#f3e7d5] p-4 flex items-center justify-center min-h-[100px]";
         div.innerHTML = `
-          <span class="text-3xl">🖼</span>
-          <span class="absolute top-1 left-2 text-[10px] font-bold text-[#9b6b2c]">${i === 0 ? "Primary" : "#" + (i + 1)}</span>
+          <span class="text-2xl">🖼</span>
+          <span class="absolute top-1 left-2 text-[10px] font-bold text-[#9b6b2c]">#${i + 1}</span>
           <button type="button" onclick="this.parentElement.remove()" class="absolute -top-2 -right-2 grid h-6 w-6 place-items-center rounded-full bg-red-500 text-[10px] text-white shadow hover:bg-red-600">✕</button>`;
         area.appendChild(div);
       });
-      const addBtn = document.createElement("div");
-      addBtn.id = "image-add-btn";
-      addBtn.onclick = simulateImageUpload;
-      addBtn.className = "group cursor-pointer flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-[#d5c5b0] bg-[#fffcf7] p-6 hover:border-[#9b6b2c] hover:bg-[#faf5ed] transition min-h-[120px]";
-      addBtn.innerHTML = '<span class="text-2xl text-[#9b6b2c] group-hover:scale-110 transition-transform">📷</span><span class="text-xs font-semibold text-[#7e5a43]">Add image</span>';
-      area.appendChild(addBtn);
     }
 
-    function simulateImageUpload() {
-      const area = document.getElementById("image-upload-area");
-      const addBtn = document.getElementById("image-add-btn");
-      const count = area.querySelectorAll(".relative").length;
-      const div = document.createElement("div");
-      div.className = "relative rounded-xl border border-[#eadbc6] bg-[#f3e7d5] p-4 flex items-center justify-center min-h-[120px] animate-pulse";
-      div.innerHTML = `
-        <span class="text-3xl">🖼</span>
-        <span class="absolute top-1 left-2 text-[10px] font-bold text-[#9b6b2c]">${count === 0 ? "Primary" : "#" + (count + 1)}</span>
-        <button type="button" onclick="this.parentElement.remove()" class="absolute -top-2 -right-2 grid h-6 w-6 place-items-center rounded-full bg-red-500 text-[10px] text-white shadow hover:bg-red-600">✕</button>`;
-      area.insertBefore(div, addBtn);
-      setTimeout(() => div.classList.remove("animate-pulse"), 800);
-      AdminToast.show("Image added (demo)", "info");
+    function previewGalleryImages(input) {
+      if (!input.files) return;
+      const area = document.getElementById("gallery-area");
+      Array.from(input.files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const div = document.createElement("div");
+          div.className = "relative rounded-xl border border-[#eadbc6] overflow-hidden min-h-[100px]";
+          div.innerHTML = `
+            <img src="${e.target.result}" class="h-full w-full object-cover min-h-[100px]" />
+            <button type="button" onclick="this.parentElement.remove()" class="absolute -top-1 -right-1 grid h-6 w-6 place-items-center rounded-full bg-red-500 text-[10px] text-white shadow hover:bg-red-600">✕</button>`;
+          area.appendChild(div);
+        };
+        reader.readAsDataURL(file);
+      });
+      input.value = "";
+      AdminToast.show("Gallery images added", "info");
     }
 
+    /* ═══ Save Product ═══ */
     function saveProduct(e) {
       e.preventDefault();
       const name = document.getElementById("pf-name").value.trim();
-      if (!name) {
-        document.getElementById("pf-name-error").classList.remove("hidden");
-        return;
-      }
-      document.getElementById("pf-name-error").classList.add("hidden");
+      const slug = document.getElementById("pf-slug").value.trim();
+      let valid = true;
+      if (!name) { document.getElementById("pf-name-error").classList.remove("hidden"); valid = false; }
+      else { document.getElementById("pf-name-error").classList.add("hidden"); }
+      if (!slug) { document.getElementById("pf-slug-error").classList.remove("hidden"); valid = false; }
+      else { document.getElementById("pf-slug-error").classList.add("hidden"); }
+      if (!valid) return;
 
       const variations = [];
       document.querySelectorAll("#variations-container .variation-row").forEach((row) => {
         variations.push({
           weight: row.querySelector(".var-weight").value || "Default",
           price: parseInt(row.querySelector(".var-price").value) || 0,
+          strikePrice: parseInt(row.querySelector(".var-strike").value) || 0,
           stock: parseInt(row.querySelector(".var-stock").value) || 0,
+          sku: row.querySelector(".var-sku").value || "",
+          status: row.querySelector(".var-status").value || "active",
         });
       });
 
+      // Validate at least one variation has a price
+      if (!variations.some(v => v.price > 0)) {
+        AdminToast.show("At least one variation must have a price", "error");
+        return;
+      }
+
+      const mainImgEl = document.getElementById("main-image-img");
+      const mainImage = !document.getElementById("main-image-preview").classList.contains("hidden") ? mainImgEl.src : null;
+      const galleryCount = document.querySelectorAll("#gallery-area > div").length;
+      const galleryImages = [];
+      for (let i = 0; i < galleryCount; i++) galleryImages.push(`gallery-${i + 1}.jpg`);
+
       const id = document.getElementById("pf-id").value;
       const data = {
-        name,
+        name, slug,
+        shortDesc: document.getElementById("pf-short-desc").value.trim(),
+        description: document.getElementById("pf-description").value.trim(),
         category: document.getElementById("pf-category").value,
         subcategory: document.getElementById("pf-subcategory").value,
-        description: document.getElementById("pf-description").value,
         variations,
+        manageInventory: document.getElementById("pf-manage-inventory").checked,
+        stockQty: parseInt(document.getElementById("pf-stock-qty").value) || 0,
+        lowThreshold: parseInt(document.getElementById("pf-low-threshold").value) || 5,
+        stockStatus: document.getElementById("pf-stock-status").value,
+        status: document.getElementById("pf-status").value,
         featured: document.getElementById("pf-featured").checked,
-        bestseller: document.getElementById("pf-bestseller").checked,
-        active: document.getElementById("pf-active").checked,
-        images: [],
+        mainImage, galleryImages,
       };
-
-      // Count images in upload area
-      const imgCount = document.querySelectorAll("#image-upload-area .relative").length;
-      for (let i = 0; i < imgCount; i++) data.images.push(`image-${i + 1}.jpg`);
 
       if (id) {
         const idx = products.findIndex((p) => p.id === parseInt(id));
@@ -512,15 +649,16 @@
       const p = products.find((x) => x.id === id);
       if (!p) return;
       const totalStock = p.variations.reduce((s, v) => s + v.stock, 0);
-      const flags = [];
-      if (p.featured) flags.push("Featured");
-      if (p.bestseller) flags.push("Bestseller");
+      const statusLabel = p.status === "active" ? "Active" : p.status === "draft" ? "Draft" : "Inactive";
 
       document.getElementById("product-view-body").innerHTML = `
         <div class="flex flex-wrap items-center gap-2">
           <h3 class="text-2xl font-bold text-[#32110d]">${p.name}</h3>
-          ${!p.active ? '<span class="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600">Draft</span>' : ""}
+          <span class="rounded-full ${p.status === 'active' ? 'bg-emerald-50 text-emerald-700' : p.status === 'draft' ? 'bg-amber-50 text-amber-700' : 'bg-gray-100 text-gray-600'} px-3 py-1 text-xs font-semibold">${statusLabel}</span>
+          ${p.featured ? '<span class="rounded-full bg-purple-50 px-3 py-1 text-xs font-semibold text-purple-700">Featured</span>' : ""}
         </div>
+        <p class="text-xs font-mono text-[#7e5a43]">/${p.slug}</p>
+        ${p.shortDesc ? `<p class="text-sm text-[#594b45]">${p.shortDesc}</p>` : ""}
         <div class="grid gap-4 sm:grid-cols-2">
           <div class="rounded-xl bg-[#fffcf7] border border-[#eadbc6] p-4">
             <p class="text-xs font-bold uppercase tracking-wider text-[#9b6b2c] mb-2">Details</p>
@@ -528,25 +666,28 @@
               <div class="flex justify-between"><span class="text-[#7e5a43]">Category</span><span class="font-semibold">${p.category}</span></div>
               <div class="flex justify-between"><span class="text-[#7e5a43]">Sub Category</span><span class="font-semibold">${p.subcategory || "—"}</span></div>
               <div class="flex justify-between"><span class="text-[#7e5a43]">Total stock</span><span class="font-semibold ${totalStock === 0 ? "text-red-600" : ""}">${totalStock}</span></div>
-              <div class="flex justify-between"><span class="text-[#7e5a43]">Flags</span><span class="font-semibold">${flags.join(", ") || "None"}</span></div>
+              <div class="flex justify-between"><span class="text-[#7e5a43]">Inventory</span><span class="font-semibold">${p.manageInventory ? "Managed" : "Not managed"}</span></div>
             </div>
           </div>
           <div class="rounded-xl bg-[#fffcf7] border border-[#eadbc6] p-4">
             <p class="text-xs font-bold uppercase tracking-wider text-[#9b6b2c] mb-2">Images</p>
             <div class="flex gap-2 flex-wrap">
-              ${p.images.length ? p.images.map(() => '<div class="grid h-16 w-16 place-items-center rounded-lg bg-[#f3e7d5] text-xl text-[#9b6b2c]">🖼</div>').join("") : '<p class="text-xs text-[#a89387]">No images uploaded</p>'}
+              ${p.mainImage ? '<div class="grid h-16 w-16 place-items-center rounded-lg bg-[#f3e7d5] text-xl text-[#9b6b2c] overflow-hidden"><img src="'+p.mainImage+'" class="h-full w-full object-cover"/></div>' : ""}
+              ${p.galleryImages.length ? p.galleryImages.map(() => '<div class="grid h-16 w-16 place-items-center rounded-lg bg-[#f3e7d5] text-xl text-[#9b6b2c]">🖼</div>').join("") : '<p class="text-xs text-[#a89387]">No images uploaded</p>'}
             </div>
           </div>
         </div>
         ${p.description ? `<div class="rounded-xl bg-[#fffcf7] border border-[#eadbc6] p-4"><p class="text-xs font-bold uppercase tracking-wider text-[#9b6b2c] mb-2">Description</p><p class="text-sm text-[#594b45] leading-relaxed">${p.description}</p></div>` : ""}
         <div class="rounded-xl bg-[#fffcf7] border border-[#eadbc6] p-4">
           <p class="text-xs font-bold uppercase tracking-wider text-[#9b6b2c] mb-3">Variations & Pricing</p>
-          <table class="w-full text-sm">
-            <thead class="text-xs text-[#9b6b2c] uppercase"><tr><th class="pb-2 text-left">Weight</th><th class="pb-2 text-left">Price</th><th class="pb-2 text-left">Stock</th></tr></thead>
-            <tbody class="divide-y divide-[#eadbc6]">
-              ${p.variations.map((v) => `<tr><td class="py-2 font-semibold">${v.weight}</td><td class="py-2">₹${v.price}</td><td class="py-2 ${v.stock === 0 ? "text-red-600 font-semibold" : ""}">${v.stock}</td></tr>`).join("")}
-            </tbody>
-          </table>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="text-xs text-[#9b6b2c] uppercase"><tr><th class="pb-2 text-left">Weight</th><th class="pb-2 text-left">Price</th><th class="pb-2 text-left">Strike</th><th class="pb-2 text-left">Stock</th><th class="pb-2 text-left">SKU</th></tr></thead>
+              <tbody class="divide-y divide-[#eadbc6]">
+                ${p.variations.map((v) => `<tr><td class="py-2 font-semibold">${v.weight}</td><td class="py-2">₹${v.price}</td><td class="py-2 ${v.strikePrice ? 'line-through text-[#a89387]' : 'text-[#a89387]'}">${v.strikePrice ? '₹'+v.strikePrice : '—'}</td><td class="py-2 ${v.stock === 0 ? "text-red-600 font-semibold" : ""}">${v.stock}</td><td class="py-2 font-mono text-xs">${v.sku || '—'}</td></tr>`).join("")}
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="flex gap-3 justify-end border-t border-[#eee8e2] pt-4">
           <button onclick="AdminModal.close('product-view-modal');editProduct(${p.id})" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Edit product</button>
@@ -558,50 +699,11 @@
     function deleteProduct(id) {
       const p = products.find((x) => x.id === id);
       if (!p) return;
-      AdminConfirm.show(`Are you sure you want to delete "${p.name}"? This cannot be undone.`, () => {
+      AdminConfirm.show(`Are you sure you want to delete this item? "${p.name}" will be permanently removed.`, () => {
         products = products.filter((x) => x.id !== id);
         renderProducts();
         AdminToast.show("Product deleted", "error");
       });
-    }
-
-    /* ═══════════════ INVENTORY ADJUSTMENT ═══════════════ */
-    function openInventory(id) {
-      const p = products.find((x) => x.id === id);
-      if (!p) return;
-      document.getElementById("inv-product-id").value = p.id;
-      document.getElementById("inv-product-name").textContent = p.name;
-      const totalStock = p.variations.reduce((s, v) => s + v.stock, 0);
-      document.getElementById("inv-current-stock").textContent = `Current total stock: ${totalStock} units`;
-      const list = document.getElementById("inv-variations-list");
-      list.innerHTML = p.variations
-        .map((v, i) => `
-          <div class="flex items-center gap-3 rounded-xl border border-[#eadbc6] bg-[#fffcf7] p-3">
-            <div class="flex-1">
-              <p class="text-sm font-semibold text-[#32110d]">${v.weight}</p>
-              <p class="text-xs text-[#7e5a43]">Current: ${v.stock} units</p>
-            </div>
-            <div class="w-28">
-              <label class="mb-1 block text-[10px] font-bold text-[#9b6b2c]">New stock</label>
-              <input type="number" class="inv-new-stock w-full rounded-lg border border-[#eadbc6] bg-white px-3 py-2 text-sm outline-none focus:border-[#9b6b2c]" value="${v.stock}" min="0" data-index="${i}" />
-            </div>
-          </div>`)
-        .join("");
-      AdminModal.open("inventory-modal");
-    }
-
-    function saveInventory(e) {
-      e.preventDefault();
-      const id = parseInt(document.getElementById("inv-product-id").value);
-      const p = products.find((x) => x.id === id);
-      if (!p) return;
-      document.querySelectorAll(".inv-new-stock").forEach((input) => {
-        const idx = parseInt(input.dataset.index);
-        p.variations[idx].stock = parseInt(input.value) || 0;
-      });
-      AdminModal.close("inventory-modal");
-      renderProducts();
-      AdminToast.show("Stock updated successfully");
     }
 
     /* ═══════════════ INIT ═══════════════ */
@@ -609,5 +711,7 @@
       setTimeout(renderProducts, 100);
     });
   </script>
+  <script src="assets/admin-api.js"></script>
+  <script src="assets/products/products.js"></script>
 </body>
 </html>

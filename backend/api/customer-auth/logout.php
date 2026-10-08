@@ -1,0 +1,12 @@
+<?php declare(strict_types=1);
+require_once __DIR__ . '/../shared/response.php';
+require_once __DIR__ . '/../shared/auth.php';
+methodOnly('POST');
+startCustomerSession();
+unset($_SESSION['customer']);
+$_SESSION = [];
+$cookie = session_get_cookie_params();
+unset($cookie['lifetime']);
+setcookie(session_name(), '', array_merge($cookie, ['expires' => time() - 42000]));
+session_destroy();
+jsonResponse(true, 'Signed out successfully.');

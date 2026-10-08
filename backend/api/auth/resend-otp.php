@@ -1,0 +1,7 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__ . '/../../config/database.php'; require_once __DIR__ . '/../shared/response.php'; require_once __DIR__ . '/../shared/request.php'; require_once __DIR__ . '/otp-mail.php';
+methodOnly('POST');
+safeApi(function (): void {
+    $i=jsonRequest();$email=strtolower(trim((string)inputString($i,'email',true)));$db=getDbConnection();if(!$db)jsonResponse(false,'Database connection unavailable.',null,[],503);$p=$db->prepare('SELECT id FROM admin_pending_registrations WHERE email=:email AND expires_at>NOW() LIMIT 1');$p->execute([':email'=>$email]);if(!$p->fetch())jsonResponse(false,'No pending registration was found. Please register again.',null,[],404);$r=$db->prepare('SELECT id FROM admin_email_otps WHERE email=:email AND created_at>DATE_SUB(NOW(),INTERVAL 60 SECOND) ORDER BY id DESC LIMIT 1');$r->execute([':email'=>$email]);if($r->fetch())jsonResponse(false,'Please wait before requesting another code.',null,[],429);$db->prepare("UPDATE admin_email_otps SET used_at=NOW() WHERE email=:email AND purpose='SIGNUP' AND used_at IS NULL")->execute([':email'=>$email]);$otp=(string)random_int(100000,999999);$q=$db->prepare("INSERT INTO admin_email_otps(email,otp_hash,purpose,expires_at) VALUES(:email,:hash,'SIGNUP',DATE_ADD(NOW(),INTERVAL 10 MINUTE))");$q->execute([':email'=>$email,':hash'=>password_hash($otp,PASSWORD_DEFAULT)]);if(!sendAdminOtpEmail($email,$otp))jsonResponse(false,'We could not send the verification email. Please try again.',null,[],503);jsonResponse(true,'Verification code sent to your email.');
+});

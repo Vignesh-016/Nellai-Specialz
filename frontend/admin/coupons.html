@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
+  <head><script src="assets/admin-auth.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coupons | Nellai Specialz</title>
@@ -18,15 +18,16 @@
 
       <div class="rounded-2xl border border-[#eadbc6] bg-white p-4 sm:p-6">
         <div class="overflow-x-auto">
-          <table class="w-full min-w-[800px] text-left text-sm">
+          <table class="w-full min-w-[1000px] text-left text-sm">
             <thead class="border-b border-[#eadbc6] text-xs uppercase tracking-wider text-[#9b6b2c]">
               <tr>
                 <th class="p-3">Code</th>
+                <th class="p-3">Title</th>
                 <th class="p-3">Discount</th>
                 <th class="p-3">Applies to</th>
-                <th class="p-3">Uses</th>
-                <th class="p-3">Min. order</th>
-                <th class="p-3">Expires</th>
+                <th class="p-3">Min. Order</th>
+                <th class="p-3">Start Date</th>
+                <th class="p-3">Expiry</th>
                 <th class="p-3">Status</th>
                 <th class="p-3 text-right">Actions</th>
               </tr>
@@ -47,64 +48,97 @@
         </div>
         <form onsubmit="saveCoupon(event)" class="p-6 space-y-5">
           <input type="hidden" id="cpf-id" />
+
+          <!-- Code & Title -->
           <div class="grid gap-4 sm:grid-cols-2">
             <div class="sm:col-span-2">
               <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Coupon code <span class="text-red-500">*</span></label>
               <input id="cpf-code" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm font-mono uppercase outline-none focus:border-[#9b6b2c]" placeholder="e.g. WELCOME10" />
               <p id="cpf-code-error" class="mt-1 text-xs text-red-600 hidden">Coupon code is required.</p>
             </div>
-            <div>
-              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Discount type</label>
-              <select id="cpf-type" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
-                <option value="percent">Percentage (%)</option>
-                <option value="flat">Flat amount (₹)</option>
-              </select>
+            <div class="sm:col-span-2">
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Coupon title <span class="text-red-500">*</span></label>
+              <input id="cpf-title" required class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="e.g. Welcome Discount" />
+              <p id="cpf-title-error" class="mt-1 text-xs text-red-600 hidden">Coupon title is required.</p>
             </div>
-            <div>
-              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Discount value <span class="text-red-500">*</span></label>
-              <input id="cpf-value" type="number" required min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="0" />
+            <div class="sm:col-span-2">
+              <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Description</label>
+              <textarea id="cpf-desc" rows="2" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c] resize-none" placeholder="Brief description of the coupon..."></textarea>
             </div>
           </div>
 
+          <!-- Discount -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Discount</h3>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Discount type</label>
+                <select id="cpf-type" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+                  <option value="percent">Percentage (%)</option>
+                  <option value="flat">Flat Amount (₹)</option>
+                </select>
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Discount value <span class="text-red-500">*</span></label>
+                <input id="cpf-value" type="number" required min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="0" />
+                <p id="cpf-value-error" class="mt-1 text-xs text-red-600 hidden">Discount value is required.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Application Rules -->
           <div class="space-y-4">
             <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Application rules</h3>
             <div class="grid gap-4 sm:grid-cols-2">
               <div>
-                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Applies to</label>
-                <select id="cpf-applies" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
-                  <option>All products</option>
-                  <option>Halwa only</option>
-                  <option>Combos only</option>
-                  <option>Specific products</option>
-                </select>
-              </div>
-              <div>
-                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Min. order value (₹)</label>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Minimum order amount (₹)</label>
                 <input id="cpf-min" type="number" min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="No minimum" />
               </div>
               <div>
-                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Max uses</label>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Maximum discount (₹)</label>
+                <input id="cpf-max-discount" type="number" min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="No maximum" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Start date</label>
+                <input id="cpf-start" type="date" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Expiry date</label>
+                <input id="cpf-expiry" type="date" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Usage limit (total)</label>
                 <input id="cpf-max-uses" type="number" min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="Unlimited" />
               </div>
               <div>
-                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Expires on</label>
-                <input id="cpf-expiry" type="date" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" />
+                <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Per user limit</label>
+                <input id="cpf-per-user" type="number" min="0" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm outline-none focus:border-[#9b6b2c]" placeholder="Unlimited" />
               </div>
             </div>
-            <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" id="cpf-one-per-user" class="h-4 w-4 rounded border-[#d5c5b0] accent-[#8e281d]" />
-              <span class="text-sm font-semibold text-[#594b45]">One use per customer</span>
-            </label>
           </div>
 
-          <label class="flex items-center gap-2.5 cursor-pointer">
-            <input type="checkbox" id="cpf-active" checked class="h-4 w-4 rounded border-[#d5c5b0] accent-[#8e281d]" />
-            <span class="text-sm font-semibold text-[#594b45]">Active</span>
-          </label>
+          <!-- Applies To -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#9b6b2c]">Applies To</h3>
+            <select id="cpf-applies" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+              <option>All Products</option>
+              <option>Selected Products</option>
+              <option>Selected Categories</option>
+            </select>
+          </div>
+
+          <!-- Status -->
+          <div>
+            <label class="mb-1.5 block text-xs font-semibold text-[#594b45]">Status</label>
+            <select id="cpf-status" class="w-full rounded-xl border border-[#eadbc6] bg-[#fffaf2] px-4 py-3 text-sm">
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
 
           <div class="flex gap-3 justify-end border-t border-[#eee8e2] pt-5">
             <button type="button" onclick="AdminModal.close('coupon-modal')" class="rounded-xl border border-[#e8e1da] px-4 py-2.5 text-sm font-semibold text-[#594b45] hover:bg-[#f8f6f3] transition">Cancel</button>
-            <button type="submit" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Save coupon</button>
+            <button type="submit" id="cpf-submit-btn" class="rounded-xl bg-[#54170f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6e1f15] transition">Save coupon</button>
           </div>
         </form>
       </div>
@@ -114,10 +148,10 @@
   <script src="assets/admin.js" defer></script>
   <script>
     let coupons = [
-      { id: 1, code: "WELCOME10", type: "percent", value: 10, applies: "All products", minOrder: 0, maxUses: 200, used: 64, expiry: "2026-12-31", onePerUser: true, active: true },
-      { id: 2, code: "FESTIVE25", type: "flat", value: 250, applies: "All products", minOrder: 1500, maxUses: 100, used: 89, expiry: "2026-11-15", onePerUser: false, active: true },
-      { id: 3, code: "DIWALI50", type: "percent", value: 15, applies: "Combos only", minOrder: 1000, maxUses: 50, used: 12, expiry: "2026-11-05", onePerUser: true, active: true },
-      { id: 4, code: "HALWA20", type: "flat", value: 100, applies: "Halwa only", minOrder: 500, maxUses: 0, used: 33, expiry: "", onePerUser: false, active: false },
+      { id: 1, code: "WELCOME10", title: "Welcome Discount", desc: "10% off for new customers on their first order.", type: "percent", value: 10, applies: "All Products", minOrder: 0, maxDiscount: 200, maxUses: 200, perUser: 1, used: 64, start: "2026-01-01", expiry: "2026-12-31", status: "active" },
+      { id: 2, code: "FESTIVE25", title: "Festive Season Offer", desc: "₹250 flat discount on orders above ₹1500.", type: "flat", value: 250, applies: "All Products", minOrder: 1500, maxDiscount: 0, maxUses: 100, perUser: 0, used: 89, start: "2026-10-01", expiry: "2026-11-15", status: "active" },
+      { id: 3, code: "DIWALI50", title: "Diwali Combo Special", desc: "15% off on all combo products during Diwali.", type: "percent", value: 15, applies: "Selected Categories", minOrder: 1000, maxDiscount: 500, maxUses: 50, perUser: 1, used: 12, start: "2026-10-15", expiry: "2026-11-05", status: "active" },
+      { id: 4, code: "HALWA20", title: "Halwa Lovers", desc: "₹100 off on all halwa products.", type: "flat", value: 100, applies: "Selected Categories", minOrder: 500, maxDiscount: 0, maxUses: 0, perUser: 0, used: 33, start: "", expiry: "", status: "inactive" },
     ];
     let nextCpId = 5;
 
@@ -134,20 +168,21 @@
 
       tbody.innerHTML = coupons.map(c => {
         const discount = c.type === "percent" ? `${c.value}% off` : `₹${c.value} off`;
-        const uses = c.maxUses ? `${c.used} / ${c.maxUses}` : `${c.used} (unlimited)`;
         const minOrder = c.minOrder ? `₹${c.minOrder.toLocaleString()}` : "None";
+        const startDate = c.start ? new Date(c.start).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "—";
         const expiry = c.expiry ? new Date(c.expiry).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "Never";
-        const statusColor = c.active ? "bg-emerald-50 text-emerald-700" : "bg-gray-100 text-gray-600";
-        const statusLabel = c.active ? "Active" : "Inactive";
+        const statusColor = c.status === "active" ? "bg-emerald-50 text-emerald-700" : "bg-gray-100 text-gray-600";
+        const statusLabel = c.status === "active" ? "Active" : "Inactive";
 
         return `
           <tr class="hover:bg-[#fffcf7] transition">
             <td class="p-3"><span class="font-bold text-[#8e281d] font-mono">${c.code}</span></td>
+            <td class="p-3 font-semibold text-[#32110d]">${c.title}</td>
             <td class="p-3 font-semibold">${discount}</td>
             <td class="p-3 text-[#594b45]">${c.applies}</td>
-            <td class="p-3">${uses}</td>
             <td class="p-3">${minOrder}</td>
-            <td class="p-3">${expiry}</td>
+            <td class="p-3 text-xs">${startDate}</td>
+            <td class="p-3 text-xs">${expiry}</td>
             <td class="p-3"><span class="rounded-full ${statusColor} px-3 py-1 text-xs font-semibold">${statusLabel}</span></td>
             <td class="p-3">
               <div class="flex justify-end gap-2">
@@ -161,38 +196,63 @@
 
     function openCouponModal(cp) {
       document.getElementById("coupon-modal-title").textContent = cp ? "Edit coupon" : "Create coupon";
+      document.getElementById("cpf-submit-btn").textContent = cp ? "Update coupon" : "Save coupon";
       document.getElementById("cpf-id").value = cp ? cp.id : "";
       document.getElementById("cpf-code").value = cp ? cp.code : "";
+      document.getElementById("cpf-title").value = cp ? cp.title : "";
+      document.getElementById("cpf-desc").value = cp ? cp.desc : "";
       document.getElementById("cpf-type").value = cp ? cp.type : "percent";
       document.getElementById("cpf-value").value = cp ? cp.value : "";
-      document.getElementById("cpf-applies").value = cp ? cp.applies : "All products";
+      document.getElementById("cpf-applies").value = cp ? cp.applies : "All Products";
       document.getElementById("cpf-min").value = cp && cp.minOrder ? cp.minOrder : "";
+      document.getElementById("cpf-max-discount").value = cp && cp.maxDiscount ? cp.maxDiscount : "";
       document.getElementById("cpf-max-uses").value = cp && cp.maxUses ? cp.maxUses : "";
+      document.getElementById("cpf-per-user").value = cp && cp.perUser ? cp.perUser : "";
+      document.getElementById("cpf-start").value = cp ? cp.start : "";
       document.getElementById("cpf-expiry").value = cp ? cp.expiry : "";
-      document.getElementById("cpf-one-per-user").checked = cp ? cp.onePerUser : false;
-      document.getElementById("cpf-active").checked = cp ? cp.active : true;
+      document.getElementById("cpf-status").value = cp ? cp.status : "active";
       document.getElementById("cpf-code-error").classList.add("hidden");
+      document.getElementById("cpf-title-error").classList.add("hidden");
+      document.getElementById("cpf-value-error").classList.add("hidden");
       AdminModal.open("coupon-modal");
     }
 
     function saveCoupon(e) {
       e.preventDefault();
       const code = document.getElementById("cpf-code").value.trim().toUpperCase();
-      if (!code) { document.getElementById("cpf-code-error").classList.remove("hidden"); return; }
-      document.getElementById("cpf-code-error").classList.add("hidden");
+      const title = document.getElementById("cpf-title").value.trim();
+      const value = document.getElementById("cpf-value").value;
+      let valid = true;
+
+      if (!code) { document.getElementById("cpf-code-error").classList.remove("hidden"); valid = false; }
+      else { document.getElementById("cpf-code-error").classList.add("hidden"); }
+      if (!title) { document.getElementById("cpf-title-error").classList.remove("hidden"); valid = false; }
+      else { document.getElementById("cpf-title-error").classList.add("hidden"); }
+      if (!value || parseInt(value) <= 0) { document.getElementById("cpf-value-error").classList.remove("hidden"); valid = false; }
+      else { document.getElementById("cpf-value-error").classList.add("hidden"); }
+      if (!valid) return;
 
       const id = document.getElementById("cpf-id").value;
       const data = {
-        code,
+        code, title,
+        desc: document.getElementById("cpf-desc").value.trim(),
         type: document.getElementById("cpf-type").value,
-        value: parseInt(document.getElementById("cpf-value").value) || 0,
+        value: parseInt(value) || 0,
         applies: document.getElementById("cpf-applies").value,
         minOrder: parseInt(document.getElementById("cpf-min").value) || 0,
+        maxDiscount: parseInt(document.getElementById("cpf-max-discount").value) || 0,
         maxUses: parseInt(document.getElementById("cpf-max-uses").value) || 0,
+        perUser: parseInt(document.getElementById("cpf-per-user").value) || 0,
+        start: document.getElementById("cpf-start").value,
         expiry: document.getElementById("cpf-expiry").value,
-        onePerUser: document.getElementById("cpf-one-per-user").checked,
-        active: document.getElementById("cpf-active").checked,
+        status: document.getElementById("cpf-status").value,
       };
+
+      // Date validation
+      if (data.start && data.expiry && data.start > data.expiry) {
+        AdminToast.show("Start date cannot be after expiry date", "error");
+        return;
+      }
 
       if (id) {
         const idx = coupons.findIndex(c => c.id === parseInt(id));
@@ -217,7 +277,7 @@
     function deleteCoupon(id) {
       const c = coupons.find(x => x.id === id);
       if (!c) return;
-      AdminConfirm.show(`Delete coupon "${c.code}"? This cannot be undone.`, () => {
+      AdminConfirm.show(`Are you sure you want to delete this item? Coupon "${c.code}" will be permanently removed.`, () => {
         coupons = coupons.filter(x => x.id !== id);
         renderCoupons();
         AdminToast.show("Coupon deleted", "error");

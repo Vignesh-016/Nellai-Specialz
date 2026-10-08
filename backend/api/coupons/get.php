@@ -1,0 +1,1 @@
+<?php declare(strict_types=1); require_once __DIR__.'/../shared/response.php'; require_once __DIR__.'/../shared/request.php'; require_once __DIR__.'/../shared/auth.php'; methodOnly('GET'); requireAdmin(); safeApi(function():void{$db=apiDatabase();$s=$db->query('SELECT * FROM coupons ORDER BY created_at DESC');jsonResponse(true,'Coupons loaded.',$s->fetchAll());});

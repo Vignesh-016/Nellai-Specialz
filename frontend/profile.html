@@ -17,6 +17,8 @@
     <script src="assets/js/account.js"></script>
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/checkout.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/auth/session.js"></script>
   </head>
   <body
     class="overflow-x-hidden bg-[#fff8eb] text-[#2c160f] antialiased selection:bg-[#b88932] selection:text-white"
@@ -39,17 +41,17 @@
           <a
             href="#profile"
             class="block rounded-xl bg-[#4d190e] px-4 py-3 text-sm font-semibold text-white"
-            >My Profile</a
+            data-view="profile">My Profile</a
           ><a
             href="#orders"
             class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#806b58] hover:bg-[#f8f3e8]"
-            >My Orders</a
+            data-view="orders">My Orders</a
           ><a
             href="#addresses"
             class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#806b58] hover:bg-[#f8f3e8]"
-            >Addresses</a
+            data-view="addresses">Addresses</a
           ><a
-            href="login.html"
+            href="#logout" data-view="logout"
             class="mt-1 block rounded-xl px-4 py-3 text-sm text-[#702217] hover:bg-[#f8f3e8]"
             >Logout</a
           >

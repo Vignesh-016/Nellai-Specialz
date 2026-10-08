@@ -42,9 +42,17 @@
       styles.textContent = `@keyframes offerMarquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}.offer-marquee{animation:offerMarquee 24s linear infinite;will-change:transform}.offer-marquee:hover{animation-play-state:paused}@media(prefers-reduced-motion:reduce){.offer-marquee{animation:none}}`;
       document.head.appendChild(styles);
     }
+
+    const accountLink = document.querySelector('a[aria-label="Account"]');
+    if (accountLink && window.NellaiCustomerSession) {
+      window.NellaiCustomerSession.getCurrentCustomer().then((customer) => {
+        if (customer) {
+          accountLink.href = `${base}profile.html`;
+          accountLink.title = `Signed in as ${customer.name || customer.email}`;
+        }
+      }).catch(() => {});
+    }
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mount); else mount();
 })();
-
-

@@ -20,6 +20,11 @@
   <script src="../assets/js/account.js"></script>
   <script src="../assets/js/cart.js"></script>
   <script src="../assets/js/checkout.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/product/product-detail.js"></script>
+  <script src="../assets/js/product/product-gallery.js"></script>
+  <script src="../assets/js/product/product-variations.js"></script>
+  <script src="../assets/js/product/product-init.js"></script>
 </head>
 
 <body class="overflow-x-hidden bg-[#fff8eb] text-[#2c160f] antialiased selection:bg-[#b88932] selection:text-white">
@@ -27,7 +32,7 @@
   <!-- Dynamic Common Header Template -->
   <div id="site-header"></div>
 
-  <main class="py-8 sm:py-12">
+  <main hidden class="py-8 sm:py-12">
 
     <!-- BREADCRUMB NAVIGATION -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
@@ -408,9 +413,6 @@
     </div>
   </aside>
 
-  <script src="../assets/js/common.js" defer></script>
-  <script src="../assets/js/account.js" defer></script>
-  <script src="../assets/js/cart.js" defer></script>
   <script>
     // PRODUCT DETAIL INTERACTIVE JS
     let selectedWeight = '500g';
@@ -461,17 +463,6 @@
       qtyCount.textContent = currentQuantity;
     });
 
-    // Add To Cart Handler
-    document.getElementById('btnAddToCart')?.addEventListener('click', () => {
-      NellaiStore.addToCart({
-        id: `wheat-halwa-${selectedWeight}`,
-        name: `Original Wheat Halwa (${selectedWeight})`,
-        price: selectedPrice,
-        quantity: currentQuantity,
-        weight: selectedWeight,
-        image: '../assets/images/products/wheat-halwa.jpg'
-      });
-    });
   </script>
 </body>
 
