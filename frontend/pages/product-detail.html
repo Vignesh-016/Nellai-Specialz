@@ -114,15 +114,15 @@
               <h1 class="font-serif text-3xl sm:text-4xl font-bold text-[#321307] leading-tight">
                 Original Tirunelveli Wheat Halwa
               </h1>
-              <p class="font-serif text-base text-[#8C1C13] font-semibold mt-1">
+              <p id="productTamilSubtitle" class="font-serif text-base text-[#8C1C13] font-semibold mt-1">
                 ஸ்ரீ திருநெல்வேலி பாரம்பரிய கோதுமை அல்வா
               </p>
 
               <!-- Price Box -->
               <div class="mt-4 p-4 rounded-2xl bg-[#FFFBF5] border border-[#EADBC1] flex items-center gap-4">
-                <span id="displayPrice" class="text-3xl font-bold text-[#8C1C13]">₹360</span>
-                <span id="displayMRP" class="text-sm text-[#806B58] line-through">₹450</span>
-                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full border border-emerald-200">Save 20%</span>
+                <span id="displayPrice" class="text-3xl font-bold font-sans tabular-nums text-[#8C1C13]">₹360</span>
+                <span id="displayMRP" class="text-sm text-[#806B58] line-through font-sans tabular-nums">₹450</span>
+                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full border border-emerald-200 font-sans tabular-nums">Save 20%</span>
                 <span class="text-xs text-[#806B58] ml-auto">Taxes included</span>
               </div>
 
@@ -196,7 +196,7 @@
             </div>
 
             <!-- TRUST FEATURES BAR -->
-            <div
+            <div id="productTrustFeatures" hidden
               class="mt-8 pt-6 border-t border-[#EADBC1] grid grid-cols-3 gap-2 text-center text-[11px] text-[#806B58] font-medium">
               <div class="flex flex-col items-center">
                 <span class="text-lg mb-0.5">🚚</span>
@@ -338,7 +338,7 @@
         <a href="shop.html" class="text-xs font-bold text-[#8C1C13] hover:underline">View All →</a>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div id="relatedProductsGrid" hidden class="grid grid-cols-1 sm:grid-cols-3 gap-6">
 
         <!-- Related 1 -->
         <article

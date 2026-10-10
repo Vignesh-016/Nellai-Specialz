@@ -1,7 +1,9 @@
 /* Shared footer injected across the site. */
 (function () {
   const basePath = window.location.pathname.includes("/pages/") ? "../" : "./";
-  const footerScriptUrl = document.currentScript?.src || new URL(`${basePath}assets/js/footer.js`, window.location.href).href;
+  const footerScriptUrl =
+    document.currentScript?.src ||
+    new URL(`${basePath}assets/js/footer.js`, window.location.href).href;
 
   const icon = (content, className = "h-5 w-5") => `
     <svg aria-hidden="true" class="${className}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -9,8 +11,8 @@
     </svg>`;
 
   const footerHTML = `
-    <footer class="relative overflow-hidden bg-[#321307] text-[#fff3d6]">
-      <img src="${basePath}assets/images/Temple.png" alt="" aria-hidden="true" class="pointer-events-none absolute bottom-0 left-1/2 z-0 h-[85%] w-[min(1100px,100%)] -translate-x-1/2 object-contain object-bottom opacity-[0.08]">
+    <footer class="relative overflow-hidden bg-[#FFE5BD] text-[#321307]">
+      <img src="${basePath}assets/images/Temple.png" alt="" aria-hidden="true" class="pointer-events-none absolute bottom-0 left-1/2 z-0 h-[85%] w-[min(1100px,100%)] -translate-x-1/2 object-contain object-bottom opacity-[0.05]">
       <div class="relative z-10 mx-auto w-full max-w-[1280px] px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-0">
           <!-- Brand -->
@@ -19,17 +21,17 @@
               <img src="${basePath}assets/images/nellai-specialz-logo.png" alt="Nellai Specialz" class="h-auto w-[180px] object-contain">
             </a>
             <h2 id="footer-brand-title" class="sr-only">Nellai Specialz</h2>
-            <p class="mt-0 max-w-xs text-[15px] leading-[1.45] text-[#f6dfbd]">
+            <p class="mt-0 max-w-xs text-[15px] leading-[1.45] text-[#6B4A35]">
               Traditional sweets and snacks from Tirunelveli, delivered with the same authentic taste to your home.
             </p>
             <div class="mt-5 flex flex-wrap gap-3">
-              <a href="#" aria-label="Facebook" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#dfb664] text-[#f5d99b] transition hover:bg-[#dfb664] hover:text-[#321307]">
+              <a href="#" aria-label="Facebook" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#8C5A16] text-[#6B3F1E] transition hover:bg-[#dfb664] hover:text-[#321307]">
                 ${icon('<path stroke-linecap="round" stroke-width="1.8" d="M14 8h3V5h-3c-2 0-4 2-4 4v2H7v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1Z"/>')}
               </a>
-              <a href="#" aria-label="Instagram" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#dfb664] text-[#f5d99b] transition hover:bg-[#dfb664] hover:text-[#321307]">
+              <a href="#" aria-label="Instagram" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#8C5A16] text-[#6B3F1E] transition hover:bg-[#dfb664] hover:text-[#321307]">
                 ${icon('<rect x="4" y="4" width="16" height="16" rx="4" stroke-width="1.8"/><circle cx="12" cy="12" r="3.5" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>')}
               </a>
-              <a href="#" aria-label="YouTube" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#dfb664] text-[#f5d99b] transition hover:bg-[#dfb664] hover:text-[#321307]">
+              <a href="#" aria-label="YouTube" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#8C5A16] text-[#6B3F1E] transition hover:bg-[#dfb664] hover:text-[#321307]">
                 ${icon('<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20.5 7.5a2 2 0 0 0-1.4-1.4C17.8 5.7 12 5.7 12 5.7s-5.8 0-7.1.4a2 2 0 0 0-1.4 1.4C3.1 8.8 3.1 12 3.1 12s0 3.2.4 4.5a2 2 0 0 0 1.4 1.4c1.3.4 7.1.4 7.1.4s5.8 0 7.1-.4a2 2 0 0 0 1.4-1.4c.4-1.3.4-4.5.4-4.5s0-3.2-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z"/>')}
               </a>
             </div>
@@ -37,8 +39,8 @@
 
           <!-- Shop -->
           <section class="border-[#845624] lg:border-l lg:pl-8" aria-labelledby="footer-shop-title">
-            <h2 id="footer-shop-title" class="font-serif text-[22px] font-semibold text-[#e7bd6d]">Quick Links</h2>
-            <ul class="mt-4 space-y-2 text-[15px] text-[#f6dfbd]">
+            <h2 id="footer-shop-title" class="font-serif text-[22px] font-semibold text-[#6B3F1E]">Quick Links</h2>
+            <ul class="mt-4 space-y-2 text-[15px] text-[#6B4A35]">
               <li><a href="${basePath}index.html" class="hover:text-[#e7bd6d]">Home</a></li>
               <li><a href="${basePath}pages/shop.html" class="hover:text-[#e7bd6d]">Shop</a></li>
               <li><a href="${basePath}pages/our-story.html" class="hover:text-[#e7bd6d]">About Us</a></li>
@@ -51,8 +53,8 @@
 
           <!-- About -->
           <section class="border-[#845624] lg:border-l lg:pl-8" aria-labelledby="footer-about-title">
-            <h2 id="footer-about-title" class="font-serif text-[22px] font-semibold text-[#e7bd6d]">Policies</h2>
-            <ul class="mt-4 space-y-2 text-[15px] text-[#f6dfbd]">
+            <h2 id="footer-about-title" class="font-serif text-[22px] font-semibold text-[#6B3F1E]">Policies</h2>
+            <ul class="mt-4 space-y-2 text-[15px] text-[#5B3A29]">
               <li><a href="${basePath}pages/shipping-delivery.html" class="hover:text-[#e7bd6d]">Shipping &amp; Delivery</a></li>
               <li><a href="${basePath}pages/return-refunds.html" class="hover:text-[#e7bd6d]">Returns &amp; Refunds</a></li>
               <li><a href="${basePath}pages/privacy-policy.html" class="hover:text-[#e7bd6d]">Privacy Policy</a></li>
@@ -63,22 +65,22 @@
 
           <!-- Customer Care -->
           <section class="border-[#845624] lg:border-l lg:pl-8" aria-labelledby="footer-care-title">
-            <h2 id="footer-care-title" class="font-serif text-[22px] font-semibold text-[#e7bd6d]">Contact Details</h2>
-            <ul class="mt-4 space-y-2 text-[15px] text-[#f6dfbd]">
-              <li><a href="tel:+917010100590" class="hover:text-[#e7bd6d]">+91 70101 00590</a></li>
-              <li><a href="mailto:nellaispecialz@gmail.com" class="hover:text-[#e7bd6d]">nellaispecialz@gmail.com</a></li>
-              <li class="leading-relaxed">514/260H Indira Nagar,<br>2nd Street Sankar Nagar,<br>Tirunelveli</li>
-              <li><a href="${basePath}pages/contact-us.html" class="hover:text-[#e7bd6d]">Contact Us</a></li>
+            <h2 id="footer-care-title" class="font-serif text-[22px] font-semibold text-[#6B3F1E]">Contact Details</h2>
+            <ul class="mt-4 space-y-2 text-[15px] text-[#5B3A29]">
+              <li><a href="tel:+917010100590" class="flex items-start gap-2 hover:text-[#8C5A16]">${icon('<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6.6 3.5h2.2l1.3 4-1.8 1.5a13.2 13.2 0 0 0 6.7 6.7l1.5-1.8 4 1.3v2.2a2 2 0 0 1-2.2 2A16.3 16.3 0 0 1 4.4 5.7a2 2 0 0 1 2.2-2.2Z"/>')}<span>+91 70101 00590</span></a></li>
+              <li><a href="mailto:nellaispecialz@gmail.com" class="flex items-start gap-2 hover:text-[#8C5A16]">${icon('<rect x="3" y="5" width="18" height="14" rx="2" stroke-width="1.8"/><path stroke-linecap="round" stroke-width="1.8" d="m4 7 8 6 8-6"/>')}<span>nellaispecialz@gmail.com</span></a></li>
+              <li class="flex items-start gap-2 leading-relaxed">${icon('<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.2" stroke-width="1.8"/>')}<span>514/260H Indira Nagar,<br>2nd Street Sankar Nagar,<br>Tirunelveli</span></li>
+             
             </ul>
           </section>
 
           <!-- Newsletter -->
           <section class="border-[#845624] lg:border-l lg:pl-8" aria-labelledby="footer-connect-title">
-            <h2 id="footer-connect-title" class="font-serif text-[22px] font-semibold text-[#e7bd6d]">Stay Connected</h2>
-            <p class="mt-4 max-w-xs text-[15px] leading-relaxed text-[#f6dfbd]">Subscribe to get special offers and updates.</p>
+            <h2 id="footer-connect-title" class="font-serif text-[22px] font-semibold text-[#6B3F1E]">Stay Connected</h2>
+            <p class="mt-4 max-w-xs text-[15px] leading-relaxed text-[#5B3A29]">Subscribe to get special offers and updates.</p>
             <form class="mt-5 flex h-14 max-w-[300px] overflow-hidden rounded-2xl border border-[#d7a957]" action="#" method="post">
               <label for="footer-email" class="sr-only">Email address</label>
-              <input id="footer-email" type="email" placeholder="Enter your email" class="min-w-0 flex-1 bg-transparent px-4 text-sm text-white outline-none placeholder:text-[#f6dfbd]" required>
+              <input id="footer-email" type="email" placeholder="Enter your email" class="min-w-0 flex-1 bg-transparent px-4 text-sm text-[#321307] outline-none placeholder:text-[#6B4A35]" required>
               <button type="submit" aria-label="Subscribe" class="flex w-14 shrink-0 items-center justify-center bg-[#f2c875] text-[#321307] transition hover:bg-[#ffe3a6]"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 12h13m-6-6 6 6-6 6" /></svg></button>
             </form>
           </section>
@@ -97,7 +99,8 @@
     if (!document.getElementById("floating-actions")) {
       const floatingDiv = document.createElement("div");
       floatingDiv.id = "floating-actions";
-      floatingDiv.className = "fixed bottom-5 right-5 z-50 flex flex-col gap-3 items-end pointer-events-auto";
+      floatingDiv.className =
+        "fixed bottom-5 right-5 z-50 flex flex-col gap-3 items-end pointer-events-auto";
       floatingDiv.innerHTML = `
         <button type="button" id="openBulkOrderModalBtn" class="group flex items-center gap-2 rounded-full border border-[#D9B86C] bg-[#8C1C13] px-4 py-2.5 text-xs font-bold text-[#FFF8EF] shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#7A120A] cursor-pointer">
           <svg class="h-5 w-5 text-[#D9B86C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,12 +117,19 @@
         </a>
       `;
       document.body.appendChild(floatingDiv);
+      floatingDiv
+        .querySelector('a[aria-label="Chat on WhatsApp"]')
+        ?.setAttribute(
+          "href",
+          "https://wa.me/917010100590?text=Hi%20Nellai%20Specialz%2C%20I%20have%20an%20inquiry%20about%20ordering",
+        );
     }
 
     if (!document.getElementById("bulkOrderModal")) {
       const modalDiv = document.createElement("div");
       modalDiv.id = "bulkOrderModal";
-      modalDiv.className = "fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 transition-all duration-300 opacity-0 pointer-events-none";
+      modalDiv.className =
+        "fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 transition-all duration-300 opacity-0 pointer-events-none";
       modalDiv.innerHTML = `
         <div class="relative w-full max-w-[560px] overflow-hidden rounded-3xl border border-[#D9B86C] bg-[#FFFBF5] shadow-2xl transition-all duration-300 transform scale-95 max-h-[90vh] flex flex-col">
           <!-- Modal Header -->
@@ -213,24 +223,29 @@
       document.body.appendChild(modalDiv);
 
       const baseUrl = new URL(".", footerScriptUrl);
-      const loadScript = (src) => new Promise((resolve, reject) => {
-        const script = document.createElement("script");
-        script.src = src;
-        script.onload = resolve;
-        script.onerror = () => reject(new Error(`Unable to load ${src}`));
-        document.head.appendChild(script);
-      });
+      const loadScript = (src) =>
+        new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = resolve;
+          script.onerror = () => reject(new Error(`Unable to load ${src}`));
+          document.head.appendChild(script);
+        });
       const ready = window.NellaiApi
         ? Promise.resolve()
         : loadScript(new URL("api.js", baseUrl).href);
       ready
-        .then(() => loadScript(new URL("forms/bulk-order-form.js", baseUrl).href))
+        .then(() =>
+          loadScript(new URL("forms/bulk-order-form.js", baseUrl).href),
+        )
         .catch((error) => {
           console.error("[Bulk Enquiry]", error);
           const status = document.getElementById("bulkFormStatus");
           if (status) {
-            status.textContent = "The bulk enquiry form is temporarily unavailable. Please try again later.";
-            status.className = "rounded-xl border border-red-200 bg-red-50 p-3 text-xs font-semibold text-center text-red-700";
+            status.textContent =
+              "The bulk enquiry form is temporarily unavailable. Please try again later.";
+            status.className =
+              "rounded-xl border border-red-200 bg-red-50 p-3 text-xs font-semibold text-center text-red-700";
           }
         });
     }

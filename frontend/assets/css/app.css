@@ -2703,3 +2703,13 @@ main > section:first-child .relative:last-child > div {
   summary::-webkit-details-marker {
   display: none;
 }
+
+/* Professional Tabular Number Styling for Customer Site */
+.tabular-nums,
+[data-price],
+[data-amount],
+.price-tag,
+.price-value {
+  font-family: Inter, system-ui, -apple-system, sans-serif !important;
+  font-variant-numeric: tabular-nums;
+}

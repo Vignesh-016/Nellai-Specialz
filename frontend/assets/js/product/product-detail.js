@@ -41,6 +41,8 @@ window.loadProductDetail = async () => {
   document.querySelectorAll('span').forEach(node => { if (/148 Verified|Authentic Recipe|100% Pure Ghee|Save 20%/i.test(node.textContent)) node.remove(); });
   const rating = [...document.querySelectorAll('div,span')].find(node => /Verified Buyer Reviews/i.test(node.textContent)); if (rating) rating.remove();
   document.querySelector('.font-tamil')?.remove();
+  document.getElementById('productTrustFeatures')?.remove();
+  document.getElementById('productTamilSubtitle')?.remove();
   const reviewForm = document.getElementById('reviewForm'); reviewForm?.closest('.mt-10')?.remove();
   return p;
 };
