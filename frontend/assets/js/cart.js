@@ -189,14 +189,64 @@
   function mountCartModal() {
     if (document.getElementById("cartModal")) return;
 
+    if (!document.getElementById("cart-modal-responsive-styles")) {
+      const styles = document.createElement("style");
+      styles.id = "cart-modal-responsive-styles";
+      styles.textContent = `
+        @media (max-width: 639px) {
+          #cartModal {
+            padding: 12px;
+          }
+          #cartModal [data-cart-panel] {
+            max-height: calc(100vh - 24px);
+            max-height: calc(100dvh - 24px);
+          }
+          #cartModal [data-cart-header] {
+            padding: 12px 16px;
+          }
+          #cartModal [data-cart-body] {
+            min-height: 0;
+            padding: 16px;
+          }
+          #cartModal [data-cart-summary] {
+            padding: 16px;
+          }
+          #cartModal [data-cart-item] {
+            align-items: stretch;
+            flex-direction: column;
+            gap: 12px;
+          }
+          #cartModal [data-cart-item-details] {
+            width: 100%;
+          }
+          #cartModal [data-cart-item-name] {
+            overflow-wrap: anywhere;
+            white-space: normal;
+          }
+          #cartModal [data-cart-item-controls] {
+            justify-content: flex-end;
+            width: 100%;
+          }
+          #cartModal [data-cart-quantity-button] {
+            height: 32px;
+            width: 32px;
+          }
+          #cartModal [data-cart-remove] {
+            height: 36px;
+            width: 36px;
+          }
+        }`;
+      document.head.appendChild(styles);
+    }
+
     const modal = document.createElement("div");
     modal.id = "cartModal";
-    modal.className = "fixed inset-0 z-[75] hidden items-center justify-center bg-black/50 p-4 backdrop-blur-sm";
+    modal.className = "fixed inset-0 z-[75] hidden items-center justify-center bg-black/50 p-3 backdrop-blur-sm sm:p-4";
     modal.setAttribute("aria-hidden", "true");
     modal.setAttribute("role", "dialog");
     modal.innerHTML = `
-      <div class="flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-[#B88932]/30 bg-[#FBF5E9] shadow-2xl">
-        <div class="flex items-center justify-between border-b border-[#4d190e]/15 bg-white/80 px-6 py-4">
+      <div data-cart-panel class="flex max-h-[calc(100dvh-1.5rem)] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-[#B88932]/30 bg-[#FBF5E9] shadow-2xl sm:max-h-[90vh]">
+        <div data-cart-header class="flex items-center justify-between border-b border-[#4d190e]/15 bg-white/80 px-4 py-3 sm:px-6 sm:py-4">
           <div class="flex items-center gap-3">
             <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#4d190e] text-lg font-bold text-[#D9B86C] shadow-sm">🛒</div>
             <div>
@@ -206,7 +256,7 @@
           </div>
           <button type="button" id="closeCartModalBtn" class="flex h-10 w-10 items-center justify-center rounded-full text-xl font-bold text-[#32110D] transition hover:bg-[#4d190e]/10" aria-label="Close cart">×</button>
         </div>
-        <div class="flex-1 space-y-6 overflow-y-auto p-6">
+        <div data-cart-body class="min-h-0 flex-1 space-y-6 overflow-y-auto p-4 sm:p-6">
           <div id="modalCartList" class="space-y-4"></div>
           <div id="modalCartEmpty" class="py-10 text-center">
             <div class="mb-3 flex justify-center text-[#B88932] text-4xl">🛍️</div>
@@ -214,7 +264,7 @@
             <p class="mt-1 text-xs text-[#75675D]">Add a few favourites and continue to checkout.</p>
           </div>
         </div>
-        <div id="modalCartSummary" hidden class="border-t border-[#4d190e]/15 bg-white/95 p-5">
+        <div id="modalCartSummary" data-cart-summary hidden class="border-t border-[#4d190e]/15 bg-white/95 p-4 sm:p-5">
           <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <span class="text-xs text-[#75675D]">Subtotal</span>
@@ -272,26 +322,27 @@
       const quantity = item.quantity;
       if (item.unit_price !== null) subtotal += item.unit_price * quantity;
       const row = document.createElement("div");
-      row.className = "flex items-center justify-between gap-4 rounded-2xl border border-[#B88932]/20 bg-white p-3 shadow-sm";
+      row.dataset.cartItem = "";
+      row.className = "flex flex-col gap-3 rounded-2xl border border-[#B88932]/20 bg-white p-3 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:gap-4";
       const label = item.variation_name || item.weight;
       row.innerHTML = `
-        <div class="flex min-w-0 flex-1 items-center gap-3">
+        <div data-cart-item-details class="flex w-full min-w-0 items-center gap-3 sm:flex-1">
           <div class="h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-[#B88932]/20 bg-[#F7F1E5]">
             <img src="${escapeHtml(productImage(item.image))}" alt="" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='${escapeHtml(pageBase() + PLACEHOLDER)}';">
           </div>
           <div class="min-w-0 flex-1">
-            <h4 class="truncate font-serif text-sm font-bold text-[#32110D]">${escapeHtml(item.name)}</h4>
-            <p class="text-[11px] text-[#786153]">${escapeHtml(label)}</p>
+            <h4 data-cart-item-name class="break-words font-serif text-sm font-bold leading-tight text-[#32110D] sm:truncate">${escapeHtml(item.name)}</h4>
+            <p class="break-words text-[11px] text-[#786153]">${escapeHtml(label)}</p>
             <p class="mt-0.5 text-xs font-bold text-[#4d190e]">${item.unit_price === null ? "Price unavailable" : formatRupees(item.unit_price)}</p>
           </div>
         </div>
-        <div class="flex items-center gap-3">
+        <div data-cart-item-controls class="flex w-full items-center justify-end gap-3 sm:w-auto">
           <div class="flex items-center gap-1 rounded-lg border border-[#B88932]/20 bg-[#F7F1E5] p-1">
-            <button type="button" class="flex h-6 w-6 items-center justify-center rounded text-xs font-bold text-[#32110D] hover:bg-white" data-qty-delta="-1" data-id="${item.id}" aria-label="Decrease quantity">−</button>
+            <button type="button" data-cart-quantity-button class="flex h-8 w-8 items-center justify-center rounded text-xs font-bold text-[#32110D] hover:bg-white sm:h-6 sm:w-6" data-qty-delta="-1" data-id="${item.id}" aria-label="Decrease quantity">−</button>
             <span class="w-5 text-center text-xs font-bold text-[#32110D]">${quantity}</span>
-            <button type="button" class="flex h-6 w-6 items-center justify-center rounded text-xs font-bold text-[#32110D] hover:bg-white" data-qty-delta="1" data-id="${item.id}" aria-label="Increase quantity">+</button>
+            <button type="button" data-cart-quantity-button class="flex h-8 w-8 items-center justify-center rounded text-xs font-bold text-[#32110D] hover:bg-white sm:h-6 sm:w-6" data-qty-delta="1" data-id="${item.id}" aria-label="Increase quantity">+</button>
           </div>
-          <button type="button" class="p-1 text-sm font-bold text-gray-400 transition hover:text-red-600" data-remove-item="${item.id}" aria-label="Remove item">✕</button>
+          <button type="button" data-cart-remove class="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-gray-400 transition hover:bg-red-50 hover:text-red-600" data-remove-item="${item.id}" aria-label="Remove item">✕</button>
         </div>`;
       list.appendChild(row);
     });

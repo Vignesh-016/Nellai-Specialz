@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../shared/response.php';
 require_once __DIR__ . '/../shared/request.php';
+require_once __DIR__ . '/../shared/admin-notifications.php';
 
 methodOnly('POST');
 
@@ -123,7 +124,34 @@ try {
         ':shipping_days' => $shippingDays,
     ]);
 
-    jsonResponse(true, 'Enquiry submitted successfully.', ['id' => (int) $db->lastInsertId()], [], 201);
+    $enquiryId = (int) $db->lastInsertId();
+    $submittedAt = date('j M Y, g:i A T');
+    if ($type === 'BULK_ORDER') {
+        notifyAdminSafely('Bulk Enquiry Mail', 'New Bulk / Corporate Enquiry - Nellai Specialz', 'New Bulk / Corporate Enquiry', [
+            'Enquiry ID' => $enquiryId,
+            'Name' => $name,
+            'Company Name' => $company,
+            'Phone Number' => $phone,
+            'Address' => $address,
+            'Employee Size' => $employeeSize,
+            'Combo Boxes Required' => $comboBoxes,
+            'Shipping Within' => $shippingDays === null ? null : $shippingDays . ' Days',
+            'Custom Quantity' => $customQuantity,
+            'Submitted' => $submittedAt,
+        ], null);
+    } else {
+        notifyAdminSafely('Contact Mail', 'New Contact Enquiry - Nellai Specialz', 'New Contact Enquiry', [
+            'Enquiry ID' => $enquiryId,
+            'Name' => $name,
+            'Email' => $email,
+            'Phone' => $phone,
+            'Subject' => $subject,
+            'Message' => $message,
+            'Submitted' => $submittedAt,
+        ], $email);
+    }
+
+    jsonResponse(true, 'Enquiry submitted successfully.', ['id' => $enquiryId], [], 201);
 } catch (PDOException $exception) {
     error_log('[Enquiries POST] ' . $exception);
     jsonResponse(false, 'Unable to submit enquiry right now.', null, [], 500);

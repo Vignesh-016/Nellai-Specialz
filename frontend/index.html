@@ -93,16 +93,16 @@
         ></div>
 
         <div
-          class="relative z-10 mx-auto flex min-h-[460px] max-w-[1280px] items-center px-4 py-10 sm:min-h-[500px] sm:px-6 lg:min-h-[540px] lg:px-8 lg:py-12"
+          class="relative z-10 mx-auto flex min-h-0 max-w-[1280px] items-center px-4 py-8 sm:min-h-[500px] sm:px-6 sm:py-10 lg:min-h-[540px] lg:px-8 lg:py-12"
         >
           <!-- SLIDE 1: FESTIVE COMBO GIFTING -->
           <!-- SLIDE 1: FESTIVE COMBO GIFTING -->
           <div
             data-hero-slide
-            class="grid w-full items-center gap-8 lg:grid-cols-12 transition-opacity duration-700 ease-in-out"
+            class="grid w-full grid-cols-1 items-center gap-6 sm:gap-8 lg:grid-cols-12 lg:gap-8 transition-opacity duration-700 ease-in-out"
           >
             <!-- Left Column: Content -->
-            <div class="lg:col-span-6 xl:col-span-6 max-w-xl">
+            <div class="order-2 max-w-xl lg:order-1 lg:col-span-6 xl:col-span-6">
               <span
                 class="inline-flex items-center gap-2 rounded-full border border-[#D9B86C] bg-[#FFFBF5] px-3.5 py-1 text-[11px] font-bold uppercase tracking-widest text-[#8C1C13] shadow-xs"
               >
@@ -142,10 +142,10 @@
 
             <!-- Right Column: Visual Product Showcase -->
             <div
-              class="lg:col-span-6 xl:col-span-6 relative flex items-center justify-center pt-2 lg:pt-0"
+              class="order-1 relative flex items-center justify-center pt-0 lg:order-2 lg:col-span-6 lg:pt-0 xl:col-span-6"
             >
               <div
-                class="relative w-full max-w-[520px] lg:scale-[1.08] xl:scale-[1.14]"
+                class="relative w-full max-w-[300px] lg:max-w-[520px] lg:scale-[1.08] xl:scale-[1.14]"
               >
                 <div
                   class="absolute h-72 w-72 sm:h-80 sm:w-80 rounded-full bg-gradient-to-tr from-[#E4C57A]/40 via-[#D9B86C]/25 to-[#8C1C13]/15 blur-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -154,7 +154,7 @@
                 <img
                   src="assets/images/Home/Festive Indian Sweet Gift Box (1).webp"
                   alt="Nellai Specialz Festive Sweet Gift Set"
-                  class="relative z-10 w-full rounded-2xl object-cover drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                  class="relative z-10 h-auto w-full rounded-2xl object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
                 />
 
                 <div
@@ -169,10 +169,10 @@
           <!-- SLIDE 2: HALWA COLLECTION SHOWCASE -->
           <div
             data-hero-slide
-            class="absolute inset-0 z-0 grid w-full items-center gap-8 opacity-0 pointer-events-none transition-opacity duration-700 ease-in-out lg:grid-cols-12 px-4 py-10 sm:px-6 lg:px-8 lg:py-12"
+            class="absolute inset-0 z-0 grid w-full grid-cols-1 items-center gap-6 px-4 py-8 opacity-0 pointer-events-none transition-opacity duration-700 ease-in-out sm:gap-8 sm:px-6 sm:py-10 lg:grid-cols-12 lg:gap-8 lg:px-8 lg:py-12"
           >
             <!-- Left Column: Content -->
-            <div class="lg:col-span-6 xl:col-span-6 max-w-xl">
+            <div class="order-2 max-w-xl lg:order-1 lg:col-span-6 xl:col-span-6">
               <span
                 class="inline-flex items-center gap-2 rounded-full border border-[#D9B86C] bg-[#FFFBF5] px-3.5 py-1 text-[11px] font-bold uppercase tracking-widest text-[#8C1C13] shadow-xs"
               >
@@ -211,9 +211,9 @@
 
             <!-- Right Column: Visual Product Showcase -->
             <div
-              class="lg:col-span-6 xl:col-span-6 relative flex items-center justify-center pt-2 lg:pt-0"
+              class="order-1 relative flex items-center justify-center pt-0 lg:order-2 lg:col-span-6 lg:pt-0 xl:col-span-6"
             >
-              <div class="relative w-full max-w-[440px]">
+              <div class="relative w-full max-w-[300px] lg:max-w-[440px]">
                 <div
                   class="absolute h-72 w-72 sm:h-80 sm:w-80 rounded-full bg-gradient-to-tr from-[#D9B86C]/40 via-[#E4C57A]/25 to-[#8C1C13]/15 blur-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 ></div>
@@ -221,7 +221,7 @@
                 <img
                   src="assets/images/Home/Tirunelveli-Muscoth-Halwa.png"
                   alt="Authentic Glistening Tirunelveli Ghee Halwa"
-                  class="relative z-10 w-full rounded-2xl object-cover drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                  class="relative z-10 h-auto w-full rounded-2xl object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
                 />
 
                 <div
@@ -253,7 +253,7 @@
                 class="h-2.5 w-2.5 rounded-full bg-[#8C1C13]/30 transition-all hover:bg-[#8C1C13]/60 cursor-pointer"
               ></button>
             </div>
-            <div class="flex items-center gap-2.5">
+            <div class="mr-[147px] flex items-center gap-2.5 sm:mr-0">
               <button
                 type="button"
                 data-hero-prev
@@ -287,24 +287,24 @@
           <div class="grid grid-cols-2 gap-3.5 md:grid-cols-4 lg:gap-5">
             <!-- USP 1: Pure Ghee -->
             <div
-              class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm"
+              class="flex h-full min-h-[205px] flex-col items-center justify-center gap-2 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3 text-center shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm sm:min-h-0 sm:flex-row sm:justify-start sm:gap-3.5 sm:p-4 sm:text-left"
             >
               <div
-                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25 text-[#8C1C13]"
+                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-[#8C1C13]/25 bg-[#8C1C13]/10 text-[#8C1C13] sm:h-12 sm:w-12"
               >
                 <img
                   src="assets/images/Home/Pure ghee.png"
                   alt=""
-                  class="h-8 w-8 object-contain"
+                  class="h-full w-full object-contain p-2 sm:h-8 sm:w-8 sm:p-0"
                 />
               </div>
-              <div class="min-w-0">
+              <div class="min-w-0 w-full sm:w-auto">
                 <h3
-                  class="font-serif text-sm sm:text-base font-bold text-[#32110D] tracking-wide leading-tight"
+                  class="break-words text-center font-serif text-[16px] font-semibold leading-[1.05] tracking-wide text-[#32110D] min-[375px]:text-[18px] sm:text-left sm:text-base sm:font-bold sm:leading-tight"
                 >
                   Pure Ghee
                 </h3>
-                <p class="text-[11px] font-semibold text-[#8C1C13] mt-0.5">
+                <p class="mt-0.5 text-center text-[13px] font-semibold leading-5 text-[#8C1C13] sm:text-left sm:text-[11px]">
                   100% Cow Ghee
                 </p>
               </div>
@@ -312,24 +312,24 @@
 
             <!-- USP 2: No Palm Oil -->
             <div
-              class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm"
+              class="flex h-full min-h-[205px] flex-col items-center justify-center gap-2 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3 text-center shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm sm:min-h-0 sm:flex-row sm:justify-start sm:gap-3.5 sm:p-4 sm:text-left"
             >
               <div
-                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25 text-[#8C1C13]"
+                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-[#8C1C13]/25 bg-[#8C1C13]/10 text-[#8C1C13] sm:h-12 sm:w-12"
               >
                 <img
                   src="assets/images/Home/No Palm Oil.png"
                   alt=""
-                  class="h-8 w-8 object-contain"
+                  class="h-full w-full object-contain p-2 sm:h-8 sm:w-8 sm:p-0"
                 />
               </div>
-              <div class="min-w-0">
+              <div class="min-w-0 w-full sm:w-auto">
                 <h3
-                  class="font-serif text-sm sm:text-base font-bold text-[#32110D] tracking-wide leading-tight"
+                  class="break-words text-center font-serif text-[16px] font-semibold leading-[1.05] tracking-wide text-[#32110D] min-[375px]:text-[18px] sm:text-left sm:text-base sm:font-bold sm:leading-tight"
                 >
                   No Palm Oil
                 </h3>
-                <p class="text-[11px] font-semibold text-[#8C1C13] mt-0.5">
+                <p class="mt-0.5 text-center text-[13px] font-semibold leading-5 text-[#8C1C13] sm:text-left sm:text-[11px]">
                   Zero Preservatives
                 </p>
               </div>
@@ -337,24 +337,24 @@
 
             <!-- USP 3: Thamirabarani Water -->
             <div
-              class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm"
+              class="flex h-full min-h-[205px] flex-col items-center justify-center gap-2 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3 text-center shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm sm:min-h-0 sm:flex-row sm:justify-start sm:gap-3.5 sm:p-4 sm:text-left"
             >
               <div
-                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25 text-[#8C1C13]"
+                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-[#8C1C13]/25 bg-[#8C1C13]/10 text-[#8C1C13] sm:h-12 sm:w-12"
               >
                 <img
                   src="assets/images/Home/Thamirabarani Water.png"
                   alt=""
-                  class="h-8 w-8 object-contain"
+                  class="h-full w-full object-contain p-2 sm:h-8 sm:w-8 sm:p-0"
                 />
               </div>
-              <div class="min-w-0">
+              <div class="min-w-0 w-full sm:w-auto">
                 <h3
-                  class="font-serif text-sm sm:text-base font-bold text-[#32110D] tracking-wide leading-tight"
+                  class="break-words text-center font-serif text-[16px] font-semibold leading-[1.05] tracking-wide text-[#32110D] min-[375px]:text-[18px] sm:text-left sm:text-base sm:font-bold sm:leading-tight"
                 >
                   Thamirabarani Water
                 </h3>
-                <p class="text-[11px] font-semibold text-[#8C1C13] mt-0.5">
+                <p class="mt-0.5 text-center text-[13px] font-semibold leading-5 text-[#8C1C13] sm:text-left sm:text-[11px]">
                   Mineral-Rich River
                 </p>
               </div>
@@ -362,24 +362,24 @@
 
             <!-- USP 4: Slow Cooked Process -->
             <div
-              class="flex items-center gap-3.5 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3.5 sm:p-4 shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm"
+              class="flex h-full min-h-[205px] flex-col items-center justify-center gap-2 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-3 text-center shadow-xs transition-all duration-300 hover:border-[#8C1C13]/40 hover:shadow-sm sm:min-h-0 sm:flex-row sm:justify-start sm:gap-3.5 sm:p-4 sm:text-left"
             >
               <div
-                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8C1C13]/10 border border-[#8C1C13]/25 text-[#8C1C13]"
+                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-[#8C1C13]/25 bg-[#8C1C13]/10 text-[#8C1C13] sm:h-12 sm:w-12"
               >
                 <img
                   src="assets/images/Home/Slow Cooked Process.png"
                   alt=""
-                  class="h-8 w-8 object-contain"
+                  class="h-full w-full object-contain p-2 sm:h-8 sm:w-8 sm:p-0"
                 />
               </div>
-              <div class="min-w-0">
+              <div class="min-w-0 w-full sm:w-auto">
                 <h3
-                  class="font-serif text-sm sm:text-base font-bold text-[#32110D] tracking-wide leading-tight"
+                  class="break-words text-center font-serif text-[16px] font-semibold leading-[1.05] tracking-wide text-[#32110D] min-[375px]:text-[18px] sm:text-left sm:text-base sm:font-bold sm:leading-tight"
                 >
                   Slow Cooked Process
                 </h3>
-                <p class="text-[11px] font-semibold text-[#8C1C13] mt-0.5">
+                <p class="mt-0.5 text-center text-[13px] font-semibold leading-5 text-[#8C1C13] sm:text-left sm:text-[11px]">
                   Wood-Fire Kadai
                 </p>
               </div>
@@ -1984,7 +1984,7 @@
                 <h3
                   class="font-serif text-xs sm:text-sm font-bold text-[#32110D] tracking-wide transition-colors group-hover:text-[#8C1C13]"
                 >
-                  Delivery at Your Bus Stop or Railway Station
+                  Deliver at Bus Stop or Railway Station
                 </h3>
               </div>
             </div>

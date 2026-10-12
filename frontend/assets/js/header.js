@@ -21,19 +21,78 @@
     </div>
     <header class="sticky top-0 z-40 border-b border-[#EADBC1] bg-[#FFF8EF]/95 backdrop-blur-md shadow-xs">
       <div class="mx-auto flex min-h-[76px] max-w-[1320px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <button type="button" id="mobileMenuBtn" class="order-first rounded-lg p-2 text-[#32110D] hover:bg-[#EADBC1]/30 lg:hidden" aria-label="Open menu"><svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+        <button type="button" id="mobileMenuBtn" data-mobile-menu-toggle aria-controls="mobileMenuDrawer" aria-expanded="false" class="order-first rounded-lg p-2 text-[#32110D] hover:bg-[#EADBC1]/30 lg:hidden" aria-label="Open menu"><svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
         <a href="${base}index.html" class="shrink-0 transition-transform hover:scale-[1.02]"><img src="${base}assets/images/nellai-specialz-logo.png" alt="Nellai Specialz" class="h-16 sm:h-20 w-auto object-contain py-1"></a>
         <nav class="hidden items-center gap-7 lg:flex xl:gap-9" aria-label="Primary navigation"><a href="${base}index.html" class="${navClass("home")}">Home</a><a href="${base}pages/shop.html" class="${navClass("shop")}">Shop</a><a href="${base}pages/our-story.html" class="${navClass("our-story")}">About Us</a><a href="${base}pages/contact-us.html" class="${navClass("contact-us")}">Contact</a></nav>
         <div class="flex items-center gap-3 text-[#32110D] sm:gap-5"><label class="relative hidden md:block"><span class="sr-only">Search</span><svg class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8C1C13]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke-width="2"/><path stroke-linecap="round" stroke-width="2" d="m20 20-4-4"/></svg><input type="search" placeholder="Search sweets, halwa, combos..." class="h-10 w-52 rounded-full border border-[#EADBC1] bg-[#FFFBF5] pl-10 pr-4 text-xs font-medium text-[#32110D] outline-none placeholder:text-[#8C1C13]/60 focus:border-[#8C1C13] focus:ring-1 focus:ring-[#8C1C13] sm:w-64 transition-all"></label><a href="${base}login.html" aria-label="Account" class="p-1.5 transition-colors hover:text-[#8C1C13]"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" stroke-width="1.8"/><path stroke-linecap="round" stroke-width="1.8" d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg></a><button type="button" data-open-cart aria-label="Cart" class="relative p-1.5 transition-colors hover:text-[#8C1C13]"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 5h2l1.5 11h10L20 8H7M10 20a1 1 0 1 0 0 .01M17 20a1 1 0 1 0 0 .01"/></svg><span data-cart-count class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#8C1C13] text-[10px] font-bold text-white shadow-xs">0</span></button></div>
       </div>
-      <div id="mobileMenuDrawer" class="hidden border-t border-[#EADBC1] bg-[#FFF8EF] px-6 py-5 lg:hidden"><div class="mb-3 flex items-center justify-between"><span class="text-xs font-bold uppercase tracking-widest text-[#8C1C13]">Menu</span><button type="button" id="closeMobileNav" class="grid h-9 w-9 place-items-center rounded-full text-2xl text-[#32110D] hover:bg-[#EADBC1]/40" aria-label="Close menu">×</button></div><nav class="grid gap-2" aria-label="Mobile navigation"><a href="${base}index.html" class="rounded-lg px-4 py-2.5 text-base font-semibold text-[#32110D] hover:bg-[#EADBC1]/40 transition-colors">Home</a><a href="${base}pages/shop.html" class="rounded-lg px-4 py-2.5 text-base font-semibold text-[#32110D] hover:bg-[#EADBC1]/40 transition-colors">Shop</a><a href="${base}pages/our-story.html" class="rounded-lg px-4 py-2.5 text-base font-semibold text-[#32110D] hover:bg-[#EADBC1]/40 transition-colors">About Us</a><a href="${base}pages/contact-us.html" class="rounded-lg px-4 py-2.5 text-base font-semibold text-[#32110D] hover:bg-[#EADBC1]/40 transition-colors">Contact</a></nav></div>
+      <div id="mobileMenuDrawer" data-mobile-menu aria-hidden="true" class="hidden border-t border-[#EADBC1] bg-[#FFF8EF] px-6 py-5 lg:hidden"><div class="mb-3 flex items-center justify-between"><span class="text-xs font-bold uppercase tracking-widest text-[#8C1C13]">Menu</span><button type="button" id="closeMobileNav" data-mobile-menu-close class="grid h-9 w-9 place-items-center rounded-full text-2xl text-[#32110D] hover:bg-[#EADBC1]/40" aria-label="Close menu">×</button></div><nav class="grid gap-2" aria-label="Mobile navigation"><a href="${base}index.html" class="rounded-lg px-4 py-2.5 text-base font-semibold text-[#32110D] hover:bg-[#EADBC1]/40 transition-colors">Home</a><a href="${base}pages/shop.html" class="rounded-lg px-4 py-2.5 text-base font-semibold text-[#32110D] hover:bg-[#EADBC1]/40 transition-colors">Shop</a><a href="${base}pages/our-story.html" class="rounded-lg px-4 py-2.5 text-base font-semibold text-[#32110D] hover:bg-[#EADBC1]/40 transition-colors">About Us</a><a href="${base}pages/contact-us.html" class="rounded-lg px-4 py-2.5 text-base font-semibold text-[#32110D] hover:bg-[#EADBC1]/40 transition-colors">Contact</a></nav></div>
     </header>`;
 
+  function initMobileMenu() {
+    const menuButton = document.querySelector("[data-mobile-menu-toggle]");
+    const drawer = document.querySelector("[data-mobile-menu]");
+    const closeButton = document.querySelector("[data-mobile-menu-close]");
+    if (!menuButton || !drawer) return;
+
+    let isMenuOpen = false;
+
+    function openMenu() {
+      isMenuOpen = true;
+      drawer.classList.remove("hidden");
+      drawer.setAttribute("aria-hidden", "false");
+      menuButton.setAttribute("aria-expanded", "true");
+      menuButton.setAttribute("aria-label", "Close menu");
+      document.body.classList.add("overflow-hidden");
+    }
+
+    function closeMenu() {
+      isMenuOpen = false;
+      drawer.classList.add("hidden");
+      drawer.setAttribute("aria-hidden", "true");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open menu");
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    function toggleMenu() {
+      if (isMenuOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    menuButton.addEventListener("click", toggleMenu);
+    closeButton?.addEventListener("click", closeMenu);
+    drawer.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+    document.addEventListener("click", (event) => {
+      if (
+        isMenuOpen &&
+        !drawer.contains(event.target) &&
+        !menuButton.contains(event.target)
+      ) {
+        closeMenu();
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (isMenuOpen && event.key === "Escape") closeMenu();
+    });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1024) closeMenu();
+    });
+  }
+
   function mount() {
-    const target =
+    const existingHeader =
       document.getElementById("site-header") ||
       document.querySelector("header");
-    if (target) target.outerHTML = `<div id="site-header">${headerHTML}</div>`;
+    if (existingHeader?.dataset.sharedHeaderMounted === "true") return;
+    if (existingHeader)
+      existingHeader.outerHTML = `<div id="site-header" data-shared-header-mounted="true">${headerHTML}</div>`;
+    initMobileMenu();
     const search = document.querySelector('input[type="search"]');
     const searchBox = search?.parentElement;
     const searchResults = document.createElement("div");

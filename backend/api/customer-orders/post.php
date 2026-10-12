@@ -6,6 +6,7 @@ require_once __DIR__ . '/../shared/response.php';
 require_once __DIR__ . '/../shared/request.php';
 require_once __DIR__ . '/../shared/auth.php';
 require_once __DIR__ . '/../shared/customer-addresses.php';
+require_once __DIR__ . '/../shared/admin-notifications.php';
 
 final class CustomerOrderException extends RuntimeException
 {
@@ -257,6 +258,31 @@ safeApi(function () use ($customer): void {
         }
 
         $db->commit();
+        $emailLines = [];
+        foreach ($lines as $line) {
+            $emailLines[] = $line['name']
+                . ($line['variation'] ? ' (' . $line['variation'] . ')' : '')
+                . ' × ' . $line['quantity']
+                . ' @ ₹' . $line['unit_price']
+                . ' = ₹' . $line['line_total'];
+        }
+        notifyAdminSafely('Order Mail', 'New Order Received - Nellai Specialz - #' . $orderNumber, 'New Order Received', [
+            'Order ID' => $orderId,
+            'Order Number' => $orderNumber,
+            'Customer Name' => $address['full_name'],
+            'Customer Email' => $customer['email'],
+            'Phone' => $address['phone'],
+            'Shipping Address' => $addressText,
+            'Products' => implode("\n", $emailLines),
+            'Subtotal' => '₹' . $subtotal,
+            'Coupon Code' => $coupon['code'] ?? null,
+            'Discount' => '₹' . $discountAmount,
+            'Final Total' => '₹' . $total,
+            'Payment Method' => $paymentMethod,
+            'Payment Status' => 'PENDING',
+            'Order Status' => 'NEW',
+            'Created' => date('j M Y, g:i A T'),
+        ], $customer['email']);
         jsonResponse(true, 'Order placed successfully.', [
             'order_id' => $orderId,
             'order_number' => $orderNumber,
