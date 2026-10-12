@@ -38,7 +38,6 @@ function startCustomerSession(): void
         // still allows the credentialed same-site requests used by the store.
         'samesite' => $isLocalOrigin ? 'None' : 'Lax',
     ];
-
     session_name('NELLAI_CUSTOMER_SESSION');
     session_set_cookie_params($params);
     session_start();
@@ -67,6 +66,17 @@ function getCurrentCustomer(): ?array
     return isset($_SESSION['customer']) && is_array($_SESSION['customer'])
         ? $_SESSION['customer']
         : null;
+}
+
+function requireCustomer(): array
+{
+    $customer = getCurrentCustomer();
+
+    if ($customer === null || (int) ($customer['id'] ?? 0) < 1) {
+        jsonResponse(false, 'Customer authentication required.', null, [], 401);
+    }
+
+    return $customer;
 }
 
 function getCurrentAdmin(): ?array
