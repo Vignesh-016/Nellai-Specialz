@@ -50,6 +50,7 @@ $address = null;
 $employeeSize = null;
 $comboBoxes = null;
 $customQuantity = null;
+$shippingDays = null;
 
 if ($type === 'CONTACT') {
     $email = $read('email', 255, true);
@@ -65,6 +66,10 @@ if ($type === 'CONTACT') {
     $employeeSize = $read('employee_size', 20, true);
     $phone = $read('phone', 25, true);
     $comboBoxes = $read('combo_boxes_required', 20, true);
+    $shippingDays = filter_var($input['shipping_days'] ?? null, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+    if (!in_array($shippingDays, [10, 15, 20], true)) {
+        $errors['shipping_days'] = 'Select valid shipping days.';
+    }
 
     if ($employeeSize !== null && !in_array($employeeSize, ['Below 25', '25–50', '51–100', '101–250', '251–500', 'Above 500'], true)) {
         $errors['employee_size'] = 'Select a valid employee size.';
@@ -100,8 +105,8 @@ try {
     }
     $statement = $db->prepare(
         'INSERT INTO enquiries '
-        . '(enquiry_type, name, company_name, address, employee_size, email, phone, subject, message, combo_boxes_required, custom_quantity) '
-        . 'VALUES (:type, :name, :company, :address, :employee_size, :email, :phone, :subject, :message, :combo_boxes, :custom_quantity)'
+        . '(enquiry_type, name, company_name, address, employee_size, email, phone, subject, message, combo_boxes_required, custom_quantity, shipping_days) '
+        . 'VALUES (:type, :name, :company, :address, :employee_size, :email, :phone, :subject, :message, :combo_boxes, :custom_quantity, :shipping_days)'
     );
     $statement->execute([
         ':type' => $type,
@@ -115,6 +120,7 @@ try {
         ':message' => $message,
         ':combo_boxes' => $comboBoxes,
         ':custom_quantity' => $customQuantity,
+        ':shipping_days' => $shippingDays,
     ]);
 
     jsonResponse(true, 'Enquiry submitted successfully.', ['id' => (int) $db->lastInsertId()], [], 201);

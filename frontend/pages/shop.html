@@ -1,590 +1,1571 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shop Authentic Tirunelveli Halwa & Sweets — Nellai Specialz</title>
-  <meta name="description" content="Explore authentic Tirunelveli Halwa, Karupatti Halwa, Traditional Sweets, Snacks and Gift Boxes online from Nellai Specialz.">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <style>
-    .cat-circle-active {
-      border-color: #8C1C13 !important;
-      transform: scale(1.05);
-    }
-    .cat-circle-active-line::after {
-      content: '';
-      display: block;
-      width: 28px;
-      height: 2.5px;
-      background-color: #8C1C13;
-      margin: 6px auto 0 auto;
-      border-radius: 2px;
-    }
-    .product-card-img-wrap {
-      background: #FFFBF5;
-    }
-  </style>
-  <script src="../assets/js/header.js"></script>
-  <script src="../assets/js/footer.js"></script>
-  <script src="../assets/js/common.js"></script>
-  <script src="../assets/js/account.js"></script>
-  <script src="../assets/js/cart.js"></script>
-  <script src="../assets/js/checkout.js"></script>
-  <script src="../assets/js/api.js"></script>
-</head>
-<body class="overflow-x-hidden bg-[#FBF5E9] text-[#32110D] font-sans antialiased selection:bg-[#8C1C13] selection:text-white">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shop Authentic Tirunelveli Halwa & Sweets — Nellai Specialz</title>
+    <meta
+      name="description"
+      content="Explore authentic Tirunelveli Halwa, Karupatti Halwa, Traditional Sweets, Snacks and Gift Boxes online from Nellai Specialz."
+    />
 
-  <!-- Dynamic Common Header Template -->
-  <div id="site-header"></div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      @keyframes aboutGalleryScroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .about-gallery-scroll {
+        animation: aboutGalleryScroll 35s linear infinite;
+      }
+      .about-gallery-scroll:hover {
+        animation-play-state: paused;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .about-gallery-scroll {
+          animation: none;
+        }
+      }
+      .cat-circle-active {
+        border-color: #8c1c13 !important;
+        transform: scale(1.05);
+      }
+      .cat-circle-active-line::after {
+        content: "";
+        display: block;
+        width: 28px;
+        height: 2.5px;
+        background-color: #8c1c13;
+        margin: 6px auto 0 auto;
+        border-radius: 2px;
+      }
+      .product-card-img-wrap {
+        background: #fffbf5;
+      }
+    </style>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/footer.js"></script>
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/account.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/checkout.js"></script>
+    <script src="../assets/js/api.js"></script>
+  </head>
+  <body
+    class="overflow-x-hidden bg-[#FBF5E9] text-[#32110D] font-sans antialiased selection:bg-[#8C1C13] selection:text-white"
+  >
+    <!-- Dynamic Common Header Template -->
+    <div id="site-header"></div>
 
-  <main class="bg-[#FBF5E9]">
-    <!-- SHOP HERO BANNER -->
-    <section class="relative min-h-[300px] overflow-hidden bg-gradient-to-b from-[#FFF8EF] via-[#FBF5E9] to-[#F8F1E4] py-12 sm:min-h-[360px] sm:py-16 lg:py-20 border-b border-[#EADBC1]">
-      <!-- Temple Heritage Pattern overlay -->
-      <div class="pointer-events-none absolute inset-0 opacity-[0.60] mix-blend-multiply bg-no-repeat bg-cover bg-center" style="background-image: url('../assets/images/Shop/banner\ 2.png');"></div>
-      
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        <!-- Breadcrumb Badge -->
-        <div class="inline-flex items-center space-x-2 text-[11px] font-bold uppercase tracking-widest text-[#8C1C13] px-4 py-1.5 rounded-full bg-[#FFFBF5] border border-[#D9B86C] shadow-xs mb-4">
-          <a href="../index.html" class="hover:text-[#7A120A] transition-colors">HOME</a>
-          <span>&gt;</span>
-          <span class="text-[#321307]">OUR SHOP</span>
-        </div>
+    <main class="bg-[#FBF5E9]">
+      <!-- SHOP HERO BANNER -->
+      <section
+        class="relative min-h-[300px] overflow-hidden bg-gradient-to-b from-[#FFF8EF] via-[#FBF5E9] to-[#F8F1E4] py-12 sm:min-h-[360px] sm:py-16 lg:py-20 border-b border-[#EADBC1]"
+      >
+        <!-- Temple Heritage Pattern overlay -->
+        <div
+          class="pointer-events-none absolute inset-0 opacity-[0.60] mix-blend-multiply bg-no-repeat bg-cover bg-center"
+          style="
+            background-image: url(&quot;../assets/images/Shop/banner\ 2.png&quot;);
+          "
+        ></div>
 
-        <h1 class="font-serif text-3xl sm:text-5xl font-bold text-[#321307] mb-2 tracking-tight">
-          Authentic Tirunelveli Sweets &amp; Savouries
-        </h1>
-        <p class="font-serif text-lg sm:text-2xl text-[#8C1C13] font-semibold mb-3">
-          நம்ம ஊர் பாரம்பரிய சுவை
-        </p>
-        <p class="max-w-2xl text-xs sm:text-sm text-[#5C3A21] leading-relaxed">
-          Crafted with 100% pure cow ghee, organic palm jaggery, and pristine Thamirabarani water. Delivered fresh across India in leak-proof packaging.
-        </p>
-      </div>
-    </section>
-
-    <!-- SHOP SECTION: CATEGORY CIRCLES & FILTER BAR & 4-COL GRID -->
-    <section class="py-10 bg-[#FBF5E9]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- 1. TOP CIRCULAR CATEGORIES BAR (SUB CATEGORIES) -->
-        <div class="mb-10 pb-6 border-b border-[#EADBC1]">
-          <div class="flex items-center justify-center gap-6 sm:gap-12 overflow-x-auto py-2 scrollbar-none">
-            
-            <!-- Category 1: All -->
-            <button type="button" data-category-btn="all" class="cat-btn group flex flex-col items-center shrink-0 text-center cursor-pointer">
-              <div class="cat-circle-img cat-circle-active w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-[#8C1C13] shadow-md transition-all duration-300 group-hover:scale-105 bg-[#FFFBF5]">
-                <img src="../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png" alt="All Products" class="w-full h-full object-cover rounded-full">
-              </div>
-              <span class="cat-label cat-circle-active-line mt-3 text-xs sm:text-sm font-bold text-[#321307] group-hover:text-[#8C1C13] transition-colors">All</span>
-            </button>
-
-            <!-- Category 2: Halwa -->
-            <button type="button" data-category-btn="halwa" class="cat-btn group flex flex-col items-center shrink-0 text-center cursor-pointer">
-              <div class="cat-circle-img w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-[#EADBC1] shadow-xs transition-all duration-300 group-hover:border-[#8C1C13] group-hover:scale-105 bg-[#FFFBF5]">
-                <img src="../assets/images/products/classic-halwa.jpg" alt="Halwa" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              </div>
-              <span class="cat-label mt-3 text-xs sm:text-sm font-bold text-[#806B58] group-hover:text-[#8C1C13] transition-colors">Halwa</span>
-            </button>
-
-            <!-- Category 3: Traditional Sweets -->
-            <button type="button" data-category-btn="sweets" class="cat-btn group flex flex-col items-center shrink-0 text-center cursor-pointer">
-              <div class="cat-circle-img w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-[#EADBC1] shadow-xs transition-all duration-300 group-hover:border-[#8C1C13] group-hover:scale-105 bg-[#FFFBF5]">
-                <img src="../assets/images/products/ghee-halwa.jpg" alt="Traditional Sweets" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              </div>
-              <span class="cat-label mt-3 text-xs sm:text-sm font-bold text-[#806B58] group-hover:text-[#8C1C13] transition-colors">Traditional Sweets</span>
-            </button>
-
-            <!-- Category 4: Snacks -->
-            <button type="button" data-category-btn="snacks" class="cat-btn group flex flex-col items-center shrink-0 text-center cursor-pointer">
-              <div class="cat-circle-img w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-[#EADBC1] shadow-xs transition-all duration-300 group-hover:border-[#8C1C13] group-hover:scale-105 bg-[#FFFBF5]">
-                <img src="../assets/images/products/fourth-halwa.jpg" alt="Snacks" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              </div>
-              <span class="cat-label mt-3 text-xs sm:text-sm font-bold text-[#806B58] group-hover:text-[#8C1C13] transition-colors">Snacks</span>
-            </button>
-
-            <!-- Category 5: Gift Boxes -->
-            <button type="button" data-category-btn="combo" class="cat-btn group flex flex-col items-center shrink-0 text-center cursor-pointer">
-              <div class="cat-circle-img w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-[#EADBC1] shadow-xs transition-all duration-300 group-hover:border-[#8C1C13] group-hover:scale-105 bg-[#FFFBF5]">
-                <img src="../assets/images/products/combo-halwa.jpg" alt="Gift Boxes" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              </div>
-              <span class="cat-label mt-3 text-xs sm:text-sm font-bold text-[#806B58] group-hover:text-[#8C1C13] transition-colors">Gift Boxes</span>
-            </button>
-
-          </div>
-        </div>
-
-        <!-- 2. PRODUCTS -->
-        <template data-retired-shop-controls>
-        <div class="mb-8 bg-[#FBF5ED] border border-[#B88932]/20 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-wrap lg:flex-nowrap items-center justify-between gap-4">
-          
-          <!-- Search Input Box -->
-          <div class="relative flex-1 min-w-[220px]">
-            <input type="text" id="shopSearchInput" placeholder="Search for products..." class="w-full bg-[#FFFBF5] border border-[#EADBC1] rounded-xl pl-4 pr-10 py-2.5 text-xs font-medium text-[#321307] placeholder-[#806B58]/70 focus:outline-none focus:border-[#8C1C13] focus:ring-1 focus:ring-[#8C1C13]">
-            <svg class="w-4 h-4 text-[#806B58] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <div
+          class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center"
+        >
+          <!-- Breadcrumb Badge -->
+          <div
+            class="inline-flex items-center space-x-2 text-[11px] font-bold uppercase tracking-widest text-[#8C1C13] px-4 py-1.5 rounded-full bg-[#FFFBF5] border border-[#D9B86C] shadow-xs mb-4"
+          >
+            <a
+              href="../index.html"
+              class="hover:text-[#7A120A] transition-colors"
+              >HOME</a
+            >
+            <span>&gt;</span>
+            <span class="text-[#321307]">OUR SHOP</span>
           </div>
 
-          <!-- Filter Drawer Trigger Button -->
-          <button type="button" id="toggleFilterModal" class="inline-flex items-center gap-2 bg-[#FFFDF8] border border-[#B88932]/30 hover:border-[#B88932] text-[#32110D] font-semibold text-xs px-5 py-2.5 rounded-xl shadow-2xs transition-colors shrink-0">
-            <svg class="w-4 h-4 text-[#B88932]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
-            <span>Filter</span>
-          </button>
+          <h1
+            class="font-serif text-3xl sm:text-5xl font-bold text-[#321307] mb-2 tracking-tight"
+          >
+            Authentic Tirunelveli Sweets &amp; Savouries
+          </h1>
+          <p
+            class="font-serif text-lg sm:text-2xl text-[#8C1C13] font-semibold mb-3"
+          >
+            நம்ம ஊர் பாரம்பரிய சுவை
+          </p>
+          <p
+            class="max-w-2xl text-xs sm:text-sm text-[#5C3A21] leading-relaxed"
+          >
+            Crafted with 100% pure cow ghee, organic palm jaggery, and pristine
+            Thamirabarani water. Delivered fresh across India in leak-proof
+            packaging.
+          </p>
+        </div>
+      </section>
 
-          <!-- Price Range Slider Controls -->
-          <div class="flex items-center gap-3 shrink-0 min-w-[220px]">
-            <span class="text-xs font-bold text-[#32110D] shrink-0" id="priceLabel">Price: ₹0 – ₹5,000</span>
-            <input type="range" id="priceSlider" min="0" max="5000" step="50" value="5000" class="w-full accent-[#B88932] bg-[#EFE4D2] h-1.5 rounded-lg cursor-pointer">
+      <!-- SHOP SECTION: CATEGORY CIRCLES & FILTER BAR & 4-COL GRID -->
+      <section class="py-10 bg-[#FBF5E9]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- 1. TOP CIRCULAR CATEGORIES BAR (SUB CATEGORIES) -->
+          <div class="mb-10 pb-6 border-b border-[#EADBC1]">
+            <div
+              class="flex items-center justify-center gap-6 sm:gap-12 overflow-x-auto py-2 scrollbar-none"
+            >
+              <!-- Category 1: All -->
+              <button
+                type="button"
+                data-category-btn="all"
+                class="cat-btn group flex flex-col items-center shrink-0 text-center cursor-pointer"
+              >
+                <div
+                  class="cat-circle-img cat-circle-active w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-[#8C1C13] shadow-md transition-all duration-300 group-hover:scale-105 bg-[#FFFBF5]"
+                >
+                  <img
+                    src="../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png"
+                    alt="All Products"
+                    class="w-full h-full object-cover rounded-full"
+                  />
+                </div>
+                <span
+                  class="cat-label cat-circle-active-line mt-3 text-xs sm:text-sm font-bold text-[#321307] group-hover:text-[#8C1C13] transition-colors"
+                  >All</span
+                >
+              </button>
+
+              <!-- Category 2: Halwa -->
+              <button
+                type="button"
+                data-category-btn="halwa"
+                class="cat-btn group flex flex-col items-center shrink-0 text-center cursor-pointer"
+              >
+                <div
+                  class="cat-circle-img w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-[#EADBC1] shadow-xs transition-all duration-300 group-hover:border-[#8C1C13] group-hover:scale-105 bg-[#FFFBF5]"
+                >
+                  <img
+                    src="../assets/images/products/classic-halwa.jpg"
+                    alt="Halwa"
+                    class="w-full h-full object-cover rounded-full"
+                    onerror="
+                      this.onerror = null;
+                      this.src =
+                        '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                    "
+                  />
+                </div>
+                <span
+                  class="cat-label mt-3 text-xs sm:text-sm font-bold text-[#806B58] group-hover:text-[#8C1C13] transition-colors"
+                  >Halwa</span
+                >
+              </button>
+
+              <!-- Category 3: Traditional Sweets -->
+              <button
+                type="button"
+                data-category-btn="sweets"
+                class="cat-btn group flex flex-col items-center shrink-0 text-center cursor-pointer"
+              >
+                <div
+                  class="cat-circle-img w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-[#EADBC1] shadow-xs transition-all duration-300 group-hover:border-[#8C1C13] group-hover:scale-105 bg-[#FFFBF5]"
+                >
+                  <img
+                    src="../assets/images/products/ghee-halwa.jpg"
+                    alt="Traditional Sweets"
+                    class="w-full h-full object-cover rounded-full"
+                    onerror="
+                      this.onerror = null;
+                      this.src =
+                        '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                    "
+                  />
+                </div>
+                <span
+                  class="cat-label mt-3 text-xs sm:text-sm font-bold text-[#806B58] group-hover:text-[#8C1C13] transition-colors"
+                  >Traditional Sweets</span
+                >
+              </button>
+
+              <!-- Category 4: Snacks -->
+              <button
+                type="button"
+                data-category-btn="snacks"
+                class="cat-btn group flex flex-col items-center shrink-0 text-center cursor-pointer"
+              >
+                <div
+                  class="cat-circle-img w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-[#EADBC1] shadow-xs transition-all duration-300 group-hover:border-[#8C1C13] group-hover:scale-105 bg-[#FFFBF5]"
+                >
+                  <img
+                    src="../assets/images/products/fourth-halwa.jpg"
+                    alt="Snacks"
+                    class="w-full h-full object-cover rounded-full"
+                    onerror="
+                      this.onerror = null;
+                      this.src =
+                        '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                    "
+                  />
+                </div>
+                <span
+                  class="cat-label mt-3 text-xs sm:text-sm font-bold text-[#806B58] group-hover:text-[#8C1C13] transition-colors"
+                  >Snacks</span
+                >
+              </button>
+
+              <!-- Category 5: Gift Boxes -->
+              <button
+                type="button"
+                data-category-btn="combo"
+                class="cat-btn group flex flex-col items-center shrink-0 text-center cursor-pointer"
+              >
+                <div
+                  class="cat-circle-img w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-[#EADBC1] shadow-xs transition-all duration-300 group-hover:border-[#8C1C13] group-hover:scale-105 bg-[#FFFBF5]"
+                >
+                  <img
+                    src="../assets/images/products/combo-halwa.jpg"
+                    alt="Gift Boxes"
+                    class="w-full h-full object-cover rounded-full"
+                    onerror="
+                      this.onerror = null;
+                      this.src =
+                        '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                    "
+                  />
+                </div>
+                <span
+                  class="cat-label mt-3 text-xs sm:text-sm font-bold text-[#806B58] group-hover:text-[#8C1C13] transition-colors"
+                  >Gift Boxes</span
+                >
+              </button>
+            </div>
           </div>
 
-          <!-- Sort Dropdown Box -->
-          <div class="flex items-center gap-2 shrink-0">
-            <label for="sortSelect" class="text-xs font-bold text-[#32110D] shrink-0">Sort by:</label>
-            <select id="sortSelect" class="bg-[#FFFDF8] border border-[#B88932]/30 text-[#32110D] font-semibold text-xs rounded-xl px-4 py-2.5 focus:outline-none focus:border-[#B88932] cursor-pointer">
-              <option value="popular">Popular</option>
-              <option value="low-high">Price: Low to High</option>
-              <option value="high-low">Price: High to Low</option>
-              <option value="rating">Highest Rated</option>
-            </select>
+          <!-- 2. PRODUCTS -->
+          <template data-retired-shop-controls>
+            <div
+              class="mb-8 bg-[#FBF5ED] border border-[#B88932]/20 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-wrap lg:flex-nowrap items-center justify-between gap-4"
+            >
+              <!-- Search Input Box -->
+              <div class="relative flex-1 min-w-[220px]">
+                <input
+                  type="text"
+                  id="shopSearchInput"
+                  placeholder="Search for products..."
+                  class="w-full bg-[#FFFBF5] border border-[#EADBC1] rounded-xl pl-4 pr-10 py-2.5 text-xs font-medium text-[#321307] placeholder-[#806B58]/70 focus:outline-none focus:border-[#8C1C13] focus:ring-1 focus:ring-[#8C1C13]"
+                />
+                <svg
+                  class="w-4 h-4 text-[#806B58] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+
+              <!-- Filter Drawer Trigger Button -->
+              <button
+                type="button"
+                id="toggleFilterModal"
+                class="inline-flex items-center gap-2 bg-[#FFFDF8] border border-[#B88932]/30 hover:border-[#B88932] text-[#32110D] font-semibold text-xs px-5 py-2.5 rounded-xl shadow-2xs transition-colors shrink-0"
+              >
+                <svg
+                  class="w-4 h-4 text-[#B88932]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                  />
+                </svg>
+                <span>Filter</span>
+              </button>
+
+              <!-- Price Range Slider Controls -->
+              <div class="flex items-center gap-3 shrink-0 min-w-[220px]">
+                <span
+                  class="text-xs font-bold text-[#32110D] shrink-0"
+                  id="priceLabel"
+                  >Price: ₹0 – ₹5,000</span
+                >
+                <input
+                  type="range"
+                  id="priceSlider"
+                  min="0"
+                  max="5000"
+                  step="50"
+                  value="5000"
+                  class="w-full accent-[#B88932] bg-[#EFE4D2] h-1.5 rounded-lg cursor-pointer"
+                />
+              </div>
+
+              <!-- Sort Dropdown Box -->
+              <div class="flex items-center gap-2 shrink-0">
+                <label
+                  for="sortSelect"
+                  class="text-xs font-bold text-[#32110D] shrink-0"
+                  >Sort by:</label
+                >
+                <select
+                  id="sortSelect"
+                  class="bg-[#FFFDF8] border border-[#B88932]/30 text-[#32110D] font-semibold text-xs rounded-xl px-4 py-2.5 focus:outline-none focus:border-[#B88932] cursor-pointer"
+                >
+                  <option value="popular">Popular</option>
+                  <option value="low-high">Price: Low to High</option>
+                  <option value="high-low">Price: High to Low</option>
+                  <option value="rating">Highest Rated</option>
+                </select>
+              </div>
+            </div>
+          </template>
+
+          <!-- 3. PRODUCTS GRID (4 COLUMNS EXACT LIKE DESIGN IMAGE) -->
+          <div
+            id="productsGrid"
+            hidden
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          >
+            <!-- Card 1: Tirunelveli Halwa -->
+            <article
+              class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              data-category="halwa"
+              data-price="320"
+              data-rating="5.0"
+              data-title="Tirunelveli Halwa"
+            >
+              <div
+                class="relative aspect-square overflow-hidden product-card-img-wrap"
+              >
+                <img
+                  src="../assets/images/products/classic-halwa.jpg"
+                  alt="Tirunelveli Halwa"
+                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                  onerror="
+                    this.onerror = null;
+                    this.src =
+                      '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                  "
+                />
+                <!-- Wishlist Heart Button -->
+                <button
+                  type="button"
+                  aria-label="Add to Wishlist"
+                  class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="p-5 flex flex-col flex-1 justify-between text-left">
+                <div>
+                  <h3 class="font-serif text-xl font-bold text-[#321307]">
+                    Tirunelveli Halwa
+                  </h3>
+                  <p
+                    class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed"
+                  >
+                    The original and most loved Tirunelveli Halwa.
+                  </p>
+                  <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">
+                    ₹320 – ₹640
+                  </p>
+                </div>
+                <div class="mt-4">
+                  <button
+                    type="button"
+                    class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300"
+                  >
+                    <svg
+                      class="w-4 h-4 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                      />
+                    </svg>
+                    <span>Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2: Wheat Halwa -->
+            <article
+              class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              data-category="halwa"
+              data-price="280"
+              data-rating="4.9"
+              data-title="Wheat Halwa"
+            >
+              <div
+                class="relative aspect-square overflow-hidden product-card-img-wrap"
+              >
+                <span
+                  class="absolute top-3 left-3 z-10 rounded-full bg-[#8C1C13] px-3 py-1 text-[10px] font-bold text-[#FFF8EF] shadow-sm"
+                  >Best Seller</span
+                >
+                <img
+                  src="../assets/images/products/wheat-halwa.jpg"
+                  alt="Wheat Halwa"
+                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                  onerror="
+                    this.onerror = null;
+                    this.src =
+                      '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                  "
+                />
+                <!-- Wishlist Heart Button -->
+                <button
+                  type="button"
+                  aria-label="Add to Wishlist"
+                  class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="p-5 flex flex-col flex-1 justify-between text-left">
+                <div>
+                  <h3 class="font-serif text-xl font-bold text-[#321307]">
+                    Wheat Halwa
+                  </h3>
+                  <p
+                    class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed"
+                  >
+                    Rich in taste and made with premium ingredients.
+                  </p>
+                  <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">
+                    ₹280 – ₹560
+                  </p>
+                </div>
+                <div class="mt-4">
+                  <button
+                    type="button"
+                    class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300"
+                  >
+                    <svg
+                      class="w-4 h-4 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                      />
+                    </svg>
+                    <span>Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3: Mysore Pak -->
+            <article
+              class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              data-category="sweets"
+              data-price="260"
+              data-rating="4.8"
+              data-title="Mysore Pak"
+            >
+              <div
+                class="relative aspect-square overflow-hidden product-card-img-wrap"
+              >
+                <img
+                  src="../assets/images/products/ghee-halwa.jpg"
+                  alt="Mysore Pak"
+                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                  onerror="
+                    this.onerror = null;
+                    this.src =
+                      '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                  "
+                />
+                <!-- Wishlist Heart Button -->
+                <button
+                  type="button"
+                  aria-label="Add to Wishlist"
+                  class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="p-5 flex flex-col flex-1 justify-between text-left">
+                <div>
+                  <h3 class="font-serif text-xl font-bold text-[#321307]">
+                    Mysore Pak
+                  </h3>
+                  <p
+                    class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed"
+                  >
+                    Classic sweet with a rich ghee flavour.
+                  </p>
+                  <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">
+                    ₹260 – ₹520
+                  </p>
+                </div>
+                <div class="mt-4">
+                  <button
+                    type="button"
+                    class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300"
+                  >
+                    <svg
+                      class="w-4 h-4 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                      />
+                    </svg>
+                    <span>Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4: Mixture -->
+            <article
+              class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              data-category="snacks"
+              data-price="120"
+              data-rating="4.7"
+              data-title="Mixture"
+            >
+              <div
+                class="relative aspect-square overflow-hidden product-card-img-wrap"
+              >
+                <img
+                  src="../assets/images/products/fourth-halwa.jpg"
+                  alt="Mixture"
+                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                  onerror="
+                    this.onerror = null;
+                    this.src =
+                      '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                  "
+                />
+                <!-- Wishlist Heart Button -->
+                <button
+                  type="button"
+                  aria-label="Add to Wishlist"
+                  class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="p-5 flex flex-col flex-1 justify-between text-left">
+                <div>
+                  <h3 class="font-serif text-xl font-bold text-[#321307]">
+                    Mixture
+                  </h3>
+                  <p
+                    class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed"
+                  >
+                    Crispy, crunchy and perfectly spiced.
+                  </p>
+                  <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">
+                    ₹120 – ₹240
+                  </p>
+                </div>
+                <div class="mt-4">
+                  <button
+                    type="button"
+                    class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300"
+                  >
+                    <svg
+                      class="w-4 h-4 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                      />
+                    </svg>
+                    <span>Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 5: Karupatti Halwa -->
+            <article
+              class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              data-category="halwa"
+              data-price="380"
+              data-rating="4.95"
+              data-title="Karupatti Halwa"
+            >
+              <div
+                class="relative aspect-square overflow-hidden product-card-img-wrap"
+              >
+                <span
+                  class="absolute top-3 left-3 z-10 rounded-full bg-[#8C1C13] px-3 py-1 text-[10px] font-bold text-[#FFF8EF] shadow-sm"
+                  >Palm Jaggery</span
+                >
+                <img
+                  src="../assets/images/products/karupatti-halwa.jpg"
+                  alt="Karupatti Halwa"
+                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                  onerror="
+                    this.onerror = null;
+                    this.src =
+                      '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                  "
+                />
+                <button
+                  type="button"
+                  aria-label="Add to Wishlist"
+                  class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="p-5 flex flex-col flex-1 justify-between text-left">
+                <div>
+                  <h3 class="font-serif text-xl font-bold text-[#321307]">
+                    Karupatti Halwa
+                  </h3>
+                  <p
+                    class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed"
+                  >
+                    Distinctive sweetness crafted with pure palm jaggery.
+                  </p>
+                  <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">
+                    ₹380 – ₹760
+                  </p>
+                </div>
+                <div class="mt-4">
+                  <button
+                    type="button"
+                    class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300"
+                  >
+                    <svg
+                      class="w-4 h-4 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                      />
+                    </svg>
+                    <span>Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 6: Special Muscoth Halwa -->
+            <article
+              class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              data-category="halwa"
+              data-price="340"
+              data-rating="4.85"
+              data-title="Special Muscoth Halwa"
+            >
+              <div
+                class="relative aspect-square overflow-hidden product-card-img-wrap"
+              >
+                <img
+                  src="../assets/images/products/ghee-halwa.jpg"
+                  alt="Special Muscoth Halwa"
+                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                  onerror="
+                    this.onerror = null;
+                    this.src =
+                      '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                  "
+                />
+                <button
+                  type="button"
+                  aria-label="Add to Wishlist"
+                  class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="p-5 flex flex-col flex-1 justify-between text-left">
+                <div>
+                  <h3 class="font-serif text-xl font-bold text-[#321307]">
+                    Special Muscoth Halwa
+                  </h3>
+                  <p
+                    class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed"
+                  >
+                    Unique coconut milk &amp; ghee infused traditional halwa.
+                  </p>
+                  <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">
+                    ₹340 – ₹680
+                  </p>
+                </div>
+                <div class="mt-4">
+                  <button
+                    type="button"
+                    class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300"
+                  >
+                    <svg
+                      class="w-4 h-4 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                      />
+                    </svg>
+                    <span>Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 7: Nellai Halwa Combo Box -->
+            <article
+              class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              data-category="combo"
+              data-price="599"
+              data-rating="5.0"
+              data-title="Nellai Halwa Combo Box"
+            >
+              <div
+                class="relative aspect-square overflow-hidden product-card-img-wrap"
+              >
+                <span
+                  class="absolute top-3 left-3 z-10 rounded-full bg-[#8C1C13] px-3 py-1 text-[10px] font-bold text-[#FFF8EF] shadow-sm"
+                  >Assorted Gift</span
+                >
+                <img
+                  src="../assets/images/products/combo-halwa.jpg"
+                  alt="Nellai Halwa Combo Box"
+                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                  onerror="
+                    this.onerror = null;
+                    this.src =
+                      '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                  "
+                />
+                <button
+                  type="button"
+                  aria-label="Add to Wishlist"
+                  class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="p-5 flex flex-col flex-1 justify-between text-left">
+                <div>
+                  <h3 class="font-serif text-xl font-bold text-[#321307]">
+                    Nellai Halwa Combo Box
+                  </h3>
+                  <p
+                    class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed"
+                  >
+                    4 Signature Halwas in 1 Box (Wheat, Ghee, Karupatti &amp;
+                    Muscoth).
+                  </p>
+                  <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">
+                    ₹599 – ₹1,199
+                  </p>
+                </div>
+                <div class="mt-4">
+                  <button
+                    type="button"
+                    class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300"
+                  >
+                    <svg
+                      class="w-4 h-4 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                      />
+                    </svg>
+                    <span>Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 8: Pure Ghee Laddu -->
+            <article
+              class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              data-category="sweets"
+              data-price="240"
+              data-rating="4.8"
+              data-title="Pure Ghee Laddu"
+            >
+              <div
+                class="relative aspect-square overflow-hidden product-card-img-wrap"
+              >
+                <img
+                  src="../assets/images/products/classic-halwa.jpg"
+                  alt="Pure Ghee Laddu"
+                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                  onerror="
+                    this.onerror = null;
+                    this.src =
+                      '../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';
+                  "
+                />
+                <button
+                  type="button"
+                  aria-label="Add to Wishlist"
+                  class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="p-5 flex flex-col flex-1 justify-between text-left">
+                <div>
+                  <h3 class="font-serif text-xl font-bold text-[#321307]">
+                    Pure Ghee Laddu
+                  </h3>
+                  <p
+                    class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed"
+                  >
+                    Melt-in-the-mouth boondi laddu made with pure cow ghee.
+                  </p>
+                  <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">
+                    ₹240 – ₹480
+                  </p>
+                </div>
+                <div class="mt-4">
+                  <button
+                    type="button"
+                    class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300"
+                  >
+                    <svg
+                      class="w-4 h-4 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                      />
+                    </svg>
+                    <span>Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </article>
           </div>
-
         </div>
-        </template>
+      </section>
 
-        <!-- 3. PRODUCTS GRID (4 COLUMNS EXACT LIKE DESIGN IMAGE) -->
-        <div id="productsGrid" hidden class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-          <!-- Card 1: Tirunelveli Halwa -->
-          <article class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="halwa" data-price="320" data-rating="5.0" data-title="Tirunelveli Halwa">
-            <div class="relative aspect-square overflow-hidden product-card-img-wrap">
-              <img src="../assets/images/products/classic-halwa.jpg" alt="Tirunelveli Halwa" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              <!-- Wishlist Heart Button -->
-              <button type="button" aria-label="Add to Wishlist" class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-              </button>
-            </div>
-            <div class="p-5 flex flex-col flex-1 justify-between text-left">
-              <div>
-                <h3 class="font-serif text-xl font-bold text-[#321307]">Tirunelveli Halwa</h3>
-                <p class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed">The original and most loved Tirunelveli Halwa.</p>
-                <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">₹320 – ₹640</p>
-              </div>
-              <div class="mt-4">
-                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300">
-                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                  <span>Add to Cart</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 2: Wheat Halwa -->
-          <article class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="halwa" data-price="280" data-rating="4.9" data-title="Wheat Halwa">
-            <div class="relative aspect-square overflow-hidden product-card-img-wrap">
-              <span class="absolute top-3 left-3 z-10 rounded-full bg-[#8C1C13] px-3 py-1 text-[10px] font-bold text-[#FFF8EF] shadow-sm">Best Seller</span>
-              <img src="../assets/images/products/wheat-halwa.jpg" alt="Wheat Halwa" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              <!-- Wishlist Heart Button -->
-              <button type="button" aria-label="Add to Wishlist" class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-              </button>
-            </div>
-            <div class="p-5 flex flex-col flex-1 justify-between text-left">
-              <div>
-                <h3 class="font-serif text-xl font-bold text-[#321307]">Wheat Halwa</h3>
-                <p class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed">Rich in taste and made with premium ingredients.</p>
-                <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">₹280 – ₹560</p>
-              </div>
-              <div class="mt-4">
-                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300">
-                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                  <span>Add to Cart</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 3: Mysore Pak -->
-          <article class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="sweets" data-price="260" data-rating="4.8" data-title="Mysore Pak">
-            <div class="relative aspect-square overflow-hidden product-card-img-wrap">
-              <img src="../assets/images/products/ghee-halwa.jpg" alt="Mysore Pak" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              <!-- Wishlist Heart Button -->
-              <button type="button" aria-label="Add to Wishlist" class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-              </button>
-            </div>
-            <div class="p-5 flex flex-col flex-1 justify-between text-left">
-              <div>
-                <h3 class="font-serif text-xl font-bold text-[#321307]">Mysore Pak</h3>
-                <p class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed">Classic sweet with a rich ghee flavour.</p>
-                <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">₹260 – ₹520</p>
-              </div>
-              <div class="mt-4">
-                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300">
-                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                  <span>Add to Cart</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 4: Mixture -->
-          <article class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="snacks" data-price="120" data-rating="4.7" data-title="Mixture">
-            <div class="relative aspect-square overflow-hidden product-card-img-wrap">
-              <img src="../assets/images/products/fourth-halwa.jpg" alt="Mixture" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              <!-- Wishlist Heart Button -->
-              <button type="button" aria-label="Add to Wishlist" class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-              </button>
-            </div>
-            <div class="p-5 flex flex-col flex-1 justify-between text-left">
-              <div>
-                <h3 class="font-serif text-xl font-bold text-[#321307]">Mixture</h3>
-                <p class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed">Crispy, crunchy and perfectly spiced.</p>
-                <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">₹120 – ₹240</p>
-              </div>
-              <div class="mt-4">
-                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300">
-                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                  <span>Add to Cart</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 5: Karupatti Halwa -->
-          <article class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="halwa" data-price="380" data-rating="4.95" data-title="Karupatti Halwa">
-            <div class="relative aspect-square overflow-hidden product-card-img-wrap">
-              <span class="absolute top-3 left-3 z-10 rounded-full bg-[#8C1C13] px-3 py-1 text-[10px] font-bold text-[#FFF8EF] shadow-sm">Palm Jaggery</span>
-              <img src="../assets/images/products/karupatti-halwa.jpg" alt="Karupatti Halwa" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              <button type="button" aria-label="Add to Wishlist" class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-              </button>
-            </div>
-            <div class="p-5 flex flex-col flex-1 justify-between text-left">
-              <div>
-                <h3 class="font-serif text-xl font-bold text-[#321307]">Karupatti Halwa</h3>
-                <p class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed">Distinctive sweetness crafted with pure palm jaggery.</p>
-                <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">₹380 – ₹760</p>
-              </div>
-              <div class="mt-4">
-                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300">
-                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                  <span>Add to Cart</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 6: Special Muscoth Halwa -->
-          <article class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="halwa" data-price="340" data-rating="4.85" data-title="Special Muscoth Halwa">
-            <div class="relative aspect-square overflow-hidden product-card-img-wrap">
-              <img src="../assets/images/products/ghee-halwa.jpg" alt="Special Muscoth Halwa" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              <button type="button" aria-label="Add to Wishlist" class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-              </button>
-            </div>
-            <div class="p-5 flex flex-col flex-1 justify-between text-left">
-              <div>
-                <h3 class="font-serif text-xl font-bold text-[#321307]">Special Muscoth Halwa</h3>
-                <p class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed">Unique coconut milk &amp; ghee infused traditional halwa.</p>
-                <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">₹340 – ₹680</p>
-              </div>
-              <div class="mt-4">
-                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300">
-                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                  <span>Add to Cart</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 7: Nellai Halwa Combo Box -->
-          <article class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="combo" data-price="599" data-rating="5.0" data-title="Nellai Halwa Combo Box">
-            <div class="relative aspect-square overflow-hidden product-card-img-wrap">
-              <span class="absolute top-3 left-3 z-10 rounded-full bg-[#8C1C13] px-3 py-1 text-[10px] font-bold text-[#FFF8EF] shadow-sm">Assorted Gift</span>
-              <img src="../assets/images/products/combo-halwa.jpg" alt="Nellai Halwa Combo Box" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              <button type="button" aria-label="Add to Wishlist" class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-              </button>
-            </div>
-            <div class="p-5 flex flex-col flex-1 justify-between text-left">
-              <div>
-                <h3 class="font-serif text-xl font-bold text-[#321307]">Nellai Halwa Combo Box</h3>
-                <p class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed">4 Signature Halwas in 1 Box (Wheat, Ghee, Karupatti &amp; Muscoth).</p>
-                <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">₹599 – ₹1,199</p>
-              </div>
-              <div class="mt-4">
-                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300">
-                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                  <span>Add to Cart</span>
-                </button>
+      <!-- Customer testimonials -->
+      <section
+        id="testimonials"
+        class="bg-[#FFF8EF] px-4 py-12 sm:px-6 lg:px-8 lg:py-16 border-b border-[#EADBC1]"
+        data-reveal
+      >
+        <div class="mx-auto max-w-[1280px]">
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 items-stretch">
+            <div class="lg:col-span-7 flex flex-col justify-center">
+              <div
+                class="h-full rounded-3xl border border-[#EADBC1] bg-[#FFFBF5] p-5 sm:p-7 shadow-sm flex flex-col justify-between"
+              >
+                <div>
+                  <div
+                    class="flex items-center justify-between border-b border-[#EADBC1] pb-3"
+                  >
+                    <div>
+                      <h2
+                        class="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-[#32110D]"
+                      >
+                        Loved by Our Customers
+                      </h2>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <button
+                        type="button"
+                        data-testimonial-prev
+                        aria-label="Previous review"
+                        class="flex h-8 w-8 items-center justify-center rounded-full border border-[#EADBC1] bg-[#F8F1E4] text-sm font-bold text-[#8C1C13] hover:bg-[#8C1C13] hover:text-[#FFF8EF] transition cursor-pointer"
+                      >
+                        ‹
+                      </button>
+                      <button
+                        type="button"
+                        data-testimonial-next
+                        aria-label="Next review"
+                        class="flex h-8 w-8 items-center justify-center rounded-full border border-[#EADBC1] bg-[#F8F1E4] text-sm font-bold text-[#8C1C13] hover:bg-[#8C1C13] hover:text-[#FFF8EF] transition cursor-pointer"
+                      >
+                        ›
+                      </button>
+                    </div>
+                  </div>
+                  <div class="mt-5 min-h-[150px]">
+                    <div
+                      data-testimonial-slide
+                      class="block transition-all duration-300"
+                    >
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="flex h-11 w-11 items-center justify-center rounded-full bg-[#8C1C13] font-serif text-base font-bold text-[#FFF8EF] shrink-0"
+                        >
+                          PM
+                        </div>
+                        <div>
+                          <h3
+                            class="font-serif text-base font-bold text-[#32110D]"
+                          >
+                            Priya M.
+                          </h3>
+                          <p class="text-[11px] text-[#5C3A21]">
+                            Verified Customer • Chennai
+                          </p>
+                        </div>
+                      </div>
+                      <div class="mt-2 text-sm text-[#D9B86C]">★★★★★</div>
+                      <blockquote
+                        class="mt-2 text-sm leading-relaxed text-[#32110D] font-medium"
+                      >
+                        "Ordered the Diwali combo for my parents in Chennai. The
+                        halwa arrived fresh, fragrant, and tasted like it came
+                        straight from a Tirunelveli shop. The packaging kept it
+                        completely leak-proof!"
+                      </blockquote>
+                    </div>
+                    <div
+                      data-testimonial-slide
+                      class="hidden transition-all duration-300"
+                    >
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="flex h-11 w-11 items-center justify-center rounded-full bg-[#7A120A] font-serif text-base font-bold text-[#FFF8EF] shrink-0"
+                        >
+                          RK
+                        </div>
+                        <div>
+                          <h3
+                            class="font-serif text-base font-bold text-[#32110D]"
+                          >
+                            Ramesh K.
+                          </h3>
+                          <p class="text-[11px] text-[#5C3A21]">
+                            Verified Customer • Bengaluru
+                          </p>
+                        </div>
+                      </div>
+                      <div class="mt-2 text-sm text-[#D9B86C]">★★★★★</div>
+                      <blockquote
+                        class="mt-2 text-sm leading-relaxed text-[#32110D] font-medium"
+                      >
+                        "Finally found a festive gift box where every single
+                        item gets finished instantly. The Karupatti halwa has
+                        the perfect natural jaggery aroma."
+                      </blockquote>
+                    </div>
+                    <div
+                      data-testimonial-slide
+                      class="hidden transition-all duration-300"
+                    >
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="flex h-11 w-11 items-center justify-center rounded-full bg-[#8C1C13] font-serif text-base font-bold text-[#FFF8EF] shrink-0"
+                        >
+                          AV
+                        </div>
+                        <div>
+                          <h3
+                            class="font-serif text-base font-bold text-[#32110D]"
+                          >
+                            Arun V.
+                          </h3>
+                          <p class="text-[11px] text-[#5C3A21]">
+                            Verified Customer • Mumbai
+                          </p>
+                        </div>
+                      </div>
+                      <div class="mt-2 text-sm text-[#D9B86C]">★★★★★</div>
+                      <blockquote
+                        class="mt-2 text-sm leading-relaxed text-[#32110D] font-medium"
+                      >
+                        "Delivered all the way to Mumbai intact and fresh. The
+                        cow ghee halwa richness is unbeatable!"
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="mt-4 flex items-center gap-2 pt-3 border-t border-[#EADBC1]"
+                >
+                  <button
+                    type="button"
+                    data-testimonial-dot="0"
+                    aria-label="Review 1"
+                    class="h-2 w-6 rounded-full bg-[#8C1C13] cursor-pointer transition-all"
+                  ></button>
+                  <button
+                    type="button"
+                    data-testimonial-dot="1"
+                    aria-label="Review 2"
+                    class="h-2 w-2 rounded-full bg-[#8C1C13]/30 cursor-pointer transition-all"
+                  ></button>
+                  <button
+                    type="button"
+                    data-testimonial-dot="2"
+                    aria-label="Review 3"
+                    class="h-2 w-2 rounded-full bg-[#8C1C13]/30 cursor-pointer transition-all"
+                  ></button>
+                </div>
               </div>
             </div>
-          </article>
-
-          <!-- Card 8: Pure Ghee Laddu -->
-          <article class="product-card group bg-white rounded-2xl border border-[#EADBC1] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="sweets" data-price="240" data-rating="4.8" data-title="Pure Ghee Laddu">
-            <div class="relative aspect-square overflow-hidden product-card-img-wrap">
-              <img src="../assets/images/products/classic-halwa.jpg" alt="Pure Ghee Laddu" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png';">
-              <button type="button" aria-label="Add to Wishlist" class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:text-red-400 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-              </button>
-            </div>
-            <div class="p-5 flex flex-col flex-1 justify-between text-left">
-              <div>
-                <h3 class="font-serif text-xl font-bold text-[#321307]">Pure Ghee Laddu</h3>
-                <p class="mt-1 text-xs text-[#806B58] line-clamp-2 leading-relaxed">Melt-in-the-mouth boondi laddu made with pure cow ghee.</p>
-                <p class="mt-3 font-serif text-lg font-bold text-[#8C1C13]">₹240 – ₹480</p>
+            <div class="lg:col-span-5 flex flex-col">
+              <div
+                class="relative h-full overflow-hidden rounded-3xl border border-[#EADBC1] bg-[#32110D] p-5 text-[#FFF8EF] shadow-lg flex flex-col justify-between"
+              >
+                <div
+                  class="relative mb-3 h-28 sm:h-32 w-full overflow-hidden rounded-2xl shadow-inner border border-[#FFF8EF]/20"
+                >
+                  <img
+                    src="../assets/images/Rustic Halwa Feast in Brass Vessels.png"
+                    alt="Customer Sweet Celebration Feast"
+                    class="h-full w-full object-cover"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-[#32110D] via-transparent to-transparent"
+                  ></div>
+                  <span
+                    class="absolute bottom-2 left-3 rounded-full bg-[#8C1C13] px-2.5 py-0.5 text-[10px] font-bold text-[#FFF8EF] shadow-xs"
+                  >
+                    ❤️ Shared Sweet Moments
+                  </span>
+                </div>
+                <div class="relative z-10 flex-1 flex flex-col justify-center">
+                  <h2
+                    class="font-serif text-xl sm:text-2xl font-bold text-[#FFF8EF]"
+                  >
+                    Thank You!
+                  </h2>
+                  <p class="mt-1.5 text-xs leading-relaxed text-[#F8F1E4]/90">
+                    To every customer who lets us be a part of their home,
+                    family celebrations, and sweet moments across India.
+                  </p>
+                </div>
+                <div
+                  class="relative z-10 mt-3.5 grid grid-cols-2 gap-2.5 border-t border-[#FFF8EF]/15 pt-3"
+                >
+                  <div
+                    class="rounded-xl border border-[#FFF8EF]/20 bg-[#FFF8EF]/10 p-2 text-center backdrop-blur-sm"
+                  >
+                    <p
+                      class="font-serif text-xs sm:text-sm font-bold text-[#D9B86C]"
+                    >
+                      Handcrafted with Love
+                    </p>
+                    <p class="text-[10px] font-medium text-[#F8F1E4]/80">
+                      Traditional Craft
+                    </p>
+                  </div>
+                  <div
+                    class="rounded-xl border border-[#FFF8EF]/20 bg-[#FFF8EF]/10 p-2 text-center backdrop-blur-sm"
+                  >
+                    <p
+                      class="font-serif text-xs sm:text-sm font-bold text-[#D9B86C]"
+                    >
+                      Pure Ingredients
+                    </p>
+                    <p class="text-[10px] font-medium text-[#F8F1E4]/80">
+                      100% Authentic
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="mt-4">
-                <button type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#8C1C13] hover:bg-[#7A120A] py-2.5 px-4 text-xs font-bold text-[#FFF8EF] shadow-md transition-colors duration-300">
-                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                  <span>Add to Cart</span>
-                </button>
-              </div>
             </div>
-          </article>
-
+          </div>
         </div>
+      </section>
+    </main>
 
-      </div>
-    </section>
-
-    <!-- Customer testimonials -->
+    <!-- Dynamic Common Footer Template -->
     <section
-      id="testimonials"
-      class="bg-[#FFF8EF] px-4 py-12 sm:px-6 lg:px-8 lg:py-16 border-b border-[#EADBC1]"
-      data-reveal
+      id="shop-gallery"
+      class="bg-[#F8F1E4] py-12 border-b border-[#EADBC1] overflow-hidden"
     >
-      <div class="mx-auto max-w-[1280px]">
-        <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 items-stretch">
-          <div class="lg:col-span-7 flex flex-col justify-center">
-            <div class="h-full rounded-3xl border border-[#EADBC1] bg-[#FFFBF5] p-5 sm:p-7 shadow-sm flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between border-b border-[#EADBC1] pb-3">
-                  <div>
-                    <h2 class="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-[#32110D]">
-                      Loved by Our Customers
-                    </h2>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <button type="button" data-testimonial-prev aria-label="Previous review" class="flex h-8 w-8 items-center justify-center rounded-full border border-[#EADBC1] bg-[#F8F1E4] text-sm font-bold text-[#8C1C13] hover:bg-[#8C1C13] hover:text-[#FFF8EF] transition cursor-pointer">‹</button>
-                    <button type="button" data-testimonial-next aria-label="Next review" class="flex h-8 w-8 items-center justify-center rounded-full border border-[#EADBC1] bg-[#F8F1E4] text-sm font-bold text-[#8C1C13] hover:bg-[#8C1C13] hover:text-[#FFF8EF] transition cursor-pointer">›</button>
-                  </div>
-                </div>
-                <div class="mt-5 min-h-[150px]">
-                  <div data-testimonial-slide class="block transition-all duration-300">
-                    <div class="flex items-center gap-3">
-                      <div class="flex h-11 w-11 items-center justify-center rounded-full bg-[#8C1C13] font-serif text-base font-bold text-[#FFF8EF] shrink-0">PM</div>
-                      <div>
-                        <h3 class="font-serif text-base font-bold text-[#32110D]">Priya M.</h3>
-                        <p class="text-[11px] text-[#5C3A21]">Verified Customer • Chennai</p>
-                      </div>
-                    </div>
-                    <div class="mt-2 text-sm text-[#D9B86C]">★★★★★</div>
-                    <blockquote class="mt-2 text-sm leading-relaxed text-[#32110D] font-medium">
-                      "Ordered the Diwali combo for my parents in Chennai. The halwa arrived fresh, fragrant, and tasted like it came straight from a Tirunelveli shop. The packaging kept it completely leak-proof!"
-                    </blockquote>
-                  </div>
-                  <div data-testimonial-slide class="hidden transition-all duration-300">
-                    <div class="flex items-center gap-3">
-                      <div class="flex h-11 w-11 items-center justify-center rounded-full bg-[#7A120A] font-serif text-base font-bold text-[#FFF8EF] shrink-0">RK</div>
-                      <div>
-                        <h3 class="font-serif text-base font-bold text-[#32110D]">Ramesh K.</h3>
-                        <p class="text-[11px] text-[#5C3A21]">Verified Customer • Bengaluru</p>
-                      </div>
-                    </div>
-                    <div class="mt-2 text-sm text-[#D9B86C]">★★★★★</div>
-                    <blockquote class="mt-2 text-sm leading-relaxed text-[#32110D] font-medium">
-                      "Finally found a festive gift box where every single item gets finished instantly. The Karupatti halwa has the perfect natural jaggery aroma."
-                    </blockquote>
-                  </div>
-                  <div data-testimonial-slide class="hidden transition-all duration-300">
-                    <div class="flex items-center gap-3">
-                      <div class="flex h-11 w-11 items-center justify-center rounded-full bg-[#8C1C13] font-serif text-base font-bold text-[#FFF8EF] shrink-0">AV</div>
-                      <div>
-                        <h3 class="font-serif text-base font-bold text-[#32110D]">Arun V.</h3>
-                        <p class="text-[11px] text-[#5C3A21]">Verified Customer • Mumbai</p>
-                      </div>
-                    </div>
-                    <div class="mt-2 text-sm text-[#D9B86C]">★★★★★</div>
-                    <blockquote class="mt-2 text-sm leading-relaxed text-[#32110D] font-medium">
-                      "Delivered all the way to Mumbai intact and fresh. The cow ghee halwa richness is unbeatable!"
-                    </blockquote>
-                  </div>
-                </div>
-              </div>
-              <div class="mt-4 flex items-center gap-2 pt-3 border-t border-[#EADBC1]">
-                <button type="button" data-testimonial-dot="0" aria-label="Review 1" class="h-2 w-6 rounded-full bg-[#8C1C13] cursor-pointer transition-all"></button>
-                <button type="button" data-testimonial-dot="1" aria-label="Review 2" class="h-2 w-2 rounded-full bg-[#8C1C13]/30 cursor-pointer transition-all"></button>
-                <button type="button" data-testimonial-dot="2" aria-label="Review 3" class="h-2 w-2 rounded-full bg-[#8C1C13]/30 cursor-pointer transition-all"></button>
-              </div>
-            </div>
+      <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 mb-6 text-center">
+        <h2
+          class="font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#32110D] tracking-tight"
+        >
+          Sweet Moments from Nellai
+        </h2>
+        <div class="mt-2 mx-auto h-0.5 w-16 bg-[#D9B86C] rounded-full"></div>
+        <p class="mt-2 text-xs sm:text-sm text-[#5C3A21]">
+          A visual glimpse into our authentic halwa preparations, traditional
+          brass uruli cooking, and festive gift boxes.
+        </p>
+      </div>
+      <div class="relative w-full overflow-hidden group/gallery">
+        <div
+          class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-[#F8F1E4] to-transparent z-10"
+        ></div>
+        <div
+          class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-[#F8F1E4] to-transparent z-10"
+        ></div>
+        <div
+          class="flex w-max gap-4 sm:gap-6 about-gallery-scroll group-hover/gallery:[animation-play-state:paused]"
+        >
+          <div
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+          >
+            <img
+              src="../assets/images/Home/1.png"
+              alt="Nellai Specialz customer sweet order"
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
           </div>
-          <div class="lg:col-span-5 flex flex-col">
-            <div class="relative h-full overflow-hidden rounded-3xl border border-[#EADBC1] bg-[#32110D] p-5 text-[#FFF8EF] shadow-lg flex flex-col justify-between">
-              <div class="relative mb-3 h-28 sm:h-32 w-full overflow-hidden rounded-2xl shadow-inner border border-[#FFF8EF]/20">
-                <img src="../assets/images/Rustic Halwa Feast in Brass Vessels.png" alt="Customer Sweet Celebration Feast" class="h-full w-full object-cover" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#32110D] via-transparent to-transparent"></div>
-                <span class="absolute bottom-2 left-3 rounded-full bg-[#8C1C13] px-2.5 py-0.5 text-[10px] font-bold text-[#FFF8EF] shadow-xs">
-                  ❤️ Shared Sweet Moments
-                </span>
-              </div>
-              <div class="relative z-10 flex-1 flex flex-col justify-center">
-                <h2 class="font-serif text-xl sm:text-2xl font-bold text-[#FFF8EF]">Thank You!</h2>
-                <p class="mt-1.5 text-xs leading-relaxed text-[#F8F1E4]/90">
-                  To every customer who lets us be a part of their home, family celebrations, and sweet moments across India.
-                </p>
-              </div>
-              <div class="relative z-10 mt-3.5 grid grid-cols-2 gap-2.5 border-t border-[#FFF8EF]/15 pt-3">
-                <div class="rounded-xl border border-[#FFF8EF]/20 bg-[#FFF8EF]/10 p-2 text-center backdrop-blur-sm">
-                  <p class="font-serif text-xs sm:text-sm font-bold text-[#D9B86C]">Handcrafted with Love</p>
-                  <p class="text-[10px] font-medium text-[#F8F1E4]/80">Traditional Craft</p>
-                </div>
-                <div class="rounded-xl border border-[#FFF8EF]/20 bg-[#FFF8EF]/10 p-2 text-center backdrop-blur-sm">
-                  <p class="font-serif text-xs sm:text-sm font-bold text-[#D9B86C]">Pure Ingredients</p>
-                  <p class="text-[10px] font-medium text-[#F8F1E4]/80">100% Authentic</p>
-                </div>
-              </div>
-            </div>
+          <!-- <div class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"><img src="../assets/images/Home/2.png" alt="Nellai Specialz founder and heritage display" class="h-full w-full object-cover" loading="lazy"></div> -->
+          <div
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+          >
+            <img
+              src="../assets/images/Home/3.png"
+              alt="Nellai Specialz customer experience"
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+          >
+            <img
+              src="../assets/images/Home/4.png"
+              alt="Nellai Specialz community moment"
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+          >
+            <img
+              src="../assets/images/Home/Testimonial-1-1.jpg"
+              alt="Customer testimonial"
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+          >
+            <img
+              src="../assets/images/Home/Nellai-img-1.jpg"
+              alt="Customer with Nellai Specialz representative"
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+          >
+            <img
+              src="../assets/images/Home/nellai-image-1.jpg"
+              alt="Nellai Specialz customer handover"
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+          >
+            <img
+              src="../assets/images/Home/seat-order-1-1.jpg"
+              alt="Nellai Specialz delivery moment"
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+          >
+            <img
+              src="../assets/images/Home/1.png"
+              alt=""
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+          >
+            <img
+              src="../assets/images/Home/2.png"
+              alt=""
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+          >
+            <img
+              src="../assets/images/Home/3.png"
+              alt=""
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+          >
+            <img
+              src="../assets/images/Home/4.png"
+              alt=""
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+          >
+            <img
+              src="../assets/images/Home/Testimonial-1-1.jpg"
+              alt=""
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+          >
+            <img
+              src="../assets/images/Home/Nellai-img-1.jpg"
+              alt=""
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+          >
+            <img
+              src="../assets/images/Home/nellai-image-1.jpg"
+              alt=""
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+          >
+            <img
+              src="../assets/images/Home/seat-order-1-1.jpg"
+              alt=""
+              class="h-full w-full object-cover"
+            />
           </div>
         </div>
       </div>
     </section>
+    <div id="site-footer"></div>
 
-  </main>
+    <!-- MODALS & DRAWERS -->
+    <div
+      id="drawerBackdrop"
+      class="fixed inset-0 z-50 hidden bg-[#32110D]/40 backdrop-blur-xs"
+    ></div>
 
-  <!-- Dynamic Common Footer Template -->
-  <div id="site-footer"></div>
-
-  <!-- MODALS & DRAWERS -->
-  <div id="drawerBackdrop" class="fixed inset-0 z-50 hidden bg-[#32110D]/40 backdrop-blur-xs"></div>
-
-  <!-- Cart Drawer -->
-  <aside id="cartDrawer" class="fixed inset-y-0 right-0 z-[60] flex w-full max-w-md translate-x-full flex-col border-l border-[#EADBC1] bg-[#FBF5E9] transition-transform duration-300" data-drawer aria-hidden="true">
-    <div class="flex items-center justify-between border-b border-[#EADBC1] px-5 py-4">
-      <h2 class="font-serif text-2xl font-bold text-[#321307]">Your Cart</h2>
-      <button type="button" id="closeCartDrawer" class="h-10 w-10 text-[#321307] text-lg font-bold" aria-label="Close cart">✕</button>
-    </div>
-    <div id="cartEmpty" class="px-5 py-10 text-sm text-[#806B58]">Your cart is empty.</div>
-    <div id="cartList" class="flex-1 overflow-y-auto px-5"></div>
-    <div id="cartSummary" hidden class="border-t border-[#EADBC1] p-5 bg-white/50">
-      <div class="flex items-center justify-between text-base font-bold text-[#321307]">
-        <span>Subtotal</span>
-        <span id="cartTotal">₹0</span>
+    <!-- Cart Drawer -->
+    <aside
+      id="cartDrawer"
+      class="fixed inset-y-0 right-0 z-[60] flex w-full max-w-md translate-x-full flex-col border-l border-[#EADBC1] bg-[#FBF5E9] transition-transform duration-300"
+      data-drawer
+      aria-hidden="true"
+    >
+      <div
+        class="flex items-center justify-between border-b border-[#EADBC1] px-5 py-4"
+      >
+        <h2 class="font-serif text-2xl font-bold text-[#321307]">Your Cart</h2>
+        <button
+          type="button"
+          id="closeCartDrawer"
+          class="h-10 w-10 text-[#321307] text-lg font-bold"
+          aria-label="Close cart"
+        >
+          ✕
+        </button>
       </div>
-      <p class="mt-2 text-xs text-[#806B58]">Free delivery on orders above ₹500.</p>
-    </div>
-  </aside>
+      <div id="cartEmpty" class="px-5 py-10 text-sm text-[#806B58]">
+        Your cart is empty.
+      </div>
+      <div id="cartList" class="flex-1 overflow-y-auto px-5"></div>
+      <div
+        id="cartSummary"
+        hidden
+        class="border-t border-[#EADBC1] p-5 bg-white/50"
+      >
+        <div
+          class="flex items-center justify-between text-base font-bold text-[#321307]"
+        >
+          <span>Subtotal</span>
+          <span id="cartTotal">₹0</span>
+        </div>
+        <p class="mt-2 text-xs text-[#806B58]">
+          Free delivery on orders above ₹500.
+        </p>
+      </div>
+    </aside>
 
-  <script src="../assets/js/common.js" defer></script>
-  <script src="../assets/js/account.js" defer></script>
-  <script src="../assets/js/cart.js" defer></script>
-  <script src="../assets/js/shop/shop-categories.js" defer></script>
-  <script src="../assets/js/shop/shop-products.js" defer></script>
-  <script src="../assets/js/shop/shop-init.js" defer></script>
-  <script src="../assets/js/home.js" defer></script>
-  <script type="application/json" data-retired-shop-filter-script>
-    // INTERACTIVE CATEGORY & SEARCH & PRICE FILTER SCRIPT
-    document.addEventListener('DOMContentLoaded', () => {
-      const catBtns = document.querySelectorAll('.cat-btn');
-      const searchInput = document.getElementById('shopSearchInput');
-      const priceSlider = document.getElementById('priceSlider');
-      const priceLabel = document.getElementById('priceLabel');
-      const sortSelect = document.getElementById('sortSelect');
-      const productsGrid = document.getElementById('productsGrid');
+    <script src="../assets/js/common.js" defer></script>
+    <script src="../assets/js/account.js" defer></script>
+    <script src="../assets/js/cart.js" defer></script>
+    <script src="../assets/js/shop/shop-categories.js" defer></script>
+    <script src="../assets/js/shop/shop-products.js" defer></script>
+    <script src="../assets/js/shop/shop-init.js" defer></script>
+    <script src="../assets/js/home.js" defer></script>
+    <script type="application/json" data-retired-shop-filter-script>
+      // INTERACTIVE CATEGORY & SEARCH & PRICE FILTER SCRIPT
+      document.addEventListener('DOMContentLoaded', () => {
+        const catBtns = document.querySelectorAll('.cat-btn');
+        const searchInput = document.getElementById('shopSearchInput');
+        const priceSlider = document.getElementById('priceSlider');
+        const priceLabel = document.getElementById('priceLabel');
+        const sortSelect = document.getElementById('sortSelect');
+        const productsGrid = document.getElementById('productsGrid');
 
-      let activeCategory = 'all';
+        let activeCategory = 'all';
 
-      // 1. Category Circle Click Handler
-      catBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          activeCategory = btn.getAttribute('data-category-btn');
+        // 1. Category Circle Click Handler
+        catBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            activeCategory = btn.getAttribute('data-category-btn');
 
-          // Update active styles
-          catBtns.forEach(b => {
-            const imgWrap = b.querySelector('.cat-circle-img');
-            const label = b.querySelector('.cat-label');
-            if (imgWrap) {
-              imgWrap.classList.remove('cat-circle-active', 'border-[#B88932]');
-              imgWrap.classList.add('border-[#B88932]/30');
+            // Update active styles
+            catBtns.forEach(b => {
+              const imgWrap = b.querySelector('.cat-circle-img');
+              const label = b.querySelector('.cat-label');
+              if (imgWrap) {
+                imgWrap.classList.remove('cat-circle-active', 'border-[#B88932]');
+                imgWrap.classList.add('border-[#B88932]/30');
+              }
+              if (label) {
+                label.classList.remove('cat-circle-active-line', 'text-[#32110D]');
+                label.classList.add('text-[#786153]');
+              }
+            });
+
+            const currentImgWrap = btn.querySelector('.cat-circle-img');
+            const currentLabel = btn.querySelector('.cat-label');
+            if (currentImgWrap) {
+              currentImgWrap.classList.add('cat-circle-active', 'border-[#B88932]');
+              currentImgWrap.classList.remove('border-[#B88932]/30');
             }
-            if (label) {
-              label.classList.remove('cat-circle-active-line', 'text-[#32110D]');
-              label.classList.add('text-[#786153]');
+            if (currentLabel) {
+              currentLabel.classList.add('cat-circle-active-line', 'text-[#32110D]');
+              currentLabel.classList.remove('text-[#786153]');
+            }
+
+            filterGrid();
+          });
+        });
+
+        // 2. Filter Grid Function
+        function filterGrid() {
+          const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+          const maxPrice = Number(priceSlider ? priceSlider.value : 5000);
+
+          if (priceLabel) {
+            priceLabel.textContent = `Price: ₹0 – ₹${maxPrice.toLocaleString('en-IN')}`;
+          }
+
+          const cards = productsGrid.querySelectorAll('.product-card');
+          cards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            const cardPrice = Number(card.getAttribute('data-price') || 0);
+            const cardTitle = (card.querySelector('h3')?.textContent || '').toLowerCase();
+            const cardDesc = (card.querySelector('p')?.textContent || '').toLowerCase();
+
+            const matchesCat = (activeCategory === 'all' || cardCat === activeCategory);
+            const matchesQuery = !query || cardTitle.includes(query) || cardDesc.includes(query);
+            const matchesPrice = cardPrice <= maxPrice;
+
+            if (matchesCat && matchesQuery && matchesPrice) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
             }
           });
-
-          const currentImgWrap = btn.querySelector('.cat-circle-img');
-          const currentLabel = btn.querySelector('.cat-label');
-          if (currentImgWrap) {
-            currentImgWrap.classList.add('cat-circle-active', 'border-[#B88932]');
-            currentImgWrap.classList.remove('border-[#B88932]/30');
-          }
-          if (currentLabel) {
-            currentLabel.classList.add('cat-circle-active-line', 'text-[#32110D]');
-            currentLabel.classList.remove('text-[#786153]');
-          }
-
-          filterGrid();
-        });
-      });
-
-      // 2. Filter Grid Function
-      function filterGrid() {
-        const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
-        const maxPrice = Number(priceSlider ? priceSlider.value : 5000);
-
-        if (priceLabel) {
-          priceLabel.textContent = `Price: ₹0 – ₹${maxPrice.toLocaleString('en-IN')}`;
         }
 
-        const cards = productsGrid.querySelectorAll('.product-card');
-        cards.forEach(card => {
-          const cardCat = card.getAttribute('data-category');
-          const cardPrice = Number(card.getAttribute('data-price') || 0);
-          const cardTitle = (card.querySelector('h3')?.textContent || '').toLowerCase();
-          const cardDesc = (card.querySelector('p')?.textContent || '').toLowerCase();
+        // 3. Sort Grid Function
+        function sortGrid() {
+          const val = sortSelect ? sortSelect.value : 'popular';
+          const cards = Array.from(productsGrid.querySelectorAll('.product-card'));
 
-          const matchesCat = (activeCategory === 'all' || cardCat === activeCategory);
-          const matchesQuery = !query || cardTitle.includes(query) || cardDesc.includes(query);
-          const matchesPrice = cardPrice <= maxPrice;
+          cards.sort((a, b) => {
+            const priceA = Number(a.getAttribute('data-price') || 0);
+            const priceB = Number(b.getAttribute('data-price') || 0);
+            const ratingA = Number(a.getAttribute('data-rating') || 0);
+            const ratingB = Number(b.getAttribute('data-rating') || 0);
 
-          if (matchesCat && matchesQuery && matchesPrice) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      }
+            if (val === 'low-high') return priceA - priceB;
+            if (val === 'high-low') return priceB - priceA;
+            if (val === 'rating') return ratingB - ratingA;
+            return 0; // popular default
+          });
 
-      // 3. Sort Grid Function
-      function sortGrid() {
-        const val = sortSelect ? sortSelect.value : 'popular';
-        const cards = Array.from(productsGrid.querySelectorAll('.product-card'));
+          cards.forEach(card => productsGrid.appendChild(card));
+        }
 
-        cards.sort((a, b) => {
-          const priceA = Number(a.getAttribute('data-price') || 0);
-          const priceB = Number(b.getAttribute('data-price') || 0);
-          const ratingA = Number(a.getAttribute('data-rating') || 0);
-          const ratingB = Number(b.getAttribute('data-rating') || 0);
-
-          if (val === 'low-high') return priceA - priceB;
-          if (val === 'high-low') return priceB - priceA;
-          if (val === 'rating') return ratingB - ratingA;
-          return 0; // popular default
-        });
-
-        cards.forEach(card => productsGrid.appendChild(card));
-      }
-
-      if (searchInput) searchInput.addEventListener('input', filterGrid);
-      if (priceSlider) priceSlider.addEventListener('input', filterGrid);
-      if (sortSelect) sortSelect.addEventListener('change', sortGrid);
-    });
-  </script>
-</body>
+        if (searchInput) searchInput.addEventListener('input', filterGrid);
+        if (priceSlider) priceSlider.addEventListener('input', filterGrid);
+        if (sortSelect) sortSelect.addEventListener('change', sortGrid);
+      });
+    </script>
+  </body>
 </html>

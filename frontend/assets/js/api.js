@@ -14,8 +14,6 @@
         { credentials: options.credentials || "omit", ...options, headers },
       );
       const result = await response.json().catch(() => ({}));
-      if (response.status === 401)
-        window.dispatchEvent(new CustomEvent("nellai:auth-required"));
       if (!response.ok || !result.success) { const error = new Error(result.message || "Request failed."); error.status = response.status; error.code = result.code || null; error.errors = result.errors || {}; throw error; }
       return result.data;
     },

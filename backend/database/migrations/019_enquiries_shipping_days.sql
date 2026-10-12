@@ -1,0 +1,2 @@
+ALTER TABLE enquiries
+    ADD COLUMN shipping_days TINYINT UNSIGNED NULL;

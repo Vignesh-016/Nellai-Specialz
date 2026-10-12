@@ -252,6 +252,7 @@
         addDetailField(detail, "Employee size", enquiry.employee_size);
         addDetailField(detail, "Phone", enquiry.phone);
         addDetailField(detail, "Combo boxes required", enquiry.combo_boxes_required);
+        if (enquiry.shipping_days != null) addDetailField(detail, "Shipping within", `${enquiry.shipping_days} Days`);
         if (enquiry.custom_quantity != null) addDetailField(detail, "Custom quantity", enquiry.custom_quantity);
       }
       addDetailField(detail, "Submitted", formatDate(enquiry.created_at));

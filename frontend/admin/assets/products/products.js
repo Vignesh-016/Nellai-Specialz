@@ -330,6 +330,8 @@
         description: el("pf-description").value.trim(),
         key_ingredients: el("pf-key-ingredients").value.trim(),
         storage_shelf_life: el("pf-storage-shelf-life").value.trim(),
+        highlight_badge: el("pf-highlight-badge").value.trim() || null,
+        shipping_days: el("pf-shipping-days").value ? Number(el("pf-shipping-days").value) : null,
         category_id: Number(el("pf-category").value || 0),
         sub_category_id: el("pf-subcategory").value ? Number(el("pf-subcategory").value) : null,
         selling_price: prices.length ? Math.min(...prices) : Number(el("pf-product-price")?.value || 0),
@@ -384,6 +386,8 @@
       el("pf-description").value = product.description || "";
       el("pf-key-ingredients").value = product.key_ingredients || "";
       el("pf-storage-shelf-life").value = product.storage_shelf_life || "";
+      el("pf-highlight-badge").value = product.highlight_badge || "";
+      el("pf-shipping-days").value = product.shipping_days ? String(product.shipping_days) : "";
       await loadCategories();
       el("pf-category").value = product.category_id || "";
       await loadSubcategories();

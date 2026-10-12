@@ -24,17 +24,7 @@
             <p class="mt-0 max-w-xs text-[15px] leading-[1.45] text-[#6B4A35]">
               Traditional sweets and snacks from Tirunelveli, delivered with the same authentic taste to your home.
             </p>
-            <div class="mt-5 flex flex-wrap gap-3">
-              <a href="#" aria-label="Facebook" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#8C5A16] text-[#6B3F1E] transition hover:bg-[#dfb664] hover:text-[#321307]">
-                ${icon('<path stroke-linecap="round" stroke-width="1.8" d="M14 8h3V5h-3c-2 0-4 2-4 4v2H7v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1Z"/>')}
-              </a>
-              <a href="#" aria-label="Instagram" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#8C5A16] text-[#6B3F1E] transition hover:bg-[#dfb664] hover:text-[#321307]">
-                ${icon('<rect x="4" y="4" width="16" height="16" rx="4" stroke-width="1.8"/><circle cx="12" cy="12" r="3.5" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>')}
-              </a>
-              <a href="#" aria-label="YouTube" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#8C5A16] text-[#6B3F1E] transition hover:bg-[#dfb664] hover:text-[#321307]">
-                ${icon('<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20.5 7.5a2 2 0 0 0-1.4-1.4C17.8 5.7 12 5.7 12 5.7s-5.8 0-7.1.4a2 2 0 0 0-1.4 1.4C3.1 8.8 3.1 12 3.1 12s0 3.2.4 4.5a2 2 0 0 0 1.4 1.4c1.3.4 7.1.4 7.1.4s5.8 0 7.1-.4a2 2 0 0 0 1.4-1.4c.4-1.3.4-4.5.4-4.5s0-3.2-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z"/>')}
-              </a>
-            </div>
+
           </section>
 
           <!-- Shop -->
@@ -45,8 +35,6 @@
               <li><a href="${basePath}pages/shop.html" class="hover:text-[#e7bd6d]">Shop</a></li>
               <li><a href="${basePath}pages/our-story.html" class="hover:text-[#e7bd6d]">About Us</a></li>
               <li><a href="${basePath}pages/contact-us.html" class="hover:text-[#e7bd6d]">Contact Us</a></li>
-              <li><a href="${basePath}profile.html" class="hover:text-[#e7bd6d]">My Profile</a></li>
-              <li><a href="${basePath}profile.html#orders" class="hover:text-[#e7bd6d]">My Orders</a></li>
               <li><a href="${basePath}pages/contact-us.html#bulk-order" class="hover:text-[#e7bd6d]">Bulk Orders</a></li>
             </ul>
           </section>
@@ -55,11 +43,9 @@
           <section class="border-[#845624] lg:border-l lg:pl-8" aria-labelledby="footer-about-title">
             <h2 id="footer-about-title" class="font-serif text-[22px] font-semibold text-[#6B3F1E]">Policies</h2>
             <ul class="mt-4 space-y-2 text-[15px] text-[#5B3A29]">
-              <li><a href="${basePath}pages/shipping-delivery.html" class="hover:text-[#e7bd6d]">Shipping &amp; Delivery</a></li>
               <li><a href="${basePath}pages/return-refunds.html" class="hover:text-[#e7bd6d]">Returns &amp; Refunds</a></li>
               <li><a href="${basePath}pages/privacy-policy.html" class="hover:text-[#e7bd6d]">Privacy Policy</a></li>
               <li><a href="${basePath}pages/terms-conditions.html" class="hover:text-[#e7bd6d]">Terms &amp; Conditions</a></li>
-              <li><a href="${basePath}pages/faq.html" class="hover:text-[#e7bd6d]">FAQs</a></li>
             </ul>
           </section>
 
@@ -76,9 +62,14 @@
 
           <!-- Newsletter -->
           <section class="border-[#845624] lg:border-l lg:pl-8" aria-labelledby="footer-connect-title">
-            <h2 id="footer-connect-title" class="font-serif text-[22px] font-semibold text-[#6B3F1E]">Stay Connected</h2>
-            <p class="mt-4 max-w-xs text-[15px] leading-relaxed text-[#5B3A29]">Subscribe to get special offers and updates.</p>
-            <form class="mt-5 flex h-14 max-w-[300px] overflow-hidden rounded-2xl border border-[#d7a957]" action="#" method="post">
+            <h2 id="footer-connect-title" class="font-serif text-[22px] font-semibold text-[#6B3F1E]">Follow Us</h2>
+            <p class="mt-4 max-w-xs text-[15px] leading-relaxed text-[#5B3A29]">Follow Nellai Specialz for fresh sweets, festive offers, and updates.</p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a href="#" aria-label="Facebook" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#8C5A16] text-[#6B3F1E] transition hover:bg-[#dfb664] hover:text-[#321307]">${icon('<path stroke-linecap="round" stroke-width="1.8" d="M14 8h3V5h-3c-2 0-4 2-4 4v2H7v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1Z"/>')}</a>
+              <a href="#" aria-label="Instagram" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#8C5A16] text-[#6B3F1E] transition hover:bg-[#dfb664] hover:text-[#321307]">${icon('<rect x="4" y="4" width="16" height="16" rx="4" stroke-width="1.8"/><circle cx="12" cy="12" r="3.5" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>')}</a>
+              <a href="#" aria-label="YouTube" class="flex h-11 w-11 items-center justify-center rounded-full border border-[#8C5A16] text-[#6B3F1E] transition hover:bg-[#dfb664] hover:text-[#321307]">${icon('<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20.5 7.5a2 2 0 0 0-1.4-1.4C17.8 5.7 12 5.7 12 5.7s-5.8 0-7.1.4a2 2 0 0 0-1.4 1.4C3.1 8.8 3.1 12 3.1 12s0 3.2.4 4.5a2 2 0 0 0 1.4 1.4c1.3.4 7.1.4 7.1.4s5.8 0 7.1-.4a2 2 0 0 0 1.4-1.4c.4-1.3.4-4.5.4-4.5s0-3.2-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z"/>')}</a>
+            </div>
+            <form class="hidden" action="#" method="post">
               <label for="footer-email" class="sr-only">Email address</label>
               <input id="footer-email" type="email" placeholder="Enter your email" class="min-w-0 flex-1 bg-transparent px-4 text-sm text-[#321307] outline-none placeholder:text-[#6B4A35]" required>
               <button type="submit" aria-label="Subscribe" class="flex w-14 shrink-0 items-center justify-center bg-[#f2c875] text-[#321307] transition hover:bg-[#ffe3a6]"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 12h13m-6-6 6 6-6 6" /></svg></button>
@@ -87,13 +78,32 @@
         </div>
       </div>
 
-      <div class="relative z-10 border-t border-[#D9B86C]/30 px-4 py-4 text-center text-xs text-[#e7c98d]">© 2026 Nellai Specialz. All Rights Reserved.</div>
+      <div class="relative z-10 border-t border-[#D9B86C]/30 px-4 py-4 text-center text-xs text-[#6B3F1E]">© 2026 Nellai Specialz. All Rights Reserved.</div>
     </footer>`;
 
   function mountFooter() {
     const target = document.getElementById("site-footer");
 
-    if (target) target.innerHTML = footerHTML;
+    if (target) {
+      target.innerHTML = footerHTML;
+      const facebookUrl =
+        "https://www.facebook.com/profile.php?id=61595288304706&rdid=yL4X8KQWEN1F4iUK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C2gASVS1F%2F#";
+      const instagramUrl =
+        "https://www.instagram.com/nellaispecialz?utm_source=ig_web_button_share_sheet&mdxt=ZDNlZDc0MzIxNw==";
+      target.querySelectorAll('[aria-label="Facebook"]').forEach((link) => {
+        link.href = facebookUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      });
+      target.querySelectorAll('[aria-label="Instagram"]').forEach((link) => {
+        link.href = instagramUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      });
+      target
+        .querySelectorAll('[aria-label="YouTube"]')
+        .forEach((link) => link.remove());
+    }
 
     // Inject Floating Action Buttons & Bulk Order Modal if not already injected
     if (!document.getElementById("floating-actions")) {
@@ -183,7 +193,7 @@
               <input type="text" id="bulkAddress" name="address" maxlength="1000" required placeholder="Full delivery address or office location" class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] placeholder-[#5C3A21]/40 focus:border-[#8C1C13] focus:outline-none" />
             </div>
 
-            <!-- Row 4: Combo Boxes Required Dropdown & Dynamic Custom Quantity -->
+            <!-- Row 4: Combo Boxes Required & Shipping Within -->
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label for="bulkComboBoxes" class="block text-xs font-bold text-[#5C3A21] mb-1">Combo Boxes Required *</label>
@@ -195,6 +205,12 @@
                 </select>
               </div>
               
+              <div>
+                <label for="bulkShippingDays" class="block text-xs font-bold text-[#5C3A21] mb-1">Shipping Within *</label>
+                <select id="bulkShippingDays" name="shipping_days" required class="w-full rounded-xl border border-[#EADBC1] bg-white px-3.5 py-2.5 text-xs text-[#32110D] focus:border-[#8C1C13] focus:outline-none cursor-pointer">
+                  <option value="">Select shipping days</option><option value="10">10 Days</option><option value="15">15 Days</option><option value="20">20 Days</option>
+                </select>
+              </div>
               <!-- Dynamic Custom Quantity Field (hidden until Customize is selected) -->
               <div id="customQtyWrapper" class="hidden">
                 <label for="bulkCustomQty" class="block text-xs font-bold text-[#5C3A21] mb-1">Custom Quantity *</label>

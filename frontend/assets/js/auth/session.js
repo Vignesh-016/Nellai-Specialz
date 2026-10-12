@@ -43,7 +43,7 @@
     }
   }
 
-  async function requireCustomer() {
+  async function requireCustomerAuth() {
     if (isAuthPage()) return null;
     let customer;
     try {
@@ -61,11 +61,13 @@
 
   window.NellaiCustomerSession = {
     getCurrentCustomer,
+    getCustomerSession: getCurrentCustomer,
     isAuthPage,
     getSafeRedirect,
     safeRedirect,
     async isCustomerLoggedIn() { return Boolean(await getCurrentCustomer()); },
-    requireCustomer,
+    requireCustomerAuth,
+    requireCustomer: requireCustomerAuth,
     async logoutCustomer() {
       await request("customer-auth/logout.php", { method: "POST" });
       return true;

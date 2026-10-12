@@ -9,7 +9,9 @@ safeApi(function(): void {
   }
   $db->beginTransaction();
   $stock=max(0,(int)($i['stock_quantity']??0)); $threshold=max(0,(int)($i['low_stock_threshold']??5));
-  $fields=['name','slug','sku','short_description','description','category_id','sub_category_id','selling_price','strike_price','offer_price','weight','weight_unit','ingredient_type','key_ingredients','storage_shelf_life','manage_inventory','stock_quantity','low_stock_threshold','status','featured','is_combo_offer','show_in_hero','main_image'];
+  if(array_key_exists('shipping_days',$i) && $i['shipping_days']!==null && $i['shipping_days']!=='' && !in_array((int)$i['shipping_days'],[10,15,20],true)) jsonResponse(false,'Shipping days must be 10, 15, or 20.',null,[],422);
+  if(array_key_exists('shipping_days',$i) && $i['shipping_days']==='') $i['shipping_days']=null;
+  $fields=['name','slug','sku','short_description','description','category_id','sub_category_id','selling_price','strike_price','offer_price','weight','weight_unit','ingredient_type','key_ingredients','storage_shelf_life','highlight_badge','shipping_days','manage_inventory','stock_quantity','low_stock_threshold','status','featured','is_combo_offer','show_in_hero','main_image'];
   $set=[]; $p=[':id'=>$id]; foreach($fields as $f) if(array_key_exists($f,$i)){ $set[]="$f=:$f"; $p[":$f"]=$i[$f]; }
   if(array_key_exists('stock_quantity',$i)||array_key_exists('low_stock_threshold',$i)){ $set[]='stock_status=:stock_status'; $p[':stock_status']=$stock<=0?'OUT_OF_STOCK':($stock<=$threshold?'LOW_STOCK':'IN_STOCK'); }
   if(!$set) jsonResponse(false,'No fields to update.',null,[],422);

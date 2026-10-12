@@ -5,15 +5,16 @@
   const initialize = () => {
     const modal = document.getElementById("bulkOrderModal");
     const content = modal?.querySelector(":scope > div");
-    const form = document.getElementById("bulkOrderForm");
+    const form = document.getElementById("bulkOrderForm") || document.getElementById("contactBulkOrderForm");
     const status = document.getElementById("bulkFormStatus");
     const comboBoxes = document.getElementById("bulkComboBoxes");
     const customWrapper = document.getElementById("customQtyWrapper");
     const customQuantity = document.getElementById("bulkCustomQty");
+    const shippingDays = document.getElementById("bulkShippingDays");
     const submitButton = document.getElementById("submitBulkOrderBtn");
     let isSubmitting = false;
 
-    if (!modal || !form || !status || !comboBoxes || !customWrapper || !customQuantity) return;
+    if (!form || !status || !comboBoxes || !customWrapper || !customQuantity || !shippingDays) return;
 
     const setStatus = (text, kind = "error") => {
       status.textContent = text;
@@ -30,6 +31,7 @@
       if (!customize) customQuantity.value = "";
     };
     const openModal = () => {
+      if (!modal) return;
       modal.classList.remove("opacity-0", "pointer-events-none");
       modal.classList.add("opacity-100", "pointer-events-auto");
       content?.classList.remove("scale-95");
@@ -37,7 +39,7 @@
       document.body.style.overflow = "hidden";
     };
     const closeModal = () => {
-      if (isSubmitting) return;
+      if (!modal || isSubmitting) return;
       modal.classList.remove("opacity-100", "pointer-events-auto");
       modal.classList.add("opacity-0", "pointer-events-none");
       content?.classList.remove("scale-100");
@@ -54,11 +56,11 @@
     document.getElementById("openBulkOrderModalBtn")?.addEventListener("click", openModal);
     document.getElementById("closeBulkOrderModalBtn")?.addEventListener("click", closeModal);
     document.getElementById("cancelBulkOrderBtn")?.addEventListener("click", closeModal);
-    modal.addEventListener("click", (event) => {
+    modal?.addEventListener("click", (event) => {
       if (event.target === modal) closeModal();
     });
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && modal.classList.contains("pointer-events-auto")) closeModal();
+      if (modal && event.key === "Escape" && modal.classList.contains("pointer-events-auto")) closeModal();
     });
     document.addEventListener("click", (event) => {
       const target = event.target.closest("a[href*='contact-us.html'], [data-open-bulk-modal]");
@@ -84,11 +86,16 @@
         phone: String(data.get("phone") || "").trim(),
         combo_boxes_required: String(data.get("combo_boxes_required") || "").trim(),
         custom_quantity: comboBoxes.value === "Customize" ? Number(customQuantity.value) : null,
+        shipping_days: Number(shippingDays.value),
         website: String(data.get("website") || "").trim(),
       };
-      if (["name", "company_name", "address", "employee_size", "phone", "combo_boxes_required"]
+      if (["name", "company_name", "address", "employee_size", "phone", "combo_boxes_required", "shipping_days"]
         .some((field) => !payload[field])) {
         setStatus("Please complete all required fields.");
+        return;
+      }
+      if (![10, 15, 20].includes(payload.shipping_days)) {
+        setStatus("Select valid shipping days.");
         return;
       }
       if (comboBoxes.value === "Customize"
@@ -113,8 +120,8 @@
         form.reset();
         syncCustomQuantity();
         setTimeout(() => {
-          modal.classList.remove("opacity-100", "pointer-events-auto");
-          modal.classList.add("opacity-0", "pointer-events-none");
+          modal?.classList.remove("opacity-100", "pointer-events-auto");
+          modal?.classList.add("opacity-0", "pointer-events-none");
           content?.classList.remove("scale-100");
           content?.classList.add("scale-95");
           document.body.style.overflow = "";

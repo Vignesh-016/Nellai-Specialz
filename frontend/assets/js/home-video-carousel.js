@@ -153,7 +153,21 @@
     updateCarousel(0);
   }
 
+  function moveGalleryIntoStory() {
+    const story = document.getElementById("sweet-story");
+    const gallery = document.getElementById("gallery");
+    if (!story || !gallery) return;
+    story.appendChild(gallery);
+    gallery.className = "mt-10 overflow-hidden sm:mt-12 lg:mt-14";
+    gallery.removeAttribute("data-reveal");
+    gallery.querySelector(":scope > div:first-child")?.remove();
+    story.querySelector(".text-center.max-w-2xl")?.querySelector("span")?.remove();
+    const heading = story.querySelector(".text-center.max-w-2xl h2");
+    if (heading) heading.classList.remove("mt-3");
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
+    moveGalleryIntoStory();
     bindVideoCarousel();
   });
 })();

@@ -62,13 +62,8 @@
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 onerror="this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png'">
 
-              <!-- Badges -->
-              <span
-                class="absolute top-4 left-4 bg-[#8C1C13] text-[#FFF8EF] text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md">Authentic
-                Recipe</span>
-              <span
-                class="absolute top-4 right-4 bg-[#FFFBF5] text-[#321307] text-xs font-bold px-3 py-1 rounded-full border border-[#D9B86C] shadow-xs">100%
-                Pure Ghee</span>
+              <span id="productHighlightBadge" hidden
+                class="absolute top-4 right-4 bg-[#FFFBF5] text-[#321307] text-xs font-bold px-3 py-1 rounded-full border border-[#D9B86C] shadow-xs"></span>
             </div>
 
             <!-- Thumbnail Carousel Grid -->
@@ -98,6 +93,7 @@
                   onerror="this.src='../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png'">
               </button>
             </div>
+            <div id="productShippingDays" hidden class="mt-4 text-sm text-[#806B58]"><span class="font-semibold text-[#321307]">Ships within </span><span data-shipping-days></span></div>
 
           </div>
 
@@ -126,11 +122,11 @@
                 <span class="text-xs text-[#806B58] ml-auto">Taxes included</span>
               </div>
 
-              <!-- Short Description -->
-              <p class="mt-4 text-xs sm:text-sm text-[#806B58] leading-relaxed">
-                Prepared using hand-extracted milk from sambha wheat, slow-cooked in pure cow ghee and Thamirabarani
-                river water. Known for its melt-in-mouth glossy texture and authentic aroma.
-              </p>
+              <!-- Key ingredients are populated from the product API. -->
+              <div id="productKeyIngredientsTop" hidden class="mt-4 text-[#806B58]">
+                <h3 class="font-serif text-sm font-bold text-[#321307]">Key Ingredients</h3>
+                <ul class="mt-2 list-disc list-inside space-y-1 text-xs leading-relaxed"></ul>
+              </div>
 
               <!-- VARIATION SELECTOR (WEIGHT OPTIONS) -->
               <div class="mt-6">
@@ -193,6 +189,8 @@
                 Instant Order via WhatsApp
               </a>
 
+              <p id="productShortDescription" class="mt-5 text-xs sm:text-sm text-[#806B58] leading-relaxed"></p>
+
             </div>
 
             <!-- TRUST FEATURES BAR -->
@@ -243,7 +241,7 @@
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[#FFFBF5] p-6 rounded-2xl border border-[#EADBC1]">
-            <div>
+            <div id="productKeyIngredientsLower">
               <h3 class="font-serif text-lg font-bold text-[#321307] mb-2">Key Ingredients</h3>
               <ul class="list-disc list-inside space-y-1 text-xs text-[#806B58]">
                 <li>Whole Sambha Wheat (Milk Extracted)</li>

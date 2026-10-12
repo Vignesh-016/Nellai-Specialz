@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let customer;
   let viewSequence = 0;
 
-  customer = await window.NellaiCustomerSession.requireCustomer();
+  customer = await window.NellaiCustomerSession.requireCustomerAuth();
   if (!customer) return;
 
   function showError(error) {

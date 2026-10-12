@@ -19,7 +19,6 @@
     <script src="../assets/js/footer.js"></script>
     <script src="../assets/js/common.js"></script>
     <script src="../assets/js/api.js"></script>
-    <script src="../assets/js/forms/contact-form.js" defer></script>
     <script src="../assets/js/account.js"></script>
     <script src="../assets/js/cart.js"></script>
     <script src="../assets/js/checkout.js"></script>
@@ -57,7 +56,7 @@
         <div
           class="mx-auto grid w-full max-w-[1280px] gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 xl:gap-12 lg:px-8"
         >
-          <div>
+          <div class="flex flex-col justify-center">
             <p
               class="text-xs font-bold uppercase tracking-[0.25em] text-[#D9B86C]"
             >
@@ -104,50 +103,20 @@
               </div>
             </div>
           </div>
-          <form
-            class="rounded-2xl border border-[#EADBC1] bg-white p-6 shadow-sm sm:p-8"
-            data-contact-form
-          >
+          <form id="contactBulkOrderForm" class="rounded-2xl border border-[#EADBC1] bg-white p-6 shadow-sm sm:p-8" data-bulk-contact-form>
             <h2 class="font-serif text-3xl font-bold text-[#321307]">
-              Send us a message
+              Diwali Bulk Order Enquiry
             </h2>
+            <p class="mt-2 text-sm leading-relaxed text-[#806B58]">Plan your Diwali gifting or event orders with freshly prepared Nellai sweets and snacks.</p>
             <div class="mt-6 grid gap-5 sm:grid-cols-2">
-              <label class="text-sm font-semibold text-[#321307]"
-                >Name<input
-                  name="name"
-                  maxlength="150"
-                  required
-                  class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
-              /></label>
-              <label class="text-sm font-semibold text-[#321307]"
-                >Email<input
-                  name="email"
-                  type="email"
-                  maxlength="255"
-                  required
-                  class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
-              /></label>
-              <label class="text-sm font-semibold text-[#321307]"
-                >Phone<input
-                  name="phone"
-                  maxlength="25"
-                  class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
-              /></label>
-              <label class="text-sm font-semibold text-[#321307]"
-                >Subject<input
-                  name="subject"
-                  maxlength="200"
-                  required
-                  class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
-              /></label>
-              <label class="text-sm font-semibold text-[#321307] sm:col-span-2"
-                >Message<textarea
-                  name="message"
-                  maxlength="3000"
-                  required
-                  class="mt-2 min-h-[160px] w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] p-4 outline-none focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20"
-                ></textarea>
-              </label>
+              <label class="text-sm font-semibold text-[#321307]">Name<input name="name" maxlength="150" required class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20" /></label>
+              <label class="text-sm font-semibold text-[#321307]">Company Name<input name="company_name" maxlength="200" required class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20" /></label>
+              <label class="text-sm font-semibold text-[#321307]">Phone Number<input name="phone" type="tel" maxlength="25" required class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20" /></label>
+              <label class="text-sm font-semibold text-[#321307]">Employee Size<select name="employee_size" required class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13]"><option value="">Select employee size</option><option>Below 25</option><option>25â€“50</option><option>51â€“100</option><option>101â€“250</option><option>251â€“500</option><option>Above 500</option></select></label>
+              <label class="text-sm font-semibold text-[#321307] sm:col-span-2">Delivery Address<input name="address" maxlength="1000" required class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20" /></label>
+              <label class="text-sm font-semibold text-[#321307]">Combo Boxes Required<select name="combo_boxes_required" required class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13]"><option value="">Select quantity</option><option>Below 20</option><option>20 to 50</option><option>50 to 100</option><option>Customize</option></select></label>
+              <label class="text-sm font-semibold text-[#321307]">Shipping Within<select name="shipping_days" required class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13]"><option value="">Select shipping days</option><option value="10">10 Days</option><option value="15">15 Days</option><option value="20">20 Days</option></select></label>
+              <label class="text-sm font-semibold text-[#321307] sm:col-span-2">Custom Quantity (if required)<input name="custom_quantity" type="number" min="1" step="1" class="mt-2 h-12 w-full rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 outline-none focus:border-[#8C1C13] focus:ring-2 focus:ring-[#8C1C13]/20" /></label>
               <label class="hidden" aria-hidden="true">Leave this field empty
                 <input name="website" tabindex="-1" autocomplete="off" />
               </label>
@@ -156,9 +125,9 @@
               class="mt-6 h-12 rounded-full bg-[#8C1C13] px-8 font-semibold text-[#FFF8EF] shadow-md transition hover:bg-[#7A120A]"
               type="submit"
             >
-              Send Message
+              Submit Diwali Enquiry
             </button>
-            <p data-form-status class="mt-4 text-sm" role="status" aria-live="polite"></p>
+            <p id="bulkFormStatus" class="mt-4 text-sm" role="status" aria-live="polite"></p>
           </form>
         </div>
       </section>

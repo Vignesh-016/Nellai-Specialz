@@ -23,10 +23,25 @@
     <script src="../assets/js/checkout.js"></script>
     <script src="../assets/js/our-story.js"></script>
     <style>
-      @keyframes aboutGalleryScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-      .about-gallery-scroll { animation: aboutGalleryScroll 35s linear infinite; }
-      .about-gallery-scroll:hover { animation-play-state: paused; }
-      @media (prefers-reduced-motion: reduce) { .about-gallery-scroll { animation: none; } }
+      @keyframes aboutGalleryScroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .about-gallery-scroll {
+        animation: aboutGalleryScroll 35s linear infinite;
+      }
+      .about-gallery-scroll:hover {
+        animation-play-state: paused;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .about-gallery-scroll {
+          animation: none;
+        }
+      }
       .story-editorial-block {
         opacity: 0;
         transform: translateY(16px);
@@ -918,11 +933,35 @@
             >
               The Taste. The Care. The Nellai Way.
             </h2>
-            <p class="mt-4 text-base leading-relaxed text-[#806B58]">
-              We keep the recipe authentic while improving how it travels. Every
-              batch honors traditional craftsmanship, ensuring that distance
-              never dilutes the quality or emotion of real Tirunelveli halwa.
-            </p>
+            <div
+              class="mt-4 space-y-4 text-base leading-relaxed text-[#806B58]"
+            >
+              <p>
+                Nellai Specialz is your trusted source for authentic Nellai
+                sweets, snacks, and traditional products. We prioritize food
+                quality above all else, ensuring that every item we deliver is
+                freshly cooked and impeccably packaged. We take pride in keeping
+                our offerings free from artificial sweeteners and preservatives,
+                allowing you to savor the genuine flavors of Tirunelveli.
+              </p>
+              <p>
+                To serve you better, we operate on a pre-order basis,
+                guaranteeing that your sweets and snacks are prepared fresh and
+                delivered as such. This commitment to freshness is a cornerstone
+                of our service.
+              </p>
+              <p>
+                In addition, for the convenience of our customers, we offer
+                delivery services right to your seat at Tirunelveli Bus Stop and
+                Railway Station. This means no more standing in long queues; you
+                can relax and enjoy our fresh snacks without any hassle.
+              </p>
+              <p class="pt-1 font-semibold text-[#32110D]">
+                Founder<br /><span class="font-normal"
+                  >Anbalagan Samynathan</span
+                >
+              </p>
+            </div>
             <a
               href="shop.html"
               class="mt-7 inline-flex items-center gap-2 rounded-full bg-[#8C1C13] px-7 py-3.5 text-sm font-bold text-[#FFF8EF] shadow-md shadow-[#8C1C13]/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#7A120A]"
@@ -933,32 +972,184 @@
         </div>
       </section>
 
-      <section id="about-gallery" class="bg-[#F8F1E4] py-12 border-b border-[#EADBC1] overflow-hidden">
-        <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 mb-6 text-center">
-          <h2 class="font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#32110D] tracking-tight">Sweet Moments from Nellai</h2>
+      <section
+        id="about-gallery"
+        class="bg-[#F8F1E4] py-12 border-b border-[#EADBC1] overflow-hidden"
+      >
+        <div
+          class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 mb-6 text-center"
+        >
+          <h2
+            class="font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#32110D] tracking-tight"
+          >
+            Sweet Moments from Nellai
+          </h2>
           <div class="mt-2 mx-auto h-0.5 w-16 bg-[#D9B86C] rounded-full"></div>
-          <p class="mt-2 text-xs sm:text-sm text-[#5C3A21]">A visual glimpse into our authentic halwa preparations, traditional brass uruli cooking, and festive gift boxes.</p>
+          <p class="mt-2 text-xs sm:text-sm text-[#5C3A21]">
+            A visual glimpse into our authentic halwa preparations, traditional
+            brass uruli cooking, and festive gift boxes.
+          </p>
         </div>
         <div class="relative w-full overflow-hidden group/gallery">
-          <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-[#F8F1E4] to-transparent z-10"></div>
-          <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-[#F8F1E4] to-transparent z-10"></div>
-          <div class="flex w-max gap-4 sm:gap-6 about-gallery-scroll group-hover/gallery:[animation-play-state:paused]">
-            <div class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"><img src="../assets/images/Home/1.png" alt="Nellai Specialz customer sweet order" class="h-full w-full object-cover" loading="lazy"></div>
-            <div class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"><img src="../assets/images/Home/2.png" alt="Nellai Specialz founder and heritage display" class="h-full w-full object-cover" loading="lazy"></div>
-            <div class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"><img src="../assets/images/Home/3.png" alt="Nellai Specialz customer experience" class="h-full w-full object-cover" loading="lazy"></div>
-            <div class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"><img src="../assets/images/Home/4.png" alt="Nellai Specialz community moment" class="h-full w-full object-cover" loading="lazy"></div>
-            <div class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"><img src="../assets/images/Home/Testimonial-1-1.jpg" alt="Customer testimonial" class="h-full w-full object-cover" loading="lazy"></div>
-            <div class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"><img src="../assets/images/Home/Nellai-img-1.jpg" alt="Customer with Nellai Specialz representative" class="h-full w-full object-cover" loading="lazy"></div>
-            <div class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"><img src="../assets/images/Home/nellai-image-1.jpg" alt="Nellai Specialz customer handover" class="h-full w-full object-cover" loading="lazy"></div>
-            <div class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"><img src="../assets/images/Home/seat-order-1-1.jpg" alt="Nellai Specialz delivery moment" class="h-full w-full object-cover" loading="lazy"></div>
-            <div aria-hidden="true" class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"><img src="../assets/images/Home/1.png" alt="" class="h-full w-full object-cover"></div>
-            <div aria-hidden="true" class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"><img src="../assets/images/Home/2.png" alt="" class="h-full w-full object-cover"></div>
-            <div aria-hidden="true" class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"><img src="../assets/images/Home/3.png" alt="" class="h-full w-full object-cover"></div>
-            <div aria-hidden="true" class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"><img src="../assets/images/Home/4.png" alt="" class="h-full w-full object-cover"></div>
-            <div aria-hidden="true" class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"><img src="../assets/images/Home/Testimonial-1-1.jpg" alt="" class="h-full w-full object-cover"></div>
-            <div aria-hidden="true" class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"><img src="../assets/images/Home/Nellai-img-1.jpg" alt="" class="h-full w-full object-cover"></div>
-            <div aria-hidden="true" class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"><img src="../assets/images/Home/nellai-image-1.jpg" alt="" class="h-full w-full object-cover"></div>
-            <div aria-hidden="true" class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"><img src="../assets/images/Home/seat-order-1-1.jpg" alt="" class="h-full w-full object-cover"></div>
+          <div
+            class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-[#F8F1E4] to-transparent z-10"
+          ></div>
+          <div
+            class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-[#F8F1E4] to-transparent z-10"
+          ></div>
+          <div
+            class="flex w-max gap-4 sm:gap-6 about-gallery-scroll group-hover/gallery:[animation-play-state:paused]"
+          >
+            <div
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+            >
+              <img
+                src="../assets/images/Home/1.png"
+                alt="Nellai Specialz customer sweet order"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+            >
+              <img
+                src="../assets/images/Home/3.png"
+                alt="Nellai Specialz customer experience"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+            >
+              <img
+                src="../assets/images/Home/4.png"
+                alt="Nellai Specialz community moment"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+            >
+              <img
+                src="../assets/images/Home/Testimonial-1-1.jpg"
+                alt="Customer testimonial"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+            >
+              <img
+                src="../assets/images/Home/Nellai-img-1.jpg"
+                alt="Customer with Nellai Specialz representative"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+            >
+              <img
+                src="../assets/images/Home/nellai-image-1.jpg"
+                alt="Nellai Specialz customer handover"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm transition-transform duration-300 hover:scale-[1.03]"
+            >
+              <img
+                src="../assets/images/Home/seat-order-1-1.jpg"
+                alt="Nellai Specialz delivery moment"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div
+              aria-hidden="true"
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+            >
+              <img
+                src="../assets/images/Home/1.png"
+                alt=""
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <div
+              aria-hidden="true"
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+            >
+              <img
+                src="../assets/images/Home/2.png"
+                alt=""
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <div
+              aria-hidden="true"
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+            >
+              <img
+                src="../assets/images/Home/3.png"
+                alt=""
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <div
+              aria-hidden="true"
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+            >
+              <img
+                src="../assets/images/Home/4.png"
+                alt=""
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <div
+              aria-hidden="true"
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+            >
+              <img
+                src="../assets/images/Home/Testimonial-1-1.jpg"
+                alt=""
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <div
+              aria-hidden="true"
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+            >
+              <img
+                src="../assets/images/Home/Nellai-img-1.jpg"
+                alt=""
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <div
+              aria-hidden="true"
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+            >
+              <img
+                src="../assets/images/Home/nellai-image-1.jpg"
+                alt=""
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <div
+              aria-hidden="true"
+              class="h-56 w-56 sm:h-64 sm:w-72 shrink-0 overflow-hidden rounded-2xl border border-[#EADBC1] shadow-sm"
+            >
+              <img
+                src="../assets/images/Home/seat-order-1-1.jpg"
+                alt=""
+                class="h-full w-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>

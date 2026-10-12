@@ -33,7 +33,7 @@ safeApi(function (): void {
 
     $statement = $db->prepare(
         'SELECT id, enquiry_type AS type, name, email, phone, subject, message, company_name, address, '
-        . 'employee_size, combo_boxes_required, custom_quantity, status, admin_notes, created_at, updated_at '
+        . 'employee_size, combo_boxes_required, custom_quantity, shipping_days, status, admin_notes, created_at, updated_at '
         . 'FROM enquiries'
         . ($where ? ' WHERE ' . implode(' AND ', $where) : '')
         . ' ORDER BY created_at DESC, id DESC'
