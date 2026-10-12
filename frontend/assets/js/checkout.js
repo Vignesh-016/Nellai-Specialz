@@ -343,6 +343,9 @@
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
+    // checkout.js is shared by storefront pages; only run the private checkout
+    // guard when this document actually contains the checkout view.
+    if (!document.getElementById("placeOrderBtn")) return;
     const customer = await ensureCustomer();
     if (!customer) return;
     const name = document.getElementById("customerName");

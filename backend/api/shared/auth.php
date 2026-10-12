@@ -34,16 +34,31 @@ function startCustomerSession(): void
         'path' => '/',
         'secure' => true,
         'httponly' => true,
-        'samesite' => 'None',
+        // The frontend and backend are same-site subdomains. Lax is safer and
+        // still allows the credentialed same-site requests used by the store.
+        'samesite' => $isLocalOrigin ? 'None' : 'Lax',
     ];
-
-    if (!$isLocalOrigin) {
-        $params['domain'] = '.nellaispecialz.com';
-    }
 
     session_name('NELLAI_CUSTOMER_SESSION');
     session_set_cookie_params($params);
     session_start();
+}
+
+function refreshCustomerSessionCookie(): void
+{
+    if (session_status() !== PHP_SESSION_ACTIVE || headers_sent()) {
+        return;
+    }
+
+    $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+    $isLocalOrigin = in_array($origin, ['http://127.0.0.1:5500', 'http://localhost:5500'], true);
+    setcookie(session_name(), session_id(), [
+        'expires' => 0,
+        'path' => '/',
+        'secure' => true,
+        'httponly' => true,
+        'samesite' => $isLocalOrigin ? 'None' : 'Lax',
+    ]);
 }
 
 function getCurrentCustomer(): ?array

@@ -20,5 +20,9 @@ safeApi(function (): void {
     session_regenerate_id(true);
     $_SESSION['customer'] = ['id' => (int) $c['id'], 'email' => $c['email'], 'name' => $c['name']];
     $db->prepare('UPDATE customers SET last_login_at=NOW() WHERE id=:id')->execute([':id' => $c['id']]);
+    refreshCustomerSessionCookie();
+    // Commit the session before returning so the next frontend request can
+    // immediately authenticate with the newly issued session cookie.
+    session_write_close();
     jsonResponse(true, 'Signed in successfully.', ['id' => (int) $c['id'], 'name' => $c['name'], 'email' => $c['email'], 'phone' => $c['phone']]);
 });

@@ -11,7 +11,9 @@
         headers["Content-Type"] = "application/json";
       const response = await fetch(
         `${API_BASE_URL}/api/${path.replace(/^\//, "")}`,
-        { credentials: options.credentials || "omit", ...options, headers },
+        // Customer/admin session endpoints require cookies. Public endpoints
+        // remain protected by the backend CORS allowlist and can ignore them.
+        { credentials: options.credentials || "include", ...options, headers },
       );
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.success) { const error = new Error(result.message || "Request failed."); error.status = response.status; error.code = result.code || null; error.errors = result.errors || {}; throw error; }

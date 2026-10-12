@@ -6,8 +6,24 @@
     if (!wrapper || wrapper.querySelector("[data-register-toggle]")) return;
     wrapper.classList.add("relative");
     const button = document.createElement("button");
-    button.type = "button"; button.dataset.registerToggle = "true"; button.className = "absolute right-3 top-9 text-xs font-semibold text-[#8C1C13]"; button.textContent = "Show";
-    button.addEventListener("click", () => { const visible = input.type === "text"; input.type = visible ? "password" : "text"; button.textContent = visible ? "Show" : "Hide"; });
+    button.type = "button";
+    button.dataset.registerToggle = "true";
+    button.className = "absolute right-2 top-9 grid h-9 w-9 place-items-center rounded-full text-[#806B58] transition hover:bg-[#FBF5E9] hover:text-[#8C1C13] [&>svg]:h-5 [&>svg]:w-5";
+    button.style.setProperty("--icon-size", "1.25rem");
+    button.querySelector("svg")?.style.setProperty("width", "1.25rem");
+    button.querySelector("svg")?.style.setProperty("height", "1.25rem");
+    button.setAttribute("aria-pressed", "false");
+    button.setAttribute("aria-label", "Show password");
+    const showIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>';
+    const hideIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m3 3 18 18M10.6 6.2A10.7 10.7 0 0 1 12 6c6 0 9.5 6 9.5 6a17.6 17.6 0 0 1-3.1 3.9M6.2 6.8C3.8 8.2 2.5 12 2.5 12s3.5 6 9.5 6c1 0 2-.2 2.8-.5"/></svg>';
+    button.innerHTML = showIcon;
+    button.addEventListener("click", () => {
+      const visible = input.type === "text";
+      input.type = visible ? "password" : "text";
+      button.setAttribute("aria-pressed", String(!visible));
+      button.setAttribute("aria-label", visible ? "Show password" : "Hide password");
+      button.innerHTML = visible ? showIcon : hideIcon;
+    });
     wrapper.appendChild(button);
   };
 

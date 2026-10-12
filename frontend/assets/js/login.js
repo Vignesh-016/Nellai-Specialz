@@ -18,7 +18,6 @@
       button.disabled = true;
       try {
         await NellaiApi.request("customer-auth/login.php", { method: "POST", credentials: "include", body: JSON.stringify({ email, password }) });
-        await NellaiApi.request("customer-auth/me.php", { method: "GET", credentials: "include" });
         location.replace(window.NellaiCustomerSession.getSafeRedirect());
       } catch (error) {
         showError(form, error.message || "Unable to sign in. Please try again.");
@@ -27,6 +26,17 @@
           form.querySelector("[data-auth-error]").appendChild(link);
         }
       } finally { button.disabled = false; }
+    });
+    const passwordInput = document.getElementById("password");
+    const passwordToggle = document.querySelector("[data-toggle-password]");
+    passwordToggle?.addEventListener("click", () => {
+      const visible = passwordInput?.type === "text";
+      if (passwordInput) passwordInput.type = visible ? "password" : "text";
+      passwordToggle.setAttribute("aria-pressed", String(!visible));
+      passwordToggle.setAttribute("aria-label", visible ? "Show password" : "Hide password");
+      passwordToggle.innerHTML = visible
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m3 3 18 18M10.6 6.2A10.7 10.7 0 0 1 12 6c6 0 9.5 6 9.5 6a17.6 17.6 0 0 1-3.1 3.9M6.2 6.8C3.8 8.2 2.5 12 2.5 12s3.5 6 9.5 6c1 0 2-.2 2.8-.5"/></svg>';
     });
     document.querySelector("[data-forgot-password]")?.addEventListener("click", async (event) => {
       event.preventDefault();

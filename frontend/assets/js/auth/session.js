@@ -12,14 +12,14 @@
 
   const currentFile = () => location.pathname.split("/").pop().toLowerCase();
   const isAuthPage = () => AUTH_FILES.has(currentFile());
-  const homePath = () => "/frontend/index.html";
+  const homePath = () => "/index.html";
 
   function safeRedirect(raw, fallback = homePath()) {
     if (!raw || typeof raw !== "string") return fallback;
     let value = raw;
     try { value = decodeURIComponent(value); } catch (_) { return fallback; }
     value = value.trim();
-    if (value === "/index.html" || value === "index.html") return "/frontend/index.html";
+    if (value === "/index.html" || value === "index.html") return "/index.html";
     if (!value || value.startsWith("//") || /^[a-z][a-z\d+.-]*:/i.test(value)) return fallback;
     try {
       const url = new URL(value, location.origin);
