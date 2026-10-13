@@ -1,10 +1,6 @@
 window.renderProductGallery = (product) => {
   const fallback = "../assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png";
-  const normalize = window.normalizeStorefrontImage || ((path) => {
-    if (!path) return null;
-    if (/^https?:\/\//i.test(path)) return path;
-    return `https://backend.nellaispecialz.com/${String(path).replace(/^\/+/, "")}`;
-  });
+  const normalize = window.resolveBackendImageUrl || (() => "");
   const gallery = Array.isArray(product.images) ? product.images : (product.gallery || []);
   const sources = [
     product.main_image,

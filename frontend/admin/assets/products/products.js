@@ -303,7 +303,16 @@
     data.append("product_id", String(productId));
     if (state.mainImage) data.append("main_image", state.mainImage);
     state.gallery.forEach((file) => data.append("gallery_images[]", file));
-    await api.request("products/upload-images.php", { method: "POST", body: data });
+    const uploaded = await api.request("products/upload-images.php", { method: "POST", body: data });
+    if (uploaded.main_image) state.currentMainImage = imageUrl(uploaded.main_image);
+    if (Array.isArray(uploaded.images) && uploaded.images.length) {
+      state.currentGallery.push(...uploaded.images);
+    }
+    state.mainImage = null;
+    state.gallery = [];
+    el("main-image-input").value = "";
+    revokePreviewUrls();
+    renderImages();
   }
 
   async function save(event) {
@@ -330,6 +339,7 @@
         description: el("pf-description").value.trim(),
         key_ingredients: el("pf-key-ingredients").value.trim(),
         storage_shelf_life: el("pf-storage-shelf-life").value.trim(),
+        why_nellai_specialz: el("pf-why-nellai-specialz").value.trim(),
         highlight_badge: el("pf-highlight-badge").value.trim() || null,
         shipping_days: el("pf-shipping-days").value ? Number(el("pf-shipping-days").value) : null,
         category_id: Number(el("pf-category").value || 0),
@@ -386,6 +396,7 @@
       el("pf-description").value = product.description || "";
       el("pf-key-ingredients").value = product.key_ingredients || "";
       el("pf-storage-shelf-life").value = product.storage_shelf_life || "";
+      el("pf-why-nellai-specialz").value = product.why_nellai_specialz || "";
       el("pf-highlight-badge").value = product.highlight_badge || "";
       el("pf-shipping-days").value = product.shipping_days ? String(product.shipping_days) : "";
       await loadCategories();

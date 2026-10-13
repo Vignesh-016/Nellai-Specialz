@@ -47,8 +47,11 @@ try {
     if (!isset($allowed[$mime])) categoryUploadError('Only JPG, PNG and WebP images are allowed.', 'UNSUPPORTED_MIME', 422);
     error_log('[Category Upload] MIME=' . $mime);
 
-    $backendRoot = dirname(__DIR__, 2);
-    $uploadDirectory = $backendRoot . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'categories';
+    // The response is a public /uploads/... URL. Use the active document root so
+    // the physical file and that URL always share the same public root.
+    $documentRoot = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), DIRECTORY_SEPARATOR);
+    $uploadRoot = $documentRoot !== '' ? $documentRoot : dirname(__DIR__, 2);
+    $uploadDirectory = $uploadRoot . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'categories';
     error_log('[Category Upload] target=' . $uploadDirectory);
     if (!is_dir($uploadDirectory) && !mkdir($uploadDirectory, 0755, true) && !is_dir($uploadDirectory)) categoryUploadError('Unable to prepare the image directory.', 'UPLOAD_DIR_CREATE_FAILED', 500);
     if (!is_writable($uploadDirectory)) categoryUploadError('The image directory is not writable.', 'UPLOAD_DIR_NOT_WRITABLE', 500);

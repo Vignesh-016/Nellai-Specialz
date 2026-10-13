@@ -77,7 +77,11 @@ safeApi(function (): void {
             }
         }
 
-        $uploadDirectory = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'products' . DIRECTORY_SEPARATOR;
+        // Images are returned at /uploads/... so they must be written beneath the
+        // active web document root, not merely beside a symlinked API deployment.
+        $documentRoot = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), DIRECTORY_SEPARATOR);
+        $uploadRoot = $documentRoot !== '' ? $documentRoot : dirname(__DIR__, 2);
+        $uploadDirectory = $uploadRoot . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'products' . DIRECTORY_SEPARATOR;
         if (!is_dir($uploadDirectory) && !mkdir($uploadDirectory, 0755, true) && !is_dir($uploadDirectory)) {
             throw new ProductImageUploadException('The product image directory could not be created. Check server storage permissions.', 500);
         }
@@ -172,11 +176,15 @@ safeApi(function (): void {
 
         $mainImagePath = $mainImage ?? ($product['main_image'] ?? null);
         $responseImages = array_map(
-            static fn (string $path): array => ['image_url' => 'https://backend.nellaispecialz.com/' . $path],
+            static fn (string $path): array => [
+                'image_path' => $path,
+                'image_url' => 'https://backend.nellaispecialz.com/' . $path,
+            ],
             $galleryImages ?? []
         );
         jsonResponse(true, 'Images uploaded.', [
-            'main_image' => $mainImagePath ? 'https://backend.nellaispecialz.com/' . $mainImagePath : null,
+            'main_image' => $mainImagePath,
+            'main_image_url' => $mainImagePath ? 'https://backend.nellaispecialz.com/' . ltrim((string) $mainImagePath, '/') : null,
             'images' => $responseImages,
         ]);
     } catch (Throwable $exception) {

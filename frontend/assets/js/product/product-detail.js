@@ -57,11 +57,50 @@ window.loadProductDetail = async () => {
   }
   document.getElementById("productKeyIngredientsLower")?.remove();
   fill(storage, p.storage_shelf_life);
-  document.querySelectorAll('span').forEach(node => { if (/148 Verified|Save 20%/i.test(node.textContent)) node.remove(); });
-  const rating = [...document.querySelectorAll('div,span')].find(node => /Verified Buyer Reviews/i.test(node.textContent)); if (rating) rating.remove();
+  document.querySelector('.product-static-rating')?.remove();
   document.querySelector('.font-tamil')?.remove();
   document.getElementById('productTrustFeatures')?.remove();
   document.getElementById('productTamilSubtitle')?.remove();
-  const reviewForm = document.getElementById('reviewForm'); reviewForm?.closest('.mt-10')?.remove();
+
+  const whyPoints = String(p.why_nellai_specialz || '')
+    .split(/\r?\n/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+  const descriptionButton = document.getElementById('productDescriptionTabButton');
+  const descriptionPanel = document.getElementById('productDescriptionTabPanel');
+  const whyButton = document.getElementById('productWhyTabButton');
+  const whyPanel = document.getElementById('productWhyTabPanel');
+  const whyGrid = document.getElementById('productWhyNellaiGrid');
+  if (descriptionButton && descriptionPanel && whyButton && whyPanel && whyGrid) {
+    const selectTab = (tab) => {
+      const isWhy = tab === 'why';
+      descriptionPanel.hidden = isWhy;
+      whyPanel.hidden = !isWhy;
+      descriptionButton.setAttribute('aria-selected', String(!isWhy));
+      whyButton.setAttribute('aria-selected', String(isWhy));
+      descriptionButton.className = `tab-btn shrink-0 pb-3 px-4 focus:outline-none cursor-pointer ${!isWhy ? 'active border-b-2 border-[#8C1C13] text-[#8C1C13]' : 'text-[#806B58] hover:text-[#8C1C13]'}`;
+      whyButton.className = `tab-btn shrink-0 pb-3 px-4 focus:outline-none cursor-pointer ${isWhy ? 'active border-b-2 border-[#8C1C13] text-[#8C1C13]' : 'text-[#806B58] hover:text-[#8C1C13]'}`;
+    };
+    if (whyPoints.length) {
+      whyGrid.replaceChildren(...whyPoints.map((point) => {
+        const item = document.createElement('div');
+        item.className = 'flex items-start gap-3 rounded-xl border border-[#EADBC1] bg-[#FFFBF5] px-4 py-3 text-sm leading-relaxed text-[#321307]';
+        const mark = document.createElement('span');
+        mark.className = 'mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#8C1C13] text-xs font-bold text-[#FFF8EF]';
+        mark.textContent = '✓';
+        const text = document.createElement('span');
+        text.textContent = point;
+        item.append(mark, text);
+        return item;
+      }));
+      whyButton.hidden = false;
+      whyButton.addEventListener('click', () => selectTab('why'));
+      descriptionButton.addEventListener('click', () => selectTab('description'));
+      selectTab('description');
+    } else {
+      whyButton.hidden = true;
+      whyPanel.hidden = true;
+    }
+  }
   return p;
 };

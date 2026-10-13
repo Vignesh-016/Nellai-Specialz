@@ -101,10 +101,9 @@
           <div class="lg:col-span-6 flex flex-col justify-between">
 
             <div>
-              <div class="flex items-center gap-2 mb-2">
+              <div class="product-static-rating flex items-center gap-2 mb-2" hidden>
                 <div class="flex text-amber-500 text-sm">★★★★★</div>
                 <span class="text-xs font-bold text-[#321307]">5.0</span>
-                <span class="text-xs text-[#806B58]">(148 Verified Buyer Reviews)</span>
               </div>
 
               <h1 class="font-serif text-3xl sm:text-4xl font-bold text-[#321307] leading-tight">
@@ -118,7 +117,6 @@
               <div class="mt-4 p-4 rounded-2xl bg-[#FFFBF5] border border-[#EADBC1] flex items-center gap-4">
                 <span id="displayPrice" class="text-3xl font-bold font-sans tabular-nums text-[#8C1C13]">₹360</span>
                 <span id="displayMRP" class="text-sm text-[#806B58] line-through font-sans tabular-nums">₹450</span>
-                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full border border-emerald-200 font-sans tabular-nums">Save 20%</span>
                 <span class="text-xs text-[#806B58] ml-auto">Taxes included</span>
               </div>
 
@@ -222,18 +220,18 @@
       <div class="bg-white rounded-3xl border border-[#EADBC1] shadow-xl shadow-[#321307]/5 p-6 sm:p-10">
 
         <!-- Tab Headers -->
-        <div class="flex border-b border-[#EADBC1] text-sm sm:text-base font-bold text-[#321307]">
+        <div role="tablist" aria-label="Product information" class="flex overflow-x-auto border-b border-[#EADBC1] text-sm sm:text-base font-bold text-[#321307]">
           <button type="button"
-            class="tab-btn active border-b-2 border-[#8C1C13] text-[#8C1C13] pb-3 px-4 focus:outline-none cursor-pointer">
+            id="productDescriptionTabButton" data-product-tab="description" role="tab" aria-selected="true" class="tab-btn shrink-0 active border-b-2 border-[#8C1C13] text-[#8C1C13] pb-3 px-4 focus:outline-none cursor-pointer">
             Detailed Description &amp; Heritage
           </button>
-          <button type="button" class="tab-btn text-[#806B58] hover:text-[#8C1C13] pb-3 px-4 focus:outline-none cursor-pointer">
-            Customer Reviews (148)
+          <button type="button" id="productWhyTabButton" data-product-tab="why" role="tab" aria-selected="false" hidden class="tab-btn shrink-0 text-[#806B58] hover:text-[#8C1C13] pb-3 px-4 focus:outline-none cursor-pointer">
+            Why Nellai Specialz
           </button>
         </div>
 
         <!-- Description Tab Content -->
-        <div class="mt-6 space-y-6 text-xs sm:text-sm text-[#806B58] leading-relaxed">
+        <div id="productDescriptionTabPanel" role="tabpanel" class="mt-6 space-y-6 text-xs sm:text-sm text-[#806B58] leading-relaxed">
           <p>
             Tirunelveli Halwa is world-renowned for its distinct dark amber sheen, rich ghee aroma, and soft texture. At
             Nellai Specialz, we strictly adhere to the centuries-old traditional recipe without shortcuts or modern
@@ -262,65 +260,8 @@
           </div>
         </div>
 
-        <!-- REVIEWS LIST & ADD REVIEW FORM SECTION -->
-        <div class="mt-10 pt-8 border-t border-[#EADBC1]">
-          <h3 class="font-serif text-2xl font-bold text-[#321307] mb-6">Customer Reviews</h3>
-
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-
-            <!-- Reviews List -->
-            <div class="lg:col-span-7 space-y-4">
-              <div class="bg-[#FFFBF5] p-4 rounded-xl border border-[#EADBC1]">
-                <div class="flex items-center justify-between">
-                  <span class="font-bold text-xs text-[#321307]">Karthik R. (Chennai)</span>
-                  <span class="text-amber-500 text-xs">★★★★★</span>
-                </div>
-                <p class="text-xs text-[#806B58] mt-1">"Exact taste of Iruttu Kadai halwa! Delivered within 2 days to
-                  Chennai. Fresh ghee flavor is amazing."</p>
-              </div>
-              <div class="bg-[#FFFBF5] p-4 rounded-xl border border-[#EADBC1]">
-                <div class="flex items-center justify-between">
-                  <span class="font-bold text-xs text-[#321307]">Meenakshi Sundaram (Bengaluru)</span>
-                  <span class="text-amber-500 text-xs">★★★★★</span>
-                </div>
-                <p class="text-xs text-[#806B58] mt-1">"Brought back childhood memories of Tirunelveli town. Packing was
-                  leak-proof and neat."</p>
-              </div>
-            </div>
-
-            <!-- Write a Review Box -->
-            <div class="lg:col-span-5 bg-[#FFFBF5] p-5 rounded-2xl border border-[#EADBC1]">
-              <h4 class="font-serif text-lg font-bold text-[#321307] mb-2">Write a Review</h4>
-              <form id="reviewForm"
-                onsubmit="event.preventDefault(); alert('Thank you! Your review has been submitted for approval.'); this.reset();"
-                class="space-y-3">
-                <div>
-                  <label class="block text-xs font-semibold text-[#321307] mb-1">Your Name</label>
-                  <input type="text" required
-                    class="w-full bg-white border border-[#EADBC1] rounded-lg px-3 py-2 text-xs text-[#321307] focus:outline-none focus:border-[#8C1C13]">
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-[#321307] mb-1">Rating</label>
-                  <select
-                    class="w-full bg-white border border-[#EADBC1] rounded-lg px-3 py-2 text-xs text-[#321307] focus:outline-none focus:border-[#8C1C13]">
-                    <option value="5">★★★★★ (5 Stars - Excellent)</option>
-                    <option value="4">★★★★☆ (4 Stars - Good)</option>
-                    <option value="3">★★★☆☆ (3 Stars - Average)</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-[#321307] mb-1">Your Review</label>
-                  <textarea rows="3" required
-                    class="w-full bg-white border border-[#EADBC1] rounded-lg px-3 py-2 text-xs text-[#321307] focus:outline-none focus:border-[#8C1C13]"></textarea>
-                </div>
-                <button type="submit"
-                  class="w-full bg-[#8C1C13] text-[#FFF8EF] text-xs font-bold py-2.5 rounded-full hover:bg-[#7A120A] transition-colors shadow-xs cursor-pointer">
-                  Submit Review
-                </button>
-              </form>
-            </div>
-
-          </div>
+        <div id="productWhyTabPanel" role="tabpanel" hidden class="mt-6">
+          <div id="productWhyNellaiGrid" class="grid gap-3 sm:grid-cols-2"></div>
         </div>
 
       </div>

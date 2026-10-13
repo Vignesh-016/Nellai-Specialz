@@ -7,77 +7,50 @@ window.initHomeProducts = async () => {
     grid.textContent = "Products could not be loaded. Please refresh and try again.";
     return;
   }
-  const esc = (s) =>
-    String(s ?? "").replace(
-      /[&<>"']/g,
-      (c) =>
-        ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;",
-        })[c],
-    );
-  const image = (s) =>
-    !s
-      ? ""
-      : /^https?:\/\//i.test(s)
-        ? s
-        : `https://backend.nellaispecialz.com/${String(s).replace(/^\//, "")}`;
+  const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  })[character]);
+  const image = (value) => window.resolveBackendImageUrl?.(value) || "";
+  const activeVariations = (product) => (product.variations || []).filter(
+    (variation) => String(variation.status || "ACTIVE").toUpperCase() === "ACTIVE",
+  );
+  const formatPrice = (value) => Number.isFinite(Number(value)) && Number(value) > 0
+    ? `\u20B9${Number(value).toLocaleString("en-IN")}`
+    : "Price unavailable";
+  const oneKgVariation = (variations) => variations.find((variation) => {
+    const weight = Number(variation.weight);
+    const unit = String(variation.weight_unit || "").trim().toLowerCase();
+    return (weight === 1 && unit === "kg")
+      || (weight === 1000 && unit === "g")
+      || /^1\s*kg$/i.test(String(variation.variation_name || ""));
+  });
   try {
     const all = await window.NellaiApi.request("products/get.php?limit=100");
-    const active = all.filter(
-      (p) => String(p.status || "").toLowerCase() === "active",
-    );
-    const featured = active.filter((p) => Number(p.featured) === 1);
+    const active = all.filter((product) => String(product.status || "").toUpperCase() === "ACTIVE");
+    const featured = active.filter((product) => Number(product.featured) === 1);
     const seen = new Set();
     const products = (featured.length ? featured : active)
-      .filter((p) => !seen.has(p.id) && seen.add(p.id))
+      .filter((product) => !seen.has(product.id) && seen.add(product.id))
       .slice(0, 4);
     if (!products.length) {
       grid.textContent = "No products available.";
       return;
     }
-    grid.innerHTML = products
-      .map((p) => {
-        const vars = (p.variations || []).filter(
-          (v) => String(v.status || "ACTIVE").toLowerCase() === "active",
-        );
-        const prices = vars
-          .map((v) => Number(v.selling_price ?? v.price ?? v.sale_price))
-          .filter((v) => Number.isFinite(v) && v > 0);
-        if (prices.length) {
-          // Product cards show the highest active variation price only.
-          const highestPrice = Math.max(...prices);
-          p.__cardPrice = `₹${highestPrice.toLocaleString("en-IN")}`;
-        }
-        const fallbackPrice = Number(p.selling_price ?? p.sale_price ?? p.offer_price);
-        const minPrice = prices.length ? Math.max(...prices) : fallbackPrice;
-        const maxPrice = prices.length ? Math.max(...prices) : fallbackPrice;
-        const formatPrice = (value) => Number.isFinite(value) && value > 0
-          ? `₹${value.toLocaleString("en-IN")}`
-          : "Price unavailable";
-        const priceLabel = Number.isFinite(minPrice) && minPrice > 0
-          ? (minPrice === maxPrice ? formatPrice(minPrice) : `${formatPrice(minPrice)} – ${formatPrice(maxPrice)}`)
-          : "Price unavailable";
-        const v = vars[0];
-        const weight = "";
-        const src =
-          image(
-            [
-              p.main_image,
-              p.image,
-              ...(p.images || []).map((x) => x.image_url || x.image_path || x),
-            ].find(Boolean),
-          ) || "assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png";
-        const href = `pages/product-detail.html?slug=${encodeURIComponent(p.slug || "")}`;
-        const badge = "";
-        return `<div class="group flex flex-col justify-between relative h-full"><a href="${href}" class="block relative z-10 mx-auto w-[90%] mb-3 overflow-hidden rounded-2xl shadow-lg transition-transform duration-500 group-hover:scale-105"><img src="${src}" alt="${esc(p.name)}" class="h-[240px] sm:h-[280px] lg:h-[340px] w-full object-cover object-top rounded-xl shadow-xs" style="object-position: center top;">${badge ? `<span class="absolute top-3 left-3 z-20 rounded-full bg-[#8C1C13] px-2.5 py-0.5 text-[10px] font-bold text-[#FFF8EF] shadow-xs">${esc(badge)}</span>` : ""}</a><div class="p-4 rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] shadow-xs flex-1 flex flex-col justify-between group-hover:border-[#8C1C13]/40 group-hover:shadow-md transition-all"><div class="flex items-center justify-between gap-2"><a href="${href}" class="font-serif text-xl font-bold text-[#32110D] hover:text-[#8C1C13] transition">${esc(p.name)}</a>${weight ? `<span class="font-sans tabular-nums text-[10px] font-bold text-[#8C1C13] bg-[#8C1C13]/10 px-2 py-0.5 rounded-md">${esc(weight)}</span>` : ""}</div><div class="mt-4 pt-3 border-t border-[#EADBC1]"><div class="flex items-baseline justify-between mb-2.5"><span class="text-[11px] font-semibold text-[#5C3A21]">Price</span><strong class="font-sans tabular-nums text-xl font-bold text-[#32110D]">${priceLabel}</strong></div><a href="${href}" class="flex w-full items-center justify-center gap-2 rounded-xl bg-[#8C1C13] py-2.5 text-xs font-bold text-[#FFF8EF] shadow-xs transition-all duration-200 hover:bg-[#7A120A]">View Product →</a></div></div></div>`;
-      })
-      .join("");
-  } catch (e) {
-    console.error("[Home] Products API failed:", e);
-    grid.textContent = e.message || "Products could not be loaded. Please refresh and try again.";
+    grid.innerHTML = products.map((product) => {
+      const variations = activeVariations(product);
+      const prices = variations.map((variation) => Number(variation.selling_price ?? variation.price ?? variation.sale_price))
+        .filter((price) => Number.isFinite(price) && price > 0);
+      const fallbackPrice = Number(product.selling_price ?? product.sale_price ?? product.offer_price ?? product.price);
+      const displayedPrice = prices.length ? Math.max(...prices) : fallbackPrice;
+      const oneKg = oneKgVariation(variations);
+      const oneKgBadge = oneKg ? `1 KG • ${formatPrice(oneKg.selling_price ?? oneKg.price ?? oneKg.sale_price)}` : "";
+      const source = image([product.main_image, product.image, ...(product.images || []).map((item) => item.image_url || item.image_path || item)].find(Boolean))
+        || "assets/images/ChatGPT Image Sep 26, 2026, 12_19_36 PM.png";
+      const href = `pages/product-detail.html?slug=${encodeURIComponent(product.slug || "")}`;
+      return `<div class="group relative flex h-full flex-col justify-between"><a href="${href}" class="relative z-10 mx-auto mb-3 block w-[90%] overflow-hidden rounded-2xl shadow-lg transition-transform duration-500 group-hover:scale-105"><img src="${source}" alt="${esc(product.name)}" class="h-[240px] w-full rounded-xl object-cover object-top shadow-xs sm:h-[280px] lg:h-[340px]" style="object-position:center top;"></a><div class="flex flex-1 flex-col justify-between rounded-2xl border border-[#EADBC1] bg-[#FFFBF5] p-4 text-center shadow-xs transition-all group-hover:border-[#8C1C13]/40 group-hover:shadow-md"><div><a href="${href}" class="block font-serif text-xl font-bold text-[#32110D] transition hover:text-[#8C1C13]">${esc(product.name)}</a>${oneKgBadge ? `<span class="mt-2 inline-flex rounded-full border border-[#D9B86C] bg-[#FFF8EF] px-2.5 py-1 text-[10px] font-bold text-[#8C1C13]">${esc(oneKgBadge)}</span>` : ""}</div><div class="mt-4 border-t border-[#EADBC1] pt-3"><div class="mb-2.5 flex items-baseline justify-between"><span class="text-[11px] font-semibold text-[#5C3A21]">Price</span><strong class="font-sans text-xl font-bold tabular-nums text-[#32110D]">${formatPrice(displayedPrice)}</strong></div><a href="${href}" class="flex w-full items-center justify-center gap-2 rounded-xl bg-[#8C1C13] py-2.5 text-xs font-bold text-[#FFF8EF] transition-all duration-200 hover:bg-[#7A120A]">View Product →</a></div></div></div>`;
+    }).join("");
+  } catch (error) {
+    console.error("[Home] Products API failed:", error);
+    grid.textContent = error.message || "Products could not be loaded. Please refresh and try again.";
   }
 };

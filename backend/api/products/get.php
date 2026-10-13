@@ -172,7 +172,11 @@ function loadImages(PDO $db, int $productId, array $columns): array
   $order[] = 'id';
   $q = $db->prepare('SELECT ' . implode(',', $select) . ' FROM product_images WHERE product_id = :product_id ORDER BY ' . implode(', ', $order));
   $q->execute([':product_id' => $productId]);
-  return array_map(static fn(array $image): array => ['id' => (int) $image['id'], 'image_url' => normalizeProductImageUrl($image['image_path'])], $q->fetchAll());
+  return array_map(static fn(array $image): array => [
+    'id' => (int) $image['id'],
+    'image_path' => $image['image_path'],
+    'image_url' => normalizeProductImageUrl($image['image_path']),
+  ], $q->fetchAll());
 }
 function normalizeProductImageUrl(?string $path): ?string
 {
