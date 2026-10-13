@@ -9,20 +9,33 @@
   const formatPrice = (value) => Number.isFinite(Number(value)) && Number(value) > 0
     ? `\u20B9${Number(value).toLocaleString("en-IN")}`
     : "Price unavailable";
-  const oneKgVariation = (variations) => variations.find((variation) => {
-    const weight = Number(variation.weight);
-    const unit = String(variation.weight_unit || "").trim().toLowerCase();
-    return (weight === 1 && unit === "kg")
-      || (weight === 1000 && unit === "g")
-      || /^1\s*kg$/i.test(String(variation.variation_name || ""));
-  });
+  const highestPricedVariation = (product) => activeVariations(product)
+    .filter((variation) => Number.isFinite(Number(variation.selling_price ?? variation.price ?? variation.sale_price)))
+    .reduce((highest, variation) => {
+      const price = Number(variation.selling_price ?? variation.price ?? variation.sale_price);
+      const highestPrice = Number(highest?.selling_price ?? highest?.price ?? highest?.sale_price);
+      return !highest || price > highestPrice ? variation : highest;
+    }, null);
+  const variationLabel = (variation) => {
+    if (!variation) return "";
+    let weight = Number(variation.weight);
+    let unit = String(variation.weight_unit || "").trim().toUpperCase();
+    if (!Number.isFinite(weight) || !unit) {
+      const match = String(variation.variation_name || "").trim().match(/^(\d+(?:\.\d+)?)\s*(G|KG)$/i);
+      if (match) {
+        weight = Number(match[1]);
+        unit = match[2].toUpperCase();
+      }
+    }
+    if (weight === 1000 && unit === "G") return "1 KG";
+    return Number.isFinite(weight) && weight > 0 && unit ? `${weight} ${unit}` : "";
+  };
 
   window.getProductDisplayPrice = (product) => {
-    const prices = activeVariations(product)
-      .map((variation) => Number(variation.selling_price ?? variation.price ?? variation.sale_price))
-      .filter((price) => Number.isFinite(price) && price > 0);
-    if (prices.length) return formatPrice(Math.max(...prices));
-    return formatPrice(product.selling_price ?? product.sale_price ?? product.offer_price ?? product.price);
+    const variation = highestPricedVariation(product);
+    return variation
+      ? formatPrice(variation.selling_price ?? variation.price ?? variation.sale_price)
+      : formatPrice(product.selling_price ?? product.sale_price ?? product.offer_price ?? product.price);
   };
 
   window.loadShopProducts = async (categoryId = null) => {
@@ -46,10 +59,13 @@
         const gallery = Array.isArray(product.images) ? product.images : [];
         const source = [product.main_image, product.image, ...gallery.map((image) => image.image_url || image.image_path || image)].find(Boolean);
         const image = window.resolveBackendImageUrl?.(source) || fallbackImage;
-        const oneKg = oneKgVariation(activeVariations(product));
-        const oneKgBadge = oneKg ? `1 KG • ${formatPrice(oneKg.selling_price ?? oneKg.price ?? oneKg.sale_price)}` : "";
+        const highestVariation = highestPricedVariation(product);
+        const highestPrice = highestVariation
+          ? highestVariation.selling_price ?? highestVariation.price ?? highestVariation.sale_price
+          : product.selling_price ?? product.sale_price ?? product.offer_price ?? product.price;
+        const highestLabel = variationLabel(highestVariation);
         const slug = encodeURIComponent(product.slug || "");
-        return `<article class="product-card group flex flex-col justify-between overflow-hidden rounded-2xl border border-[#EADBC1] bg-white shadow-md shadow-[#321307]/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"><a href="product-detail.html?slug=${slug}"><div class="product-card-img-wrap relative aspect-square overflow-hidden bg-[#FFFBF5]"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.name)}" class="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105" style="object-position:center top;" loading="lazy" onerror="this.onerror=null;this.src='${fallbackImage}';"></div><div class="flex flex-1 flex-col justify-between p-5 text-center"><div><h3 class="font-serif text-xl font-bold text-[#321307] transition-colors group-hover:text-[#8C1C13]">${escapeHtml(product.name)}</h3>${oneKgBadge ? `<span class="mt-2 inline-flex rounded-full border border-[#D9B86C] bg-[#FFF8EF] px-2.5 py-1 text-[10px] font-bold text-[#8C1C13]">${escapeHtml(oneKgBadge)}</span>` : ""}${product.short_description ? `<p class="mt-2 line-clamp-2 text-xs leading-relaxed text-[#806B58]">${escapeHtml(product.short_description)}</p>` : ""}<p class="mt-3 font-sans text-lg font-bold tabular-nums text-[#8C1C13]">${window.getProductDisplayPrice(product)}</p></div></div></a></article>`;
+        return `<article class="product-card group flex h-full flex-col overflow-hidden rounded-2xl border border-[#EADBC1] bg-white shadow-md shadow-[#321307]/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"><a href="product-detail.html?slug=${slug}" class="flex flex-1 flex-col"><div class="product-card-img-wrap relative aspect-square overflow-hidden bg-[#FFFBF5]"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.name)}" class="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105" style="object-position:center top;" loading="lazy" onerror="this.onerror=null;this.src='${fallbackImage}';"></div><div class="flex flex-1 flex-col p-5 text-center"><div><h3 class="font-serif text-xl font-bold text-[#321307] transition-colors group-hover:text-[#8C1C13]">${escapeHtml(product.name)}</h3>${product.short_description ? `<p class="mt-2 line-clamp-2 text-xs leading-relaxed text-[#806B58]">${escapeHtml(product.short_description)}</p>` : ""}</div><div class="mt-auto flex items-end justify-between gap-4 border-t border-[#EADBC1] pt-3 text-left"><span class="min-w-0 text-sm font-semibold uppercase tracking-wide text-[#806B58]">${escapeHtml(highestLabel)}</span><strong class="shrink-0 font-sans text-xl font-bold tabular-nums text-[#8C1C13]">${formatPrice(highestPrice)}</strong></div></div></a></article>`;
       }).join("");
     } catch (error) {
       console.error("[Shop] Products API failed:", error);
