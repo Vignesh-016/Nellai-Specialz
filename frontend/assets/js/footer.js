@@ -12,7 +12,7 @@
 
   const footerHTML = `
     <footer class="relative overflow-hidden bg-[#FFE5BD] text-[#321307]">
-      <img src="${basePath}assets/images/Temple.png" alt="" aria-hidden="true" class="pointer-events-none absolute bottom-0 left-1/2 z-0 h-[85%] w-[min(1100px,100%)] -translate-x-1/2 object-contain object-bottom opacity-[0.05]">
+      <img src="${basePath}assets/images/Temple.webp" alt="" aria-hidden="true" class="pointer-events-none absolute bottom-0 left-1/2 z-0 h-[85%] w-[min(1100px,100%)] -translate-x-1/2 object-contain object-bottom opacity-[0.05]">
       <div class="relative z-10 mx-auto w-full max-w-[1280px] px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-0">
           <!-- Brand -->
