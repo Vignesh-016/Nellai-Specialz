@@ -77,10 +77,11 @@ safeApi(function (): void {
             }
         }
 
-        // Images are returned at /uploads/... so they must be written beneath the
-        // active web document root, not merely beside a symlinked API deployment.
-        $documentRoot = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), DIRECTORY_SEPARATOR);
-        $uploadRoot = $documentRoot !== '' ? $documentRoot : dirname(__DIR__, 2);
+        // Keep media beside the deployed backend API. This is the public root for
+        // both a direct subdomain deployment (public_html/api) and a nested
+        // deployment (public_html/backend/api); DOCUMENT_ROOT is not reliable
+        // when the subdomain points at the backend directory.
+        $uploadRoot = dirname(__DIR__, 2);
         $uploadDirectory = $uploadRoot . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'products' . DIRECTORY_SEPARATOR;
         if (!is_dir($uploadDirectory) && !mkdir($uploadDirectory, 0755, true) && !is_dir($uploadDirectory)) {
             throw new ProductImageUploadException('The product image directory could not be created. Check server storage permissions.', 500);
