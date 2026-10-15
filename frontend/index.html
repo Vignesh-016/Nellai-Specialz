@@ -44,24 +44,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="image"
+      href="assets/images/Home/Festive Indian Sweet Gift Box (1).webp"
+      fetchpriority="high"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/tailwind.css" />
-    <script src="assets/js/header.js"></script>
-    <script src="assets/js/footer.js"></script>
-    <script src="assets/js/common.js"></script>
-    <script src="assets/js/account.js"></script>
-    <script src="assets/js/cart.js"></script>
-    <script src="assets/js/checkout.js"></script>
-    <script src="assets/js/api.js"></script>
-    <script src="assets/js/auth/session.js"></script>
-    <script src="assets/js/home/home-product-section.js"></script>
-    <script src="assets/js/home/combo-offer-section.js"></script>
-    <script src="assets/js/home/home-init.js"></script>
-    <script src="assets/js/home.js"></script>
-    <script src="assets/js/home-video-carousel.js"></script>
-    <script src="assets/js/catalog.js"></script>
+    <script defer src="assets/js/header.js"></script>
+    <script defer src="assets/js/footer.js"></script>
+    <script defer src="assets/js/common.js"></script>
+    <script defer src="assets/js/account.js"></script>
+    <script defer src="assets/js/cart.js"></script>
+    <script defer src="assets/js/checkout.js"></script>
+    <script defer src="assets/js/api.js"></script>
+    <script defer src="assets/js/auth/session.js"></script>
+    <script defer src="assets/js/home/home-product-section.js"></script>
+    <script defer src="assets/js/home/combo-offer-section.js"></script>
+    <script defer src="assets/js/home/home-init.js"></script>
+    <script defer src="assets/js/home.js"></script>
+    <script defer src="assets/js/home-video-carousel.js"></script>
+    <script defer src="assets/js/catalog.js"></script>
     <style>
       @keyframes galleryScroll {
         0% {
@@ -173,6 +179,7 @@
                 <img
                   src="assets/images/Home/Festive Indian Sweet Gift Box (1).webp"
                   alt="Nellai Specialz Festive Sweet Gift Set"
+                  fetchpriority="high"
                   class="relative z-10 h-auto w-full rounded-2xl object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
                 />
 
@@ -447,12 +454,17 @@
                 DIWALI GIFT BOX
               </span>
 
-              <!-- Featured Combo Product Image -->
-              <img
-                src="assets/images/Shop/Festive Indian Sweet Gift Box.webp"
-                alt="Nellai Specialz Diwali Gift Box"
-                class="relative z-10 w-full rounded-2xl object-cover drop-shadow-2xl transition-transform duration-500 hover:scale-[1.03]"
-              />
+              <!-- Featured Combo Video: plays only while this section is visible -->
+              <video
+                class="diwali-combo-video relative z-10 w-full aspect-[4/5] max-h-[70vh] rounded-2xl bg-black object-contain drop-shadow-2xl"
+                src="assets/images/Home/nellai-english.mp4"
+                aria-label="Nellai Specialz Diwali Gift Box"
+                muted
+                controls
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
             </div>
           </div>
 
@@ -2260,6 +2272,5 @@
     <!-- SHARED MOUNT FOOTER -->
     <div id="site-footer"></div>
 
-    <script src="assets/js/home.js"></script>
   </body>
 </html>

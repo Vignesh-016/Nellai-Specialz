@@ -198,6 +198,38 @@
     });
   }
 
+  function bindDiwaliComboVideo() {
+    const video = document.querySelector(".diwali-combo-video");
+    if (!video) return;
+    const stop = () => {
+      video.pause();
+    };
+    video.addEventListener("click", () => {
+      video.muted = false;
+      video.volume = 1;
+      video.play().catch(() => {});
+    });
+    const playWhenVisible = (entry) => {
+      if (entry.isIntersecting) {
+        video.play().catch(() => {});
+      } else {
+        stop();
+      }
+    };
+    if (!("IntersectionObserver" in window)) {
+      video.play().catch(() => {});
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => playWhenVisible(entry),
+      { threshold: 0.45 },
+    );
+    observer.observe(video);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+    });
+  }
+
   /* Product section rendering lives in home/home-product-section.js. */
   /* function renderHomeProducts(products, grid) {
     const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
@@ -238,6 +270,7 @@
     bindHeroSlider();
     bindTestimonialSlider();
     bindGalleryAutoScroll();
+    bindDiwaliComboVideo();
     reveal();
   });
 })();
