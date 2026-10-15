@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@source "../../index.html";
+@source "../../*.html";
+@source "../../pages/**/*.html";
+@source "../js/**/*.js";
+
+@theme {
+  --font-serif: "Cormorant Garamond", "Noto Serif Tamil", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Inter", "Noto Sans Tamil", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-tamil-serif: "Noto Serif Tamil", "Cormorant Garamond", serif;
+}
+
+/* Site Base Typography & Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.025em;
+}
+
+/* Professional Tabular Number Styling for Customer Site & Checkout */
+.tabular-nums,
+[data-price],
+[data-amount],
+.price-tag,
+.price-value {
+  font-family: var(--font-sans) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Dynamic Utility Classes Safelist (Generated inside JavaScript templates) */
+.text-emerald-700 { color: #047857; }
+.text-red-700 { color: #b91c1c; }
+.border-emerald-200 { border-color: #a7f3d0; }
+.bg-emerald-50 { background-color: #ecfdf5; }
+.border-red-200 { border-color: #fecaca; }
+.bg-red-50 { background-color: #fef2f2; }
