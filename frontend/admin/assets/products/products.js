@@ -358,7 +358,7 @@
       if (managedInventory && !hasVariations && stockQuantity < 0) {
         throw new Error("Stock quantity cannot be negative.");
       }
-      for (const file of [state.mainImage, ...state.gallery]) validateImage(file);
+      [state.mainImage, ...state.gallery].filter(Boolean).forEach(validateImage);
 
       const productId = state.editing;
       const result = await api.request(
@@ -479,10 +479,10 @@
     el("product-search")?.addEventListener("input", render);
     el("product-category-filter")?.addEventListener("change", render);
     el("product-status-filter")?.addEventListener("change", render);
-    el("main-image-input")?.addEventListener("change", (event) => {
+    el("main-image-input")?.addEventListener("change", async (event) => {
       const file = event.target.files[0] || null;
       try {
-        validateImage(file);
+        await validateImage(file);
         state.mainImage = file;
         revokePreviewUrls();
         renderImages();
@@ -492,10 +492,10 @@
         message(error.message);
       }
     });
-    el("gallery-input")?.addEventListener("change", (event) => {
+    el("gallery-input")?.addEventListener("change", async (event) => {
       const files = [...event.target.files];
       try {
-        files.forEach(validateImage);
+        await Promise.all(files.map(validateImage));
         state.gallery.push(...files);
         revokePreviewUrls();
         renderImages();

@@ -127,7 +127,6 @@ safeApi(function (): void {
             if (!is_string($mimeType) || !isset($mimeMap[$mimeType])) {
                 throw new ProductImageUploadException('Only JPG, PNG, and WebP images are allowed.');
             }
-
             $filename = 'product_' . $productId . '_' . bin2hex(random_bytes(10)) . '.' . $mimeMap[$mimeType];
             $targetPath = $uploadDirectory . $filename;
             if (!move_uploaded_file($temporaryPath, $targetPath)) {
